@@ -3,3 +3,6 @@
 *.aux
 *.log
 *.out
+*.dvi
+*.ps
+*.bak
