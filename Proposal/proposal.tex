@@ -49,7 +49,7 @@ PPP (Projet Pensées Profondes) is a project about natural language question ans
 
 Firstly, understanding the natural language. The input string given in standard English has to be transformed into a normal form. To do so, we will use natural language processing (NLP) libraries. We will also implement a machine learning (ML) algorithm, in order to improve the answers of our software.
 
-Then, the normal form is used to collect data, by querying some data base (e.g. Wikidata). Some operations may then be applied, like performing a sort.
+Then, the normal form is used to collect data, by querying some databases (e.g. Wikidata). Some operations may then be applied, like performing a sort.
 
 Finally, the desired answer is displayed.
 
@@ -70,7 +70,7 @@ now or never for the open source community to propose its own product.
 Several private companies offer question answering frameworks. 
 
 WolframAlpha\footnote{\url{https://www.wolframalpha.com/}}, a tool developed by 
-Wolfram Research, provide a web based service to answer directly to questions asked
+Wolfram Research, provide a web based service to answer directly questions asked
 in English. It is well known for its abilities to process mathematical statements.
 It focuses on historical and scientific facts, such as \emph{When was the French 
 revolution?} or \emph{What is the root of pi?}.
@@ -81,7 +81,7 @@ answer questions asked in natural language (generally, those of the owner of the
 mobile device). They focus on practical facts, such as \emph{Where is the nearest
 restaurant?}.
 
-In a first time, the PPP project aims to provide a clever way to browse Wikidata, by giving the 
+In a first time, the PPP project aims at provading a clever way to browse Wikidata, by giving the 
 user the direct answer to his question, not the link of the related Wikipedia
 web page. Thus, our software will not be suited to answer such practical questions,
 although some new modules can be made if there exists a related database. Google Now
@@ -106,9 +106,9 @@ The software is divided in several components which interact via the HTTP protoc
 
 First, there are the front-ends which are the user interface. The most natural is a web page, but we can also think about a Android software\ldots Via this interface, we can submit a query.
 
-The query is transformed in a standard form. This form has to be understandable for a computer and describe the question. This work is done in two ways. There is a classical natural language processing module and a machine learning-based module. This kind of transformation is very difficult. To avoid having to go through this step, we can develop another front-end for developers which allow to input a question directly in normal form.
+The query is transformed into a standard form. This form has to be understandable for a computer and describe the question. This work is done in two ways. There is a classical natural language processing module and a machine learning-based module. This kind of transformation is very difficult. To avoid having to go through this step, we can develop another front-end for developers which allow to input a question directly in normal form.
 
-The standard form is send into the core. The core's job is routing. It have to send the request in each module to obtain the answers. Sometime, a module can request an answer of another module, for example in the question "what is two times the population of the United States?" which need a geographic data and a mathematical operation. Such a question needs the successive work of two modules.
+The standard form is send into the core. The core's job is routing. It has to send the request in each module to obtain the answers. Sometime, a module can request an answer of another module, for example in the question "what is two times the population of the United States?" which needs a geographic data and a mathematical operation. Such a question needs the successive work of two modules.
 
 To overcome the constraints of language, the core makes some request to the Wikidata module to translate each word of the standard form into the associated Wikidata code.
 
@@ -118,11 +118,11 @@ A specific module is needed for each database or kind of computation (mathematic
 
 \section{Technological innovations}
 
-innovations technologiques : open source question answering system, putting together some natural language processing libraries
+We would like to build one of the first open source question answering system. Our goal is to discover the theory of natural language processing, and apply our knowledge to design our tool. We intend to put together some existing libraries (e.g. natural language parsers) and our own implementations of algorithms. In particular, we hope we will be able to implement a neuronal network in order to perform machine learning.
 
-approche technique choisie : quickly obtain first results, then improve them depending on the remaining time
+One of our most important goal is to provide the first full-modular question answering system. We do not pretend to build in 3 months a better tool than WolframAlpha for example, but we hope to make available an efficient and attractive system that will motivate people to integrate their own module in the tool. Thus, we think that using the HTTP protocol for the communication between modules is an important part of our project, because it will allow a wide variety of programming languages to design modules.
 
-implementation of neuronal networks to perform machine learning
+Finally, our technical approach consists in quickly obtaining first results and a first working tool. Thus, we could use existing libraries in a first time. Then, we will improve it depending on our remaining time.
 
 \section{Schedule}
 
@@ -132,9 +132,9 @@ For the mid-term, we plan to have a functional developer front-end, core, Wikida
 
 With this base, the software should be able to answer simple questions using the developer interface.
 
-For the final term, we plan to have an enhanced NLP parser (especially for the machine learning-based one), a simple web front-end and an fully operational Wikidata module.
+For the final term, we plan to have an enhanced NLP parser (especially for the machine learning-based one), a simple web front-end and a fully operational Wikidata module.
 
-Depending on the remaining time, we can develop other modules, e.g. module for OEIS, mathematics\ldots
+Depending on the remaining time, we can develop other modules, e.g. modules for OEIS, mathematics\ldots
 
 \section{Task partition}
 
