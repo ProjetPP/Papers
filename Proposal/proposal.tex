@@ -40,23 +40,22 @@ Members & Raphaël \textsc{Charrondière}, Marc \textsc{Chevalier}, Quentin \tex
 \end{tabular}
 
 \section{Expected results}
-\emph{What is the birth date of the first president of the United States?} This is
-the typical question that we would like to answer automatically.
+\emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to answer automatically.
 
 This requires three steps. 
 
-Firstly, understanding the natural language. The input string given in standard 
-English has to be transformed into a normal form. To do so, we will use natural 
-language processing (NLP) libraries. We will also implement a machine learning (ML)
-algorithm, in order to improve the answers of our software.
+Firstly, understanding the natural language. The input string given in standard English has to be transformed into a normal form. To do so, we will use natural language processing (NLP) libraries. We will also implement a machine learning (ML) algorithm, in order to improve the answers of our software.
 
-Then, the normal form is used to collect data, by querying some data base (e.g.
-Wikidata). Some operations may then be applied, like performing a sort.
+Then, the normal form is used to collect data, by querying some data base (e.g. Wikidata). Some operations may then be applied, like performing a sort.
 
 Finally, the desired answer is displayed.
 
 
-\section{Technological innovations}
+\section{Target public}
+
+The first goal of the PPP project is to provide a free, modular and well documented search engine tool that will interest research communities for extensibility features. Our purpose is to allow people to design their own modules and easily include them in the tool. For example, sports modules could be done to answer questions about contests results or upcoming meetings. We intend to make at least one module, using Wikidata, in order to provide a demo and attract the big community of Wikidata.
+
+On the other hand, we also target the potentially users of our tool. We hope to provide a clever, transparent and easy to use search engine tool that will convince people of its utility. At a time when intelligent search engine tools are increasingly used, we think it is now or never for the open source community to propose its own product.
 
 \section{Concurrent services}
 
@@ -86,7 +85,6 @@ and will be modular and well documented. We hope that it will interest the
 Wikipedia community, in order to keep it updated in the future. Moreover,
 we will not focus on mathematical questions, as WolframAlpha does.
 
-
 \section{Software}
 
 The goal is to develop a query answering framework able to answer to simple questions with different back-end. 
@@ -111,18 +109,8 @@ Once a response is generated, it is sent to the interface to be displayed.
 
 A specific module is needed for each database or kind of computation (mathematical, predictive machine learning\ldots).
 
+\section{Technological innovations}
 
-\section{Target public}
-
-The first goal of the PPP project is to provide a free, modular and well documented search engine tool that will 
-interest research communities for extensibility features. Our purpose is to allow people to design their own modules and
-easily include them in the tool. For example, sports modules could be done to answer questions about contests results or 
-upcoming meetings. We intend to make at least one module, using Wikidata, in order to provide a demo and attract the big 
-community of Wikidata. 
-
-On the other hand, we also target the potentially users of our tool. We hope to provide a clever, transparent and easy to use search 
-engine tool that will convince people of its utility. At a time when intelligent search engine tools are increasingly used, we think it is
-now or never for the open source community to propose its own product.
 
 \section{Schedule}
 
