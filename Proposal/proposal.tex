@@ -97,6 +97,21 @@ The goal is to develop a query answering framework able to answer to simple ques
     \caption{Global structure}
 \end{figure}
 
+The software is divided in several components which interact via the HTTP protocol.
+
+First, there are the front-ends which are the user interface. The most natural is a web page, but we can also think about a Android software\ldots Via this interface, we can submit a query.
+
+The query is transformed in a standard form. This form have to be understandable for a computer and describe the question. This work is done in two way. There is a classical natural language processing module and a machine learning-based module. This kind of transformation is very difficult. To avoid having to go through this step, we can develop another front-end for developers which allow to input a question directly in normal form.
+
+The standard form is send into the core. The core's job is routing. It have to send the request in each module to obtain the answers. Sometime, a module can request an answer of another module, for example in the question "what is two times the population of the United States?" which need a geographic data and a mathematical operation. A such question need the successive work of two modules.
+
+To overcome the constraints of language, the core make some request to the WikiData module to translate each word of the standard for into the associated WikiData code.
+
+Once a response is generated, it is sent to the interface to be displayed.
+
+A specific module is needed for each database or kind of computation (mathematical, predictive machine learning\ldots).
+
+
 \section{Target public}
 
 The first goal of the PPP project is to provide a free, modular and well documented search engine tool that will 
@@ -111,7 +126,26 @@ now or never for the open source community to propose its own product.
 
 \section{Schedule}
 
+We have planned a simple schedule in two periods.
+
+For the mid-term, we plan to have a functional developer front-end, core, WikiData module (with the transformation in standard form with WikiData codes), a first approach of the NLP parser and a base for machine learning.
+
+With this based, the software should be able to answer to simple questions using the developer interface.
+
+For the final term, we plan to have an enhanced NLP parser (especially for the machine learning-based one), a simple web front-end and an enhanced WikiData module.
+
+Depending on the remaining time, we can develop other modules, e.g. module for OEIS, mathematics\ldots
+
 \section{Task partition}
+
+We decide to form 3 working teams.
+
+A team has to develop the core and the front-ends. It consists of Thomas and Valentin.
+
+Modules are developed by another team made of Thomas, Valentin and Tom. This team should split at the mid-term in a team for enhanced WikiData module and another team for new modules.
+
+At last, the two NLP parsers are made by the last team made of Yassine, Quentin, Raphaël and Marc.
+
 
 \section{Organization}
 
