@@ -29,7 +29,8 @@
 \begin{document}
 \maketitle
 
-\begin{tabular}{|ll|}
+\begin{center}
+ \begin{tabular}{|ll|}
 \hline
 Title & Projet Pensées Profondes (PPP)\\
 Coordinator & Marc \textsc{Chevalier}\\
@@ -38,25 +39,32 @@ Members & Raphaël \textsc{Charrondière}, Marc \textsc{Chevalier}, Quentin \tex
         & Thomas \textsc{Pellissier} \textsc{Tanon}\\
 \hline
 \end{tabular}
+\end{center}
+
+PPP (Projet Pensées Profondes) is a project about natural language question answering. It is done at the ENS Lyon, from september to december 2014, by a team of 7 people. This proposal presents our subject and exposes our goals.
 
 \section{Expected results}
-\emph{What is the birth date of the first president of the United States?} This is
-the typical question that we would like to answer automatically.
 
-This requires three steps. 
+\emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to answer quickly and succinctly with an automatic question answering system. This requires three steps. 
 
 Firstly, understanding the natural language. The input string given in standard 
 English has to be transformed into a normal form. To do so, we will use natural 
 language processing (NLP) libraries. We will also implement a machine learning (ML)
 algorithm, in order to improve the answers of our software.
 
-Then, the normal form is used to collect data, by querying some data base (e.g.
+Then, the normal form is used to collect data, by querying some databases (e.g.
 Wikidata). Some operations may then be applied, like performing a sort.
 
 Finally, the desired answer is displayed.
 
 
 \section{Technological innovations}
+
+innovations technologiques : open source question answering system, putting together some natural language processing libraries
+
+approche technique choisie : quickly obtain first results, then improve them depending on the remaining time
+
+implementation of neuronal networks to perform machine learning
 
 \section{Concurrent services}
 
@@ -101,11 +109,11 @@ The software is divided in several components which interact via the HTTP protoc
 
 First, there are the front-ends which are the user interface. The most natural is a web page, but we can also think about a Android software\ldots Via this interface, we can submit a query.
 
-The query is transformed in a standard form. This form have to be understandable for a computer and describe the question. This work is done in two way. There is a classical natural language processing module and a machine learning-based module. This kind of transformation is very difficult. To avoid having to go through this step, we can develop another front-end for developers which allow to input a question directly in normal form.
+The query is transformed in a standard form. This form has to be understandable for a computer and describe the question. This work is done in two ways. There is a classical natural language processing module and a machine learning-based module. This kind of transformation is very difficult. To avoid having to go through this step, we can develop another front-end for developers which allow to input a question directly in normal form.
 
-The standard form is send into the core. The core's job is routing. It have to send the request in each module to obtain the answers. Sometime, a module can request an answer of another module, for example in the question "what is two times the population of the United States?" which need a geographic data and a mathematical operation. A such question need the successive work of two modules.
+The standard form is send into the core. The core's job is routing. It have to send the request in each module to obtain the answers. Sometime, a module can request an answer of another module, for example in the question "what is two times the population of the United States?" which need a geographic data and a mathematical operation. Such a question needs the successive work of two modules.
 
-To overcome the constraints of language, the core make some request to the Wikidata module to translate each word of the standard for into the associated Wikidata code.
+To overcome the constraints of language, the core makes some request to the Wikidata module to translate each word of the standard form into the associated Wikidata code.
 
 Once a response is generated, it is sent to the interface to be displayed.
 
@@ -118,7 +126,7 @@ The first goal of the PPP project is to provide a free, modular and well documen
 interest research communities for extensibility features. Our purpose is to allow people to design their own modules and
 easily include them in the tool. For example, sports modules could be done to answer questions about contests results or 
 upcoming meetings. We intend to make at least one module, using Wikidata, in order to provide a demo and attract the big 
-community of Wikidata. 
+community of Wikipedia. 
 
 On the other hand, we also target the potentially users of our tool. We hope to provide a clever, transparent and easy to use search 
 engine tool that will convince people of its utility. At a time when intelligent search engine tools are increasingly used, we think it is
@@ -130,24 +138,28 @@ We have planned a simple schedule in two periods.
 
 For the mid-term, we plan to have a functional developer front-end, core, Wikidata module (with the transformation in standard form with Wikidata codes), a first approach of the NLP parser and a base for machine learning.
 
-With this based, the software should be able to answer to simple questions using the developer interface.
+With this base, the software should be able to answer simple questions using the developer interface.
 
-For the final term, we plan to have an enhanced NLP parser (especially for the machine learning-based one), a simple web front-end and an enhanced Wikidata module.
+For the final term, we plan to have an enhanced NLP parser (especially for the machine learning-based one), a simple web front-end and an fully operational Wikidata module.
 
 Depending on the remaining time, we can develop other modules, e.g. module for OEIS, mathematics\ldots
 
 \section{Task partition}
 
-We decide to form 3 working teams.
+We decide to form 3 working teams in a first time.
 
 A team has to develop the core and the front-ends. It consists of Thomas and Valentin.
 
 Modules are developed by another team made of Thomas, Valentin and Tom. This team should split at the mid-term in a team for enhanced Wikidata module and another team for new modules.
 
-At last, the two NLP parsers are made by the last team made of Yassine, Quentin, Raphaël and Marc.
+At last, the two NLP parsers will be done by the last team composed of Yassine, Quentin, Raphaël and Marc.
 
 
 \section{Organization}
+
+responsable des tâches, mode d’interaction, etc.
+
+Marc as project lead, Valentin as sysadmin, Thomas as architect + repartition in work packages
 
 % \section{Budget} not necessary to make a part to explain that there is no budget... just say it in Organization section
 
