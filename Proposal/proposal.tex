@@ -41,11 +41,11 @@ Members & Raphaël \textsc{Charrondière}, Marc \textsc{Chevalier}, Quentin \tex
 \end{tabular}
 \end{center}
 
-PPP (Projet Pensées Profondes) is a project about natural language question answering. It is done at the ENS Lyon, from september to december 2014, by a team of 7 people. This proposal presents our subject and exposes our goals.
+PPP (\textit{Projet Pensées Profondes}) project aim is to build a project about natural language question answering framework. It would be done at the ENS Lyon, from September to December 2014, by a team of 7 people. This proposal presents our subject and exposes our goals.
 
 \section{Expected results}
 
-\emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to answer quickly and succinctly with an automatic question answering system. This requires three steps. 
+\emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to answer quickly and succinctly with an automatic question answering system. This requires three steps.
 
 Firstly, understanding the natural language. The input string given in standard English has to be transformed into a normal form. To do so, we will use natural language processing (NLP) libraries. We will also implement a machine learning (ML) algorithm, in order to improve the answers of our software.
 
@@ -58,12 +58,9 @@ Finally, the desired answer is displayed.
 The first goal of the PPP project is to provide a free, modular and well documented search engine tool that will 
 interest research communities for extensibility features. Our purpose is to allow people to design their own modules and
 easily include them in the tool. For example, sports modules could be done to answer questions about contests results or 
-upcoming meetings. We intend to make at least one module, using Wikidata, in order to provide a demo and attract the big 
-community of Wikipedia. 
+upcoming meetings.  We intend also to make at least one important module, using Wikidata, in order to provide a demo and attract the big Wikipedia community. 
 
-On the other hand, we also target the potentially users of our tool. We hope to provide a clever, transparent and easy to use search 
-engine tool that will convince people of its utility. At a time when intelligent search engine tools are increasingly used, we think it is
-now or never for the open source community to propose its own product.
+On the other hand, we also target the end users of the query answering system in order to allow researchers to focus on their expertise domains and, maybe, to be able to provide this tool in open source mobile platforms like Firefox OS. At a time when intelligent search engine tools are increasingly used, we think it is now or never for the open source community to propose its own product.
 
 \section{Concurrent services}
 
@@ -75,13 +72,14 @@ in English. It is well known for its abilities to process mathematical statement
 It focuses on historical and scientific facts, such as \emph{When was the French 
 revolution?} or \emph{What is the root of pi?}.
 
+%TODO the Google question answering service is the Knowledge Graph, not Google Now (it's my fault, I often say "Google Now" for "Google Knowledge Graph") + Cortana?
 Google Now\footnote{\url{http://www.google.com/landing/now/}} and Siri\footnote{\url{https://www.apple.com/fr/ios/siri/}}, two intelligent personal assistants
 developed respectively by Google and Apple, provide a mobile based service to 
 answer questions asked in natural language (generally, those of the owner of the
 mobile device). They focus on practical facts, such as \emph{Where is the nearest
 restaurant?}.
 
-In a first time, the PPP project aims at provading a clever way to browse Wikidata, by giving the 
+In a first time, the PPP project aims at providing a clever way to browse Wikidata, by giving the 
 user the direct answer to his question, not the link of the related Wikipedia
 web page. Thus, our software will not be suited to answer such practical questions,
 although some new modules can be made if there exists a related database. Google Now
@@ -89,12 +87,12 @@ and Siri are therefore not direct concurrent services.
 
 The PPP project is closer to the WolframAlpha tool. However, it is a free project,
 and will be modular and well documented. We hope that it will interest the 
-Wikipedia community, in order to keep it updated in the future. Moreover,
+Wikimedia community, in order to keep it updated in the future. Moreover,
 we will not focus on mathematical questions, as WolframAlpha does.
 
 \section{Software}
 
-The goal is to develop a query answering framework able to answer to simple questions with different back-end. 
+The goal is to develop a query answering framework able to answer to simple questions with different back-ends. 
 
 \begin{figure}[!h]
     \centering
@@ -104,7 +102,7 @@ The goal is to develop a query answering framework able to answer to simple ques
 
 The software is divided in several components which interact via the HTTP protocol.
 
-First, there are the front-ends which are the user interface. The most natural is a web page, but we can also think about a Android software\ldots Via this interface, we can submit a query.
+First, there are the front-ends which are the user interfaces. The most natural is a web page, but we can also think about a Android application or a Firefox OS web app. Via this interface, we can submit a query.
 
 The query is transformed into a standard form. This form has to be understandable for a computer and describe the question. This work is done in two ways. There is a classical natural language processing module and a machine learning-based module. This kind of transformation is very difficult. To avoid having to go through this step, we can develop another front-end for developers which allow to input a question directly in normal form.
 
@@ -138,7 +136,7 @@ Depending on the remaining time, we can develop other modules, e.g. modules for 
 
 We decide to form 3 working teams in a first time.
 
-A first team has to develop the core and the front-ends. It consists of Thomas and Valentin. This work should not take too long time, especially the front-ends part.
+A first team, composed of Thomas and Valentin, has to develop the core and the front-ends. This work should not take too long time, especially for the front-ends part.
 
 The second team will be charged with designing the first module, based on Wikidata. It is composed of Thomas, Valentin and Tom. Thomas's knowledge on Wikidata will be essential to make the work easier. This team could eventually split at the mid-term in a team for enhanced Wikidata module and another for making new modules.
 
