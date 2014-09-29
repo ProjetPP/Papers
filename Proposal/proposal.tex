@@ -29,19 +29,27 @@
 \begin{document}
 \maketitle
 
+\newlength{\title}
+\settowidth{\title}{Coordinator }
+
+\newlength{\object}
+\setlength{\object}{\textwidth} \addtolength{\object}{-\title} 
+	\addtolength{\object}{-2\tabcolsep}
+
+{\renewcommand{\arraystretch}{1.5}
+
 \begin{center}
- \begin{tabular}{|ll|}
+\begin{tabular}{@{}|p{\title}p{\object}@{}|}
 \hline
 Title & Projet Pensées Profondes (PPP)\\
 Coordinator & Marc \textsc{Chevalier}\\
-Members & Raphaël \textsc{Charrondière}, Marc \textsc{Chevalier}, Quentin \textsc{Cormier}, \\
-        & Tom \textsc{Cornebize}, Yassine \textsc{Hamoudi}, Valentin \textsc{Lorentz},\\
-        & Thomas \textsc{Pellissier} \textsc{Tanon}\\
+Members & Raphaël \textsc{Charrondière}, Marc \textsc{Chevalier}, Quentin 
+      \textsc{Cormier}, Tom \textsc{Cornebize}, \linebreak Yassine \textsc{Hamoudi}, 
+      Valentin \textsc{Lorentz}, Thomas \textsc{Pellissier} \textsc{Tanon}.\\
+Abstract & PPP (Projet Pensées Profondes) is a project about natural language question answering. It is done at the ENS Lyon, from september to december 2014, by a team of 7 people. This proposal presents our subject and exposes our goals.\\
 \hline
 \end{tabular}
 \end{center}
-
-PPP (Projet Pensées Profondes) is a project about natural language question answering. It is done at the ENS Lyon, from september to december 2014, by a team of 7 people. This proposal presents our subject and exposes our goals.
 
 \section{Expected results}
 
