@@ -69,7 +69,7 @@ Wikidata). Some operations may then be applied, like performing a sort.
 Finally, the desired answer is displayed.
 
 \section{Expected results}
-The first goal of the PPP project is to provide a free, modular and well documented
+The first goal of the PPP is to provide a free, modular and well documented
 query answering tool that will interest research communities for extensibility features. 
 
 So, we expect to have in December a framework that would allow people to ask
@@ -81,7 +81,7 @@ We expect also to have done some research on natural languages analysis using
 neuronal networks. These researches may lead, if successful, to
 a small scientific article.
 
-\section{Target public}
+\section{Targetted users}
 
 Our main purpose is to allow people to design their own modules and
 easily include them in the tool. For example, sports modules could be done to answer questions about contests results or 
@@ -89,7 +89,7 @@ upcoming meetings.  We intend also to make at least one important module, using 
 and attract the big Wikipedia community. 
 
 On the other hand, we also target the end users of the query answering system in order to allow researchers to focus on
-their expertise domains and, maybe, to be able to provide this tool in open source mobile platforms like Firefox OS. At a
+their expertise domains and, maybe, to be able to provide this tool on open source mobile platforms like Firefox OS. At a
 time when intelligent search engine tools are increasingly used, we think it is now or never for the open source community
 to propose its own product.
 
@@ -110,13 +110,13 @@ answer questions asked in natural language (generally, those of the owner of the
 mobile device). They focus on practical facts, such as \emph{Where is the nearest
 restaurant?} but with also a support of historical facts.
 
-In a first time, the PPP project aims at providing a clever way to browse Wikidata, by giving the 
+In a first time, the PPP aims at providing a clever way to browse Wikidata, by giving the 
 user the direct answer to his question, not the link of the related Wikipedia
 web page. Thus, our software will not be suited to answer such practical questions,
 although some new modules can be made if there exists a related database. Google Now, Siri
 and Cortana are therefore not direct concurrent services.
 
-The PPP project is closer to the WolframAlpha tool. However, it is a free project,
+The PPP is closer to the WolframAlpha tool. However, it is a free project,
 and will be modular and well documented. We hope that it will interest the 
 Wikimedia community, in order to keep it updated in the future. Moreover,
 we will not focus on mathematical questions, as WolframAlpha does.
@@ -127,7 +127,7 @@ The goal is to develop a query answering framework able to answer to simple ques
 
 \begin{figure}[!h]
     \centering
-    \includegraphics[scale=0.39]{images/Structure-PPP-en.eps}
+    \includegraphics[scale=0.40]{images/Structure-PPP-en.eps}
     \caption{Global structure}
 \end{figure}
 
@@ -144,7 +144,7 @@ This kind of transformation is very difficult. To avoid having to go through thi
 step, we can develop another front-end for developers which allow to input a question
  directly in normal form.
 
-The standard form is send into the core. The core's job is routing. It has to send 
+The standard form is sent into the core. The core's job is routing. It has to send 
 the request in each module to obtain the answers. Sometime, a module can request 
 an answer of another module, for example in the question "what is two times the 
 population of the United States?" which needs a geographic data and a mathematical
@@ -213,12 +213,12 @@ we will improve the HTML frontend and maybe build an Android application.
 The second team will be charged with designing the first module, based on Wikidata. It is
 composed of Thomas, Valentin and Tom. Thomas's knowledge on Wikidata will be essential
 to make the work easier. The main goal is to have a module able to answer to simple questions
-like \textit{When George Washington is born?} for the mid-term. This team could eventually be
+like \textit{When was George Washington born?} for the mid-term. This team could eventually be
 split after in a team for enhanced Wikidata module and another for making new modules.
 
 The NLP parsers (using eventually machine learning and neuronal networks) will be done by the
-last team composed of Yassine, Quentin, Raphaël and Marc. Since we can not predict the difficulty
-of this task, we do not know actually if some members of this team will design modules after.
+last team composed of Yassine, Quentin, Raphaël and Marc. Since we cannot predict the difficulty
+of this task, we do not currently know if some members of this team will design modules after.
 The goal for the mid-term is to have a first NLP parser using intensively existing libaries and a
 bibliographical study in order to understand how natural language parsers are designed, and then
 choose our own approach. We hope to be able to have an implemented machine learning algorithm
@@ -230,7 +230,7 @@ Beyond the work packages organization, three project members have also a specifi
 
 \begin{itemize}
     \item[Marc] is the project lead, whose task is also to make sure that the project is on the good way
-    \item[Valentin] will do system administration (git repo    sitory infrastructure, continuous integration
+    \item[Valentin] will do system administration (git repository infrastructure, continuous integration
     services, management of the demo server, \dots).
     \item[Thomas] is the software architect, whose task is to design the modular conception and to
     ensure that components fit well together.
