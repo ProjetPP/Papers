@@ -33,7 +33,7 @@
 \settowidth{\title}{Coordinator }
 
 \newlength{\object}
-\setlength{\object}{\textwidth} \addtolength{\object}{-\title} 
+\setlength{\object}{\textwidth} \addtolength{\object}{-\title} \addtolength{\object}{-6.8pt} 
 	\addtolength{\object}{-2\tabcolsep}
 
 \renewcommand{\arraystretch}{1.5}
@@ -125,7 +125,7 @@ we will not focus on mathematical questions, as WolframAlpha does.
 
 The goal is to develop a query answering framework able to answer to simple questions with different back-ends. 
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.40]{images/Structure-PPP-en.eps}
     \caption{Global structure}
