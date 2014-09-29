@@ -58,22 +58,32 @@ our goals.\\
 
 \emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to answer quickly and succinctly with an automatic question answering system. This requires three steps. 
 
-Firstly, understanding the natural language. The input string given in standard English has to be transformed into a normal form. To do so, we will use natural language processing (NLP) libraries. We will also implement a machine learning (ML) algorithm, in order to improve the answers of our software.
+Firstly, understanding the natural language. The input string given in standard 
+English has to be transformed into a normal form. To do so, we will use natural 
+language processing (NLP) libraries. We will also implement a machine learning 
+(ML) algorithm, in order to improve the answers of our software.
 
-Then, the normal form is used to collect data, by querying some databases (e.g. Wikidata). Some operations may then be applied, like performing a sort.
+Then, the normal form is used to collect data, by querying some databases (e.g. 
+Wikidata). Some operations may then be applied, like performing a sort.
 
 Finally, the desired answer is displayed.
 
 \section{Target public}
 
-The first goal of the PPP project is to provide a free, modular and well documented search engine tool that will 
-interest research communities for extensibility features. Our purpose is to allow people to design their own modules and
-easily include them in the tool. For example, sports modules could be done to answer questions about contests results or 
-upcoming meetings. We intend to make at least one module, using Wikidata, in order to provide a demo and attract the big 
+The first goal of the PPP project is to provide a free, modular and well documented 
+search engine tool that will 
+interest research communities for extensibility features. Our purpose is to allow 
+people to design their own modules and
+easily include them in the tool. For example, sports modules could be done to answer
+ questions about contests results or 
+upcoming meetings. We intend to make at least one module, using Wikidata, in order 
+to provide a demo and attract the big 
 community of Wikipedia. 
 
-On the other hand, we also target the potentially users of our tool. We hope to provide a clever, transparent and easy to use search 
-engine tool that will convince people of its utility. At a time when intelligent search engine tools are increasingly used, we think it is
+On the other hand, we also target the potentially users of our tool. We hope to 
+provide a clever, transparent and easy to use search 
+engine tool that will convince people of its utility. At a time when intelligent 
+search engine tools are increasingly used, we think it is
 now or never for the open source community to propose its own product.
 
 \section{Concurrent services}
@@ -115,45 +125,93 @@ The goal is to develop a query answering framework able to answer to simple ques
 
 The software is divided in several components which interact via the HTTP protocol.
 
-First, there are the front-ends which are the user interface. The most natural is a web page, but we can also think about a Android software\ldots Via this interface, we can submit a query.
+First, there are the front-ends which are the user interface. The most natural is 
+a web page, but we can also think about a Android software\ldots Via this interface, 
+we can submit a query.
 
-The query is transformed into a standard form. This form has to be understandable for a computer and describe the question. This work is done in two ways. There is a classical natural language processing module and a machine learning-based module. This kind of transformation is very difficult. To avoid having to go through this step, we can develop another front-end for developers which allow to input a question directly in normal form.
+The query is transformed into a standard form. This form has to be understandable 
+for a computer and describe the question. This work is done in two ways. There is 
+a classical natural language processing module and a machine learning-based module. 
+This kind of transformation is very difficult. To avoid having to go through this 
+step, we can develop another front-end for developers which allow to input a question
+ directly in normal form.
 
-The standard form is send into the core. The core's job is routing. It has to send the request in each module to obtain the answers. Sometime, a module can request an answer of another module, for example in the question "what is two times the population of the United States?" which needs a geographic data and a mathematical operation. Such a question needs the successive work of two modules.
+The standard form is send into the core. The core's job is routing. It has to send 
+the request in each module to obtain the answers. Sometime, a module can request 
+an answer of another module, for example in the question "what is two times the 
+population of the United States?" which needs a geographic data and a mathematical
+ operation. Such a question needs the successive work of two modules.
 
-To overcome the constraints of language, the core makes some request to the Wikidata module to translate each word of the standard form into the associated Wikidata code.
+To overcome the constraints of language, the core makes some request to the Wikidata
+ module to translate each word of the standard form into the associated Wikidata 
+ code.
 
 Once a response is generated, it is sent to the interface to be displayed.
 
-A specific module is needed for each database or kind of computation (mathematical, predictive machine learning\ldots).
+A specific module is needed for each database or kind of computation (mathematical, 
+predictive machine learning\ldots).
 
 \section{Technological innovations}
 
-We would like to build one of the first open source question answering system. Our goal is to discover the theory of natural language processing, and apply our knowledge to design our tool. We intend to put together some existing libraries (e.g. natural language parsers) and our own implementations of algorithms. In particular, we hope we will be able to implement a neuronal network in order to perform machine learning. For example, we are going to explore ``DeepLearning'' technologies for the natural language processing problem.
+We would like to build one of the first open source question answering system. 
+Our goal is to discover the theory of natural language processing, and apply our 
+knowledge to design our tool. We intend to put together some existing libraries 
+(e.g. natural language parsers) and our own implementations of algorithms. In 
+particular, we hope we will be able to implement a neuronal network in order to 
+perform machine learning. For example, we are going to explore ``DeepLearning'' 
+technologies for the natural language processing problem.
 
-One of our most important goal is to provide the first full-modular question answering system. We do not pretend to build in 3 months a better tool than WolframAlpha for example, but we hope to make available an efficient and attractive system that will motivate people to integrate their own module in the tool. Thus, we think that using the HTTP protocol for the communication between modules is an important part of our project, because it will allow a wide variety of programming languages to design modules.
+One of our most important goal is to provide the first full-modular question 
+answering system. We do not pretend to build in 3 months a better tool than 
+WolframAlpha for example, but we hope to make available an efficient and 
+attractive system that will motivate people to integrate their own module in the 
+tool. Thus, we think that using the HTTP protocol for the communication between 
+modules is an important part of our project, because it will allow a wide variety 
+of programming languages to design modules.
 
-Finally, our technical approach consists in quickly obtaining first results and a first working tool. Thus, we could use existing libraries in a first time. Then, we will improve it depending on our remaining time.
+Finally, our technical approach consists in quickly obtaining first results and 
+a first working tool. Thus, we could use existing libraries in a first time. Then, 
+we will improve it depending on our remaining time.
 
 \section{Schedule}
 
 We have planned a simple schedule in two periods.
 
-For the mid-term, we plan to have a functional developer front-end, core, Wikidata module (with the transformation in standard form with Wikidata codes), a first approach of the NLP parser and a base for machine learning. With this base, the software should be able to answer simple questions using the developer interface.
+For the mid-term, we plan to have a functional developer front-end, core, 
+Wikidata module (with the transformation in standard form with Wikidata codes), 
+a first approach of the NLP parser and a base for machine learning. With this 
+base, the software should be able to answer simple questions using the developer 
+interface.
 
-For the final term, we plan to have an enhanced NLP parser (especially for the machine learning-based one), a simple web front-end and a fully operational Wikidata module.
+For the final term, we plan to have an enhanced NLP parser (especially for the 
+machine learning-based one), a simple web front-end and a fully operational 
+Wikidata module.
 
-Depending on the remaining time, we can develop other modules, e.g. modules for OEIS, mathematics\ldots Our objective is not to provide a lot of modules, but a modular tool with at least one ``demo-module'' using Wikidata.
+Depending on the remaining time, we can develop other modules, e.g. modules for 
+OEIS, mathematics\ldots Our objective is not to provide a lot of modules, but a 
+modular tool with at least one ``demo-module'' using Wikidata.
 
 \section{Task partition}
 
 We decide to form 3 working teams in a first time.
 
-A first team has to develop the core and the front-ends. It consists of Thomas and Valentin. This work should not take too long time, especially the front-ends part.
+A first team has to develop the core and the front-ends. It consists of Thomas 
+and Valentin. This work should not take too long time, especially the front-ends 
+part.
 
-The second team will be charged with designing the first module, based on Wikidata. It is composed of Thomas, Valentin and Tom. Thomas's knowledge on Wikidata will be essential to make the work easier. This team could eventually split at the mid-term in a team for enhanced Wikidata module and another for making new modules.
+The second team will be charged with designing the first module, based on 
+Wikidata. It is composed of Thomas, Valentin and Tom. Thomas's knowledge on 
+Wikidata will be essential to make the work easier. This team could eventually 
+split at the mid-term in a team for enhanced Wikidata module and another for 
+making new modules.
 
-The NLP parsers (using eventually machine learning and neuronal networks) will be done by the last team composed of Yassine, Quentin, Raphaël and Marc. Since we can not predict the difficulty of this task, we do not know actually if some members of this team will design modules after. In a first time, a bibliographical study will be performed in order to understand how natural language parsers are designed, and then choose our own approach. We hope we will implement a machine learning algorithm based on neuronal networks. 
+The NLP parsers (using eventually machine learning and neuronal networks) will 
+be done by the last team composed of Yassine, Quentin, Raphaël and Marc. Since 
+we can not predict the difficulty of this task, we do not know actually if some 
+members of this team will design modules after. In a first time, a bibliographical 
+study will be performed in order to understand how natural language parsers are 
+designed, and then choose our own approach. We hope we will implement a machine 
+learning algorithm based on neuronal networks. 
 
 
 
@@ -161,7 +219,8 @@ The NLP parsers (using eventually machine learning and neuronal networks) will b
 
 responsable des tâches, mode d’interaction, etc.
 
-Marc as project lead, Valentin as sysadmin, Thomas as architect + repartition in work packages
+Marc as project lead, Valentin as sysadmin, Thomas as architect + repartition in 
+work packages
 
 % \section{Budget} not necessary to make a part to explain that there is no budget... just say it in Organization section
 
