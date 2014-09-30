@@ -1,7 +1,7 @@
 ## TODO
 
 * Write the different workpackages.
-* Gant diagram.
+* Gantt diagram.
 
 Workpackages:
 
@@ -17,7 +17,7 @@ Workpackages:
 
 Aim: transform the output of the NLP library (typically a syntactic tree, with nodes such as "nominal group"...this output is different from a library to another), into a normal form (a semantic tree, with nodes such as "subject").
 
-Somes ideas written on the board:
+Some ideas written on the board:
 
 What is the birth date of GW? -> ("GW", "birth date", ?)
 
@@ -44,7 +44,7 @@ Marc, Quentin, Raphaël, Yassine: NLP libraries and bibliography.
 
 ## Communication
 
-Quickly provide a website to present our project. No diffusion for the moment (wait to have something more serious). Use the GitHub webpage. Written with [Jekyll](https://github.com/jekyll/jekyll)?
+Quickly provide a website to present our project. No diffusion for the moment (wait to have something more serious). Use the GitHub web page. Written with [Jekyll](https://github.com/jekyll/jekyll)?
 
 ## Router
 
@@ -68,7 +68,7 @@ Papers on the [pad](http://pad.aliens-lyon.fr/p/ppp-nlp).
 
 Queries on the data:
 
-*   Wikibase query engine (PHP, maintained in the future). Use a SQL basis. Well suited for birthdates. Catastrophic for recursive queries.
+*   Wikibase query engine (PHP, maintained in the future). Use a SQL basis. Well suited for birth dates. Catastrophic for recursive queries.
 *   Wikidata query (don't know if maintained in the future). Well suited for recursive queries.
 *   Wikidata toolkit (library in Java, does not perform yet queries).
 
