@@ -6,7 +6,7 @@
 Workpackages:
 
 1.  Communication/Organization
-2.  Routeur (english?)  (Valentin)
+2.  Router              (Valentin)
 3.  Web interface       (Thomas)
 4.  NLP                 (Raphaël)
 5.  Wikidata            (Thomas)
