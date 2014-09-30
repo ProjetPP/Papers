@@ -12,6 +12,26 @@ Workpackages:
 5.  Wikidata                    (Thomas)
 6.  Add-ons                     (Marc)
 
+### Definition of the normal form
+
+Aim: transform the output of the NLP library (typically a syntactic tree, with nodes such as "nominal group"...this output is different from a library to another), into a normal form (a semantic tree, with nodes such as "subject").
+
+Somes ideas written in the board:
+
+What is the birth date of GW? -> ("GW", "birth date", ?)
+
+["GW","birth date", null]
+
+What is the birth date of the first president of the USA?
+
+[[...],"...",null]
+
+first([null,"is president","US"]AND[null,"is","black"])
+
+**Need a documentation of the normal form, with examples.**
+
+
+
 
 ## Communication
 
