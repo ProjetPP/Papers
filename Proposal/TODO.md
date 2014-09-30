@@ -27,5 +27,14 @@ Languages: HTML, CSS, Javascript.
 
 ## NLP
 
-Would be nice to test different existing libraries. **Must work with Linux.**
+Would be nice to test different existing libraries before any choice. **Must work with Linux.**
 
+Remarks (Yassine & Marc): machine learning useless for NLP?
+
+Improvements: when some user use the service, store the question, the provided answer, and the user's feelings (is the answer satisfying?), in order to improve the tool (not necessary ML). Could allow us to "hardcode" some questions.
+
+Papers on the pad.
+
+## Wikidata
+
+## Add-ons
