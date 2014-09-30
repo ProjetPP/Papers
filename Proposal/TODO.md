@@ -1,4 +1,4 @@
-##TODO
+## TODO
 
 * Write the different workpackages.
 * Gant diagram.
@@ -9,14 +9,15 @@ Workpackages:
 2.  Router                      (Valentin)
 3.  Web interface               (Thomas)
 4.  NLP                         (Raphaël)
-5.  Wikidata                    (Thomas)
-6.  Add-ons                     (Marc)
+5.  ML                          (Quentin)
+6.  Wikidata                    (Thomas)
+7.  Add-ons                     (Marc)
 
 ### Definition of the normal form
 
 Aim: transform the output of the NLP library (typically a syntactic tree, with nodes such as "nominal group"...this output is different from a library to another), into a normal form (a semantic tree, with nodes such as "subject").
 
-Somes ideas written in the board:
+Somes ideas written on the board:
 
 What is the birth date of GW? -> ("GW", "birth date", ?)
 
@@ -30,7 +31,15 @@ first([null,"is president","US"]AND[null,"is","black"])
 
 **Need a documentation of the normal form, with examples.**
 
+## Whodowhat?
 
+Marc: finish proposal.
+
+Thomas & Valentin: doc for normal form. Once it is done, implementation in several languages.
+
+Tom: website.
+
+Marc, Quentin, Raphaël, Yassine: NLP libraries and bibliography.
 
 
 ## Communication
