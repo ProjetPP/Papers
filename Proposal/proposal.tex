@@ -140,7 +140,7 @@ The goal is to develop a query answering framework able to answer to simple ques
 
 The software is divided in several components which interact via the HTTP protocol.
 
-First, there are the front-ends which are the user interfaces. The most natural is
+The user interface consist of several front-ends. The most natural is
 a web page, but we can also think about a Android application
 or a Firefox OS web app. Via this interface, we can submit a query.
 
@@ -153,8 +153,8 @@ step, we can develop another front-end for developers which allow to input a que
 
 The standard form is sent into the core. The core's job is routing. It has to send 
 the request in each module to obtain the answers. Sometime, a module can request 
-an answer of another module, for example in the question "what is two times the 
-population of the United States?" which needs a geographic data and a mathematical
+an answer of another module, for example in the question \emph{What is two times the 
+population of Argentina?} which needs a geographic data and a mathematical
  operation. Such a question needs the successive work of two modules.
 
 To overcome the constraints of language, the core makes some request to the Wikidata
@@ -192,7 +192,7 @@ we will improve it depending on our remaining time.
 
 We have planned a simple schedule in two periods.
 
-For the mid-term, we plan to have a functional developer front-end, core, 
+For the mid-term, we plan to have a functional developer front-end, core, the 
 Wikidata module (with the transformation in standard form with Wikidata codes), 
 a first approach of the NLP parser and a base for machine learning. With this 
 base, the software should be able to answer simple questions using the developer 
@@ -212,7 +212,7 @@ We decide to form three working teams with mid-term and final evaluations goals.
 may be split after the mid-term evaluation.
 
 A first team, composed of Thomas and Valentin, has to develop the core and the front-ends.
-This work should not take too long time, especially for the front-ends part. For the mid-term
+This work should not be too long, especially for the front-ends part. For the mid-term
 we plan to have a working core, a basic HTML frontend and a developer frontend that would
 allow input directly questions in the standard form. For the final evaluation, if there is time,
 we will improve the HTML frontend and maybe build an Android application.
@@ -220,21 +220,23 @@ we will improve the HTML frontend and maybe build an Android application.
 The second team will be charged with designing the first module, based on Wikidata. It is
 composed of Thomas, Valentin and Tom. Thomas's knowledge on Wikidata will be essential
 to make the work easier. The main goal is to have a module able to answer to simple questions
-like \textit{When was George Washington born?} for the mid-term. This team could eventually be
+like \textit{When was Gandhi born?} for the mid-term. This team could eventually be
 split after in a team for enhanced Wikidata module and another for making new modules.
 
-The NLP parsers (using eventually machine learning and neuronal networks) will be done by the
-last team composed of Yassine, Quentin, Raphaël and Marc. Since we cannot predict the difficulty
-of this task, we do not currently know if some members of this team will design modules after.
-The goal for the mid-term is to have a first NLP parser using intensively existing libaries and a
-bibliographical study in order to understand how natural language parsers are designed, and then
-choose our own approach. We hope to be able to have an implemented machine learning algorithm
-based on neuronal networks for the final evaluation.
+The natural languages parsers (using eventually machine learning and neuronal networks) 
+will be done by the last team composed of Yassine, Quentin, Raphaël and Marc. 
+Since we cannot predict the difficulty of this task, we do not currently know if 
+some members of this team will design other modules.
+The goal for the mid-term is to have a first natural languages parser using intensively
+existing libaries and a bibliographical study in order to understand how natural 
+language parsers are designed, and then choose our own approach. We hope to be able 
+to have an implemented machine learning algorithm based on neuronal networks for 
+the final evaluation.
 
 \section{Organization}
 
 There will be several workpackages, and some manager associated to each one.
-The role of these managers is to make sure that their workpackage is on a good way.
+The role of these managers is to ensure the good progress of their workpackage.
 
 \begin{tabular}{ll}
   Global organization & Marc\\
