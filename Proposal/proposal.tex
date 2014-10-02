@@ -59,21 +59,21 @@ our subject and exposes our goals.\\
 \emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to
 answer quickly and succinctly with an automatic question answering system. This requires three steps.
 
-Firstly, understanding the natural language. The input string given in standard 
-English has to be transformed into a normal form. To do so, we will use natural 
-language processing (NLP) libraries. We will also implement a machine learning 
-(ML) algorithm, in order to improve the answers of our software.
+\begin{itemize}
+\item[\textbf{Understanding}] the natural language. The input string given in standard 
+English has to be transformed into a normal form. 
 
-Then, the normal form is used to collect data, by querying some databases (e.g. 
-Wikidata). Some operations may then be applied, like performing a sort.
+\item[\textbf{Querying}] some database (e.g. Wikidata), using the normal form.
+Some operations may then be applied, like performing a sort.
 
-Finally, the desired answer is displayed.
+\item[\textbf{Displaying}] the answer in a convenient fashion.
+\end{itemize}
 
 \section{Expected results}
 The first goal of the PPP is to provide a free, modular and well documented
 query answering tool that will interest research communities for extensibility features. 
 
-So, we expect to have in December a framework that would allow people to ask
+We expect to have in December a framework that would allow people to ask
 questions in plain text through a web user interface, a core module able to transform
 this question into a normal form and a demo backend module able to answer
 to historical questions using Wikidata data.
@@ -82,17 +82,18 @@ We expect also to have done some research on natural languages analysis using
 neuronal networks. These researches may lead, if successful, to
 a small scientific article.
 
-\section{Targetted users}
+\section{Targeted users}
 
 Our main purpose is to allow people to design their own modules and
-easily include them in the tool. For example, sports modules could be done to answer questions about contests results or 
-upcoming meetings.  We intend also to make at least one important module, using Wikidata, in order to provide a demo
-and attract the big Wikipedia community. 
+easily include them in the tool. For example, sports modules could be done to 
+answer questions about contests results or 
+upcoming meetings.  We intend also to make at least one important module, using 
+Wikidata, in order to provide a demo and attract the Wikipedia community. 
+At a time when intelligent search engine tools are increasingly used, we think it 
+is now or never for the open source community to propose its own product.
 
-On the other hand, we also target the end users of the query answering system in order to allow researchers to focus on
-their expertise domains and, maybe, to be able to provide this tool on open source mobile platforms like Firefox OS. At a
-time when intelligent search engine tools are increasingly used, we think it is now or never for the open source community
-to propose its own product.
+On the other hand, we also target the end users of the query answering system. We
+would like to provide a quick and intuitive way to search information.
 
 \section{Concurrent services}
 
@@ -104,12 +105,16 @@ in English. It is well known for its abilities to process mathematical statement
 It focuses on historical and scientific facts, such as \emph{When was the French 
 revolution?} or \emph{What is the root of pi?}.
 
-Google Knowledge Graph\footnote{\url{http://www.google.com/insidesearch/features/search/knowledge.html}}, Siri\footnote{\url{https://www.apple.com/fr/ios/siri/}} and Cortana\footnote{\url{http://windows.microsoft.com/en-us/windows-8/cortana}},
-three intelligent personal assistants
-developed respectively by Google, Apple and Microsoft, provide a mobile based service to 
-answer questions asked in natural language (generally, those of the owner of the
-mobile device). They focus on practical facts, such as \emph{Where is the nearest
-restaurant?} but with also a support of historical facts.
+Google Knowledge Graph\footnote{\url{http://www.google.com/insidesearch/features/search/knowledge.html}}, developed by Google, answer to some search on Google by a 
+related summary. For instance, searching \emph{Leonardo da Vinci} will give a short
+biography of this person, and display its most famous paintings.
+
+Google Now \footnote{\url{http://www.google.com/landing/now/}}, Siri\footnote{
+\url{https://www.apple.com/fr/ios/siri/}} and Cortana\footnote{\url{http://windows.microsoft.com/en-us/windows-8/cortana}}, three intelligent personal 
+assistants developed respectively by Google, Apple and Microsoft, provide a mobile 
+based service to answer questions asked in natural language (generally, those of 
+the owner of the mobile device). They focus on practical facts, such as \emph{Where 
+is the nearest restaurant?}.
 
 In a first time, the PPP aims at providing a clever way to browse Wikidata, by giving the 
 user the direct answer to his question, not the link of the related Wikipedia
@@ -117,7 +122,8 @@ web page. Thus, our software will not be suited to answer such practical questio
 although some new modules can be made if there exists a related database. Google Now, Siri
 and Cortana are therefore not direct concurrent services.
 
-The PPP is closer to the WolframAlpha tool. However, it is a free project,
+The PPP is closer to the WolframAlpha tool, and to some extent to the Google Knowledge 
+Graph. However, it is a free project,
 and will be modular and well documented. We hope that it will interest the 
 Wikimedia community, in order to keep it updated in the future. Moreover,
 we will not focus on mathematical questions, as WolframAlpha does.
@@ -134,7 +140,7 @@ The goal is to develop a query answering framework able to answer to simple ques
 
 The software is divided in several components which interact via the HTTP protocol.
 
-First, there are the front-ends which are the user interfaces. The most natural is
+The user interface consist of several front-ends. The most natural is
 a web page, but we can also think about a Android application
 or a Firefox OS web app. Via this interface, we can submit a query.
 
@@ -147,8 +153,8 @@ step, we can develop another front-end for developers which allow to input a que
 
 The standard form is sent into the core. The core's job is routing. It has to send 
 the request in each module to obtain the answers. Sometime, a module can request 
-an answer of another module, for example in the question "what is two times the 
-population of the United States?" which needs a geographic data and a mathematical
+an answer of another module, for example in the question \emph{What is two times the 
+population of Argentina?} which needs a geographic data and a mathematical
  operation. Such a question needs the successive work of two modules.
 
 To overcome the constraints of language, the core makes some request to the Wikidata
@@ -186,14 +192,14 @@ we will improve it depending on our remaining time.
 
 We have planned a simple schedule in two periods.
 
-For the mid-term, we plan to have a functional developer front-end, core, 
+For the mid-term, we plan to have a functional developer front-end, core, the 
 Wikidata module (with the transformation in standard form with Wikidata codes), 
-a first approach of the NLP parser and a base for machine learning. With this 
-base, the software should be able to answer simple questions using the developer 
-interface.
+a first approach of the natural language parser and a base for machine learning. 
+With this base, the software should be able to answer simple questions using the 
+developer interface.
 
-For the final term, we plan to have an enhanced NLP parser (especially for the 
-machine learning-based one), a simple web front-end and a fully operational 
+For the final term, we plan to have an enhanced natural language parser (especially 
+for the machine learning-based one), a simple web front-end and a fully operational 
 Wikidata module.
 
 Depending on the remaining time, we can develop other modules, e.g. modules for 
@@ -206,7 +212,7 @@ We decide to form three working teams with mid-term and final evaluations goals.
 may be split after the mid-term evaluation.
 
 A first team, composed of Thomas and Valentin, has to develop the core and the front-ends.
-This work should not take too long time, especially for the front-ends part. For the mid-term
+This work should not be too long, especially for the front-ends part. For the mid-term
 we plan to have a working core, a basic HTML frontend and a developer frontend that would
 allow input directly questions in the standard form. For the final evaluation, if there is time,
 we will improve the HTML frontend and maybe build an Android application.
@@ -214,21 +220,23 @@ we will improve the HTML frontend and maybe build an Android application.
 The second team will be charged with designing the first module, based on Wikidata. It is
 composed of Thomas, Valentin and Tom. Thomas's knowledge on Wikidata will be essential
 to make the work easier. The main goal is to have a module able to answer to simple questions
-like \textit{When was George Washington born?} for the mid-term. This team could eventually be
+like \textit{When was Gandhi born?} for the mid-term. This team could eventually be
 split after in a team for enhanced Wikidata module and another for making new modules.
 
-The NLP parsers (using eventually machine learning and neuronal networks) will be done by the
-last team composed of Yassine, Quentin, Raphaël and Marc. Since we cannot predict the difficulty
-of this task, we do not currently know if some members of this team will design modules after.
-The goal for the mid-term is to have a first NLP parser using intensively existing libaries and a
-bibliographical study in order to understand how natural language parsers are designed, and then
-choose our own approach. We hope to be able to have an implemented machine learning algorithm
-based on neuronal networks for the final evaluation.
+The natural languages parsers (using eventually machine learning and neuronal networks) 
+will be done by the last team composed of Yassine, Quentin, Raphaël and Marc. 
+Since we cannot predict the difficulty of this task, we do not currently know if 
+some members of this team will design other modules.
+The goal for the mid-term is to have a first natural languages parser using intensively
+existing libraries and a bibliographical study in order to understand how natural 
+language parsers are designed, and then choose our own approach. We hope to be able 
+to have an implemented machine learning algorithm based on neuronal networks for 
+the final evaluation.
 
 \section{Organization}
 
 There will be several workpackages, and some manager associated to each one.
-The role of these managers is to make sure that their workpackage is on a good way.
+The role of these managers is to ensure the good progress of their workpackage.
 
 \begin{tabular}{ll}
   Global organization & Marc\\
