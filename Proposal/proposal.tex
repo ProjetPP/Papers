@@ -59,15 +59,15 @@ our subject and exposes our goals.\\
 \emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to
 answer quickly and succinctly with an automatic question answering system. This requires three steps.
 
-Firstly, understanding the natural language. The input string given in standard 
-English has to be transformed into a normal form. To do so, we will use natural 
-language processing (NLP) libraries. We will also implement a machine learning 
-(ML) algorithm, in order to improve the answers of our software.
+\begin{itemize}
+\item[\textbf{Understanding}] the natural language. The input string given in standard 
+English has to be transformed into a normal form. 
 
-Then, the normal form is used to collect data, by querying some databases (e.g. 
-Wikidata). Some operations may then be applied, like performing a sort.
+\item[\textbf{Querying}] some database (e.g. Wikidata), using the normal form.
+Some operations may then be applied, like performing a sort.
 
-Finally, the desired answer is displayed.
+\item[\textbf{Displaying}] the answer in a convenient fashion.
+\end{itemize}
 
 \section{Expected results}
 The first goal of the PPP is to provide a free, modular and well documented
