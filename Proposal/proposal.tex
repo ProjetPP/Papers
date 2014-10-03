@@ -21,12 +21,12 @@
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{comment}
+\usepackage{pgfgantt}
 
 
 \title{Project proposal}
 \author{PPP \--- ENS Lyon}
 \date{M1. 2014}
-
 \begin{document}
 \maketitle
 
@@ -266,6 +266,37 @@ The role of these managers is to ensure the good progress of their workpackage.
     ensure that components fit well together.
 \end{itemize}
 \end{comment}
+
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \begin{ganttchart}%
+  [today=10,today label=Mi-term,
+today label node/.append style=%
+{anchor=north west},
+today label font=\itshape\color{red},
+today rule/.style=%
+{draw=blue, ultra thick}, 
+vgrid={*1{draw=none}, dotted},
+inline
+]{1}{24}
+    \gantttitle{October}{9}\gantttitle{November}{9}\gantttitle{December}{6} \\
+    \gantttitlelist{1,...,12}{2} \\
+    \ganttbar[name = WP0]{Global organization}{1}{24} \\
+    \ganttbar[name = WP1]{System administration}{1}{24} \\
+    \ganttbar[name = WP2]{Software architecture}{1}{24} \\
+    \ganttbar[name = WP3]{Communication}{1}{24} \\
+    
+    \ganttbar[name = WP5]{Router}{1}{6} \\
+    \ganttlinkedbar[name = WP6]{Web UI}{7}{10} \\
+    \ganttbar[name = WP4]{Biblio.}{1}{3} \\
+    \ganttbar[name = WP7]{Natural Languages Processing}{4}{24} \\
+    \ganttbar[name = WP8]{Machine Learning}{4}{24} \\
+    \ganttbar[name = WP9]{Wikidata module}{1}{24} \\
+    \ganttbar[name = WP10]{Add-ons}{21}{24} \\
+    \ganttlink[link mid=.4]{WP4}{WP7}
+    \ganttlink[link mid=.2]{WP4}{WP8}
+
+  \end{ganttchart}
+\end{tikzpicture}
 
 \section{Budget}
 As demo servers will be provided by Wikimedia, we do not need any particular budget.
