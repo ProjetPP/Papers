@@ -1,0 +1,58 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{auxcommandes}[2014/08/18]
+
+
+\ProcessOptions
+
+\newenvironment{exemple}
+{\begin{exampleblock}{Exemple}}
+{\end{exampleblock}}
+
+\newenvironment{defi}
+{\begin{block}{Définition}}
+{\end{block}}
+
+
+
+\newcommand{\parseroutput}
+{
+\begin{tikzpicture}[x=2.5cm]
+\node (l1) at (1,0) {m1};
+\node (l2) at (2,0) {m2};
+\node (l3) at (3,0) {m3};
+\node (l4) at (4,0) {m4};
+\node (l5) at (5,0) {m5};
+
+\node (ll1) at (1.5,1) {m6=fusion(m1,m2)};
+
+\node (lll1) at (2,2) {m7=fusion(m6,m3)};
+\node (lll2) at (4.5,2) {m8=fusion(m4,m5)};
+\node (r) at (3,3) {m9=fusion(m7,m8)};
+
+\draw (l1)--(ll1)--(l2);
+\draw (ll1)--(lll1)--(l3);
+\draw (l4)--(lll2)--(l5);
+\draw (lll1)--(r)--(lll2);
+\end{tikzpicture}
+}
+
+\newcommand{\synthesis}
+{
+\begin{tikzpicture}[x=2.5cm]
+\node (s) at (1,0) {s};
+\node (p) at (3,0) {p};
+\node (r) at (2,1) {r};
+\node (a) at (2,2) {a=contracter(s,r,p)};
+\node (b) at (4,2) {b};
+\node (l) at (3,3) {l};
+\node (h) at (3,4) {h=contracter(a,l,b)};
+
+\draw (s)--(a)--(p);
+\draw (r)--(a);
+\draw (a)--(h)--(b);
+\draw (l)--(h);
+\end{tikzpicture}
+}
+
+
+\endinput

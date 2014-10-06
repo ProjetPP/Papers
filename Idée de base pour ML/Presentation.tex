@@ -1,0 +1,170 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+
+
+
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{fit}
+\usetikzlibrary{shapes}
+\usetikzlibrary{calc}
+
+\newcommand{\grad}{\nabla_\theta}
+\newcommand{\gradd}{\nabla_{\gamma_{H_t}}}
+\newcommand{\gradf}{\nabla_{\theta_{H_\tau}}}
+\newcommand{\softmax}{\text{softmax}}
+\newcommand{\xor}{\text{xor}}
+
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+\newcommand{\N}[1]{\left\|#1\right\|_2}
+
+\definecolor{mauve}{rgb}{0.8,0.5,0.8}
+\definecolor{vert}{rgb}{0.7,1.0,0.7}
+\definecolor{max}{rgb}{0,0.8,0}
+
+
+\usepackage{auxcommandes}
+
+%\usetheme{Warsaw}
+\usetheme{CambridgeUS}
+%\usetheme{Berlin}
+\usecolortheme{Beaver}
+
+\title{ PPP - Restructuration de question}
+
+\author{ Raphaël Charrondière  }
+\date{ \today}
+\subject{ PPP - Restructuration de question }
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents%[hideallsubsections]
+\end{frame}
+
+\section{Préparation}
+
+\begin{frame}
+\frametitle{Adapter les questions au machine learning}
+\begin{itemize}
+\item Réduction du dictionnaire souhaité : utilisation de synonymes ?
+
+\item Ce que l'on ne peut pas utiliser tel quel : les formules mathématiques ou tout nombre (il y a en trop !), les remplacer par \#NOMBRE(i)\#
+
+\item Les noms (car de nouveaux peuvent apparaitre)  les remplacer par \#NOM(i)\#. 
+\item On peut créer plus de tags comme LIEU, etc. (mais est-ce utile ?)
+\item En dehors des tags, tout mot appartient au dictionnaire anglais
+\end{itemize}
+\end{frame}
+
+\section{Représentation d'une requête}
+
+\begin{frame}
+\frametitle{Définitions}
+\textbf{Espaces :}
+\begin{itemize}
+\item On définit $R$ et $P$ des espaces vectoriel de $\mathbb{R}$ à dimension finie. 
+\item On définit  $A=RxPxR$
+\end{itemize}
+
+\textbf{Fonctions :}
+\begin{itemize}
+\item Contracter : $A\rightarrow R$
+\item Décontracter :  $R\rightarrow A$
+\item Fusion : $AxA\rightarrow A$
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Dictionnaire}
+
+\begin{defi}
+Le dictionnaire lie un mot ou un tag à un triplet de type $A$.
+
+On écrira $(m.s,m.p,m.o)$ le triplet du mot $m$.
+\end{defi}
+\end{frame}
+
+\begin{frame}
+\frametitle{Construction d'une représentation de question - Cas 1}
+\parseroutput
+
+On se base sur l'arbre de parsage.
+\end{frame}
+
+\begin{frame}
+\frametitle{Construction d'une représentation de question - Cas 2}
+\begin{center}
+\synthesis
+\end{center}
+
+Moins intéressant car nécessite une question sous forme normale, mais évite la fonction fusion. 
+\end{frame}
+
+\begin{frame}
+\frametitle{De la représentation vers la forme normale}
+\begin{algorithm}[H]
+\DontPrintSemicolon  % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$\delta>0$ and $a\in A$}
+\KwOut{the request three}
+$(s,p,o) \gets \text{Decontracter}(a)$\;
+Find m s.t. $\N{m.s-s}<\delta$ if also minimal \;
+\lIf{m exists}{$s \gets m.s$}
+\lElse{$s \gets C(\delta,s)$} 
+Find m s.t. $\N{m.o-o}<\delta$ if also minimal \;
+\lIf{m exists}{$o \gets m.o$}
+\lElse{$o \gets C(\delta,o)$} 
+$p \gets \text{argmin}_m.r (\N{m.r-m.p})$\;
+\Return{$(s,r,o)$}\;
+\caption{ C : From representation to three}
+\end{algorithm}
+
+\end{frame}
+
+\section{Apprendre}
+
+\begin{frame}
+\frametitle{Warning}
+A aucun moment on ne peut souhaiter Contracter et Décontracter être des fonctions réciproque, même pour des requêtes simple.
+
+Décontracter(Contracter) $\neq$ Id
+
+Contracter(Décontracter) $\approx$ Id
+
+$$ $$
+
+On voudrait minimiser $||$(Calculé par forme normale- Réponse réelle)$||_2$ 
+
+(En prenant les représentations du dictionnaire). Cependant il est certainement illusoire d'espérer tout faire en un coup. Sans doute apprendre les correspondances du dictionnaire est la première chose à faire.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Apprendre à placer les mots}
+A partir des requêtes simples à 3 mots 
+
+(m1=Sujet, m2=prédicat, m3=objet)
+
+ on peut apprendre à placer m1.s, m2.p et m3.o
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Apprendre les fonctions}
+Minimiser $\sum_{a,b\in A \ a\sim b} \N{\text{Contracter}(a)-\text{Contracter}(b)}$
+
+Minimiser $\N{\text{reponse}(C(\delta,\text{Contracter(Req simple)))-resultat}}$
+\end{frame}
+
+\end{document}
