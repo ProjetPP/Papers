@@ -89,3 +89,15 @@ Existing answering systems (e.g. Quepy).
 Be aware of the difficulty of our task: very recent papers on question answering from knowledge bases claim no more than 30-50% of success.
 
 Keywords: question answering, SPARQL, RDF, natural language question answering, semantic parser, subject verb object, triple(t) extraction, natural language RDF/SPARQL, natural language interfaces to databases, SVO (subject verb object), translating questions into queries over knowledge base.
+
+### Raphaël's talk: Question restructuration
+
+**Aim:** simplify questions.
+
+Use R and P, two finite dimension vectorial spaces in R.
+
+Define A = R * P * R. Several functions (contraction, decontraction...).
+
+Show some idea to parse a sentence. We consider a tree (given for instance by Stanford), and define a Merge function (to merge two nodes).
+
+
