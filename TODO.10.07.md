@@ -100,4 +100,19 @@ Define A = R * P * R. Several functions (contraction, decontraction...).
 
 Show some idea to parse a sentence. We consider a tree (given for instance by Stanford), and define a Merge function (to merge two nodes).
 
+### Quentin's talk: NLP from scratch
 
+A general method.
+
+How does it work?
+
+Take a sentence, `What is the birth date of Alan Turing?`.
+
+Make some simplifications (e.g. 736 -> NUMBER). Use a dictionnary D (100k words in the paper). Each word has an index in this dictionnary.
+We would like to use a same index for two synonyms.
+
+Lookup table LT, a |D|*50 matrix. ||LT(id("macintosh"))-LT(id("computer"))||^2 ~ 0.
+
+We consider a fixed size window around each word. For isntance, for word `the`, we consider `What is the birth date`. This gives us a 50*5 vector.
+
+Four classes, for each word: predicate, subject, object, nothing.
