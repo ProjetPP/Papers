@@ -49,3 +49,11 @@ NLTK library tested. Conclusion: use Stanford parser. Some ideas for the ML. Mad
 Have an algorithm.
 
 Nice library: **Torch7**.
+
+### WP9
+
+Decided libraries. **Wikidata query** will be used.
+
+### WP10
+
+Nothing.
