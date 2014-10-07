@@ -2,13 +2,10 @@
 
 ### Proposal
 
-Do not say that we will try. Be conviced of what we will do.
-
-Explain why we choosed Wikidata.
-
-Rewrite task partition.
-
-Redo Gantt diagram.
+* Do not say that we will try. Be conviced of what we will do.
+* Explain why we choosed Wikidata.
+* Rewrite task partition.
+* Redo Gantt diagram.
 
 ### WP0
 
@@ -102,7 +99,7 @@ Show some idea to parse a sentence. We consider a tree (given for instance by St
 
 ### Quentin's talk: NLP from scratch
 
-A general method.
+A general method. Mainly focus on short questions.
 
 How does it work?
 

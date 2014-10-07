@@ -10,3 +10,6 @@
 *.bak
 *.xcf
 *.rej
+*.nav
+*.toc
+*.snm
