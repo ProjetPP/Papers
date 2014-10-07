@@ -68,3 +68,16 @@ Also: expressing questions in first order logic. Finding an answer <=> finding a
 Allow an easy partition of databases queries.
 
 RDF (Ressource Description Framework): general framework for describing any internet ressource.
+
+SPARQL.
+
+Analyzing sentences:
+
+* Parse structure (based on grammar).
+* Dependency tree (dependency relations).
+
+Libraries:
+
+* NLTK: python, well documented, easy to use. But slow, and can not be used as is.
+* Stanford Parser: well documented, faster than NLT., frequently updated, include one of the best dependency parsers, support several natural languages. But, written in java.
+
