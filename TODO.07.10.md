@@ -81,3 +81,11 @@ Libraries:
 * NLTK: python, well documented, easy to use. But slow, and can not be used as is.
 * Stanford Parser: well documented, faster than NLT., frequently updated, include one of the best dependency parsers, support several natural languages. But, written in java.
 
+Several semi-automatic methods to build treebanks...
+
+Existing answering systems (e.g. Quepy).
+
+** Conclusion: ** lack of details about implementation in papers. Several interesting papers.
+Be aware of the difficulty of our task: very recent papers on question answering from knowledge bases claim no more than 30-50% of success.
+
+Keywords: question answering, SPARQL, RDF, natural language question answering, semantic parser, subject verb object, triple(t) extraction, natural language RDF/SPARQL, natural language interfaces to databases, SVO (subject verb object), translating questions into queries over knowledge base.
