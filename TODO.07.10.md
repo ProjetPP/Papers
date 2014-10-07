@@ -79,7 +79,7 @@ Analyzing sentences:
 Libraries:
 
 * NLTK: python, well documented, easy to use. But slow, and can not be used as is.
-* Stanford Parser: well documented, faster than NLT., frequently updated, include one of the best dependency parsers, support several natural languages. But, written in java.
+* **Stanford Parser**: well documented, faster than NLT., frequently updated, include one of the best dependency parsers, support several natural languages. But, written in java.
 
 Several semi-automatic methods to build treebanks...
 
