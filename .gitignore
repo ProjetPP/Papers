@@ -1,4 +1,3 @@
-*.pdf
 *~
 *.aux
 *.bbl
@@ -9,5 +8,5 @@
 *.dvi
 *.ps
 *.bak
-*.png
 *.xcf
+*.rej
