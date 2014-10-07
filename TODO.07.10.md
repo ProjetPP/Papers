@@ -57,3 +57,14 @@ Decided libraries. **Wikidata query** will be used.
 ### WP10
 
 Nothing.
+
+### Yassine's talk: Literature review, Natural Language Question Answering
+
+**Problematic:** How answering natural languages questions using existing structured databases.
+
+Most common representation: Subject PRedicate Oject (e.g. (turtle, eat, salad), or eat(turtle,salad)).
+
+Also: expressing questions in first order logic. Finding an answer <=> finding a model in first order logic.
+Allow an easy partition of databases queries.
+
+RDF (Ressource Description Framework): general framework for describing any internet ressource.
