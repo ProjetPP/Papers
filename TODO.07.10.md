@@ -34,4 +34,18 @@ Several papers, have done a beamer to present what they learned.
 
 ### WP5
 
-No stable reprezentation of the data, thus no router.
+No stable reprezentation of the data, thus no router. Hope to begin it this week.
+
+### WP6
+
+Depends of WP5.
+
+### WP7
+
+NLTK library tested. Conclusion: use Stanford parser. Some ideas for the ML. Made a beamer.
+
+### WP8
+
+Have an algorithm.
+
+Nice library: **Torch7**.
