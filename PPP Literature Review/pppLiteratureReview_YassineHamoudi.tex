@@ -21,26 +21,16 @@
 
 \definecolor{bgreen}{rgb}{0.30,0.70,0}
 
-%#############################################################################################################%
-%#############################################################################################################%
-%#############################################################################################################%
-
 \usetheme{Amsterdam}
-
-\setbeamertemplate{footline}%{miniframes theme}
-  {
-    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
-      leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
-      {\usebeamerfont{title in head/foot}\insertshorttitle} - Yassine Hamoudi  \hfill   \insertframenumber/\inserttotalframenumber
-    \end{beamercolorbox}%
-  }
+%\usecolortheme[RGB={154,205,50}]{structure} % vert
+%\usecolortheme[RGB={255,70,0}]{structure} % orange
 
 %#############################################################################################################%
 %#############################################################################################################%
 %#############################################################################################################%
 
 \title{Literature review  \\ Natural Language Question Answering}
-\author{{\Large Yassine \textsc{Hamoudi}}}
+\author[Yassine Hamoudi]{{\Large Yassine \textsc{Hamoudi}}}
 \date{October 7, 2014}
 
 \begin{document}
@@ -99,9 +89,9 @@ What we do not plan to do (?):
 
 %#############################################################################################################%
 
-\begin{frame}{Normal form representation}
+\section{Normal form}
 
-\section{Normal form representation}
+\begin{frame}{Normal form representation}
 
 Most common representation: Subject Predicate Object (SPO)
 
@@ -222,9 +212,9 @@ Existing knowledge bases
 
 %#############################################################################################################%
 
-\begin{frame}{From syntax...}
-
 \section{From syntax...}
+
+\begin{frame}{From syntax...}
 
 \begin{block}{Parse structure tree (constituency relations)}
 	Split the phrase according to its grammatical structure (noun phrase: NP, verb phrase: VP ...).
@@ -256,9 +246,9 @@ Stanford Parser:
 
 %#############################################################################################################%
 
-\begin{frame}{... to semantic}
-
 \section{... to semantic}
+
+\begin{frame}{... to semantic}
 
 Parse structure tree 
 \begin{itemize}
@@ -289,9 +279,9 @@ $\rightarrow$ usually a mix of heuristics (including parse structure/dependency 
 
 %#############################################################################################################%
 
-\begin{frame}{Libraries}
-
 \section{Libraries}
+
+\begin{frame}{Libraries}
 
 \begin{exampleblock}{NLTK: \url{http://www.nltk.org/}}
 	\begin{itemize}
@@ -334,9 +324,9 @@ Online demo :
 
 %#############################################################################################################%
 
-\begin{frame}{Treebanks}
-
 \section{Treebanks}
+
+\begin{frame}{Treebanks}
 
 Text corpus with annotated syntactic (=structure) or semantic (=meaning) sentence structure.
 
@@ -394,9 +384,9 @@ Question Answering over Linked Data challenge:
 
 %#############################################################################################################%
 
-\begin{frame}{Conclusion}
-
 \section{Conclusion}
+
+\begin{frame}{Conclusion}
 
 \begin{itemize}
 	\item Lack of details about implementation in papers actually found.
@@ -420,9 +410,9 @@ Question Answering over Linked Data challenge:
 
 %#############################################################################################################%
 
-\begin{frame}{Keywords}
-
 \section{Keywords}
+
+\begin{frame}{Keywords}
 
 \begin{table}
 \Large
