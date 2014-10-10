@@ -23,6 +23,11 @@
 \usepackage{comment}
 \usepackage{pgfgantt}
 
+\newcounter{wpcounter}
+\newenvironment{workpackage}{\stepcounter{wpcounter}\vspace{0.5cm}{\bfseries WP\thewpcounter}}{}
+
+
+
 
 \title{Project proposal}
 \author{PPP \--- ENS Lyon}
@@ -209,6 +214,7 @@ modular tool with at least one ``demo-module'' using Wikidata.
 
 \section{Task partition}
 
+\begin{comment}
 We decide to form three working teams with mid-term and final evaluations goals. Some of them
 may be split after the mid-term evaluation.
 
@@ -256,7 +262,7 @@ The role of these managers is to ensure the good progress of their workpackage.
 	\end{tabular}
 \end{center}
 
-\begin{comment}
+
 \begin{itemize}
     \item[Marc] is the project lead, whose task is also to make sure that the project is on the good way
     \item[Valentin] will do system administration (git repository infrastructure, continuous integration
@@ -266,6 +272,125 @@ The role of these managers is to ensure the good progress of their workpackage.
 \end{itemize}
 \end{comment}
 
+Several workpackages are defined for this project, with specific goal and and
+participants. They are detailed on the following.
+
+\begin{workpackage}
+Global organization
+
+Person in charge: Marc.
+
+Progress and quality of the whole project.
+\end{workpackage}
+
+\begin{workpackage}
+System administration
+
+Person in charge: Valentin.
+
+Git repositories infrastructure, continuous integration, server management.
+\end{workpackage}
+
+\begin{workpackage}
+Software architecture
+
+Person in charge: Thomas.
+
+Modular conception of the tool.
+\end{workpackage}
+
+\begin{workpackage}
+Communication
+
+Person in charge: Tom.
+
+External communication, e.g. website, official announcements.
+\end{workpackage}
+
+\begin{workpackage}
+Bibliography
+
+Person in charge: Yassine.
+
+Referencement of the used ressources, e.g. papers, libraries.
+\end{workpackage}
+
+\begin{workpackage}
+Router
+
+Person in charge: Valentin.
+
+Other participant: Thomas.
+
+Development of the core module.
+
+Goal for midterm: a working core (end of this workpackage).
+\end{workpackage}
+
+\begin{workpackage}
+Web user interface
+
+Person in charge: Thomas.
+
+Other participant: Valentin.
+
+Development of the user interface.
+
+Goal for midterm: a basic HTML user frontend, and a developer frontend.
+
+Goal for final evaluation: an improved user frontend, with eventually and Android
+application.
+\end{workpackage}
+
+\begin{workpackage}
+Natural language processing
+
+Person in charge: Raphaël.
+
+Other participants: Marc, Quentin, Yassine.
+
+Bibliographical research. Development of the natural language processing module.
+
+Goal for midterm: a first natural language parsing module, using existing libraries.
+\end{workpackage}
+
+\begin{workpackage}
+Machine learning
+
+Person in charge: Quentin.
+
+Other participants: Marc, Raphaël, Yassine.
+
+Bibliographical research. Development of the machine learning module, to improve
+the natural language processing.
+
+Goal for final evaluation: usage of the machine learning in language processing.
+\end{workpackage}
+
+\begin{workpackage}
+Wikidata module
+
+Person in charge: Thomas
+
+Other participants: Tom, Valentin
+
+Development of the module querying Wikidata.
+
+Goal for midterm: correct answer to questions such as \emph{When was Gandhi born?}
+\end{workpackage}
+
+\begin{workpackage}
+Add-ons
+
+Person in charge: Marc
+
+Other participants: Quentin, Raphaël, Thomas, Tom, Valentin, Yassine
+
+Development of other modules, e.g. OEIS, sport. 
+\end{workpackage}
+
+\begin{figure}
+\centering
 \begin{tikzpicture}[x=1cm, y=1cm]
   \begin{ganttchart}%
   [today=10,today label=Midterm,
@@ -285,7 +410,8 @@ inline
     \ganttbar[name = WP3]{Communication}{1}{24} \\
     
     \ganttbar[name = WP5]{Router}{1}{6} \\
-    \ganttlinkedbar[name = WP6]{Web UI}{7}{10} \\
+    \ganttlinkedbar[name = WP6]{Web UI}{7}{10}\\
+    \ganttlinkedbar[name = WP7]{Web UI}{21}{24}\\
     \ganttbar[name = WP4]{Biblio.}{1}{3} \\
     \ganttbar[name = WP7]{Natural Languages Processing}{4}{24} \\
     \ganttbar[name = WP8]{Machine Learning}{4}{24} \\
@@ -296,6 +422,8 @@ inline
 
   \end{ganttchart}
 \end{tikzpicture}
+\caption{Gantt diagram of the project}
+\end{figure}
 
 \section{Budget}
 As demo servers will be provided by Wikimedia, we do not need any particular budget.
