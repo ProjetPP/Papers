@@ -244,8 +244,8 @@ The role of these managers is to ensure the good progress of their workpackage.
 	\begin{tabular}{lll}
 		Identifier & Workpackage & Person in charge \\ \hline
 		WP0 & Global organization & Marc\\
-		WP1 & System administration & Valentin\\
-		WP2 & Software architecture & Thomas\\
+		WP1 & System installation and maintainance & Valentin\\
+		WP2 & Software architecture design and compliance & Thomas\\
 		WP3 & Communication & Tom\\
 		WP4 & Bibliography & Yassine\\
 		WP5 & Router & Valentin\\
@@ -267,6 +267,8 @@ The role of these managers is to ensure the good progress of their workpackage.
 \end{itemize}
 \end{comment}
 
+\begin{center}
+
 \begin{tikzpicture}[x=1cm, y=1cm]
   \begin{ganttchart}%
   [today=10,today label=Midterm,
@@ -281,8 +283,9 @@ inline
     \gantttitle{October}{9}\gantttitle{November}{9}\gantttitle{December}{6} \\
     \gantttitlelist{1,...,12}{2} \\
     \ganttbar[name = WP0]{Global organization}{1}{24} \\
-    \ganttbar[name = WP1]{System administration}{1}{24} \\
-    \ganttbar[name = WP2]{Software architecture}{1}{24} \\
+    \ganttbar[name = WP1]{System administration}{1}{8} \\
+    \ganttbar[name = WP2a]{Software design}{1}{5} \\
+    \ganttlinkedbar[name = WP2b]{Software architecture compliance}{6}{24} \\
     \ganttbar[name = WP3]{Communication}{1}{24} \\
     
     \ganttbar[name = WP5]{Router}{1}{6} \\
@@ -297,6 +300,8 @@ inline
 
   \end{ganttchart}
 \end{tikzpicture}
+
+\end{center}
 
 \section{Budget}
 As demo servers will be provided by Wikimedia, we do not need any particular budget.
