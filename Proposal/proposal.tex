@@ -23,6 +23,11 @@
 \usepackage{comment}
 \usepackage{pgfgantt}
 
+\newcounter{wpcounter}
+\newenvironment{workpackage}{\stepcounter{wpcounter}\vspace{0.5cm}{\bfseries WP\thewpcounter}}{}
+
+
+
 
 \title{Project proposal}
 \author{PPP \--- ENS Lyon}
@@ -56,7 +61,7 @@ our subject and exposes our goals.\\
 
 \section{Introduction}
 
-\emph{What is the birth date of the first president of the United States?} This is the typical question that we would like to
+\emph{What is the birth date of the first president of the United States?} This is the typical question that we will
 answer quickly and succinctly with an automatic question answering system. This requires four steps.
 
 \begin{itemize}
@@ -78,7 +83,7 @@ query answering tool that will interest research communities for extensibility f
 We expect to have in December a framework that would allow people to ask
 questions in plain text through a web user interface, a core module able to transform
 this question into a normal form and a demo backend module able to answer
-to historical questions using Wikidata data.
+to historical questions using an existing database.
 
 We expect also to have done some research on natural languages analysis using
 neuronal networks. These researches may lead, if successful, to
@@ -90,12 +95,14 @@ Our main purpose is to allow people to design their own modules and
 easily include them in the tool. For example, sports modules could be done to 
 answer questions about contests results or 
 upcoming meetings.  We intend also to make at least one important module, using 
-Wikidata, in order to provide a demo and attract the Wikipedia community. 
+Wikidata, in order to provide a demo and attract the Wikimedia community. 
 At a time when intelligent search engine tools are increasingly used, we think it 
 is now or never for the open source community to propose its own product.
 
+We choosed Wikidata for its important community and its huge and well structured database.
+
 On the other hand, we also target the end users of the query answering system. We
-would like to provide a quick and intuitive way to search information.
+propose a quick and intuitive way to search information.
 
 \section{Concurrent services}
 
@@ -143,7 +150,7 @@ The goal is to develop a query answering framework able to answer to simple ques
 The software is divided in several components which interact via the HTTP protocol.
 
 The user interface consist of several front-ends. The most natural is
-a web page, but we can also think about a Android application
+a web page, but we can also think about an Android application
 or a Firefox OS web app. Via this interface, we can submit a query.
 
 The query is transformed into a standard form. This form has to be understandable 
@@ -170,21 +177,20 @@ predictive machine learning\ldots).
 
 \section{Technological innovations}
 
-We would like to build one of the first open source question answering system. 
+We will build one of the first open source question answering system. 
 Our goal is to discover the theory of natural language processing, and apply our 
 knowledge to design our tool. We intend to put together some existing libraries 
 (e.g. natural language parsers) and our own implementations of algorithms. In 
-particular, we hope we will be able to implement a neuronal network in order to 
+addition, we will implement a neuronal network in order to 
 perform machine learning. For example, we are going to explore deep learning
 technologies for the natural language processing problem.
 
 One of our most important goal is to provide the first full-modular question 
-answering system. We do not pretend to build in 3 months a better tool than 
-WolframAlpha for example, but we hope to make available an efficient and 
+answering system. We plan to make available an efficient and 
 attractive system that will motivate people to integrate their own module in the 
 tool. Thus, we think that using the HTTP protocol for the communication between 
-modules is an important part of our project, because it will allow a wide variety 
-of programming languages to design modules.
+modules is an important part of our project, for the wide variety 
+of programming languages it will allow for the modules.
 
 Finally, our technical approach consists in quickly obtaining first results and 
 a first working tool. Thus, we could use existing libraries in a first time. Then, 
@@ -197,76 +203,116 @@ We have planned a simple schedule in two periods.
 For the mid-term, we plan to have a functional developer front-end, core, the 
 Wikidata module (with the transformation in standard form with Wikidata codes), 
 a first approach of the natural language parser and a base for machine learning. 
-With this base, the software should be able to answer simple questions using the 
+With this base, the software will be able to answer simple questions using the 
 developer interface.
 
 For the final term, we plan to have an enhanced natural language parser (especially 
 for the machine learning-based one), a simple web front-end and a fully operational 
 Wikidata module.
 
-Depending on the remaining time, we can develop other modules, e.g. modules for 
+Depending on the remaining time, we may develop other modules, e.g. modules for 
 OEIS, mathematics\ldots Our objective is not to provide a lot of modules, but a 
 modular tool with at least one ``demo-module'' using Wikidata.
 
 \section{Task partition}
 
-We decide to form three working teams with mid-term and final evaluations goals. Some of them
-may be split after the mid-term evaluation.
+Several workpackages are defined for this project, with specific goal and
+participants. They are detailed on the following.
 
-A first team, composed of Thomas and Valentin, has to develop the core and the front-ends.
-This work should not be too long, especially for the front-ends part. For the mid-term
-we plan to have a working core, a basic HTML frontend and a developer frontend that would
-allow input directly questions in the standard form. For the final evaluation, if there is time,
-we will improve the HTML frontend and maybe build an Android application.
+\begin{workpackage}
+Global organization (Marc)
 
-The second team will be charged with designing the first module, based on Wikidata. It is
-composed of Thomas, Valentin and Tom. Thomas's knowledge on Wikidata will be essential
-to make the work easier. The main goal is to have a module able to answer to simple questions
-like \textit{When was Gandhi born?} for the mid-term. This team could eventually be
-split after in a team for enhanced Wikidata module and another for making new modules.
+Progress and quality of the whole project.
+\end{workpackage}
 
-The natural languages parsers (using eventually machine learning and neuronal networks) 
-will be done by the last team composed of Yassine, Quentin, Raphaël and Marc. 
-Since we cannot predict the difficulty of this task, we do not currently know if 
-some members of this team will design other modules.
-The goal for the mid-term is to have a first natural languages parser using intensively
-existing libraries and a bibliographical study in order to understand how natural 
-language parsers are designed, and then choose our own approach. We hope to be able 
-to have an implemented machine learning algorithm based on neuronal networks for 
-the final evaluation.
+\begin{workpackage}
+System administration (Valentin)
 
-\section{Organization}
+Git repositories infrastructure, continuous integration, server management.
+\end{workpackage}
 
-There will be several workpackages, and some manager associated to each one.
-The role of these managers is to ensure the good progress of their workpackage.
+\begin{workpackage}
+Software architecture (Thomas)
 
-\begin{center}
-	\begin{tabular}{lll}
-		Identifier & Workpackage & Person in charge \\ \hline
-		WP0 & Global organization & Marc\\
-		WP1 & System administration & Valentin\\
-		WP2 & Software architecture & Thomas\\
-		WP3 & Communication & Tom\\
-		WP4 & Bibliography & Yassine\\
-		WP5 & Router & Valentin\\
-		WP6 & Web user interface & Thomas\\
-		WP7 & Natural Languages Processing & Raphaël\\
-		WP8 & Machine Learning & Quentin\\
-		WP9 & Wikidata module & Thomas\\
-		WP10 & Add-ons & Marc\\
-	\end{tabular}
-\end{center}
+Modular conception of the tool.
+\end{workpackage}
 
-\begin{comment}
-\begin{itemize}
-    \item[Marc] is the project lead, whose task is also to make sure that the project is on the good way
-    \item[Valentin] will do system administration (git repository infrastructure, continuous integration
-    services, management of the demo server, \dots).
-    \item[Thomas] is the software architect, whose task is to design the modular conception and to
-    ensure that components fit well together.
-\end{itemize}
-\end{comment}
+\begin{workpackage}
+Communication (Tom)
 
+External communication, e.g. website, official announcements.
+\end{workpackage}
+
+\begin{workpackage}
+Bibliography (Yassine)
+
+Referencement of the used resources, e.g. papers, libraries.
+\end{workpackage}
+
+\begin{workpackage}
+Router (Valentin)
+
+Other participant: Thomas.
+
+Development of the core module.
+
+Goal for midterm: a working core (end of this workpackage).
+\end{workpackage}
+
+\begin{workpackage}
+Web user interface (Thomas)
+
+Other participant: Valentin.
+
+Development of the user interface.
+
+Goal for midterm: a basic HTML user frontend, and a developer frontend.
+
+Goal for final evaluation: an improved user frontend, with eventually and Android
+application.
+\end{workpackage}
+
+\begin{workpackage}
+Natural language processing (Raphaël)
+
+Other participants: Marc, Quentin, Yassine.
+
+Bibliographical research. Development of the natural language processing module.
+
+Goal for midterm: a first natural language parsing module, using existing libraries.
+\end{workpackage}
+
+\begin{workpackage}
+Machine learning (Quentin)
+
+Other participants: Marc, Raphaël, Yassine.
+
+Bibliographical research. Development of the machine learning module, to improve
+the natural language processing.
+
+Goal for final evaluation: usage of the machine learning in language processing.
+\end{workpackage}
+
+\begin{workpackage}
+Wikidata module (Thomas)
+
+Other participants: Tom, Valentin
+
+Development of the module querying Wikidata.
+
+Goal for midterm: correct answer to questions such as \emph{When was Gandhi born?}
+\end{workpackage}
+
+\begin{workpackage}
+Add-ons (Marc)
+
+Other participants: Quentin, Raphaël, Thomas, Tom, Valentin, Yassine
+
+Development of other modules, e.g. OEIS, sport. 
+\end{workpackage}
+
+\begin{figure}
+\centering
 \begin{tikzpicture}[x=1cm, y=1cm]
   \begin{ganttchart}%
   [today=10,today label=Midterm,
@@ -282,11 +328,12 @@ inline
     \gantttitlelist{1,...,12}{2} \\
     \ganttbar[name = WP0]{Global organization}{1}{24} \\
     \ganttbar[name = WP1]{System administration}{1}{24} \\
-    \ganttbar[name = WP2]{Software architecture}{1}{24} \\
+    \ganttbar[name = WP2]{Soft. architecture}{1}{6} \\
     \ganttbar[name = WP3]{Communication}{1}{24} \\
     
     \ganttbar[name = WP5]{Router}{1}{6} \\
-    \ganttlinkedbar[name = WP6]{Web UI}{7}{10} \\
+    \ganttlinkedbar[name = WP6]{Web UI}{7}{10}\\
+    \ganttlinkedbar[name = WP7]{Web UI}{21}{24}\\
     \ganttbar[name = WP4]{Biblio.}{1}{3} \\
     \ganttbar[name = WP7]{Natural Languages Processing}{4}{24} \\
     \ganttbar[name = WP8]{Machine Learning}{4}{24} \\
@@ -297,6 +344,8 @@ inline
 
   \end{ganttchart}
 \end{tikzpicture}
+\caption{Gantt diagram of the project}
+\end{figure}
 
 \section{Budget}
 As demo servers will be provided by Wikimedia, we do not need any particular budget.
