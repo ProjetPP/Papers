@@ -40,3 +40,7 @@ Downloaded a dictionnary. Write some code (C++) to use it. Will test his idea.
 Expect to have first results (simple queries, learn some functions) in two weeks 
 (with one week of computation for learning). Need functional Wikidata and core 
 modules.
+
+### WP8
+Found a lookup table (260k words). Words encoded by vectors of float. Two
+words with low distance are synonyms.
