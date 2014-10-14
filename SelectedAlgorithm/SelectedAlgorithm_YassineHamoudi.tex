@@ -1,0 +1,100 @@
+\documentclass[a4paper,10pt]{article} % type, taille police
+
+\usepackage[utf8]{inputenc} % encodage
+\usepackage[T1]{fontenc} % encodage
+\usepackage[french]{babel} % gestion du français
+\usepackage{amssymb} % symboles mathématiques
+\usepackage{textcomp} % flèche,  intervalle
+\usepackage{stmaryrd} % intervalle entiers
+
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry} % marges
+%\usepackage[hidelinks]{hyperref} % sommaire interactif dans un pdf
+\usepackage[nottoc, notlof, notlot]{tocbibind} % affichage des références dans la table des matières (?)
+\usepackage{float} % placement des figures
+\usepackage[toc,page]{appendix} % ajout d'annexes
+\usepackage{amsthm} % format des déf, prop...
+\usepackage{amsmath} % matrices, ...
+\usepackage{multirow} % fusionner cellules verticalement
+
+%url cliquable et resizable
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref} 
+
+%\usepackage[french,ruled,vlined,linesnumbered]{algorithm2e} % affichage d'algorithmes
+\usepackage{tikz} % affichage de schémas
+\usepackage{graphicx} % affichage d'images
+\usepackage{url} % inclure des urls
+\usepackage{bbold} % fonction caractéristique 1
+
+%\Pbrovidecommand{\SetAlgoLined}{\SetLine} % paramètre pour algorithm2e
+%\Pbrovidecommand{\DontPrintSemicolon}{\dontprintsemicolon}  % paramètre pour algorithm2e
+
+\definecolor{bgreen}{rgb}{0.30,0.70,0}
+
+
+%#############################################################################################################%
+%#############################################################################################################%
+%#############################################################################################################%
+
+\title{Selected algorithms}
+\author{ {\Large Yassine \textsc{Hamoudi}}}
+\date{13 octobre 2014}
+
+\begin{document}
+
+\maketitle
+
+%#############################################################################################################%
+%#############################################################################################################%
+%#############################################################################################################%
+
+\section{Triple extraction from dependency graph}
+
+The dependency graph is the best way to extract triples from questions using parsing tools. The parse structure tree is also often used in addition to the dependency graph.
+
+~\\
+The main tool about Stanford dependency tree is the \textit{Stanford typed dependencies manual}:
+~\\
+\begin{itemize}
+	\item[] Marie-Catherine de Marneffe and Christopher D. Manning. \emph{Stanford typed dependencies manual}. 2013. \url{http://nlp.stanford.edu/software/dependencies_manual.pdf}
+\end{itemize}
+
+
+~\\
+Some interesting topics:
+\begin{itemize}
+	\item \url{http://grokbase.com/t/opennlp/dev/139t2prbve/triplet-extraction-with-opennlp}
+ 	\item \url{http://stackoverflow.com/questions/9595983/tools-for-text-simplification-java}
+	\item \sloppy \url{http://stackoverflow.com/questions/2712609/stanford-parser-traversing-the-typed-dependencies-graph?rq=1}
+\end{itemize}
+
+~\\
+The objective is to understand enough the output of the Stanford parser (dependency tree) and then to implement an algorithm that extract triples from trees.
+
+\section{Triple extraction from parse structure tree}
+
+Using only the parse structure tree is far from being efficient, however some (very basics) algorithms exist:
+~\\
+\begin{itemize}
+	\item[] Delia Rusu, Lorand Dali, Blaž Fortuna, Marko Grobelnik, Dunja Mladenić. \emph{Triplet extraction from sentences}. 2007. \url{http://ailab.ijs.si/delia_rusu/Papers/is_2007.pdf}
+  \item[]
+	\item[] Aaron Defazio. \emph{Natural Language Question Answering Over Triple Knowledge Bases}. 2009. \url{http://users.cecs.anu.edu.au/~adefazio/TripleQuestionAnswering-adefazio.pdf}
+\end{itemize}
+
+~\\
+This approach can be implemented if the previous one (dependency tree) totally fail.
+
+\section{From triples to database queries}
+
+How mapping subject, predicate and objects to Wikidata entities. See part 2.2 of: 
+~\\
+\begin{itemize}
+	\item[] Hakimov, Sherzod and Tunc, Hakan and Akimaliev, Marlen and Dogdu, Erdogan. \emph{Semantic Question Answering System over Linked Data Using Relational Patterns}. 2013. \url{http://edogdu.etu.edu.tr/wp-content/uploads/2005/01/2013-semantic-qa.pdf}
+\end{itemize}
+
+
+%#############################################################################################################%
+%#############################################################################################################%
+%#############################################################################################################%
+
+\end{document}
