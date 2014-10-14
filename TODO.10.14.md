@@ -40,7 +40,17 @@ Downloaded a dictionnary. Write some code (C++) to use it. Will test his idea.
 Expect to have first results (simple queries, learn some functions) in two weeks 
 (with one week of computation for learning). Need functional Wikidata and core 
 modules.
+Need a good algorithm to find the nearest neighbour of some point, among a list of 
+other points (dimension 50, 10k points). Would like sub-linear algorithm. Approximation
+is acceptable.
+
 
 ### WP8
 Found a lookup table (260k words). Words encoded by vectors of float. Two
-words with low distance are synonyms.
+words with low distance are synonyms. Expect to have soon (one to three weks) 
+a working algorithm. Problem: dataset.
+
+
+### WP9
+6k lines of code, version 0.1 done. Handles simple queries.
+
