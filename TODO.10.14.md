@@ -21,5 +21,22 @@ Updated proposal, taking into account what we said.
 
 
 ### WP4
-Created a questions dataset. Algorithm: will use Stanford libraries, and then
-test some heuristics.
+Created a questions dataset (6000 questions). Algorithm: will use Stanford libraries, 
+and then test some heuristics. Other proposition: do not make triple structures, 
+but rather use typical questions (e.g. `How to ... ?` or `When was ... ?`).
+
+
+### WP5
+Functional router. Only one request for the moment (do not ask all modules).
+Todo: add some log to register the asked questions.
+
+
+### WP6
+Not any work for the moment. Will begin this week.
+
+
+### WP7
+Downloaded a dictionnary. Write some code (C++) to use it. Will test his idea.
+Expect to have first results (simple queries, learn some functions) in two weeks 
+(with one week of computation for learning). Need functional Wikidata and core 
+modules.
