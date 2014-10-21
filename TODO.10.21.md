@@ -49,7 +49,7 @@ A first module to simplify the graphs (removing determiner, merging some nodes).
 
 ## WP8
 
-Raphael iss coding some Machine Learning.
+Raphael is coding some Machine Learning.
 
 Quentin does the same. Problem of too small data set. Need us to do the anotation.
 
