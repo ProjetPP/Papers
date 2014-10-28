@@ -4,6 +4,7 @@ all: $(OUT)
 
 $(OUT):*.tex
 	@pdflatex -halt-on-error -interaction batchmode main.tex
+	@bibtex main.aux
 	@pdflatex -halt-on-error -interaction batchmode main.tex
 	@mv main.pdf $(OUT)
 
