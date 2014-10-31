@@ -2,7 +2,7 @@ OUT=midtermReport.pdf
 
 all: $(OUT)
 
-$(OUT):*.tex
+$(OUT):*.tex bibliography.bib
 	@pdflatex -halt-on-error -interaction batchmode main.tex
 	@bibtex main.aux
 	@pdflatex -halt-on-error -interaction batchmode main.tex
