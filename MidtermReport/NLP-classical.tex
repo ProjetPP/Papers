@@ -1,8 +1,23 @@
 \chapter{Classical Natural Language Processing}
 
+The main goal of this module is to transform a question into a triple which can
+be handled by backend modules. We have to process this sentence to obtain a simplified
+and well structured triple, without losing relevant informations.
+
 \section{Stanford CoreNLP}
 
-See figure \ref{tree_before}.
+Our work relies on the \emph{Stanford CoreNLP} library
+\footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}}, developped by
+the Stanford Natural Language Processing group, which include members with 
+linguistics or computer science backgrounds. 
+
+Since this library is written in Java, we use a wrapper, written in Python
+\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}}.
+
+These tools provide a server running in background, which takes a character string,
+and returns a dependency tree, with some additional informations on certain words.
+See figure \ref{tree_before} to have an overview of such a tree, for the sentence
+\emph{What is the birth date of the first president of the United States of America?}.
 
 
 \section{Preprocessing}
