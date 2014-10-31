@@ -1,8 +1,8 @@
 We will describe the choices we did about representation of the data and communication between modules.
 
-\bigskip
+\section{Data model}
 
-First, we describe the datamodel. All normalized structures of the PPP are JSON-serializable, ie. they are tree made of instances of the following types:
+First, we describe the data model. All normalized structures of the PPP are JSON-serializable, ie. they are trees made of instances of the following types:
 \begin{itemize}
     \item \texttt{Object}
     \item \texttt{List}
@@ -45,7 +45,7 @@ into
     },
     "predicate":{
         "type": "resource",
-        "value": "birth date"
+        "value": "identity"
     },
     "object":{
         "type": "missing"
@@ -53,17 +53,24 @@ into
 }
 \end{verbatim}
 
-This structure has been chosen because there is the most adaptable structure. For instance, we can add other kind of nodes such as intersection, union, node for yes/no questions (triples without missing son), boolean operations etc..
+This structure has been chosen for its good adaptability. For instance, we can add other kind of nodes such as intersection, union, node for yes/no questions (triples without missing son), boolean operations etc..
 
-\bigskip
+\section{Communication}
 
+\begin{wrapfigure}{r}{0.5\textwidth}
+% https://docs.google.com/drawings/d/1toUH24GqwtpvKV7S5gje6GBxfa13R3mxgm8WlAFc_0g/edit?usp=sharing
+  \centering
+    \label{struct}
+    \caption{Architecture of the PPP}
+    \includegraphics[width=0.5\textwidth]{../ppp_structure.pdf}
+\end{wrapfigure}
 Modules communicate with the core via HTTP requests.
 
-The core provides them with a JSON object, and they return another one.
+The core send them a JSON object, and they return another one.
 
 The basic idea is that the core iterates requests to modules, which return a simplified tree, until the former gets a complete response.
 
-During these exchanges, we keep a trace of the different step between the original request and the current tree. The structure of a trace is a list of such trace items:
+During these exchanges, we keep a trace of the different steps between the original request and the current tree. The structure of a trace is a list of such trace items:
 \begin{verbatim}
 {
     "module":
