@@ -6,7 +6,6 @@
 *.synctex
 *.out
 *.dvi
-*.ps
 *.bak
 *.xcf
 *.rej
