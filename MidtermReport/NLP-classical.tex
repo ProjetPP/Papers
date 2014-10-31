@@ -19,6 +19,14 @@ and returns a dependency tree, with some additional informations on certain word
 See figure \ref{tree_before} to have an overview of such a tree, for the sentence
 \emph{What is the birth date of the first president of the United States of America?}.
 
+The nodes of this tree are words, and the arcs are dependencies. For instance,
+an arc $$\texttt{president}\xrightarrow{\texttt{det}}\texttt{the}$$ means that
+\emph{the} is a determiner for \emph{president}. All possible dependencies are 
+described in \cite{stanfordDep}. 
+
+Some nodes of this tree are also endowed with tags. For instance, \emph{America}
+has the tag \emph{location}.
+
 
 \section{Preprocessing}
 
