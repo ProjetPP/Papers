@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,10pt]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
@@ -26,34 +26,16 @@
 \newcounter{wpcounter}
 \newenvironment{workpackage}{\stepcounter{wpcounter}\vspace{0.5cm}{\bfseries WP\thewpcounter}}{}
 
-\title{Midterm report}
-\author{PPP \--- ENS Lyon}
-\date{M1 2014}
+\title{Projet Pensées Profondes\\\large Midterm report}
+\author{\includegraphics[width=0.3\textwidth]{../logo_ensl.png}}
+\date{Theoretical Computer Science Master 1\\September 2014 \--- December 2014}
+
+
+
 \begin{document}
 \maketitle
 
-\newlength{\title}
-\settowidth{\title}{Coordinator }
 
-\newlength{\object}
-\setlength{\object}{\textwidth} \addtolength{\object}{-\title} \addtolength{\object}{-6.8pt} 
-    \addtolength{\object}{-2\tabcolsep}
-
-\renewcommand{\arraystretch}{1.5}
-
-\begin{center}
-\begin{tabular}{@{}|p{\title}p{\object}@{}|}
-\hline
-Title & Projet Pensées Profondes (PPP)\\
-Coordinator & Marc \textsc{Chevalier}\\
-Members & Raphaël \textsc{Charrondière}, Marc \textsc{Chevalier}, Quentin 
-      \textsc{Cormier}, Tom \textsc{Cornebize}, \linebreak Yassine \textsc{Hamoudi}, 
-      Valentin \textsc{Lorentz} and Thomas \textsc{Pellissier} \textsc{Tanon}.\\
-Abstract & \emph{Projet Pensées Profondes} aims to build a natural language question answering framework.
-It is done at the ENS Lyon, from September to December 2014, by a team of seven M1 students. This is the mid term report.\\
-\hline
-\end{tabular}
-\end{center}
 \tableofcontents
 
 \include{introduction}
