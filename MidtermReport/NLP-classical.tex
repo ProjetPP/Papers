@@ -1,9 +1,5 @@
 \section{Grammatical approach}
 
-The main goal of this module is to transform a question into a triple which can
-be handled by backend modules. We have to process this sentence to obtain a simplified
-and well structured triple, without losing relevant informations.
-
 \subsection{Stanford CoreNLP}
 
 Our work relies on the \emph{Stanford CoreNLP} library
@@ -11,7 +7,8 @@ Our work relies on the \emph{Stanford CoreNLP} library
 the Stanford Natural Language Processing group, which include members with 
 linguistics or computer science backgrounds. 
 
-Since this library is written in Java, we use a wrapper, written in Python
+Since this library is written in Java, and our module in Python, we use a wrapper
+also written in Python
 \footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}}.
 
 These tools provide a server running in background, which takes a character string,
@@ -30,6 +27,25 @@ has the tag \emph{location}.
 
 \subsection{Preprocessing}
 
+The processing consists of a sequence of operations on the tree given by the 
+\emph{Stanford CoreNLP} library. The aim is to simplify the tree, by merging the
+nodes which should belong together.
+
+The current version of the module performs two sorts of merges:
+\begin{itemize}
+    \item \textbf{Merge quotation nodes.} This operation merge all the nodes which
+    are in a same quotation (delimited by quotation marks). It also adds the words
+    of the quotations which were deleted by the \emph{Stanford CoreNLP} library
+    (e.g. \emph{in}, \emph{of}\dots). The final result is a node, containing the
+    exact quotation, and placed at the appropriate position in the tree.
+    \item \textbf{Merge named entities.} The \emph{Stanford CoreNLP} library 
+    performs a \emph{named entities recognition} (NER), which provide informative 
+    tags in some nodes. For instance, \emph{America} is tagged \emph{LOCATION}, 
+    whereas \emph{first} is tagged \emph{ORDINAL} (see figure \ref{tree_before}).
+    In the preprocessing step, we merge all neighbour nodes with a same NER tag.
+    In our example, we merge the three nodes \emph{United States America} into
+    one single node.
+\end{itemize}
 
 \subsection{Dependency analysis}
 
@@ -41,3 +57,9 @@ See figure \ref{tree_after}.
 See figure \ref{triple_conj}.
 
 See figure \ref{triple_tree}.
+
+
+\subsection{Future work}
+
+\subsubsection{Preprocessing}
+Multiword expressions handling (...)
