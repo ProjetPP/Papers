@@ -57,13 +57,6 @@ This structure has been chosen for its good adaptability. For instance, we can a
 
 \section{Communication}
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-% https://docs.google.com/drawings/d/1toUH24GqwtpvKV7S5gje6GBxfa13R3mxgm8WlAFc_0g/edit?usp=sharing
-  \centering
-    \label{struct}
-    \caption{Architecture of the PPP}
-    \includegraphics[width=0.5\textwidth]{../ppp_structure.pdf}
-\end{wrapfigure}
 Modules communicate with the core via HTTP requests.
 
 The core send them a JSON object, and they return another one.
@@ -95,3 +88,11 @@ The measure field contains two values: relevance and accuracy.
 This form allow each module to access to the previous results, particularly to the user's request. The objects for request and response contains few more information such that the language used.
 
 The data model have been implemented in a nice set of objects in both \href{http://github.com/ProjetPP/PPP-datamodel-Python}{Python} and \href{http://github.com/ProjetPP/PPP-datamodel-PHP}{PHP} in order to help the write of modules.
+
+\begin{figure}
+% https://docs.google.com/drawings/d/1toUH24GqwtpvKV7S5gje6GBxfa13R3mxgm8WlAFc_0g/edit?usp=sharing
+  \centering
+    \label{struct}
+    \caption{Architecture of the PPP}
+    \includegraphics[width=0.5\textwidth]{../ppp_structure.png}
+\end{figure}
