@@ -13,7 +13,7 @@ We will take throughout this section the example of:
 
 The \emph{Stanford CoreNLP} library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developped by the Stanford Natural Language Processing group, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
 
-Since this library is written in Java, and our module in Python, we use a Python wrapper \footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}}.
+Since this library is written in Java, and our module in Python, we use a Python wrapper\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}} we first patched in order for it to support Python 3.
 
 We use CoreNLP mostly to get grammatical dependency trees from input questions. It consists of trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
 
