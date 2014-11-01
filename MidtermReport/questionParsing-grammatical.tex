@@ -2,7 +2,7 @@
 
 Trees of triples can be producted after analyzing the grammatical structure of sentences. First, we  present the tool we use to extract grammatical dependencies. Then, we expose chronologically our algorithm to product triples from grammatical structure.
 
-We will take throughout this section the example of:
+We will detail throughout this section our algorithm on the example:
 \begin{center}
  \textit{What is the birth date of the president of the United States?}
 \end{center}
@@ -11,11 +11,11 @@ We will take throughout this section the example of:
 
 \subsection{Stanford CoreNLP}
 
-The \emph{Stanford CoreNLP} library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developped by the Stanford Natural Language Processing group, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
+The \emph{Stanford CoreNLP} library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developed by the Stanford Natural Language Processing group, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
 
 Since this library is written in Java, and our module in Python, we use a Python wrapper\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}} we first patched to support Python 3 and some features the wrapper did not implement.
 
-We use CoreNLP mostly to get grammatical dependency trees from input questions. It consists of trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
+We use CoreNLP mostly to get grammatical dependency trees from input questions. It consists in trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
 
 Figure \ref{tree_one} provides an overview of such a tree on our question example \emph{What is the birth date of the president of the United States?}. For instance, the edge:
   \[\texttt{president}\xrightarrow{\texttt{det}}\texttt{the}\]
@@ -28,7 +28,7 @@ means that \emph{the} is a determiner for \emph{president}.
     \includegraphics[scale=0.6]{../examples_NLP_grammatical/tree1.pdf}
 \end{figure}
 
-Some nodes of this tree are also endowed with tags. For instance, \emph{United} and \emph{States} have the tag \emph{location}.
+Some nodes of this tree are also endowed with tags. For example, \emph{United} and \emph{States} have the tag \emph{location}.
 
 The Stanford typed dependencies manual (\cite{stanfordDep}) provides a full list and description of possible grammatical dependencies.
 
@@ -66,7 +66,7 @@ Preprocessing is illustrated on figure \ref{tree_two}. The question word is \tex
 The grammatical tree is simplified by applying one of the following rules to each edge:
 \begin{itemize}
  \item remove the edge and its endpoint node. For instance, a \textit{dep} relation, such as \textit{the} in our example, is often removed.
- \item merge the two nodes of the edge. Merge operations try to gather words of a same expression (e.g. phrasal verbs).
+ \item merge the two nodes of the edge. Merge operations try to gather words of a same expression (e.g. phrasal verbs) that have not been merged during preprocessing.
  \item tag the edge with a ``triple production rule''.
 \end{itemize}
 
@@ -118,7 +118,7 @@ We obtain the following result on our example:
  (?3 , president of , United States)
 \end{center}
 
-Then, we link \textit{?0} to \textit{?1}, depending of the question word of the question. Here we have (question word \textit{What}):
+Then, we link \textit{?0} to \textit{?1}, depending on the question word of the question. Here we have (question word \textit{What}):
 \begin{center}
  (?1,definition,?0)
 \end{center}
@@ -131,9 +131,9 @@ The four previous rules are simplified in a set a triples:
  (?3 , president of , United States)
 \end{center}
 
-To find an answer to the question is equivalent to build a model of the conjunctive formula: \textbf{(?1 , definition , ?0)$\wedge$(?1 , birth date of , ?3)$\wedge$(?3 , president of , United States)} and outputs the value of \textit{?0}.
+Find an answer to the question is equivalent to build a model of the conjunctive formula: \textbf{(?1 , definition , ?0)$\wedge$(?1 , birth date of , ?3)$\wedge$(?3 , president of , United States)} and outputs the value of \textit{?0}.
 
-The triples tree is obtained by the replacing each unknown \textit{?x} by a triple containing \textit{?x} \textit{and not} \textit{?0}. The final result, taken from the PPP website, is printed on figure \ref{tree_four}. Figure \ref{triple_tree} contains the formal representation of the triples tree of our example.
+The triples tree is obtained by replacing each unknown \textit{?x} by a triple containing \textit{?x} \textit{and not} \textit{?0}. The final result, taken from the PPP website, is printed on figure \ref{tree_four}. Figure \ref{triple_tree} contains the formal representation of the triples tree of our example.
 
 \begin{figure}[!h]
   \centering
