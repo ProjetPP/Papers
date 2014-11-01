@@ -1,0 +1,20 @@
+digraph relations {
+	"ROOT0"[label="ROOT",shape=box];
+	"ROOT0" -> "is2"[label="root"];
+	"is2"[label="is",shape=box];
+	"is2" -> "date5"[label="nsubj"];
+	"date5"[label="date",shape=box];
+	"date5" -> "the3"[label="det"];
+	"date5" -> "birth4"[label="nn"];
+	"date5" -> "president8"[label="prep_of"];
+	"the3"[label="the",shape=box];
+	"birth4"[label="birth",shape=box];
+	"president8"[label="president",shape=box];
+	"president8" -> "the7"[label="det"];
+	"president8" -> "United11"[label="prep_of"];
+	"the7"[label="the",shape=box];
+	"United11"[label="United States [LOCATION]",shape=box];
+	"United11" -> "the10"[label="det"];
+	"the10"[label="the",shape=box];
+    labelloc="t"
+}

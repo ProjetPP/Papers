@@ -22,6 +22,10 @@
 \usepackage{graphicx}
 \usepackage{comment}
 \usepackage{pgfgantt}
+\usepackage{soul} % highlight text
+
+\definecolor{bluec}{rgb}{0.7, 0.7, 1.0}
+
 
 \title{Projet Pensées Profondes\\\large Midterm report}
 \author{\includegraphics[width=0.3\textwidth]{../logo_ensl.pdf}\\[50pt]
@@ -68,13 +72,13 @@ Mentor: Eddy \textsc{Caron}\\[50pt]
 \chapter{Core}
 \input{core}
 
-\chapter{User Interface}
+\chapter{User interface}
 \input{UI}
 
-\chapter{Wikidata Module}
+\chapter{Wikidata module}
 \input{wikidata}
 
-\chapter{Natural Language Processing}
+\chapter{Question Simplification}
 \input{NLP-common}
 \input{NLP-classical}
 \input{NLP-ML}
@@ -86,27 +90,9 @@ Mentor: Eddy \textsc{Caron}\\[50pt]
 \appendix
 
 \chapter{NLP \--- Grammatical approach}
-\begin{figure}
-\caption{Tree given by Stanford CoreNLP}
-\label{tree_before}
-\includegraphics[scale=0.6]{../examples_NLP_classical/before_simplification.pdf}
-\end{figure}
 
 \begin{figure}
-\caption{Tree obtained after simplifications}
-\label{tree_after}
-\includegraphics[scale=0.6]{../examples_NLP_classical/after_simplification.pdf}
-\end{figure}
-
-
-\begin{figure}
-\caption{Triple in conjonctive form}
-\label{triple_conj}
-\input{../examples_NLP_classical/triple_conjonction}
-\end{figure}
-
-\begin{figure}
-\caption{Triple in tree form}
+\caption{Triples in tree form}
 \label{triple_tree}
 \input{../examples_NLP_classical/triple_tree}
 \end{figure}

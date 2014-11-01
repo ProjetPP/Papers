@@ -1,69 +1,165 @@
 \section{Grammatical approach}
 
+Trees of triples can be producted after analyzing the grammatical structure of sentences. First, we  present the tool we use to extract grammatical dependencies. Then, we expose chronologically our algorithm to product triples from grammatical structure.
+
+We will take throughout this section the example of:
+\begin{center}
+ \textit{What is the birth date of the president of the United States?}
+\end{center}
+
+%########################################################################################%
+
 \subsection{Stanford CoreNLP}
 
-Our work relies on the \emph{Stanford CoreNLP} library
-\footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}}, developped by
-the Stanford Natural Language Processing group, which include members with 
-linguistics or computer science backgrounds. 
+The \emph{Stanford CoreNLP} library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developped by the Stanford Natural Language Processing group, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
 
-Since this library is written in Java, and our module in Python, we use a wrapper
-also written in Python
-\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}}.
+Since this library is written in Java, and our module in Python, we use a wrapper to Python \footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}}.
 
-These tools provide a server running in background, which takes a character string,
-and returns a dependency tree, with some additional informations on certain words.
-See figure \ref{tree_before} to have an overview of such a tree, for the sentence
-\emph{What is the birth date of the first president of the United States of America?}.
+We use CoreNLP mostly to get grammatical dependency trees from input questions. It consists of trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
 
-The nodes of this tree are words, and the arcs are dependencies. For instance,
-an arc $$\texttt{president}\xrightarrow{\texttt{det}}\texttt{the}$$ means that
-\emph{the} is a determiner for \emph{president}. All possible dependencies are 
-described in \cite{stanfordDep}. 
+Figure \ref{tree_one} provides an overview of such a tree on our question example \emph{What is the birth date of the president of the United States?}. For instance, the edge:
+  \[\texttt{president}\xrightarrow{\texttt{det}}\texttt{the}\]
+means that \emph{the} is a determiner for \emph{president}.
 
-Some nodes of this tree are also endowed with tags. For instance, \emph{America}
-has the tag \emph{location}.
+\begin{figure}
+  \centering
+  \label{tree_one}
+    \includegraphics[scale=0.6]{../examples_NLP_classical/tree1.pdf}
+  \caption{Dependency tree}
+\end{figure}
 
+Some nodes of this tree are also endowed with tags. For instance, \emph{United} and \emph{States} have the tag \emph{location}.
+
+The Stanford typed dependencies manual (\cite{stanfordDep}) provides a full list and description of possible grammatical dependencies.
+
+%########################################################################################%
 
 \subsection{Preprocessing}
 
-The processing consists of a sequence of operations on the tree given by the 
-\emph{Stanford CoreNLP} library. The aim is to simplify the tree, by merging the
-nodes which should belong together.
+The preprocessing consists in a sequence of operations executed on the tree outputs by the \emph{Stanford CoreNLP} library. The aim is to simplify it, by merging the nodes which should belong together.
 
 The current version of the module performs two sorts of merges:
 \begin{itemize}
-    \item \textbf{Merge quotation nodes.} This operation merge all the nodes which
-    are in a same quotation (delimited by quotation marks). It also adds the words
-    of the quotations which were deleted by the \emph{Stanford CoreNLP} library
-    (e.g. \emph{in}, \emph{of}\dots). The final result is a node, containing the
+    \item \textbf{Merge quotation nodes.} This operation merges all the nodes which are in a same quotation (delimited by quotation marks). It also adds the words
+    of the quotation which were deleted by the \emph{Stanford CoreNLP} library (e.g. \emph{in}, \emph{of}\dots). The final result is a node, containing the
     exact quotation, and placed at the appropriate position in the tree.
-    \item \textbf{Merge named entities.} The \emph{Stanford CoreNLP} library 
-    performs a \emph{named entities recognition} (NER), which provide informative 
-    tags in some nodes. For instance, \emph{America} is tagged \emph{LOCATION}, 
-    whereas \emph{first} is tagged \emph{ORDINAL} (see figure \ref{tree_before}).
-    In the preprocessing step, we merge all neighbour nodes with a same NER tag.
-    In our example, we merge the three nodes \emph{United States America} into
-    one single node.
+    
+    \item \textbf{Merge named entities.} The \emph{Stanford CoreNLP} library performs a \emph{named entities recognition} (NER), which provides informative 
+    tags in some nodes. For instance, \emph{America} is tagged \emph{LOCATION} (see figure \ref{tree_two}). In the preprocessing step, we merge all neighbour nodes with a same NER tag. In our example, we merge the two nodes \emph{United States} into one single node.
 \end{itemize}
 
-\subsection{Dependency analysis}
+The preprocessing also identifies the question word (Who, What, Where...) and removes it from the dependency tree.
 
-See figure \ref{tree_after}.
+Preprocessing is illustrated on figure \ref{tree_two}. The question word is \textit{What}.
 
+\begin{figure}
+  \centering
+  \label{tree_two}
+    \includegraphics[scale=0.6]{../examples_NLP_classical/tree2.pdf}
+  \caption{Dependency tree preprocessed}
+\end{figure}
+
+%########################################################################################%
+
+\subsection{Grammatical dependencies analysis}
+
+The grammatical tree is simplified by applying one of the following rules to each edge:
+\begin{itemize}
+ \item remove the edge and its endpoint node. For instance, a \textit{dep} relation, such as \textit{the} in our example, is often removed.
+ \item merge the two nodes of the edge. Merge operations try to gather words of a same expression (e.g. phrasal verbs).
+ \item tag the edge with a ``triple production rule''.
+\end{itemize}
+
+The third operation is the most important. Dependencies relations are replaced by a restricted set of tags that will enable us to product a triples tree thereafter.
+
+On our example, the edge:
+\[\texttt{birth}\xrightarrow{\texttt{nn}}\texttt{date}\]
+
+is merged into a single node : \textit{birth date}.
+
+One of the triple production rule tag is : 
+
+\[\texttt{is}\xrightarrow{\texttt{t1}}\texttt{birth date}\]
+
+The simplified tree of our example is illustrated on figure \ref{tree_three}.
+
+\begin{figure}
+  \centering
+  \label{tree_three}
+    \includegraphics[scale=0.6]{../examples_NLP_classical/tree3.pdf}
+  \caption{Dependency tree simplified}
+\end{figure}
+
+%########################################################################################%
 
 \subsection{Triple production}
 
-See figure \ref{triple_conj}.
+The triple production is the final step. It outputs the triples tree.
 
-See figure \ref{triple_tree}.
+First, we assign a number to each remaining node. The root of the tree has always number \textit{0}. We have directly print these numbers on figure \ref{tree_three}.
 
+Then, we associate to each subtree of root's number \textit{x} an unknown denoted \textit{?x} that identifies the information the subtree refers to. On our example, the subtree of root \textit{president} (number \textit{3}) represents the name of the president of the United States. This unknown is denoted \textit{?3}.
+
+Unknowns are linked together into triples thanks to the triple production rules tagged previously. For instance, an  edge tagged \textbf{t2}:
+
+\[\texttt{a}\xrightarrow{\texttt{t2}}\texttt{b}\]
+
+products the triples \hl{(?a,a,?b)}, or \hl{(?a,a,b)} if b is a leaf (a et b are replaced by the words of the node they refer to).
+
+The tag \textbf{t1} directly linked two unknowns \hl{?a = ?b}, instead of producting a triple.
+
+The tag \textbf{t0} products nothing.
+
+We obtain the following result on our example:
+
+\begin{center}
+ ?1 = ?2 ~\\
+ (?2 , birth date of , ?3) ~\\
+ (?3 , president of , United States)
+\end{center}
+
+Then, we link \textit{?0} to \textit{?1}, depending of the question word of the question. Here we have (question word \textit{What}):
+\begin{center}
+ (?1,definition,?0)
+\end{center}
+
+The four previous rules are simplified in a set a triples:
+
+\begin{center}
+ (?1,definition,?0) ~\\
+ (?1 , birth date of , ?3) ~\\
+ (?3 , president of , United States)
+\end{center}
+
+Find an answer to the question is equivalent to build a model of the conjunctive formula: \textbf{(?1 , definition , ?0)$\wedge$(?1 , birth date of , ?3)$\wedge$(?3 , president of , United States)} and outputs the value of \textit{?0}.
+
+The triples tree is obtained by the replacing each unknown \textit{?x} by a triple containing \textit{?x} \textit{and not} \textit{?0}. The final result, taken from the PPP website, is printed on figure \ref{tree_four}. Figure \ref{triple_tree} contains the formal representation of the triples tree of our example.
+
+\begin{figure}[!h]
+  \centering
+  \label{tree_four}
+    \includegraphics[scale=0.5]{../examples_NLP_classical/final_result.png}
+  \caption{Triples tree}
+\end{figure}
+
+%########################################################################################%
 
 \subsection{Future work}
 
-\subsubsection{Preprocessing}
+\subsubsection{Grammatical rules analysis}
 
-There remains nodes which should stay together but are not merged by our module,
-for instance \emph{prime minister} or \emph{state of the art}. Recognizing such words
-is called \emph{Multiword Expression Processing}. The next step of the preprocessing
-part of our module is to integrate an existing software which solve this problem.
+Our analysis of grammatical rules, in order to product triples, is very basic. Currently, we only have about 5 rules. Although it is good enough to handle a lot of questions, we are not able to process conjonctions for example (e.g. \textit{``Who wrote "Lucy in the Sky with Diamonds" and "Let It Be"?''}).
+
+\subsubsection{Preprocessing merging}
+
+There remains nodes which should stay together but are not merged by our module, for instance \emph{prime minister} or \emph{state of the art}. Recognizing such words is called \emph{Multiword Expressions Processing}. This task is a whole part of Natural Language Processing theory. 
+
+We have several tracks to improve merging. Existing algorithms or softwares need to be test. We could also use multiword expressions dictionaries.
+
+\subsubsection{Question type analysis}
+
+The current algorithm attaches great importance to the type of the input question. Sentences starting by a question word (Who, Where, How ...) are better processed than Yes/No questions for instance.
+
+\subsubsection{Triples tree improvement}
+
+The triples tree will be improved to take into account new types of nodes, adapted to databases queries. For example, a node could be tagged ``FIRST'' to pick the first occurence of a list of answers (e.g. \hl{FIRST(?,presidents of, United States)}).

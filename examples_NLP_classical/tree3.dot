@@ -1,0 +1,12 @@
+digraph relations {
+	"ROOT0"[label="ROOT (0)",shape=box];
+	"ROOT0" -> "is2"[label="t0"];
+	"is2"[label="is (1)",shape=box];
+	"is2" -> "birth4"[label="t1"];
+	"birth4"[label="birth date (2)",shape=box];
+	"birth4" -> "president8"[label="prep_of"];
+	"president8"[label="president (3)",shape=box];
+	"president8" -> "United11"[label="prep_of"];
+	"United11"[label="United States (4) [LOCATION]",shape=box];
+	labelloc="t"
+}
