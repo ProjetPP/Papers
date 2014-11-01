@@ -45,7 +45,7 @@ The current version of the module performs two sorts of merges:
     exact quotation, and placed at the appropriate position in the tree.
     
     \item \textbf{Merge named entities.} The \emph{Stanford CoreNLP} library performs a \emph{named entities recognition} (NER), which provides informative 
-    tags in some nodes. For instance, \emph{America} is tagged \emph{LOCATION} (see figure \ref{tree_two}). In the preprocessing step, we merge all neighbour nodes with a same NER tag. In our example, we merge the two nodes \emph{United States} into one single node.
+    tags in some nodes. For instance, \emph{United} and \emph{States} are tagged \emph{LOCATION} (see figure \ref{tree_two}). In the preprocessing step, we merge all neighbour nodes with a same NER tag. In our example, we merge the two nodes \emph{United States} into one single node.
 \end{itemize}
 
 The preprocessing also identifies the question word (Who, What, Where...) and removes it from the dependency tree.
