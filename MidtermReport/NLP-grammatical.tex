@@ -13,7 +13,7 @@ We will take throughout this section the example of:
 
 The \emph{Stanford CoreNLP} library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developped by the Stanford Natural Language Processing group, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
 
-Since this library is written in Java, and our module in Python, we use a Python wrapper\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}} we first patched in order for it to support Python 3 and some features the wrapper did not implement.
+Since this library is written in Java, and our module in Python, we use a Python wrapper\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}} we first patched to support Python 3 and some features the wrapper did not implement.
 
 We use CoreNLP mostly to get grammatical dependency trees from input questions. It consists of trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
 
@@ -23,9 +23,9 @@ means that \emph{the} is a determiner for \emph{president}.
 
 \begin{figure}
   \centering
-  \label{tree_one}
-    \includegraphics[scale=0.6]{../examples_NLP_classical/tree1.pdf}
   \caption{Dependency tree}
+  \label{tree_one}
+    \includegraphics[scale=0.6]{../examples_NLP_grammatical/tree1.pdf}
 \end{figure}
 
 Some nodes of this tree are also endowed with tags. For instance, \emph{United} and \emph{States} have the tag \emph{location}.
@@ -54,9 +54,9 @@ Preprocessing is illustrated on figure \ref{tree_two}. The question word is \tex
 
 \begin{figure}
   \centering
-  \label{tree_two}
-    \includegraphics[scale=0.6]{../examples_NLP_classical/tree2.pdf}
   \caption{Dependency tree preprocessed}
+  \label{tree_two}
+    \includegraphics[scale=0.6]{../examples_NLP_grammatical/tree2.pdf}
 \end{figure}
 
 %########################################################################################%
@@ -85,9 +85,9 @@ The simplified tree of our example is illustrated on figure \ref{tree_three}.
 
 \begin{figure}
   \centering
-  \label{tree_three}
-    \includegraphics[scale=0.6]{../examples_NLP_classical/tree3.pdf}
   \caption{Dependency tree simplified}
+  \label{tree_three}
+    \includegraphics[scale=0.6]{../examples_NLP_grammatical/tree3.pdf}
 \end{figure}
 
 %########################################################################################%
@@ -137,9 +137,9 @@ The triples tree is obtained by the replacing each unknown \textit{?x} by a trip
 
 \begin{figure}[!h]
   \centering
-  \label{tree_four}
-    \includegraphics[scale=0.5]{../examples_NLP_classical/final_result.png}
   \caption{Triples tree}
+  \label{tree_four}
+    \includegraphics[scale=0.5]{../examples_NLP_grammatical/final_result.png}
 \end{figure}
 
 %########################################################################################%
