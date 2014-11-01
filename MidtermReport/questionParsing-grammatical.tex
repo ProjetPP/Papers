@@ -77,7 +77,7 @@ On our example, the edge:
 
 is merged into a single node : \textit{birth date}.
 
-One of the triple production rule tag is : 
+One of the triples production rules tag is : 
 
 \[\texttt{is}\xrightarrow{\texttt{t1}}\texttt{birth date}\]
 
@@ -92,15 +92,15 @@ The simplified tree of our example is illustrated on figure \ref{tree_three}.
 
 %########################################################################################%
 
-\subsection{Triple production}
+\subsection{Triples production}
 
-The triple production is the final step. It outputs the triples tree.
+The triples production is the final step. It outputs the triples tree.
 
 First, we assign a number to each remaining node. The root of the tree has always number \textit{0}. We have directly print these numbers on figure \ref{tree_three}.
 
 Then, we associate to each subtree of root's number \textit{x} an unknown denoted \textit{?x} that identifies the information the subtree refers to. On our example, the subtree of root \textit{president} (number \textit{3}) represents the name of the president of the United States. This unknown is denoted \textit{?3}.
 
-Unknowns are linked together into triples thanks to the triple production rules tagged previously. For instance, an  edge tagged \textbf{t2}:
+Unknowns are linked together into triples thanks to the triples production rules tagged previously. For instance, an  edge tagged \textbf{t2}:
 
 \[\texttt{a}\xrightarrow{\texttt{t2}}\texttt{b}\]
 
@@ -141,6 +141,9 @@ The triples tree is obtained by replacing each unknown \textit{?x} by a triple c
   \label{tree_four}
     \includegraphics[scale=0.5]{../examples_NLP_grammatical/final_result.png}
 \end{figure}
+
+Backend modules (such as Wikidata module) will have to fill intermediate unknowns : \hl{((August 4 1961,birth date of, (Barack Obama, president of, United States)), definition, ?)} and finally provide the final answer that replaced \textit{?} (for example: a description of the August 4 1961 date).
+
 
 %########################################################################################%
 
