@@ -13,7 +13,7 @@ We will take throughout this section the example of:
 
 The \emph{Stanford CoreNLP} library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developped by the Stanford Natural Language Processing group, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
 
-Since this library is written in Java, and our module in Python, we use a wrapper to Python \footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}}.
+Since this library is written in Java, and our module in Python, we use a Python wrapper\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}} we first patched in order for it to support Python 3 and some features the wrapper did not implement.
 
 We use CoreNLP mostly to get grammatical dependency trees from input questions. It consists of trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
 
@@ -104,7 +104,7 @@ Unknowns are linked together into triples thanks to the triple production rules 
 
 \[\texttt{a}\xrightarrow{\texttt{t2}}\texttt{b}\]
 
-products the triples \hl{(?a,a,?b)}, or \hl{(?a,a,b)} if b is a leaf (a et b are replaced by the words of the node they refer to).
+products the triples \hl{(?a,a,?b)}, or \hl{(?a,a,b)} if b is a leaf (a and b are replaced by the words of the node they refer to).
 
 The tag \textbf{t1} directly linked two unknowns \hl{?a = ?b}, instead of producting a triple.
 
@@ -131,7 +131,7 @@ The four previous rules are simplified in a set a triples:
  (?3 , president of , United States)
 \end{center}
 
-Find an answer to the question is equivalent to build a model of the conjunctive formula: \textbf{(?1 , definition , ?0)$\wedge$(?1 , birth date of , ?3)$\wedge$(?3 , president of , United States)} and outputs the value of \textit{?0}.
+To find an answer to the question is equivalent to build a model of the conjunctive formula: \textbf{(?1 , definition , ?0)$\wedge$(?1 , birth date of , ?3)$\wedge$(?3 , president of , United States)} and outputs the value of \textit{?0}.
 
 The triples tree is obtained by the replacing each unknown \textit{?x} by a triple containing \textit{?x} \textit{and not} \textit{?0}. The final result, taken from the PPP website, is printed on figure \ref{tree_four}. Figure \ref{triple_tree} contains the formal representation of the triples tree of our example.
 
@@ -154,7 +154,7 @@ Our analysis of grammatical rules, in order to product triples, is very basic. C
 
 There remains nodes which should stay together but are not merged by our module, for instance \emph{prime minister} or \emph{state of the art}. Recognizing such words is called \emph{Multiword Expressions Processing}. This task is a whole part of Natural Language Processing theory. 
 
-We have several tracks to improve merging. Existing algorithms or softwares need to be test. We could also use multiword expressions dictionaries.
+We have several tracks to improve merging. Existing algorithms or softwares need to be tested. We could also use multiword expressions dictionaries.
 
 \subsubsection{Question type analysis}
 
