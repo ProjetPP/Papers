@@ -63,29 +63,31 @@ Mentor: Eddy \textsc{Caron}\\[50pt]
 
 \tableofcontents
 
+\addcontentsline{toc}{chapter}{Introduction}
 \chapter*{Introduction}
-\input{introduction}
+    \input{introduction}
 
 \chapter{Datamodel and communication}
-\input{datamodel}
+    \input{datamodel}
 
 \chapter{Core}
-\input{core}
+    \input{core}
 
 \chapter{User interface}
-\input{UI}
+    \input{UI}
 
 \chapter{Wikidata module}
-\input{wikidata}
+    \input{wikidata}
 
 \chapter{Question parsing}
-\input{questionParsing-common}
-\input{questionParsing-grammatical}
-\input{questionParsing-ML}
-\input{questionParsing-ML-sandalone}
+    \input{questionParsing-common}
+    \input{questionParsing-grammatical}
+    \input{questionParsing-ML}
+    \input{questionParsing-ML-sandalone}
 
+\addcontentsline{toc}{chapter}{Conclusion}
 \chapter*{Conclusion}
-\input{conclusion}
+    \input{conclusion}
 
 \appendix
 
@@ -95,7 +97,7 @@ Mentor: Eddy \textsc{Caron}\\[50pt]
 
 \chapter{NLP \--- Grammatical approach}
 
-\begin{figure}
+\begin{figure}[!h]
 \caption{Triples in tree form}
 \label{triple_tree}
 \input{../examples_NLP_grammatical/triple_tree}
