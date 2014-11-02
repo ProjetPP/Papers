@@ -1,7 +1,7 @@
 \section{Machine Learning 2}
 
 
-We used machine learning algorithms in order to produce triples from scratch, i.e. without any grammatical library like Stanford CoreNLP.
+We used machine learning algorithms in order to produce triples from scratch, i.e. without any grammatical library like \Stanford.
 
 Motivations come from two points:
 \begin{itemize}
@@ -10,17 +10,17 @@ Motivations come from two points:
 \end{itemize}
 
 This work is based mainly on the paper "Natural Language Processing (almost) from Scratch" \cite{collobert}.
-For the baseline, we limited our self to one level of depth.
-For example, the sentence "What is the birth date of the president of United State?" will be converted to the triple: 
-\hl{(birth date, president of United State, ?)}. 
+For the baseline, we limited ourselves to one level of depth.
+For example, the sentence "What is the birth date of the president of the United States?" will be converted to the triple: 
+\hl{(birth date, president of the United States, ?)}. 
 
 We used a look up table and a window approach neuron network. The complete package was written in Python 3 and in Lua, with the torch library.
 
 \subsection{Data set}
 
 Because we used supervised algorithms, we need a data set of annotated questions.
-This data set have to be build manually, because we did not find on internet a data set that directly answer to the problem of triple extraction.
-Built this data set is a fastidious work. Currently our data set is composed of 168 questions.
+This data set have to be built manually, because we did not find on internet a data set that directly answer to the problem of triple extraction.
+Build this data set is a fastidious work. Currently our data set is composed of 168 questions.
 Because the mean of number of words in one question in the data set is around 7.5, it gives us 1264 entries to train/test the neuron network.
 
 \subsection{Structure of the network}
@@ -42,7 +42,7 @@ As described in \cite{collobert}, we used a window approach, and a look up table
 We used a window that focus on the word to classify. For example, if the sentence is "What is the birth date of the president of France?", and the word to classify is "date", for a window size of 7, the window is: "is the birth \textbf{date} of the president".
 
 We used this window because neuron networks works with a fixed number of input parameters. 
-The window size is a meta parameter to choose. This window have to be large enough that we can decide in the context of the window in which category a word is. We used a window size of 7.
+The window size is a meta parameter to choose. This window have to be large enough that we can decide in the context of the window in which category a word is. We used a window of size 7.
 
 \subsubsection{Look up table}
 
@@ -60,7 +60,7 @@ We tried two different architectures:
 -A linear model, i.e. without any hidden layers. This gives us $26\times 7\times 4 = 728$ parameters to optimize. 
 -A non linear model with one hidden layer of size 10. This gives us $26\times 7\times 10\times 4 = 7280$ parameters to optimize.
 
-The linear model have the advantage to have few parameters, so it can be learn with a small data set of annotated questions. However we found that this model is not enough powerful to catch the complexity of the problem we want to solve.
+The linear model have the advantage to have few parameters, so it can be learned with a small data set of annotated questions. However we found that this model is not enough powerful to catch the complexity of the problem we want to solve.
 The non linear model is more complex and can describe with more precision how the English language work. But because of the huge number of parameters to learn, we need a larger annotated data set that we currently have.
 
 We add one regularization parameter to limit over-training.
@@ -84,7 +84,7 @@ One advantage of doing this is to limit supervision (because our annotated data 
 
 \subsubsection{Used a more efficient preprocessing}
 
-We could reuse a part of the work done in the grammatically approach for a better input for the neuron network. For example, we could use the "Merge quotation nodes" and the "Merge named entities" steps to simplify to input questions.
+We could reuse a part of the work done in the grammatical approach to have a better input for the neuron network. For example, we could use the "Merge quotation nodes" and the "Merge named entities" steps to simplify input questions.
 
 \subsubsection{Merge the work done with the grammatically approach}
 

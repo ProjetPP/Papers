@@ -9,13 +9,13 @@ We will detail throughout this section our algorithm on the example:
 
 %########################################################################################%
 
-\subsection{Stanford CoreNLP}
+\subsection{\Stanford}
 
-The \emph{Stanford CoreNLP} library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developed by the Stanford Natural Language Processing group, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
+The \Stanford library \footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a tool developed by the \emph{Stanford Natural Language Processing group}, composed of linguists and computer scientists. This software is well-documented and considered as a ``state of the art'' tool. Moreover, it includes very efficient grammatical parsers.
 
 Since this library is written in Java, and our module in Python, we use a Python wrapper\footnote{\url{https://bitbucket.org/ProgVal/corenlp-python/overview}} we first patched to support Python 3 and some features the wrapper did not implement.
 
-We use CoreNLP mostly to get grammatical dependency trees from input questions. It consists in trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
+We use \CoreNLP mostly to get grammatical dependency trees from input questions. It consists in trees which nodes are the words of the sentence, and edges reflect the grammatical relations between words.
 
 Figure \ref{tree_one} provides an overview of such a tree on our question example \emph{What is the birth date of the president of the United States?}. For instance, the edge:
   \[\texttt{president}\xrightarrow{\texttt{det}}\texttt{the}\]
@@ -36,15 +36,15 @@ The Stanford typed dependencies manual (\cite{stanfordDep}) provides a full list
 
 \subsection{Preprocessing}
 
-The preprocessing consists in a sequence of operations executed on the tree outputs by the \emph{Stanford CoreNLP} library. The aim is to simplify it, by merging the nodes which should belong together.
+The preprocessing consists in a sequence of operations executed on the tree outputs by the \Stanford library. The aim is to simplify it, by merging the nodes which should belong together.
 
 The current version of the module performs two sorts of merges:
 \begin{itemize}
     \item \textbf{Merge quotation nodes.} This operation merges all the nodes which are in a same quotation (delimited by quotation marks). It also adds the words
-    of the quotation which were deleted by the \emph{Stanford CoreNLP} library (e.g. \emph{in}, \emph{of}\dots). The final result is a node, containing the
+    of the quotation which were deleted by the \Stanford library (e.g. \emph{in}, \emph{of}\dots). The final result is a node, containing the
     exact quotation, and placed at the appropriate position in the tree.
     
-    \item \textbf{Merge named entities.} The \emph{Stanford CoreNLP} library performs a \emph{named entities recognition} (NER), which provides informative 
+    \item \textbf{Merge named entities.} The \Stanford library performs a \emph{named entities recognition} (NER), which provides informative 
     tags in some nodes. For instance, \emph{United} and \emph{States} are tagged \emph{LOCATION} (see figure \ref{tree_two}). In the preprocessing step, we merge all neighbour nodes with a same NER tag. In our example, we merge the two nodes \emph{United States} into one single node.
 \end{itemize}
 
