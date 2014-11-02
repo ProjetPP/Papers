@@ -13,3 +13,5 @@
 *.toc
 *.snm
 *.pdf
+*.gz
+*.ps
