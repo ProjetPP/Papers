@@ -57,8 +57,8 @@ We also add one parameter that give us if the word start with a capitalize chara
 \subsubsection{The neuron network}
 
 We tried two different architectures:
--A linear model, i.e. without any hidden layers. This gives us $26*7*4 = 728$ parameters to optimize. 
--A non linear model with one hidden layer of size 10. This gives us $26*7*10*4 = 7280$ parameters to optimize.
+-A linear model, i.e. without any hidden layers. This gives us $26\times 7\times 4 = 728$ parameters to optimize. 
+-A non linear model with one hidden layer of size 10. This gives us $26\times 7\times 10\times 4 = 7280$ parameters to optimize.
 
 The linear model have the advantage to have few parameters, so it can be learn with a small data set of annotated questions. However we found that this model is not enough powerful to catch the complexity of the problem we want to solve.
 The non linear model is more complex and can describe with more precision how the English language work. But because of the huge number of parameters to learn, we need a larger annotated data set that we currently have.
