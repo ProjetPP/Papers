@@ -1,52 +1,55 @@
-\section{Machine Learning 1}
+\section{Machine Learning : Reformulation}
 
 One approach with neural network is a reformulation approach. It can work at two levels: 
 
-Either after the "NLP Classical" approach, it consists in taking the already formed tree, and modifies it in another tree. The idea is maybe a tree is correct for a human, but for the answering module it is not, so the aim of the module is to transform it in an adapted tree.
+Either after the "NLP Classical" approach, it consists in taking the already formed tree, and modifies it in another tree. The idea is maybe a tree is correct for a human, but for the answering module it is not, because of a complex formulation for instance, so the aim of the module is to transform it in an adapted tree. For example "What color is the white horse of Henri IV ?" is perfectly trivial for us, but is very complex for the modules.
 
 Or we can use the same idea after a syntactic analysis. 
 
 \subsection{How it works}
 
-As we works with requests, try to imagine everything is a request, ever a word !
+As we works with requests, we consider everything is a request, even a word.
 
 \subsubsection{Mathematical spaces}
 
-There are 2 generic spaces : the one of words -to distinguee vectors and words with letters, I will add adjective English to the seconds- which is a vectorial space of dimension 50 -this is arbitrary and can be modified if necessary, but taking an higher space could slow the learning process, and with a lower space we could lost some expression power, which means have very poor result- and the space of request which is the space of word triplets. And as you can guess first word of a triplet represent the subject, the second represents the predicate and the last the object.
+There are 2 generic spaces : the one of words which is a vector space of dimension 50 and the space of request which is the space of word triplets. And naturally first word of a triple represents the subject, the second represents the predicate and the last the object.
+To distingue words which are vectors and words with letters, we will add the adjective English to the seconds.
+Take 50 as dimension is arbitrary and can be modified if necessary, but taking a higher dimension could slow the learning process, and with a lower space we could lost some expression power, which means lead to very poor results.
 
 \subsubsection{Dictionnary}
 
-There is a dictionary of correspondences between English words and requests -keep in mind that everything is a request-; it is the base of the process. As there are so many proper names -in fact this set is potentially infinite-, and as proper names are arbitrary we replace them in a sentence with a tag NAME, then we do treat the problem with the tags, and we replace at the end tags with corresponding real names in the final tree. We do the same with numbers -or math formula. Finally we add tag UNKNOWN to represent the "hole" in the request tree.
+There is a dictionary of correspondences between English words and requests and it is the base of the process because everything is a request. As there are so many proper names, in fact this set is potentially infinite, and as proper names are arbitrary we replace them in a sentence with a tag NAME, then we do treat the problem with the tags, and we replace at the end tags with corresponding real names in the final tree. We do the same with numbers or math formula. Finally we add tag UNKNOWN to represent the "hole" in the request tree.
 
 \subsubsection{Transform a question into a word}
 
-You may wonder, a request is a triplet of word, but that does not mean a request has only three elements, or only one level of recursion. That would be very bad ! So we have two functions to deals with tree complexity : compact and uncompact. Compact takes a request and makes a word of it, uncompact do the reverse job. Both are matrices. You must understand they are not bijective (the math says they can't be, but if requests live in a 50 dimensional sub vectorial space we could maybe "make them" bijective). Applying uncompact then compact should give the identity -with an error margin-, but when compacting then decompacting we only have to find an equivalent request -meaning the same question with another formulation. You will understand what it means with the algorithm for the tree reconstruction. So, with recursion, we can transform an arbitrary request tree in a word.
+The reader may wonder, a request is a triple of word, but that does not mean a request has only three elements, or only one level of recursion. Such an approach would be very poor. So we have two functions to deals with tree complexity : compact and uncompact. Compact takes a request and makes a word of it, uncompact do the reverse job. Both are matrices. It is important to notice that they are not bijective after restraining the request space to existent requests. Applying uncompact then compact should give the identity, with of course an error margin, but when compacting then decompacting we only have to find an equivalent request, i.e. the same question with another formulation. The reader will understand what it means with the algorithm for the tree reconstruction. So, with recursion, we can transform an arbitrary request tree in a word.
 
-The second approach use directly syntactic tree, to reconstruct the request we use the fusion operation, it takes two requests in entry and give one at output, it's a matrix. First replace all English words of the tree with the corresponding request of the dictionary, and then take two leafs with same parent and use fusion operation to replace the parent node with a leaf well etiquette and repeat this operation till root is a leaf. Finally you can compact the only remaining request. 
+The second approach use directly syntactic tree, to reconstruct the request we use the fusion operation, it takes two requests in entry and give one at output, it's a matrix. First replace all English words of the tree with the corresponding request of the dictionary, and then take two leafs with same parent and use fusion operation to replace the parent node with a leaf well etiquette and repeat this operation till root is a leaf. Finally we compact the only remaining request. 
 
 \subsubsection{Transform a word into a request tree}
 
 In both case we have a word representing a question. Now let's construct a request tree. First we must take $\delta>0$ a precision factor, infinity is the lowest precision existent, small $\delta$ is good but can conduct to an infinite request tree, meaning the functions do not do their job well.
 
-\textsc{Tree Reconstruction}
+\textsc{TreeReconstruction}
 Entry $e$ is a word
 
 \begin{itemize}
 \item (s,p,o)$\leftarrow$ uncompact(e)
-\item Find english word fp in the dictionary with nearest predicate to p
-\item Find english word fs in the dictionary with nearest subject to s
-\item If distance fs to s is greater than $\delta$ fs $\leftarrow$ TreeReconstruction(s)
-\item Find english word fo in the dictionary with nearest subject to o
-\item If distance fo to o is greater than $\delta$ fo $\leftarrow$ TreeReconstruction(o)
+\item Find English word fp in the dictionary with nearest predicate to p
+\item Find English word fs in the dictionary with nearest subject to s
+\item If distance fs to s is greater than $\delta$ fs $\leftarrow$ \textsc{TreeReconstruction}(s)
+\item Find English word fo in the dictionary with nearest subject to o
+\item f distance fo to o is greater than $\delta$ fo $\leftarrow$ \textsc{TreeReconstruction}(o)
 \item Return (fs,fp,fo)
 \end{itemize}
 
 
 \subsection{What is done}
 
-The implementation of the reformulation is written in c++. However it is not finished yet. The dictionary has been generated using the clex \footnote{\url{https://github.com/Attempto/Clex}}. The three functions are ready -also for the back propagation learning- with a multithread approach to speed-up the computation time. The first approach of reformulation is implemented -this taking a request tree in input-, but learning based on this approach is not.
+The implementation of the reformulation is written in C++. However it is not finished yet. The dictionary has been generated using the clex \footnote{\url{https://github.com/Attempto/Clex}}. The three functions are functional with a multithread approach to speed-up the computation time, also backpropagation is ready to be implemented.
+First approach of reformulation is implemented : that means taking a request tree in input, it returns another tree which should be equivalent if learning succeeded. However the learning process is not implemented yet.
 
 \subsection{What remain to do}
 
-Finding a way to learn everything with first or second approach is the most important. As the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbour is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea -there exists distance sensitive hash for example-. Kd-trees allow a search in log-time (with precomputation) ; but with dimension 50, the constant factor $2^{50}$ is too large. 
+Finding a way to learn everything with first or second approach is the most important. As the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbor is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea, for example there exists distance sensitive hash. Kd-trees allow a search in log-time (with precomputation) ; but with dimension 50, the constant factor $2^{50}$ is too large. 
 
