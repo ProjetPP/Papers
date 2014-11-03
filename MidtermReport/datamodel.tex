@@ -56,6 +56,15 @@ into
 
 This structure has been chosen for its good adaptability. For instance, we can add other kind of nodes such as intersection, union, node for yes/no questions (triples without missing son), boolean operations etc..
 
+As every tree which has ordered children, we can represent them as a string. We chose the order of the different fields in the implementation: subject, predicate, object.
+
+To print these tree in the user interface, we do not print explicitly the \texttt{resource} nodes. A \texttt{missing} node is symbolized by a "\texttt{?}" possibly follows by an id (an integer).
+
+For instance, the previous tree will be represent by the string:
+\begin{verbatim}
+(George Washington, identity, ?)
+\end{verbatim}
+
 \section{Communication}
 
 Modules communicate with the core via HTTP requests.
@@ -90,7 +99,9 @@ This form allows each module to access to the previous results, particularly to 
 
 The data model have been implemented in a nice set of objects in both \href{http://github.com/ProjetPP/PPP-datamodel-Python}{Python} and \href{http://github.com/ProjetPP/PPP-datamodel-PHP}{PHP} in order to help the write of modules.
 
-\begin{figure}
+We could define a linear representation for the trace, using the representation of the datamodel, but it is not relevant. Indeed, this information will never be printed of the user interface.
+
+\begin{figure}[!ht]
 % https://docs.google.com/drawings/d/1toUH24GqwtpvKV7S5gje6GBxfa13R3mxgm8WlAFc_0g/edit?usp=sharing
   \centering
     \label{struct}

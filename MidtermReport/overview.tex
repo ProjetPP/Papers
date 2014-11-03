@@ -1,13 +1,4 @@
-Even though the Projet Pensées Profondes has not yet started to actually
-answer questions, we already made a huge progress in this direction
-by having the structure of the project already up and running.
-
-Few pieces remain to implement before we get something working as we
-expect and this means we do not see any incoming structural problem.
-Thus we are confident in the future of the project and that it will
-continue improving over time.
-
-For this purpose, we decide to keep the same organisation with few modifications.
+In the proposal we produced this diagram.
 
 \begin{figure}[!ht]
 \centering
@@ -34,18 +25,21 @@ inline
     \ganttlinkedbar[name = WP7]{Web UI}{21}{24}\\
     \ganttbar[name = WP4]{Biblio.}{1}{3} \\
     \ganttbar[name = WP7]{Natural Languages Processing}{4}{24} \\
-    \ganttbar[name = WP8a]{Machine Learning 1}{4}{24} \\
-    \ganttbar[name = WP8b]{Machine Learning 2}{4}{24} \\
+    \ganttbar[name = WP8]{Machine Learning}{4}{24} \\
     \ganttbar[name = WP9]{Wikidata module}{1}{24} \\
     \ganttbar[name = WP10]{Add-ons}{21}{24} \\
-    \ganttbar[name = WP11]{Computer Algebra System}{11}{24} \\
     \ganttlink[link mid=.4]{WP4}{WP7}
-    \ganttlink[link mid=.2]{WP4}{WP8a}
-    \ganttlink[link mid=.14]{WP4}{WP8b}
+    \ganttlink[link mid=.2]{WP4}{WP8}
 
   \end{ganttchart}
 \end{tikzpicture}
 \caption{\textsc{Gantt} diagram of the project}
 \end{figure}
 
-The new work package "Computer Algebra System" have to implement a such system in the PPP.
+Arriving to the midterm, we can see that only two work package which are supposed to be finished. Indeed, the software architecture is well defined. But, the Web user interface needs to have more features than we think at the beginning and it is not finished.
+
+A major reorganization is about machine learning. We split it into two different work package which implements two different machine learning algorithm.
+
+In the other work package, the progression match with what we expected.
+
+More of them produced, at least, a partially working code so that we have already deploy the current state of the PPP on line (\url{ppp.pony.ovh}).
