@@ -9,4 +9,4 @@ $(OUT):*.tex bibliography.bib
 	@mv main.pdf $(OUT)
 
 clean:
-	rm -f *.aux *.out *.log *.toc
+	rm -f *.aux *.out *.log *.toc *.blg *.bbl $(OUT)
