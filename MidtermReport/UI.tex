@@ -1,5 +1,5 @@
 We decided to implement first only a web user interface. This interface
-is only composed of one web-page developed in HTML 5 with some
+is composed of one web-page developed in HTML 5 with some
 pieces of JavaScript and CSS. We have taken care of having an
 interface that fit nice on both huge screens of desktop computers
 and small screens of phones.
@@ -10,7 +10,7 @@ and small screens of phones.
     \caption{The user interface}
 \end{figure}
 
-It is composed of only one huge text input with a button to submit
+It is composed of one huge text input with a button to submit
 the query and an other one to get a random question. The text area
 allows both the input of questions in English or directly of triple using
 an easy notation like \texttt{(Douglas Adam, birth date,?)} to find the
@@ -23,7 +23,7 @@ like \href{http://jquery.com/}{jQuery} and \href{http://getbootstrap.com/}{Boots
 \section{Logging}
 
 We decided to log all requests made to the PPP to improve our algorithms,
-and particularly to feed the results to Natural Language Processing
+and particularly to feed the results to Question parsing
 modules that use Machine Learning.
 We may also use it to improve the way the Core routes/sorts answers
 from the different modules, either manually or with some basic
@@ -38,6 +38,6 @@ buttons, and, if the latter is pressed, a way to correct the requests
 parsing result so it can be fed to the Machine Learning algorithms.
 
 Since Machine Learning algorithms are not ready yet, we did not focus
-on this feature of the user interface and thus it is not implemented;
+on this feature of the user interface and thus it is not implemented yet;
 so far we only started implemented a backend that stores data
 (gathered via the user interface) to a SQLite database.

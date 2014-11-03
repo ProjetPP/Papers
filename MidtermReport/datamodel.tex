@@ -28,7 +28,7 @@ We chose to represent all normalized data as trees. To represent sentences, we h
         \end{itemize}         
 \end{itemize}
 
-For example, the work of the NLP is to transform 
+For example, the work of the question parsing module is to transform 
 \begin{verbatim}
 {
     "type": "sentence", 
@@ -82,11 +82,11 @@ During these exchanges, we keep a trace of the different steps between the origi
 The measure field contains two values: relevance and accuracy.
 
 \begin{itemize}
-    \item \texttt{accuracy} is a self-rating of how much the module may have correctly understood (ie. not misinterpreted) the request/question. It's float from 0 to 1.
-    \item \texttt{relevance} is a self-rating of how much the tree has been improved (ie. made its way from a question to an useful answer). A positive float (not necessarily greater that 1; another module might use it to provide a much better answer).
+    \item \texttt{accuracy} is a self-rating of how much the module may have correctly understood (ie. not misinterpreted) the request/question. It is a float between 0 and 1.
+    \item \texttt{relevance} is a self-rating of how much the tree has been improved (i.e. made its way from a question to an useful answer). A positive float (not necessarily greater that 1; another module might use it to provide a much better answer).
 \end{itemize}
 
-This form allow each module to access to the previous results, particularly to the user's request. The objects for request and response contains few more information such that the language used.
+This form allows each module to access to the previous results, particularly to the user's request. The objects for request and response contains few more information such that the language used.
 
 The data model have been implemented in a nice set of objects in both \href{http://github.com/ProjetPP/PPP-datamodel-Python}{Python} and \href{http://github.com/ProjetPP/PPP-datamodel-PHP}{PHP} in order to help the write of modules.
 
