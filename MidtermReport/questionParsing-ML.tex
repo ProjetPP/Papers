@@ -12,7 +12,7 @@ As we works with requests, we consider everything is a request, even a word.
 
 \subsubsection{Mathematical spaces}
 
-There are 2 generic spaces : the one of words which is a vector space of dimension 50 and the space of request which is the space of word triplets. And naturally first word of a triple represents the subject, the second represents the predicate and the last the object.
+There are 2 generic spaces : the one of words which is a vector space of dimension 50 and the space of request which is the space of word triples. And naturally first word of a triple represents the subject, the second represents the predicate and the last the object.
 To distingue words which are vectors and words with letters, we will add the adjective English to the seconds.
 Take 50 as dimension is arbitrary and can be modified if necessary, but taking a higher dimension could slow the learning process, and with a lower space we could lost some expression power, which means lead to very poor results.
 
@@ -44,12 +44,12 @@ Entry $e$ is a word
 \end{itemize}
 
 
-\subsection{What is done}
+\subsection{Advancement}
 
 The implementation of the reformulation is written in C++. However it is not finished yet. The dictionary has been generated using the clex \footnote{\url{https://github.com/Attempto/Clex}}. The three functions are functional with a multithread approach to speed-up the computation time, also backpropagation is ready to be implemented.
 First approach of reformulation is implemented : that means taking a request tree in input, it returns another tree which should be equivalent if learning succeeded. However the learning process is not implemented yet.
 
-\subsection{What remain to do}
+\subsection{Future work}
 
 Finding a way to learn everything with first or second approach is the most important. As the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbor is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea, for example there exists distance sensitive hash. Kd-trees allow a search in log-time (with precomputation) ; but with dimension 50, the constant factor $2^{50}$ is too large. 
 
