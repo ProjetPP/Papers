@@ -33,10 +33,9 @@ An example configuration is the one we use on the production server:
 }
 \end{verbatim}
 
-The current state is the the Core is successfully able with all modules
+The current state is the Core is successfully able with all modules
 that have been written: the Wikidata module, an example Python module
-(which answers the question  “Who are you?”), and the Natural Language
-Processing module.
+(which answers the question  “Who are you?”), and the Question parsing module.
 
 \section{Routing}
 
@@ -46,8 +45,7 @@ combined to give something greater.
 
 For instance, when a user will input a question like “Who is the first
 president of the United States?”, the Core will send the question to
-all modules and get a parsed tree from the Natural Language Processing
-module. Then, it will forward this answer to all other modules, which the
+all modules and get a parsed tree from the Question parsing module. Then, it will forward this answer to all other modules, which the
 Wikidata module will be able to answer.
 
 This part is not implemented, but will be next step in the implementation
