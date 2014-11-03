@@ -24,8 +24,10 @@
 \usepackage{pgfgantt}
 \usepackage{soul} % highlight text
 \usepackage{xspace} % space after new command
+\usepackage{fnpct}
 
 \definecolor{bluec}{rgb}{0.7, 0.7, 1.0}
+\sethlcolor{bluec} % highlight in blue
 
 \input{../macros.tex}
 \title{Projet Pensées Profondes\\\large Midterm report}
@@ -67,6 +69,9 @@ Adviser: Eddy \textsc{Caron}\\[50pt]
 \addcontentsline{toc}{chapter}{Introduction}
 \chapter*{Introduction}
     \input{introduction}
+
+\chapter{State of the art}
+    \input{stateofart}
 
 \chapter{Datamodel and communication}
     \input{datamodel}
