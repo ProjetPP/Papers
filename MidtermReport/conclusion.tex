@@ -3,14 +3,16 @@ answer questions, we already made a huge progress in this direction
 by having the structure of the project already up and running.
 
 Few pieces remain to implement before we get something working as we
-expect and this means we do not see any incoming structural problem.
-Thus we are confident in the future of the project and that it will
-continue improving over time.
+expect, but we are confident in the future of the project and in its improvement
+over time.
 
-For this purpose, we decide to keep the same organisation with few modifications.
+We keep the same organisation with few modifications, as presented in figure
+\ref{conclusion:gantt}.
 
 \begin{figure}[!ht]
 \centering
+\label{conclusion:gantt}
+\caption{\textsc{Gantt} diagram of the project}
 \begin{tikzpicture}[x=1cm, y=1cm, scale=0.8, every node/.style={scale=0.8}]
   \begin{ganttchart}%
   [today=10,today label=Midterm,
@@ -33,9 +35,9 @@ inline
     \ganttlinkedbar[name = WP6]{Web UI}{7}{10}\\
     \ganttlinkedbar[name = WP7]{Web UI}{21}{24}\\
     \ganttbar[name = WP4]{Biblio.}{1}{3} \\
-    \ganttbar[name = WP7]{Natural Languages Processing}{4}{24} \\
-    \ganttbar[name = WP8a]{Machine Learning 1}{4}{24} \\
-    \ganttbar[name = WP8b]{Machine Learning 2}{4}{24} \\
+    \ganttbar[name = WP7]{Question Parsing: Grammatical Approach}{4}{24} \\
+    \ganttbar[name = WP8a]{Question Parsing: Machine Learning 1}{4}{24} \\
+    \ganttbar[name = WP8b]{Question Parsing: Machine Learning 2}{4}{24} \\
     \ganttbar[name = WP9]{Wikidata module}{1}{24} \\
     \ganttbar[name = WP10]{Add-ons}{21}{24} \\
     \ganttbar[name = WP11]{Computer Algebra System}{11}{24} \\
@@ -45,7 +47,6 @@ inline
 
   \end{ganttchart}
 \end{tikzpicture}
-\caption{\textsc{Gantt} diagram of the project}
 \end{figure}
 
-The new work package "Computer Algebra System" have to implement a such system in the PPP.
+The new work package "Computer Algebra System" have to implement such a system in the PPP.
