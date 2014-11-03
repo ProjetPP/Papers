@@ -20,7 +20,7 @@ There is a dictionary of correspondences between English words and requests -kee
 
 \subsubsection{Transform a question into a word}
 
-You may wonder, a request is a triplet of word, but that does not mean a request has only three elements, or only one level of recursion. That would be very bad ! So we have two functions to deals with tree complexity : compact and uncompact. Compact takes a request and makes a word of it, uncompact do the reverse job. Both are matrices. You must understand they are not bijectives (the math says they can't be, but if requests live in a 50 dimensional sub vectorian space we could maybe "make them" bijectives). Applying uncompact then compact should give the identity -with an error margin-, but when compacting then decompacting we only have to find an equivalent request -meaning the same question with another formulation. You will understand what it means with the algorithm for the tree reconstruction. So, with recursion, we can transform an arbitrary request tree in a word.
+You may wonder, a request is a triplet of word, but that does not mean a request has only three elements, or only one level of recursion. That would be very bad ! So we have two functions to deals with tree complexity : compact and uncompact. Compact takes a request and makes a word of it, uncompact do the reverse job. Both are matrices. You must understand they are not bijective (the math says they can't be, but if requests live in a 50 dimensional sub vectorial space we could maybe "make them" bijective). Applying uncompact then compact should give the identity -with an error margin-, but when compacting then decompacting we only have to find an equivalent request -meaning the same question with another formulation. You will understand what it means with the algorithm for the tree reconstruction. So, with recursion, we can transform an arbitrary request tree in a word.
 
 The second approach use directly syntactic tree, to reconstruct the request we use the fusion operation, it takes two requests in entry and give one at output, it's a matrix. First replace all English words of the tree with the corresponding request of the dictionary, and then take two leafs with same parent and use fusion operation to replace the parent node with a leaf well etiquette and repeat this operation till root is a leaf. Finally you can compact the only remaining request. 
 
@@ -33,10 +33,10 @@ Entry $e$ is a word
 
 \begin{itemize}
 \item (s,p,o)$\leftarrow$ uncompact(e)
-\item Find english word fp in the diconnary with nearest predicate to p
-\item Find english word fs in the diconnary with nearest subject to s
+\item Find english word fp in the dictionary with nearest predicate to p
+\item Find english word fs in the dictionary with nearest subject to s
 \item If distance fs to s is greater than $\delta$ fs $\leftarrow$ TreeReconstruction(s)
-\item Find english word fo in the diconnary with nearest subject to o
+\item Find english word fo in the dictionary with nearest subject to o
 \item If distance fo to o is greater than $\delta$ fo $\leftarrow$ TreeReconstruction(o)
 \item Return (fs,fp,fo)
 \end{itemize}
@@ -48,5 +48,5 @@ The implementation of the reformulation is written in c++. However it is not fin
 
 \subsection{What remain to do}
 
-Finding a way to learn everything with first or second approach is the most important. As the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbor is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea -there exists distance sensitive hash for example-. Kd-trees allow a search in log-time (with precomputation) ; but with dimension 50, the constant factor $2^{50}$ is too large. 
+Finding a way to learn everything with first or second approach is the most important. As the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbour is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea -there exists distance sensitive hash for example-. Kd-trees allow a search in log-time (with precomputation) ; but with dimension 50, the constant factor $2^{50}$ is too large. 
 

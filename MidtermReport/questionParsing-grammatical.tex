@@ -1,6 +1,6 @@
 \section{Grammatical approach}
 
-Trees of triples can be producted after analyzing the grammatical structure of sentences. First, we  present the tool we use to extract grammatical dependencies. Then, we expose chronologically our algorithm to product triples from grammatical structure.
+Trees of triples can be produced after analysing the grammatical structure of sentences. First, we  present the tool we use to extract grammatical dependencies. Then, we expose chronologically our algorithm to product triples from grammatical structure.
 
 We will detail throughout this section our algorithm on the example:
 \begin{center}
@@ -106,7 +106,7 @@ Unknowns are linked together into triples thanks to the triples production rules
 
 products the triples \hl{(?a,a,?b)}, or \hl{(?a,a,b)} if b is a leaf (a and b are replaced by the words of the node they refer to).
 
-The tag \textbf{t1} directly linked two unknowns \hl{?a = ?b}, instead of producting a triple.
+The tag \textbf{t1} directly linked two unknowns \hl{?a = ?b}, instead of producing a triple.
 
 The tag \textbf{t0} products nothing.
 
@@ -151,7 +151,7 @@ Backend modules (such as Wikidata module) will have to fill intermediate unknown
 
 \subsubsection{Grammatical rules analysis}
 
-Our analysis of grammatical rules, in order to product triples, is very basic. Currently, we only have about 5 rules. Although it is good enough to handle a lot of questions, we are not able to process conjonctions for example (e.g. \textit{``Who wrote "Lucy in the Sky with Diamonds" and "Let It Be"?''}).
+Our analysis of grammatical rules, in order to product triples, is very basic. Currently, we only have about 5 rules. Although it is good enough to handle a lot of questions, we are not able to process conjunctions for example (e.g. \textit{``Who wrote "Lucy in the Sky with Diamonds" and "Let It Be"?''}).
 
 \subsubsection{Preprocessing merging}
 
@@ -165,4 +165,4 @@ The current algorithm attaches great importance to the type of the input questio
 
 \subsubsection{Triples tree improvement}
 
-The triples tree will be improved to take into account new types of nodes, adapted to databases queries. For example, a node could be tagged ``FIRST'' to pick the first occurence of a list of answers (e.g. \hl{FIRST(?,presidents of, United States)}).
+The triples tree will be improved to take into account new types of nodes, adapted to databases queries. For example, a node could be tagged ``FIRST'' to pick the first occurrence of a list of answers (e.g. \hl{FIRST(?,presidents of, United States)}).
