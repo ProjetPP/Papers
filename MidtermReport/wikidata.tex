@@ -11,6 +11,15 @@ The \Wikidata module has been written in PHP in order to rely on good libraries 
 
 The global architecture of the module has been quickly studied by one of the \Wikidata developers that found it fairly good.
 
+\subsection{Future work}
+A lot of work remains to do in this module like:
+\begin{itemize}
+    \item Improve formatting of the answers and supports of Wikidata value types.
+    \item Compute relevance and accuracy of the anwsers.
+    \item Filter not relevant result: people that are looking for the list of the presidents of the United States are usually not looking for fictional ones.
+    \item Handle triple that does not directly match to Wikidata model. If we looks for people born in France we are also looking for people born in Lyon or if we are looking for the American Secretary of State we are looking for the person that has as office "American Secretary of State".
+\end{itemize}
+
 \begin{figure}[!ht]
   \centering
     \label{struct}
