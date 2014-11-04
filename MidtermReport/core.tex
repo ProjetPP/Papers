@@ -37,6 +37,25 @@ The current state is the Core is successfully able with all modules
 that have been written: the Wikidata module, an example Python module
 (which answers the question  “Who are you?”), and the Question parsing module.
 
+\section{Libraries for modules}
+
+The core also exports its class in charge of handling and parsing HTTP
+requests following the format defined in the data model.
+This class is an abstraction over a Python HTTP library (python-requests),
+allowing module developpers to focus on developping their actual code
+instead of handling communication.
+
+These has proven to be efficient for connecting the Natural Language
+Processing with the Core: we only had to copy-paste the demo code
+(used for reading and printing in the console) into a function called
+by this library, and it was working as is.
+
+
+We are also planning on writing on exporting the configuration
+library too, since we notice modules are likely to share the
+same way of handling configuration (a JSON file, whose path
+is given {\em via} an environment variable.
+
 \section{Routing}
 
 Besides from communicating with other pieces of the PPP, the Core will
