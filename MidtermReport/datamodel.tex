@@ -3,7 +3,7 @@ We describe the choices we did about representation of the data and communicatio
 \section{Data model}
 \label{rdf}
 
-First, we present the data model. All normalized structures of the PPP are JSON-serializable, i.e. they are trees made of instances of the following types:
+First, we present the data model. All normalised structures of the PPP are JSON-serializable, i.e. they are trees made of instances of the following types:
 \begin{itemize}
     \item \texttt{Object}
     \item \texttt{List}
@@ -13,7 +13,7 @@ First, we present the data model. All normalized structures of the PPP are JSON-
     \item \texttt{Null}
 \end{itemize}
 
-We chose to represent all normalized data as trees. To represent sentences, we have 4 kinds of nodes.
+We chose to represent all normalised data as trees. To represent sentences, we have 4 kinds of nodes.
 
 \begin{itemize}
     \item \texttt{sentence}: a question in natural language like "Who is George Washington?".
@@ -54,7 +54,7 @@ into
 }
 \end{verbatim}
 
-This structure has been chosen for its good adaptability. For instance, we can add other kind of nodes such as intersection, union, node for yes/no questions (triples without missing son), boolean operations etc..
+This structure has been chosen for its good adaptability. For instance, we can add other kind of nodes such as intersection, union, node for yes/no questions (triples without missing son), boolean operations, etc.
 
 We do not plot explicitly the tree in the user interface, but we used a string representation defined recursively by:
 \begin{itemize}
@@ -95,7 +95,7 @@ During these exchanges, we keep a trace of the different steps between the origi
 The measure field contains two values: relevance and accuracy.
 
 \begin{itemize}
-    \item \texttt{accuracy} is a self-rating of how much the module may have correctly understood (ie. not misinterpreted) the request/question. It is a float between 0 and 1.
+    \item \texttt{accuracy} is a self-rating of how much the module may have correctly understood (i.e. not misinterpreted) the request/question. It is a float between 0 and 1.
     \item \texttt{relevance} is a self-rating of how much the tree has been improved (i.e. made its way from a question to an useful answer). A positive float (not necessarily greater that 1; another module might use it to provide a much better answer).
 \end{itemize}
 
