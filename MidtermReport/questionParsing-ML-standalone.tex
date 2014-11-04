@@ -1,4 +1,4 @@
-\section{Machine Learning 2}
+\section{Machine Learning: Window approach}
 
 
 We used machine learning algorithms in order to produce triples from scratch, i.e. without any grammatical library like \Stanford.
@@ -14,7 +14,7 @@ For the baseline, we limited ourselves to one level of depth.
 For example, the sentence "What is the birth date of the president of the United States?" will be converted to the triple: 
 \hl{(president of the United States, birth date, ?)}. 
 
-We used a look up table and a window approach neural network. The complete package was written in Python 3 and in Lua, with the Torch7 library\footnote{\url{http://torch.ch/}}.
+We used a look-up table and a window approach neural network. The complete package was written in Python 3 and in Lua, with the Torch7 library\footnote{\url{http://torch.ch/}}.
 
 \subsection{Data set}
 
@@ -28,7 +28,7 @@ Because the mean of number of words in one question in the data set is around 7.
 For each word $w$ of the sentence, we want to classify $w$ into four categories: \textit{subject}, \textit{predicate}, \textit{object} and \textit{to ignore}.
 The classification of each word of the sentence into these four categories produce the desired triple.
 
-As described in \cite{collobert}, we used a window approach, and a look up table.
+As described in \cite{collobert}, we used a window approach, and a look-up table.
 
 \begin{figure}[!ht]
   \centering
@@ -44,13 +44,13 @@ We used a window that focuses on the word to classify. For example, if the sente
 We used this window because neural networks works with a fixed number of input parameters. 
 The window size is a meta parameter to choose. This window has to be large enough that we can decide in the context of the window in which category a word is. We used a window of size 7.
 
-\subsubsection{Look up table}
+\subsubsection{Look-up table}
 
-The look up table is a dictionary that associates to each word $w$ a vector $V_w \in \mathbb{R}^n$, where n is the number of parameters we used to encode a word. We used $n=25$.
+The look-up table is a dictionary that associates to each word $w$ a vector $V_w \in \mathbb{R}^n$, where n is the number of parameters we used to encode a word. We used $n=25$.
 If two English words $w_1$ and $w_2$ are synonymous, then $||w_1-w_2||_2$ is small.
 
 The construction of look-up table is described in \cite{collobert} and used unsupervised machine learning techniques.
-We used a precomputed look up table, found here: \url{http://metaoptimize.com/projects/wordreprs/}
+We used the precomputed look-up table found here: \url{http://metaoptimize.com/projects/wordreprs/}
 
 We also add one parameter that give us if the word starts with a capitalize character or not. Finally words are embedded in vectors of dimension 26. 
 
