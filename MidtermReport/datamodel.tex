@@ -1,4 +1,5 @@
 We describe the choices we did about representation of the data and communication between modules.
+These choices are described precisely in the documentation\footnote{\url{https://github.com/ProjetPP/Documentation/}} of the project.
 
 \section{Data model}
 \label{rdf}
@@ -101,7 +102,7 @@ The measure field contains two values: relevance and accuracy.
 
 This form allows each module to access to the previous results, particularly to the request of the user. The objects for request and response contain some extra data, such as the language used.
 
-The data model have been implemented in a nice set of objects in both \href{http://github.com/ProjetPP/PPP-datamodel-Python}{Python} and \href{http://github.com/ProjetPP/PPP-datamodel-PHP}{PHP} in order to help the writing of modules.
+The data model have been implemented in a nice set of objects in both Python\footnote{\url{http://github.com/ProjetPP/PPP-datamodel-Python/}} and PHP \footnote{\url{http://github.com/ProjetPP/PPP-datamodel-PHP/}} in order to help the writing of modules.
 
 We could define a linear representation for the trace, using the representation of the datamodel, but it is not relevant. Indeed, this information will never be printed on the user interface.
 
