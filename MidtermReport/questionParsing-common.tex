@@ -6,8 +6,8 @@ The difficulty of this task can be illustrated on the following example:
  \textit{What is the birth date of the president of the United States?}
 \end{center}
 
-A first possible tree is: \hl{(?,birth date, president of the United States)}. However, this tree is difficult to handle by databases-querying modules. Indeed, the ``president of the United States'' occurrence in a database probably does not contain the birth date of the current president. 
+A first possible tree is: \hl{(president of the United States,birth date,?)}. However, this tree is difficult to handle by databases-querying modules. Indeed, the ``president of the United States'' occurrence in a database probably does not contain the birth date of the current president. 
 
-On the other hand, the following tree is much more easy to process : \hl{(?,birth date, (?,president of, United States))}. In this case, the president of United States is identified (\hl{Barack Obama}), the triple becomes \hl{(?,birth date, Barack Obama)}, and finally the answer can be found easily in ``Barack Obama'' occurrence.
+On the other hand, the following tree is much more easy to process : \hl{((?,president of, United States),birth date,?)}. In this case, the president of United States is identified (\hl{Barack Obama}), the triple becomes \hl{(Barack Obama,birth date, ?)}, and finally the answer can be found easily in ``Barack Obama'' occurrence.
 
 Our goal is to product simplified and well structured trees, without losing relevant information of the original question. We are developing three different approaches to tackle this problem. The first tries to analyse the grammatical structure of questions, the two other ones are based on machine learning.
