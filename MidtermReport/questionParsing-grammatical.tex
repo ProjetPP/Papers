@@ -36,7 +36,7 @@ The Stanford typed dependencies manual (\cite{stanfordDep}) provides a full list
 
 \subsection{Preprocessing}
 
-The preprocessing consists in a sequence of operations executed on the tree outputs by the \Stanford library. The aim is to simplify it, by merging the nodes which should belong together.
+The preprocessing consists in a sequence of operations executed on the tree output by the \Stanford library. The aim is to simplify it, by merging the nodes which should belong together. % Do not put an 's' at the end of 'output', it is in past participle form. Moreover, 'output' seems to be preferred to 'outputted': http://english.stackexchange.com/questions/35418/past-tense-of-to-output-output-or-outputted
 
 The current version of the module performs two sorts of merges:
 \begin{itemize}
@@ -48,7 +48,7 @@ The current version of the module performs two sorts of merges:
     tags for some nodes. For instance, \emph{United} and \emph{States} are tagged \emph{LOCATION} (see figure \ref{tree_two}). In the preprocessing step, we merge all neighbour nodes with a same NER tag. In our example, we merge the two nodes \emph{United States} into one single node.
 \end{itemize}
 
-The preprocessing also identifies the question word (Who, What, Where...) and removes it from the dependency tree.
+The preprocessing also identifies the question word (Who, What, Where\dots) and removes it from the dependency tree.
 
 Preprocessing is illustrated on figure \ref{tree_two}. The question word is \textit{What}.
 
@@ -96,7 +96,7 @@ The simplified tree of our example is illustrated on figure \ref{tree_three}.
 
 The triples production is the final step. It outputs the triples tree.
 
-First, we assign a number to each remaining node. The root of the tree has always number \textit{0}. We have directly print these numbers on figure \ref{tree_three}.
+First, we assign a number to each remaining node. The root of the tree has always number \textit{0}. We have directly printed these numbers on figure \ref{tree_three}.
 
 Then, we associate to each subtree of root's number \textit{x} an unknown denoted \textit{?x} that identifies the information the subtree refers to. On our example, the subtree of root \textit{president} (number \textit{3}) represents the name of the president of the United States. This unknown is denoted \textit{?3}.
 
@@ -161,7 +161,7 @@ We have several tracks to improve merging. Existing algorithms or softwares need
 
 \subsubsection{Question type analysis}
 
-The current algorithm attaches great importance to the type of the input question. Sentences starting by a question word (Who, Where, How ...) are better processed than Yes/No questions for instance.
+The current algorithm attaches great importance to the type of the input question. Sentences starting by a question word (Who, Where, How\dots) are better processed than Yes/No questions for instance.
 
 \subsubsection{Triples tree improvement}
 
