@@ -32,8 +32,10 @@ inline
     \ganttbar[name = WP3]{Communication}{1}{24} \\
     
     \ganttbar[name = WP5]{Router}{1}{6} \\
-    \ganttlinkedbar[name = WP6]{Web UI}{7}{10}\\
+    \ganttlinkedbar[link mid=0.1,name = WP5b]{Router optimization}{11}{18} \\
+    \ganttbar[name = WP6]{Web UI}{7}{10}\\
     \ganttlinkedbar[name = WP7]{Web UI}{21}{24}\\
+    \ganttlink{WP5}{WP6}
     \ganttbar[name = WP4]{Biblio.}{1}{3} \\
     \ganttbar[name = WP7]{Question Parsing: Grammatical Approach}{4}{24} \\
     \ganttbar[name = WP8a]{Question Parsing: Machine Learning 1}{4}{24} \\
@@ -44,9 +46,17 @@ inline
     \ganttlink[link mid=.4]{WP4}{WP7}
     \ganttlink[link mid=.2]{WP4}{WP8a}
     \ganttlink[link mid=.14]{WP4}{WP8b}
+    \ganttlink{WP5}{WP6}
 
   \end{ganttchart}
 \end{tikzpicture}
 \end{figure}
 
-The new work package "Computer Algebra System" has to implement such a system in the PPP.
+Their are two new work packages:
+
+\begin{itemize}
+    \item "Computer Algebra System", which will to implement such a system in the PPP.
+    \item "Router optimization", which will consists in writing an algorithm
+        for sorting requests by usefulness, and eventually dropping the less
+        useful ones during the computation, in order to improve performance.
+\end{itemize}

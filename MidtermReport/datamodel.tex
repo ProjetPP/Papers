@@ -75,7 +75,7 @@ Modules communicate with the core via HTTP requests.
 
 The core sends them a JSON object, and they return another one.
 
-The basic idea is that the core iterates requests to modules, which return a simplified tree, until the former gets a complete response.
+The basic idea is that the core iterates requests to modules, which return a simplified tree, until the core gets a complete response, ie. a tree without any `missing` node.
 
 During these exchanges, we keep a trace of the different steps between the original request and the current tree. The structure of a trace is a list of such trace items:
 \begin{verbatim}
@@ -95,11 +95,11 @@ During these exchanges, we keep a trace of the different steps between the origi
 The measure field contains two values: relevance and accuracy.
 
 \begin{itemize}
-    \item \texttt{accuracy} is a self-rating of how much the module may have correctly understood (i.e. not misinterpreted) the request/question. It is a float between 0 and 1.
-    \item \texttt{relevance} is a self-rating of how much the tree has been improved (i.e. made its way from a question to an useful answer). A positive float (not necessarily greater that 1; another module might use it to provide a much better answer).
+    \item \texttt{accuracy} is a self-rating of how much the module may have correctly understood (ie. not misinterpreted) the request/question. It is a float between 0 and 1.
+    \item \texttt{relevance} is a self-rating of how much the tree has been improved (i.e. progressed on the path of becoming a useful answer). A positive float (not necessarily greater that 1; another module might use it to provide a much better answer).
 \end{itemize}
 
-This form allows each module to access to the previous results, particularly to the request of the user. The objects for request and response contains few more information such that the language used.
+This form allows each module to access to the previous results, particularly to the request of the user. The objects for request and response contain some extra data, such as the language used.
 
 The data model have been implemented in a nice set of objects in both \href{http://github.com/ProjetPP/PPP-datamodel-Python}{Python} and \href{http://github.com/ProjetPP/PPP-datamodel-PHP}{PHP} in order to help the writing of modules.
 
