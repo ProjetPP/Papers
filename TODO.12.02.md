@@ -60,4 +60,49 @@ Random.
 
 ## WP7
 
+Administrative problems (e.g. travis, JSON serialization).
 
+Require external help.
+
+
+## WP8
+
+Automatic generation of the dataset.
+
+**TODO**
+
+Better dataset. Nested triples.
+
+## Grammatical
+
+**TODO**
+
+Handle new datamodel.
+
+
+## WP9
+
+Handle new datamodel.
+
+
+## WP10_CAS
+
+Improvements (support new language (more intuitive)).
+
+**TODO**
+
+Support Latex input. If there is enough time: handle plot.
+
+
+## WP10_spellchecker
+
+Do not remove punctuation, do not correct words inside quotations.
+
+
+## WP10_wikipedia
+
+Return the summary of the wikipedia page.
+
+**TODO**
+
+Better output, handle desambiguation pages.
