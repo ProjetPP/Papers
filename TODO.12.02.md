@@ -34,7 +34,7 @@ Improvement of the website.
 
 Add a big button "How to use PPP"
 
-Begin to think about the final presentation and report.
+Begin to think about the final presentation and report. Should do an interactive demonstration.
 
 Communication on software quality: software architecture, unit tests, integration tests, etc.
 
@@ -106,3 +106,8 @@ Return the summary of the wikipedia page.
 **TODO**
 
 Better output, handle desambiguation pages.
+
+
+## Idea of new module
+
+HAL papers.
