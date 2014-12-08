@@ -1,0 +1,115 @@
+\documentclass[a4paper,10pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{urlcolor=black,linkcolor=black,citecolor=black}
+
+\usepackage{enumerate}
+
+\usepackage{fullpage}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\medskipamount}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{pgfgantt}
+\usepackage{soul} % highlight text
+\usepackage{xspace} % space after new command
+\usepackage{fnpct}
+
+\definecolor{bluec}{rgb}{0.7, 0.7, 1.0}
+\sethlcolor{bluec} % highlight in blue
+
+\input{../macros.tex}
+\title{Projet Pensées Profondes\\\large Final report}
+\author{\includegraphics[width=0.3\textwidth]{../logo_ensl.pdf}\\[50pt]
+Fundamental Computer Science Master's Degree 1\\September 2014 \--- December 2014\\[50pt]
+Adviser: Eddy \textsc{Caron}\\[50pt]
+\begin{minipage}{0.4\textwidth}
+    \begin{flushleft} \large
+        Marc \textsc{Chevalier}
+        \\
+        Raphaël \textsc{Charrondière}
+        \\
+        Quentin \textsc{Cormier}
+        \\
+        Tom \textsc{Cornebize}
+    \end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{flushright} \large
+        Yassine \textsc{Hamoudi}
+        \\
+        Valentin \textsc{Lorentz}
+        \\
+        Thomas \textsc{Pellissier Tanon}
+        \\
+    \end{flushright}
+\end{minipage}
+}
+\date{}
+\vfill
+
+\begin{document}
+\maketitle
+
+
+
+\tableofcontents
+
+\addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Introduction}
+    \input{introduction}
+
+\chapter{Overview}
+    \input{overview}
+
+\chapter{State of the art}
+    \input{stateofart}
+
+\chapter{Datamodel and communication}
+    \input{datamodel}
+
+\chapter{Core}
+    \input{core}
+
+\chapter{User interface}
+    \input{UI}
+
+\chapter{Question parsing}
+    \input{questionParsing-common}
+    \input{questionParsing-grammatical}
+    \input{questionParsing-ML}
+    \input{questionParsing-ML-standalone}
+
+\chapter{Wikidata module}
+    \input{wikidata}
+
+\addcontentsline{toc}{chapter}{Conclusion}
+\chapter*{Conclusion}
+    \input{conclusion}
+
+\appendix
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+\nocite{*}
+
+\chapter{Question parsing \--- Triples tree}
+
+\begin{figure}[!ht]
+\caption{Triples in tree form}
+\label{triple_tree}
+\input{../examples_NLP_grammatical/triple_tree}
+\end{figure}
+
+\end{document}
