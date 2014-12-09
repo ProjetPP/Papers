@@ -17,8 +17,8 @@ Presentation outline:
 
 * Intro.
 * Present the overall project (user point of view) -> demo: basic functionalities (e.g. maps, speech input, basic questions).
-* Present the architecture.
-* Details each module.
+* Present the architecture and the datamodel.
+* Detail each module.
 * Impressing results at the end (e.g. better than Wolfram Alpha on some questions) -> other demo.
 
 ## WP0
