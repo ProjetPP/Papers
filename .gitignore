@@ -15,3 +15,5 @@
 *.pdf
 *.gz
 *.ps
+*.pyg
+*.vrb
