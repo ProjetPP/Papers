@@ -2,7 +2,7 @@
 
 The *mtheme* is a Beamer theme with minimal visual from Matthias Vogelgesang. The core design principles
 of the theme were described in a [blog post](http://bloerg.net/2014/09/20/a-modern-beamer-theme.html).
-You can download clone his [repository](https://github.com/matze/mtheme).
+You can clone his [repository](https://github.com/matze/mtheme).
 
 ### Dependencies
 
