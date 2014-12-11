@@ -5,6 +5,9 @@
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
 \usepackage{minted}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,shapes}
+\usetikzlibrary{positioning}
 
 \usepgfplotslibrary{dateplot}
 
@@ -41,6 +44,13 @@
 \end{frame}
 
 \section{Architecture}
+\begin{frame}[fragile]
+    \begin{figure}
+        \resizebox{.9\linewidth}{!}{
+            \input{architecture}
+        }
+    \end{figure}
+\end{frame}
 
 \section{Datamodel}
 

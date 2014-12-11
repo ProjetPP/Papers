@@ -1,4 +1,4 @@
-SRC = pppDemo.tex
+SRC = pppDemo.tex architecture.tex
 PDF = pppDemo.pdf
 AUX = pppDemo.aux
 TEXC := xelatex

@@ -1,0 +1,103 @@
+\newlength{\moduledistance}
+\setlength{\moduledistance}{1cm}
+\overfullrule=2cm
+\tikzset{
+    module/.style={
+           rectangle,
+%           rounded corners,
+           draw=black, very thick,
+           minimum width=3cm,
+           minimum height = 0.7cm,
+           node distance = 1.5cm,
+           inner sep=2pt,
+           text centered,
+           },
+}
+
+\tikzset{
+    core/.style={
+           circle,
+           draw=black, very thick,
+           minimum width=2cm,
+           inner sep=2pt,
+           text centered,
+           },
+}
+
+\begin{tikzpicture}[->,>=stealth']
+    \node[core] (core) {
+        Core
+    };
+    \node[module,
+          right of=core,
+          right=\moduledistance,
+          ] (grammatical) {
+        \begin{tabular}{c}
+        Question Parsing\\Grammatical
+        \end{tabular}
+    };
+    \node[module,
+          below of=grammatical,
+          ] (standalone) {
+        \begin{tabular}{c}
+        Question Parsing\\Standalone
+        \end{tabular}
+    };
+    \node[module,
+          above of=grammatical,
+          ] (reformulation) {
+        \begin{tabular}{c}
+        Question Parsing\\Reformulation
+        \end{tabular}
+    };
+    \node[module,
+          left of=core,
+          left=\moduledistance,
+          ] (wikidata) {
+        Wikidata
+    };
+    \node[module,
+          above of=wikidata,
+          ] (cas) {
+        Computer Algebra
+    };
+    \node[module,
+          below of=wikidata,
+          ] (spellchecker) {
+        Spell-checker
+    };
+    \node[module,
+          above of=core,
+          above=2cm,
+          ] (webui) {
+        \begin{tabular}{c}
+        Web User\\
+        Interface
+        \end{tabular}
+    };
+    \node[module,
+          above of=reformulation,
+%          right=\moduledistance,
+          ] (logging) {
+        Logging backend
+    };
+
+    \path
+        (core)          edge    (grammatical)
+        (core)          edge    (standalone)
+        (core)          edge    (reformulation)
+        (core)          edge    (wikidata)
+        (core)          edge    (cas)
+        (core)          edge    (spellchecker)
+        (core)          edge    (webui)
+        (grammatical)   edge    (core)
+        (standalone)    edge    (core)
+        (reformulation) edge    (core)
+        (wikidata)      edge    (core)
+        (cas)           edge    (core)
+        (spellchecker)  edge    (core)
+        (webui)         edge    (core)
+        (webui)         edge    (logging)
+        (logging)       edge    (reformulation)
+        (grammatical) edge    (reformulation);
+\end{tikzpicture}
