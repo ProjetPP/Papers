@@ -32,22 +32,20 @@
           right of=core,
           right=\moduledistance,
           ] (grammatical) {
-        \begin{tabular}{c}
-        Question Parsing\\Grammatical
-        \end{tabular}
+          Grammatical
     };
     \node[module,
           below of=grammatical,
           ] (standalone) {
         \begin{tabular}{c}
-        Question Parsing\\Standalone
+        ML\\Standalone
         \end{tabular}
     };
     \node[module,
           above of=grammatical,
           ] (reformulation) {
         \begin{tabular}{c}
-        Question Parsing\\Reformulation
+        ML\\Reformulation
         \end{tabular}
     };
     \node[module,
@@ -68,7 +66,7 @@
     };
     \node[module,
           above of=core,
-          above=2cm,
+          above=1cm,
           ] (webui) {
         \begin{tabular}{c}
         Web User\\
@@ -81,7 +79,8 @@
           ] (logging) {
         Logging backend
     };
-
+    \draw[mLightBrown,thick] ($(reformulation.north west)+(-0.3,0.3)$)  rectangle node[yshift=-2.5cm,below] {Question Parsing} ($(standalone.south east)+(0.3,-0.3)$);
+    \draw[mLightBrown,thick] ($(cas.north west)+(-0.3,0.3)$)  rectangle node[yshift=-2.5cm,below] {Other modules} ($(spellchecker.south east)+(0.3,-0.3)$);
     \path
         (core)          edge    (grammatical)
         (core)          edge    (standalone)
