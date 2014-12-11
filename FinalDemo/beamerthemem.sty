@@ -97,7 +97,30 @@
   \makebox[\textwidth][c]{
     \begin{tikzpicture}[tight background]
 
+      \Huge
       \node[anchor=west, mDarkTeal, inner sep=0pt] at (0pt, 0pt) {\insertsectionHEAD};
+      \normalsize
+
+      \draw[anchor=west, mDarkTeal!20, fill=mDarkTeal!20, inner sep=0pt]
+      (2pt, -16pt) rectangle ++ (\progressbar@pbwd, \progressbar@pbht);
+
+      \draw[anchor=west, mDarkTeal, fill=mDarkTeal, inner sep=0pt]
+      (2pt, -16pt) rectangle ++ (\progressbar@tmpdim, \progressbar@pbht);
+    \end{tikzpicture}%
+  }
+}
+% the progress bar
+\def\progressbar@subsectionprogressbar{%
+  \progressbar@tmpcounta=\insertframenumber
+  \progressbar@tmpcountb=\inserttotalframenumber
+  \progressbar@tmpdim=\progressbar@pbwd
+  \multiply\progressbar@tmpdim by \progressbar@tmpcounta
+  \divide\progressbar@tmpdim by \progressbar@tmpcountb
+
+  \makebox[\textwidth][c]{
+    \begin{tikzpicture}[tight background]
+
+      \node[anchor=west, mDarkTeal, inner sep=0pt] at (0pt, 0pt) {\insertsubsectionhead};
 
       \draw[anchor=west, mDarkTeal!20, fill=mDarkTeal!20, inner sep=0pt]
       (2pt, -16pt) rectangle ++ (\progressbar@pbwd, \progressbar@pbht);
@@ -172,6 +195,23 @@
 }
 
 %}}}
+%{{{ --- Subsections ---------------------
+
+% Insert frame with subsection title at every section start
+\AtBeginSubsection[]
+{
+  \begingroup
+  \setbeamercolor{background canvas}{bg=black!2}
+  \begin{frame}[plain]
+    \vspace{2em}\usebeamerfont{section title}
+    \progressbar@subsectionprogressbar%
+  \end{frame}
+  \endgroup
+}
+
+%}}}
+
+
 %{{{ --- Captions ---------------------
 
 \setbeamertemplate{caption label separator}{: }
