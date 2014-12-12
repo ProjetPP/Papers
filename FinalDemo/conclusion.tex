@@ -1,0 +1,109 @@
+\begin{frame}[fragile]
+    \frametitle{Nested question}
+
+Who is the wife of the president of the United States?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & Barack Obama\\
+        \alert{Platypus} & Michelle Obama\\
+    \end{tabular}
+
+    \medbreak
+
+    What are the birth dates of the daughters of the wife of the president of the United States?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & Barack Obama\\
+        \alert{Platypus} & Saturday, July 4, 1998 \& Sunday, June 10, 2001\\
+    \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conjunction}
+
+Who is an actor in Titanic and Inception?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & all the actors of the two movies\\
+        \alert{Platypus} & Leonardo DiCaprio\\
+    \end{tabular}
+\end{frame}
+
+\section{Future work}
+
+\begin{frame}[fragile]
+    \frametitle{Better database}
+
+    ``How fast is the TGV?''
+
+    ``How width is a tennis court?''
+
+    Not answered by \alert{Wikidata}.
+
+    \medbreak
+
+    $\rightarrow$ Improve Wikidata?
+
+    $\rightarrow$ Use another database?
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Better question parsing}
+
+    ``What is the date of birth of Isaac Newton?''
+
+    ``In which band does Bono sing?''
+
+    Not parsed correctly.
+
+    \medbreak
+
+    $\rightarrow$ Train the Stanford CoreNLP library?
+
+    $\rightarrow$ Improve the algorithm of the Grammatical module?
+
+    $\rightarrow$ Better datasets for the ML modules?
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{New modules}
+    \begin{table}
+    \Large
+    \centering
+    \begin{tabular}{ccc}
+        \textcolor{mLightBrown}{cooking recipes} & \textcolor{mDarkBrown}{HAL} & \textcolor{mMediumBrown}{meteo} \\
+        \multicolumn{3}{c}{\textcolor{mDarkTeal}{programming language interpreter}} \\
+        \textcolor{mMediumBrown}{cinema} & \textcolor{mDarkTeal}{music} & \textcolor{mLightBrown}{literature}\\
+        \textcolor{mDarkBrown}{OEIS} & \textcolor{mLightBrown}{translation} & \textcolor{mDarkTeal}{chemistry}\\
+        \multicolumn{3}{c}{\textcolor{mMediumBrown}{sport statistics and predictions}} \\
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Some facts} % to update just before the presentation
+    \alert{23 repositories}
+
+    \begin{tabular}{ll}
+        12 & Python\\
+        6 & PHP\\
+        1 & C++\\
+        1 & Shell\\
+        1 & \LaTeX\\
+        1 & Markdown\\
+        1 & Javascript\\
+        1 & CSS\\
+    \end{tabular}
+
+    \alert{1982 commits} (without the ``integration'' repository, which have an automatic commit every 12h)
+\end{frame}
+
+\newlength{\logosize}
+\setlength{\logosize}{12pt}
+\begin{frame}[fragile]
+    \frametitle{Stay tuned}
+    \alert{\url{http://projetpp.github.io/}}
+
+    \begin{tabular}{ll}
+        \includegraphics[width=\logosize]{Twitter_logo_blue.png} & \href{https://twitter.com/ProjetPP}{https://twitter.com/ProjetPP}\\
+        \includegraphics[width=\logosize]{GitHub-Mark-32px.png} &  \href{https://github.com/ProjetPP}{https://github.com/ProjetPP}\\
+        \includegraphics[width=\logosize]{ic_email_black_18dp.png} & \href{mailto:ppp@pony.ovh}{ppp@pony.ovh}\\
+    \end{tabular}
+\end{frame}

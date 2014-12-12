@@ -6,7 +6,16 @@
 \usepackage[scale=2]{ccicons}
 \usepackage{minted}
 \usepackage{tikz}
+\usepackage[ruled,vlined,english]{algorithm2e}
 \usetikzlibrary{arrows,automata,shapes,positioning,calc}
+
+\newenvironment{exemple}
+{\begin{exampleblock}{Exemple}}
+{\end{exampleblock}}
+
+\newenvironment{defi}
+{\begin{block}{Définition}}
+{\end{block}}
 
 
 \usepgfplotslibrary{dateplot}
@@ -36,183 +45,31 @@ Yassine \textsc{Hamoudi}
 Valentin \textsc{Lorentz}
 
 Thomas \textsc{Pellissier} \textsc{Tanon}
+
+\alert{Adviser:} Eddy \textsc{Caron}
 \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{A need of answers}
-    Who was the wife of Louis Pasteur?
-    \begin{figure}
-        \includegraphics[width=\textwidth]{pasteurWiki.png}
-    \end{figure}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Existing tools}
-    \begin{tabular}{ll}
-        WolframAlpha & Marie Pasteur\\
-        Google & Wikipeda page of Marie Pasteur\\
-        Bing & Wikipeda page of Louis Pasteur\\
-        Yahoo & answers.com page with this question
-    \end{tabular}
-\medbreak
-\alert{Closed-source, bad on some questions.}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{PPP introduces Platypus}
-    \begin{center}
-        \url{http://ppp.pony.ovh/}
-    \end{center}
-\end{frame}
+\input{introduction}
 
 \section{Overview}
-
-\begin{frame}[fragile]
-    \frametitle{Datamodel}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Architecture}
-    \begin{figure}
-        \resizebox{.9\linewidth}{!}{
-            \input{../architecture}
-        }
-    \end{figure}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Modules creation}
-    PPP objects and communication primitives implemented in Python and PHP.
-
-    Python module creation script.
-
-    $\rightarrow$ Focus on your code, not the administrative details.
-\end{frame}
+\input{overview}
 
 \section{Question parsing}
 
-\subsection{Grammatical approach}
+\input{questionParsing-grammatical}
 
-\subsection{Machine Learning \--- Reformulation}
+\input{questionParsing-ML-reformulation}
 
-\subsection{Machine Learning \--- Standalone}
+\input{questionParsing-ML-standalone}
 
 \section{Back-end}
 
-\subsection{Wikidata}
+\input{wikidata}
 
-\subsection{Add-ons}
-
-\begin{frame}[fragile]
-    \frametitle{Computer Algebra System}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Spell Checker}
-    Based on \alert{GNU Aspell}.
-
-    \medbreak
-
-    What are the langajes of Soth Afryka?
-
-    $\rightarrow$
-
-    What are the languages of South Africa?
-\end{frame}
+\input{add-ons}
 
 \section{Better than Wolfram?}
-
-\begin{frame}[fragile]
-    \frametitle{Nested question}
-
-Who is the wife of the president of the United States?
-    \begin{tabular}{ll}
-        \alert{WolframAlpha} & Barack Obama\\
-        \alert{Platypus} & Michelle Obama\\
-    \end{tabular}
-
-    \medbreak
-
-    What are the birth dates of the daughters of the wife of the president of the United States?
-    \begin{tabular}{ll}
-        \alert{WolframAlpha} & Barack Obama\\
-        \alert{Platypus} & Saturday, July 4, 1998 \& Sunday, June 10, 2001\\
-    \end{tabular}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Conjunction}
-
-Who is an actor in Titanic and Inception?
-    \begin{tabular}{ll}
-        \alert{WolframAlpha} & all the actors of the two movies\\
-        \alert{Platypus} & Leonardo DiCaprio\\
-    \end{tabular}
-\end{frame}
-
-\section{Future work}
-
-\begin{frame}[fragile]
-    \frametitle{Better database}
-
-    ``How fast is the TGV?''
-
-    ``How width is a tennis court?''
-
-    Not answered by \alert{Wikidata}.
-
-    \medbreak
-
-    $\rightarrow$ Improve Wikidata?
-
-    $\rightarrow$ Use another database?
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Better question parsing}
-
-    ``What is the date of birth of Isaac Newton?''
-
-    ``In which band does Bono sing?''
-
-    Not parsed correctly.
-
-    \medbreak
-
-    $\rightarrow$ Train the Stanford CoreNLP library?
-
-    $\rightarrow$ Improve the algorithm of the Grammatical module?
-
-    $\rightarrow$ Better datasets for the ML modules?
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{New modules}
-    \begin{table}
-    \Large
-    \centering
-    \begin{tabular}{ccc}
-        \textcolor{mLightBrown}{cooking recipes} & \textcolor{mDarkBrown}{HAL} & \textcolor{mMediumBrown}{meteo} \\
-        \multicolumn{3}{c}{\textcolor{mDarkTeal}{programming language interpreter}} \\
-        \textcolor{mMediumBrown}{cinema} & \textcolor{mDarkTeal}{music} & \textcolor{mLightBrown}{literature}\\
-        \textcolor{mDarkBrown}{OEIS} & \textcolor{mLightBrown}{translation} & \textcolor{mDarkTeal}{chemistry}\\
-        \multicolumn{3}{c}{\textcolor{mMediumBrown}{sport statistics and predictions}} \\
-    \end{tabular}
-    \end{table}
-\end{frame}
-
-\newlength{\logosize}
-\setlength{\logosize}{12pt}
-\begin{frame}[fragile]
-    \frametitle{Stay tuned}
-    \alert{\url{http://projetpp.github.io/}}
-
-    \begin{tabular}{ll}
-        \includegraphics[width=\logosize]{Twitter_logo_blue.png} & \href{https://twitter.com/ProjetPP}{https://twitter.com/ProjetPP}\\
-        \includegraphics[width=\logosize]{GitHub-Mark-32px.png} &  \href{https://github.com/ProjetPP}{https://github.com/ProjetPP}\\
-        \includegraphics[width=\logosize]{ic_email_black_18dp.png} & \href{mailto:ppp@pony.ovh}{ppp@pony.ovh}\\
-    \end{tabular}
-\end{frame}
+\input{conclusion}
 
 \plain{Questions?}
 
