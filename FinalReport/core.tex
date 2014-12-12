@@ -5,7 +5,7 @@ connected to all other components — user interfaces and modules — through
 the protocol defined above, and is developed in Python\footnote{\url{https://github.com/ProjetPP/PPP-Core/}}.
 
 The core communicates with the user interfaces and the modules {\em via} HTTP:
-each time the core receives a requests from an interface, it forwards it
+each time the core receives a request from an interface, it forwards it
 to modules, using a configurable list of URL where to reach modules.
 
 An example configuration is the one we use on the production server
@@ -16,7 +16,7 @@ An example configuration is the one we use on the production server
     "debug": false,
     "modules": [
         {
-            "name": "nlp_classical",
+            "name": "questionparsing_grammatical",
             "url": "python:ppp_questionparsing_grammatical.requesthandler:RequestHandler",
             "coefficient": 1,
             "filters": {
@@ -88,7 +88,7 @@ the measures (see the chapter above, about the datamodel), and filters
     }
 \end{verbatim}
 
-This is what the core is more than just a router. Not only does it forward
+This is why the core is more than just a router. Not only does it forward
 requests to modules, and forward their answers to the client, but it can
 make several passes on a request.
 
@@ -120,7 +120,7 @@ The two of them are used in this example:
 
 \begin{verbatim}
 {
-    "name": "questionparsing_classical",
+    "name": "questionparsing_grammatical",
     "url": "python:ppp_questionparsing_grammatical.requesthandler:RequestHandler",
     "coefficient": 1,
     "filters": {
@@ -141,7 +141,7 @@ without using HTTP; and thus avoids the cost of serializing, using IPCs
 (Inter-Process Communications), and deserializing (twice).
 However, we need to run the module in the same process as the core in
 order for this to work, so we only use it for light modules
-(questionparsing\_classical and the spell-checker).
+(questionparsing\_grammatical and the spell-checker).
 
 \section{Libraries for modules}
 
