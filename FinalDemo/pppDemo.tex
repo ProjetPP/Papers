@@ -16,10 +16,6 @@
 \title{Projet Pensées Profondes}
 \subtitle{}
 \date{December 18, 2014}
-% I find this very ugly with our names (too much text)
-%\author{R. \textsc{Charrondière}, M. \textsc{Chevalier}, Q. 
-%      \textsc{Cormier}, T. \textsc{Cornebize}, \linebreak Y. \textsc{Hamoudi}, 
-%      V. \textsc{Lorentz} and T. \textsc{Pellissier} \textsc{Tanon}.\\}
 \institute{École Normale Supérieure de Lyon}
 
 \begin{document}
@@ -27,23 +23,54 @@
 \maketitle
 
 \begin{frame}[fragile]
+Raphaël \textsc{Charrondière}
+
+Marc \textsc{Chevalier}
+
+Quentin \textsc{Cormier}
+
+Tom \textsc{Cornebize}
+
+Yassine \textsc{Hamoudi}
+
+Valentin \textsc{Lorentz}
+
+Thomas \textsc{Pellissier} \textsc{Tanon}
+\end{frame}
+
+\begin{frame}[fragile]
     \frametitle{A need of answers}
-    % problematic: I want the answer to a question (which question? -> "fil rouge") quickly, without having to browse a bunch of crap
-    % maybe a screenshot of the wikipedia page to show that we really do not want to read
+    Who was the wife of Louis Pasteur?
+    \begin{figure}
+        \includegraphics[width=\textwidth]{pasteurWiki.png}
+    \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Existing tools}
-    % Wolfram & CIE
-    % Problem: close-source, and not good enough on some questions.
+    \begin{tabular}{ll}
+        WolframAlpha & Marie Pasteur\\
+        Google & Wikipeda page of Marie Pasteur\\
+        Bing & Wikipeda page of Louis Pasteur\\
+        Yahoo & answers.com page with this question
+    \end{tabular}
+\medbreak
+\alert{Closed-source, bad on some questions.}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{PPP introduces Platypus}
-    % Demo !
+    \begin{center}
+        \url{http://ppp.pony.ovh/}
+    \end{center}
 \end{frame}
 
-\section{Architecture \& Datamodel}
+\section{Overview}
+
+\begin{frame}[fragile]
+    \frametitle{Datamodel}
+\end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Architecture}
     \begin{figure}
@@ -54,12 +81,87 @@
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Datamodel}
+    \frametitle{Modules creation}
+    PPP objects and communication primitives implemented in Python and PHP.
+
+    Python module creation script.
+
+    $\rightarrow$ Focus on your code, not the administrative details.
 \end{frame}
 
 \section{Question parsing}
 
+\subsection{Grammatical approach}
+
+\subsection{Machine Learning \--- Reformulation}
+
+\subsection{Machine Learning \--- Standalone}
+
 \section{Back-end}
+
+\subsection{Wikidata}
+
+\subsection{Add-ons}
+
+\begin{frame}[fragile]
+    \frametitle{Computer Algebra System}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Spell Checker}
+    Based on \alert{GNU Aspell}.
+
+    \medbreak
+
+    What are the langajes of Soth Afryka?
+
+    $\rightarrow$
+
+    What are the languages of South Africa?
+\end{frame}
+
+\section{Better than Wolfram?}
+
+\begin{frame}[fragile]
+    \frametitle{Nested question}
+
+Who is the wife of the president of the United States?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & Barack Obama\\
+        \alert{Platypus} & Michelle Obama\\
+    \end{tabular}
+
+    \medbreak
+
+    What are the birth dates of the daughters of the wife of the president of the United States?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & Barack Obama\\
+        \alert{Platypus} & Saturday, July 4, 1998 \& Sunday, June 10, 2001\\
+    \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conjunction}
+
+Who is an actor in Titanic and Inception?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & all the actors of the two movies\\
+        \alert{Platypus} & Leonardo DiCaprio\\
+    \end{tabular}
+\end{frame}
+
+\newlength{\logosize}
+\setlength{\logosize}{12pt}
+\begin{frame}[fragile]
+    \frametitle{Stay tuned}
+    \alert{\url{http://projetpp.github.io/}}
+
+    \begin{tabular}{ll}
+        \includegraphics[width=\logosize]{Twitter_logo_blue.png} & \href{https://twitter.com/ProjetPP}{https://twitter.com/ProjetPP}\\
+        \includegraphics[width=\logosize]{GitHub-Mark-32px.png} &  \href{https://github.com/ProjetPP}{https://github.com/ProjetPP}\\
+        \includegraphics[width=\logosize]{ic_email_black_18dp.png} & \href{mailto:ppp@pony.ovh}{ppp@pony.ovh}\\
+    \end{tabular}
+\end{frame}
 
 \plain{Questions?}
 
