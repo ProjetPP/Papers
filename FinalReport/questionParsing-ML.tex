@@ -28,29 +28,43 @@ We evoke some reasons not to handle proper name directly (the dictionary size wo
 
 Recognizing a number is not hard, in fact it is just checking it the characters sequence looks like numbers optionally followed by a dot and numbers. If the sequence is not a number or a ``hole'' and is not in the dictionary, the module treat it as a proper name.
 
-%\subsubsection{Transform a question into a word}
+\subsubsection{Project form a request to a vector}
 
-%The reader may wonder, a request is a triple of word, but that does not mean a request has only three elements, or only one level of recursion. Such an approach would be very poor. So we have two functions to deal with tree complexity: compact and uncompact. Compact takes a request and makes a word of it, uncompact does the reverse job. Both are matrices. It is important to notice that they are not bijective after restraining the request space to existent requests. Applying uncompact then compact should give the identity, with of course an error margin, but when compacting then decompacting we only have to find an equivalent request, i.e. the same question with another formulation. The reader will understand what it means with the algorithm for the tree reconstruction. We can recursively transform an arbitrary request tree in a word.
+The model allow an arbitrary request form, it mean we have a three with an unknown depth, and to keep the complete question information we should handle it so. But the request are triple, so it is easy to transform. First with the dictionary all word are replaced with vectors. Then we have to ascend the whole three to compute the root value.
 
-%The second approach use directly syntactic tree, to reconstruct the request we use the fusion \todo{(merge?)} operation, it takes two requests in entry and give one at output. It is a matrix. First replace all English words of the tree with the corresponding request of the dictionary, and then take two leafs with same parent and use fusion \todo{(merge?)} operation to replace the parent node with a leaf well labeled and repeat this operation till root is a leaf. Finally we compact the only remaining request. 
+Let define a matrix compact which take a triple of vector and merge them in one vector, here merging in not a intuitive operation, in fact we don't known how to merge this triple, that is why all coefficients of the matrix are unknown. To compute what we call a vector, output should be normalized.
 
-%\subsubsection{Transform a word into a request tree}
+Now by applying this operation bottom-up in the tree. Main idea is each node value represent the subtree request.
 
-%In both case we have a word representing a question. Now let us construct a request tree. First we must take $\delta>0$ a precision factor. Infinity is the lowest precision, small $\delta$ is good but can conduct to an infinite request tree, meaning the functions do not do their job well.
+
+\subsubsection{Reconstruct a request from a vector}
+
+This operation is quite symmetrical of the projection, with a matrix uncompact we can the same way obtain a vector triple from a vector, and recursively an tree appears. But the question is how to known if we should reapply the function uncompact or leave the vector as a leaf? First say in a triple predicate is never a tree, then object and subject will be let as leaf if a known word is near enough. Finally each node is replace with the nearest corresponding word of the dictionary, that mean for example for a vector in middle of a triple which is also a predicate take word with nearest predicates' vector.
+
+Defining near enough is difficult. To avoid infinite loop we will take depth of nodes into account. We must take $\delta>0$ a precision factor and $g$ a growth factor. If $d$ is depth of node $n$, near enough means distance is bounded by $\delta*g^d$ with regard of euclidean norm.  
+
+The algorithm is also :
 
 \textsc{TreeReconstruction}
-Entry $e$ is a word
+Entry $e$ is a vector
 
 \begin{itemize}
 \item (s,p,o)$\leftarrow$ uncompact(e)
-\item Find English word fp in the dictionary with nearest predicate to p
-\item Find English word fs in the dictionary with nearest subject to s
+\item Find word fp in the dictionary with nearest predicate to p
+\item Find word fs in the dictionary with nearest subject to s
 \item If distance fs to s is greater than $\delta$ fs $\leftarrow$ \textsc{TreeReconstruction}(s)
-\item Find English word fo in the dictionary with nearest subject to o
+\item Find word fo in the dictionary with nearest subject to o
 \item f distance fo to o is greater than $\delta$ fo $\leftarrow$ \textsc{TreeReconstruction}(o)
 \item Return (fs,fp,fo)
 \end{itemize}
 
+
+
+\subsubsection{Remarks}
+
+Matrix compact and uncompact are not bijective after restraining the request space to existent requests. Applying uncompact then compact should give the identity, with of course an error margin, but when compacting then uncompacting we only have to find an equivalent request, i.e. with the same meaning but with another formulation. If it were not the case it would produce exactly the same out as the input, that would be useless.
+
+\section{Learning}
 
 %\subsection{Advancement}
 
