@@ -2,7 +2,7 @@ OUT=finalReport.pdf
 
 all: $(OUT)
 
-$(OUT):*.tex bibliography.bib
+$(OUT):*.tex ../architecture.tex bibliography.bib
 	@pdflatex -halt-on-error -interaction batchmode main.tex
 	@bibtex main.aux
 	@pdflatex -halt-on-error -interaction batchmode main.tex

@@ -1,4 +1,4 @@
-SRC = pppDemo.tex architecture.tex
+SRC = pppDemo.tex ../architecture.tex
 PDF = pppDemo.pdf
 AUX = pppDemo.aux
 TEXC := xelatex
@@ -12,7 +12,7 @@ all: $(PDF)
 $(AUX):
 	$(TEXC) $(TEXC_OPTS) $(SRC)
 
-$(PDF): beamerthemem.sty $(AUX) $(SRC)
+$(PDF): beamerthemem.sty $(AUX) *.tex
 	$(TEXC) $(TEXC_OPTS) $(SRC)
 
 clean:
