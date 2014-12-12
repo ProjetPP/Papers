@@ -1,1 +1,76 @@
 \subsection{Machine Learning \--- Reformulation}
+
+\subsubsection{But}
+
+\begin{frame}
+\frametitle{But}
+Les questions posées sont mises sont formes d'arbre. Mais qu'est-ce qui nous assure que cet arbre est le plus adapté ?
+\pause
+Le module formulation traduit cet arbre pour l'adapter au mieux au module wikidata.
+
+Il change la forme et non le fond.
+\end{frame}
+
+\subsubsection{Fonctionnement}
+\begin{frame}
+\frametitle{Fonctionnement}
+On projette notre arbre dans un $\mathbb{R}$-ev : l'espace des vecteurs.
+
+\begin{defi}
+Le dictionnaire lie un mot à un triplet de vecteurs.
+
+On écrira $(m.s,m.p,m.o)$ le triplet du mot $m$.
+\end{defi}
+
+Si un mot m est à la place du sujet, prédicat ou objet on le confondra avec m.s, m.p ou m.o
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Projection}
+\begin{tikzpicture}[x=2.5cm]
+\node (s) at (1,0) {s};
+\node (p) at (3,0) {p};
+\node (r) at (2,1) {r};
+\node (a) at (2,2) {a=contracter(s,r,p)};
+\node (b) at (4,2) {b};
+\node (l) at (3,3) {l};
+\node (h) at (3,4) {h=contracter(a,l,b)};
+
+\draw (s)--(a)--(p);
+\draw (r)--(a);
+\draw (a)--(h)--(b);
+\draw (l)--(h);
+\end{tikzpicture}
+\end{frame}
+
+\subsubsection{Retrouver une requête}
+
+\begin{frame}
+\frametitle{Du vecteur à l'arbre}
+\begin{algorithm}[H]
+\DontPrintSemicolon  % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$\delta>0$ et $a\in A$}
+\KwOut{l'arbre de requête}
+$(s,p,o) \gets \text{Decontracter}(a)$\;
+Trouver m tel que $\N{m.s-s}<\delta$ est minimale \;
+\lIf{m existe}{$s \gets m.s$}
+\lElse{$s \gets C(\delta,s)$} 
+Trouver m tel que  $\N{m.o-o}<\delta$ est minimale \;
+\lIf{m exists}{$o \gets m.o$}
+\lElse{$o \gets C(\delta,o)$} 
+$p \gets \text{argmin}_m.r (\N{m.r-m.p})$\;
+\Return{$(s,r,o)$}\;
+\caption{ Du vecteur à l'arbre }
+\end{algorithm}
+
+\end{frame}
+
+\uvkuvksection{Apprendre}
+
+\begin{frame}
+\frametitle{Entrainement}
+Basé sur une distance sémantique, on calcule une distance entre le résultat réel et celui du module wikidata.
+
+On utilise le graphe formé des relations ``instance de'' qui implique une norme facile a utiliser correspondant à la distance entre 2 nœuds.
+\end{frame} 
