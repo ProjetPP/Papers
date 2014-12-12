@@ -12,7 +12,7 @@ all: $(PDF)
 $(AUX):
 	$(TEXC) $(TEXC_OPTS) $(SRC)
 
-$(PDF): beamerthemem.sty $(AUX) $(SRC)
+$(PDF): beamerthemem.sty $(AUX) *.tex
 	$(TEXC) $(TEXC_OPTS) $(SRC)
 
 clean:
