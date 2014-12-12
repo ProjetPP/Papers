@@ -66,14 +66,19 @@ Matrix compact and uncompact are not bijective after restraining the request spa
 
 \section{Learning}
 
-%\subsection{Advancement}
+Training the model can not be done easily with a classical back-propagation because we have no idea what is the best triple for a question. The solution is also to try to change a little the matrix, and see what changes improve the best the quality of result, it is however very bad in cost. 
 
-%We developed a Machine Learning module in C++\footnote{\url{https://github.com/ProjetPP/PPP-NLP-ML/}}.
+Now to compute the quality of result, i.e. the score  of the module we use a semantic distance: it's a norm depending of the mean of words. To be simple we base it of the relation graph ``instance of'' of wikidata assuming it is a directed acyclic graph. We compute the nearest common ancestor and we add the distance between this node and the two word  nodes.
 
-%The implementation of the reformulation is written in C++. However it is not finished yet. The dictionary has been generated using the clex \footnote{\url{https://github.com/Attempto/Clex}}. The three functions are functional with a multithread approach to speed-up the computation time, also backpropagation is ready to be implemented.
-%First approach of reformulation is implemented: that means taking a request tree in input, it returns another tree which should be equivalent if learning succeeded. However the learning process is not implemented yet.
+\subsection{Implementation}
 
-%\subsection{Future work}
+The module is written in C++, with threads to speed up the matrix multiplication. To interface it with the others, it is build as a shared library with python library. The dictionary has been generated using the clex \footnote{\url{https://github.com/Attempto/Clex}}. 
+
+\subsection{Future work}
+
+Learning process is not made yet. As latency with wikidata is very high (several seconds) we have to download wikidata and run it in local.
+
+Then we could think of different manners to train the model.
 
 %Finding a way to learn everything with first or second approach is the most important, as the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbor is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea, for example there exists distance sensitive hash. Kd-trees allow a search in log-time (with precomputation) ; but with dimension 50, the constant factor $2^{50}$ is too large. 
 
