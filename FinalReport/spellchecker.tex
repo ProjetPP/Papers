@@ -1,1 +1,36 @@
 \section{Spell Checker}
+
+The spell checker is a Python module\footnote{\url{https://github.com/ProjetPP/PPP-Spell-Checker}}
+which aims at correcting spelling mistakes in the sentence.
+Indeed, errors are often made by the user, and we want to avoid her/his query to fail.
+
+This module uses the \emph{GNU Aspell} library\footnote{\url{http://aspell.net/}},
+with a Python wrapper\footnote{\url{https://github.com/WojciechMula/aspell-python}}.
+Aspell is an open source software, and is the standard spell checker on GNU/Linux.
+
+Here are the steps of the algorithm.
+
+Input sentence:
+\begin{center}
+Who is the auhtor of "Le Petit Prince"?
+\end{center}
+
+Get all the words of the sentence:
+\begin{center}
+[Who, is, the, auhtor, of, Le, Petit, Prince]
+\end{center}
+
+Apply the Aspell corrector on each individual word which is not contained on a
+quotation in the original sentence:
+\begin{center}
+[Who, is, the, author, of, Le, Petit, Prince]
+\end{center}
+
+Replace the words in the sentence, taking care of keeping the punctuation as is:
+\begin{center}
+Who is the author of "Le Petit Prince"?
+\end{center}
+
+Remark that it is necessary to keep the words of a quotation unchanged, otherwise
+we would have modified "Le Petit Prince" since it is not correct English, although
+it is the correct title of the book.
