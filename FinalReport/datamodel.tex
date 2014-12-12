@@ -14,7 +14,7 @@ A basic element is called \textsl{\bf resource}. A \textsl{resource} represent a
 
 We define a \textsl{\bf list} as a finite sequence of \textsl{resources}. We identify the \textsl{list} \textsl{(a)} and the resource \textsl{a}. The use of this identification will be explained later. Moreover, a \textsl{list} must have no duplicates. For instance \textsl{[a,a]} is not a list and need to be simplify as \textsl{[a]}. We can see \textsl{lists} as finite totally ordered set.
 
-The other atomic elements are the booleans \textsl{\bf true} and \textsl{\bf false}. They are not \textsl{resources} as previously defined.
+The other atomic elements are the boolean values \textsl{\bf true} and \textsl{\bf false}. They are not \textsl{resources} as previously defined. Nevertheless, we admit \textsl{resources} "true" and "false" but we cannot apply logic operation on them.
 
 A \textsl{triple} is a 3-tuple containing in this order:
 \begin{itemize}
@@ -33,16 +33,14 @@ and we define the value of a full triple \textsl{(a,b,c)} as $$(a,b,c)=\bigwedge
 
 This structure is needed to check if a statement is true. That naturally correspond to yes/no questions.
 
-A kind of natural yes/no question which are not handled by \textsl{full triple} are existential questions: "is there a... ?". To represent them, we use a node \textsl{exists}. There is 3 node exists depending of on which value the quantification is applied. They all have the type
+A kind of natural yes/no question which are not handled by \textsl{full triple} are existential questions: "Is there a... ?". To represent them, we use a node \textsl{exists} (also denoted by $\exists$)
 \begin{center}
-\textsl{exists: list$^2\rightarrow$ bool}
+\textsl{exists: list$\rightarrow$ bool}
 \end{center}
-and the evaluations are
-\begin{itemize}
-    \item for subject: $\textsl{exists}_{\textsl{subject}}(a,b) = \exists x : (?,a,b)$
-    \item for predicate: $\textsl{exists}_{\textsl{predicate}}(a,b) = \exists x : (a,x,b)$
-    \item for object: $\textsl{exists}_{\textsl{object}}(a,b) = \exists x : (a,b,x)$
-\end{itemize} 
+and the evaluations is \textsl{exists$(l) = \begin{cases}
+\textsl{true} & \text{if }l\neq\emptyset\\
+\textsl{false} & \text{if }l=\emptyset
+\end{cases}$}. This node checks whether the list is non empty.
 
 Of course, we allow all boolean operations as node: and ($\wedge$), or ($\vee$), not ($\neg$)\dots.
 
@@ -68,13 +66,13 @@ We define to additional nodes: \textsl{sort}, \textsl{first} and \textsl{last}.
 \begin{center}
 \textsl{sort: list$\times$resource$\rightarrow$list}
 \end{center}
-This function \textsl{sort} take a list and a predicate and sort the element of the list in the increasing order according to the value returned by the predicate. More formally, let $l=[l_1,\ldots,l_n]$, $p$ a predicate and $\forall i\in\llbracket1,n\rrbracket, (l_i,p,a_i)$. Then, \textsl{sort}$(l,p) = [l_{\sigma(1)},\ldots,l_{\sigma(n)}]$ where $\sigma\in\mathfrak{S}_n$ and $\forall (i,j)\in\llbracket 1,n\rrbracket^2, \sigma(i)<\sigma(j) \Leftrightarrow a_i \leqslant a_j$. This definition need all sets are totally ordered. In this case, that is reasonable, even if order are not really clever.
+This function \textsl{sort} take a list and a predicate and sort the element of the list in the increasing order according to the value returned by the predicate. More formally, let $l=[l_1,\ldots,l_n]$, $p$ a predicate and $a_i$ such that $\forall i\in\llbracket1,n\rrbracket, (l_i,p,a_i)$. Then, \textsl{sort}$(l,p) = [l_{\sigma(1)},\ldots,l_{\sigma(n)}]$ where $\sigma\in\mathfrak{S}_n$ and $\forall (i,j)\in\llbracket 1,n\rrbracket^2, \sigma(i)<\sigma(j) \Leftrightarrow a_i \leqslant a_j$. This definition need all sets are totally ordered. In this case, that is reasonable, even if order are not really clever.
 
 All previous operations have no specification about the order.
 
-The function \textsl{first} returns the first (smallest) element of a list.
+The function \textsl{first} returns the first (smallest if the list is ordered) element of a list.
 
-The function \textsl{last} returns the last (greatest) element of a list.
+The function \textsl{last} returns the last (greatest if the list is ordered) element of a list.
 
 \subsection{Examples}
 
@@ -92,19 +90,19 @@ To clarify the previous definitions, we give some examples.
 
 \bigskip
 
-"Who was the presidents of the United States?"
+"Who were the presidents of the United States?"
 \begin{center}(United States, president, ?)\end{center}
 
 \bigskip
 
 "Who is mayor of the capital of Kreis Bergstraße?"
-\begin{center}((Kreis Bergstraße,capital,?),mayor,?)\end{center}
+\begin{center}((Kreis Bergstraße, capital, ?), mayor, ?)\end{center}
 
 \bigskip
 
 "Who are the daughters of the wife of the husband of the wife of the president of the United States?"
 \begin{center}
-(((((United States,president,?),wife,?),husband,?),wife,?),daughter,?)
+(((((United States, president,?), wife, ?), husband, ?), wife, ?), daughter, ?)
 \end{center}
 
 \bigskip
@@ -115,7 +113,7 @@ To clarify the previous definitions, we give some examples.
 \bigskip
 
 "Is there a medical treatment for ebola?"
-\begin{center}$\textsl{exists}_{\textsl{predicate}}$(ebola, medical treatlent)\end{center}
+\begin{center}\textsl{exists}((ebola, medical treatment, ?))\end{center}
 
 \bigskip
 
@@ -135,6 +133,8 @@ All normalised structures of the PPP are JSON-serializable, i.e. they are trees 
 \end{itemize}
 
 We chose to represent all normalised data as trees. We use the previous nodes and we represent the '?' in incomplete triples.
+
+The node \texttt{resource} to represent the previous abstract node \textsl{resource} and \textsl{bool}. Moreover, we identify the \textsl{resource} "true" and the boolean value \textsl{true} and the same for "false" and "false". This identification is not problematic for type because we assume modules creates only well-formed expressions.
 
 We add to the nodes we defined above some new features:
 \begin{itemize}
