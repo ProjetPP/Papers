@@ -1,0 +1,85 @@
+\label{wikidata:api-examples}
+\section{Retrieve entities}
+
+Goal: get the item \texttt{Q42} (Douglas Adams).
+
+Request: \url{http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q42&format=json&languages=en}
+
+Partial response:
+\begin{lstlisting}[language=json]
+{
+    "entities": {
+        "Q42": {
+            "id": "Q42",
+            "type": "item",
+            "aliases": {
+                "en": [{"language": "en", "value": "Douglas Noel Adams"}]
+            },
+            "labels": {
+                "en": {"language": "en",  "value": "Douglas Adams"}
+            },
+            "descriptions": {
+                "en": {"language": "en", "value": "English writer and humorist"}
+            },
+            "claims": {
+                "P31": [
+                    {
+                        "id": "Q42$F078E5B3-F9A8-480E-B7AC-D97778CBBEF9",
+                        "mainsnak": {
+                            "snaktype": "value",
+                            "property": "P31",
+                            "datatype": "wikibase-item",
+                            "datavalue": {
+                                "value": "Q5",
+                                "type": "wikibase-entityid"
+                            }
+                        },
+                        "type": "statement"
+                    }
+                ]
+            },
+            "sitelinks": {
+                "enwiki": {"site": "enwiki", "title": "Douglas Adams"}
+            }
+        }
+    }
+}
+\end{lstlisting}
+
+
+\section{Retrieve entities}
+
+Gloal: get items for the label "Douglas Adams".
+
+Request: \url{http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q42&format=json&languages=en}
+
+Partial response:
+\begin{lstlisting}[language=json]
+{
+    "searchinfo":{"search": "Douglas Adams"},
+    "search":[
+        {
+            "id": "Q42",
+            "url": "//www.wikidata.org/wiki/Q42",
+            "description": "English writer and humorist",
+            "label": "Douglas Adams"
+        }
+    ]
+}
+\end{lstlisting}
+
+
+\section{Do search with WikidataQuery}
+
+Gloal: get items that have "position held" (P39) "president of the united States of America" (Q11696).
+
+Documentation: \url{http://wdq.wmflabs.org/api_documentation.html}
+
+Request: \url{http://wdq.wmflabs.org/api?q=CLAIM[39:11696]}
+
+Partial response:
+\begin{lstlisting}[language=json]
+{
+    "items": [23, 76, 91, 207]
+}
+\end{lstlisting}
