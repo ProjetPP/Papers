@@ -4,25 +4,23 @@
 
 \begin{frame}
 \frametitle{Aim}
-Les questions posées sont mises sont formes d'arbre. Mais qu'est-ce qui nous assure que cet arbre est le plus adapté ?
+Asked questions are transformed in trees. But how to ensure the threes are well adapted to our modules?
 \pause
-Le module formulation traduit cet arbre pour l'adapter au mieux au module wikidata.
+This is a translation module !!!!
 
-Il change la forme et non le fond.
+Changing the form, not the content.
 \end{frame}
 
 \subsubsection{Operation}
 \begin{frame}
 \frametitle{Operation}
-On projette notre arbre dans un $\mathbb{R}$-ev : l'espace des vecteurs.
+Our tree is projected in a $\mathbb{R}$-vs : space of vectors.
 
 \begin{defi}
-Le dictionnaire lie un mot à un triplet de vecteurs.
+The dictionary link a word to a vector triple.
 
-On écrira $(m.s,m.p,m.o)$ le triplet du mot $m$.
+We wrote $(m.s,m.p,m.o)$ triple of word $m$.
 \end{defi}
-
-Si un mot m est à la place du sujet, prédicat ou objet on le confondra avec m.s, m.p ou m.o
 
 \end{frame}
 
@@ -32,10 +30,10 @@ Si un mot m est à la place du sujet, prédicat ou objet on le confondra avec m.
 \node (s) at (1,0) {s};
 \node (p) at (3,0) {p};
 \node (r) at (2,1) {r};
-\node (a) at (2,2) {a=contract(s,r,p)};
+\node (a) at (2,2) {a=compact(s,r,p)};
 \node (b) at (4,2) {b};
 \node (l) at (3,3) {l};
-\node (h) at (3,4) {h=contract(a,l,b)};
+\node (h) at (3,4) {h=compact(a,l,b)};
 
 \draw (s)--(a)--(p);
 \draw (r)--(a);
@@ -70,7 +68,7 @@ $p \gets \text{argmin}_m.r (\N{m.r-m.p})$\;
 
 \begin{frame}
 \frametitle{Training}
-Basé sur une distance sémantique, on calcule une distance entre le résultat réel et celui du module wikidata.
+Semantic distance.
 
-On utilise le graphe formé des relations ``instance de'' qui implique une norme facile a utiliser correspondant à la distance entre 2 nœuds.
+Use relation graph ``instance of'' from Wikidata.
 \end{frame} 
