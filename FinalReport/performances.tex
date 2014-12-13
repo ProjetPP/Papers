@@ -1,15 +1,86 @@
+\section{Overview}
+
+Our search engine, \emph{Platypus}, is able to answer correctly to a wide range
+of questions.
+
+Here is a non-exhaustive list of questions with correct answer.
+
+\subsection{Keyword questions}
+
+\begin{itemize}
+    \item Definition question.
+    \begin{verbatim}
+    Sherlock Holmes
+    \end{verbatim}
+
+    \item Depth-1 question.
+    \begin{verbatim}
+    author Les Misérables
+    \end{verbatim}
+\end{itemize}
+
+\subsection{English questions}
+
+\begin{itemize}
+    \item Definition question.
+    \begin{verbatim}
+    What is “P=NP”?
+    \end{verbatim}
+
+    \item Location question.
+    \begin{verbatim}
+    Where is the capital of New Zealand?
+    \end{verbatim}
+
+    \item Depth-1 question, with quotation marks.
+    \begin{verbatim}
+    Who is the author of “Le Petit Prince”?
+    \end{verbatim}
+\end{itemize}
+
+\subsection{Math questions}
+
+\begin{itemize}
+    \item Approximation of $\pi$ to the $42^{th}$ digit.
+    \begin{verbatim}
+    N[Pi, 42]
+    \end{verbatim}
+
+    \item Exact value of $\lim_{n\rightarrow \infty} \sum_{i=1}^n \frac{1}{i} - \log(n)$.
+    \begin{verbatim}
+    Limit[Sum[1/i, {i,1,n}]-Log[n], n->Infinity]
+    \end{verbatim}
+\end{itemize}
+
+\subsection{Weird questions}
+
+\begin{itemize}
+    \item Spelling mistake.
+    \begin{verbatim}
+    What is the cappyttal of Franse?
+    \end{verbatim}
+
+    \item Nested question.
+    \begin{verbatim}
+    Who are the daughters of the wife of the husband of the wife of the president
+    of the United States?
+    \end{verbatim}
+\end{itemize}
+
+\section{Comparison with existing tools}
+
 We study the ability of our tool to successfully answer to questions, in comparison
 to \emph{WolframAlpha}\footnote{\url{https://www.wolframalpha.com/}}, one of the best
 question answering engine.
 
-\section{Nested questions}
+\subsection{Nested questions}
 
 A nested question is a question with several level of knowledge. For instance, the
 question "What is the birth date of the first person to walk on the moon?" requires
 firstly to know that Neil \textsc{Armstrong} was the first person to walk on the
 moon and then to know that he was born on August 5, 1930.
 
-Our search engine, \emph{Platypus}, tends to be more successful than \emph{WolframAlpha}
+Our search engine tends to be more successful than \emph{WolframAlpha}
 on such questions. We explain this by the fact that nested questions are generally
 well structured and therefore good candidates for a grammatical analysis.
 
@@ -36,14 +107,14 @@ Some examples:
     \textbf{Platypus} & United States of America\\
 \end{tabular}
 
-\section{Conjunction questions}
+\subsection{Conjunction questions}
 
 A conjunction is a question which require to do either an union of sets or an intersection
 of sets. For instance, the question "Who has been a Jedi and a Sith?" requires to
 compute the intersection of the members of the Jedi organization and the Sith organization,
 to find out all the persons that has been in both organizations.
 
-Thank to the union and the intersection of our datamodel, our search engine also
+Thank to the union and the intersection of our data model, our search engine also
 provide better answers for such questions.
 
 An example:
