@@ -7,7 +7,7 @@ and small screens of phones.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.35]{WebUI.png}
+    \includegraphics[width=1\textwidth]{WebUI.png}
     \caption{The user interface}
 \end{figure}
 
@@ -15,7 +15,10 @@ It is composed of one huge text input with a button to submit
 the query and another one to get a random question. The text area
 allows both the input of questions in English or directly of triple using
 an easy notation like \texttt{(Douglas Adam, birth date,?)} to find the
-birth date of Douglas Adam. A small parser written in JavaScript converts
+birth date of Douglas Adam. A parser written as a Python module
+\footnote{\url{https://github.com/ProjetPP/PPP-datamodel-Python/blob/master/ppp\_datamodel/parsers.py}}
+using
+the PLY\footnote{\url{http://www.dabeaz.com/ply/}} library converts
 this easy to use notation into the standard format.
 
 In order to build this interface we have relied on some famous libraries 
@@ -42,3 +45,5 @@ Since Machine Learning algorithms are not ready yet, we did not focus
 on this feature of the user interface and thus it is not implemented yet;
 so far we only started implemented a backend that stores data
 (gathered via the user interface) to a SQLite database.
+This already provides us a database of questions asked by people
+outside the project.
