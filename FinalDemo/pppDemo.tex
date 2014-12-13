@@ -9,6 +9,19 @@
 \usepackage[ruled,vlined,english]{algorithm2e}
 \usetikzlibrary{arrows,automata,shapes,positioning,calc}
 
+\usepackage{float} % placement des figures
+\usepackage{amssymb} % symboles mathématiques
+\usepackage{textcomp} % flèche,  intervalle
+\usepackage{stmaryrd} % intervalle entiers
+\usepackage{graphicx} % affichage d'images
+\usepackage{url} % inclure des urls
+
+\newcommand{\first}{\texttt{First}}
+\newcommand{\last}{\texttt{Last}}
+\newcommand{\sort}{\texttt{Sort}}
+\newcommand{\triple}{\texttt{Triple}}
+\newcommand{\produ}{\texttt{Normalize}}
+
 \newenvironment{exemple}
 {\begin{exampleblock}{Exemple}}
 {\end{exampleblock}}
@@ -57,6 +70,8 @@ Thomas \textsc{Pellissier} \textsc{Tanon}
 \input{overview}
 
 \section{Question parsing}
+
+\input{questionParsing}
 
 \input{questionParsing-grammatical}
 

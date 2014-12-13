@@ -12,8 +12,8 @@
 *.nav
 *.toc
 *.snm
-*.pdf
 *.gz
 *.ps
 *.pyg
 *.vrb
+*.backup
