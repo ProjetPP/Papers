@@ -20,7 +20,7 @@ The normal form is obtained by applying some operations on the dependency tree o
 \subsubsection{Stanford dependency tree}
 \label{sdt}
 
-The Stanford Parser\footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a natural language parser developed by the \emph{Stanford Natural Language Processing Group}. It is well-documented and considered as a ``state of the art'' program. The Stanford Parser provides classical tools of NLP theory (part-of-speech  tagger, named-entity recognizer, constituency parser...) but also a very powerful dependency parser.
+The Stanford Parser\footnote{\url{http://nlp.stanford.edu/software/corenlp.shtml}} is a natural language parser developed by the \emph{Stanford Natural Language Processing Group}. It is well-documented and considered as a ``state of the art'' program. The Stanford Parser provides classical tools of NLP theory (part-of-speech  tagger, named-entity recognizer, constituency parser, etc.) but also a very powerful dependency parser.
 
 A dependency tree reflects the grammatical relationships between words in a sentence. Figure \ref{tree_one} provides an overview of such a tree in our example. For instance, the edge:
   \[\texttt{president}\xrightarrow{\texttt{det}}\texttt{the}\]
@@ -47,9 +47,9 @@ The simplification of the dependency tree consists of several operations applied
 \paragraph{Preprocessing}
 \label{pre}
 
-First of all, we perform multiword expressions recognition in order to merge all the nodes of the tree that belong to a same expression. We merge especially neighbour nodes with a same named-entity tag (for instance, \textit{United} and \textit{States} are tagged \texttt{LOCATION} and therefore merge into \textit{United States}). Other kinds of merging are performed in section \ref{lot}, using the grammatical dependencies.
+First of all, we perform multiword expressions recognition in order to merge all the nodes of the tree that belong to a same expression. We merge especially neighbour nodes with a same named-entity tag (for instance, \textit{United} and \textit{States} are tagged \texttt{LOCATION} and therefore merged into \textit{United States}). Other kinds of merging are performed in section \ref{lot}, using the grammatical dependencies.
 
-Then, the question word (Who, Where, How tall\dots) is identified and removed from the dependency tree (it will be used later to build and improve the normal form). This operation is performed using a list of about 30 question words and looking at the two first words of the sentence (they are supposed to contain the question word).
+Then, the question word (Who, Where, How tall, etc.) is identified and removed from the dependency tree (it will be used later to build and improve the normal form). This operation is performed using a list of about 30 question words and looking at the two first words of the sentence (they are supposed to contain the question word).
 
 Finally, lemmatization is applied on nouns (e.g. \textit{presidents} is mapped to \textit{president}) and nounification on verbs (e.g. \textit{born} is mapped to \textit{birth}).
 
@@ -291,7 +291,7 @@ The previous algorithm has been implemented in Python 3. We use the collapsed de
 
 We have displayed in figure \ref{exparsing} four normal forms produced by our algorithm on questions used in TREC-8 contest. These results are quite representative of what our tool can do and they are close to the expected normal forms. We have also noticed that our algorithm also supports some \textit{nominal sentences} such as \textit{``capital of England''}. 
 
-These results prove the relevance of studying the dependency tree for extracting triples. Indeed, it can be seen that the structure of the dependency tree is very close to the structure of the normal form we build. The constituency tree (as in \cite{parsetree} or \cite{parsetree2}) does not allow to handle as complex sentences as we do. Naturally, questions with complex grammatical structures are more likely to be misparsed. We also do not currently support all kinds of questions (Yes/No questions for instance).
+These results prove the relevance of studying the dependency tree to extract triples. Indeed, it can be seen that the structure of the dependency tree is very close to the structure of the normal form we build. The constituency tree (as in \cite{parsetree} or \cite{parsetree2}) does not allow to handle as complex sentences as we do. Naturally, questions with complex grammatical structures are more likely to be misparsed. We also do not currently support all kinds of questions (Yes/No questions for instance).
 
 \begin{figure}
   \begin{center}
