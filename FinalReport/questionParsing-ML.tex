@@ -50,10 +50,10 @@ Entry $e$ is a vector
 
 \begin{itemize}
 \item (s,p,o)$\leftarrow$ uncompact(e)
-\item Find word fp in the dictionary with nearest predicate to p
-\item Find word fs in the dictionary with nearest subject to s
+\item Find vector fp in the dictionary with nearest predicate to p
+\item Find vector fs in the dictionary with nearest subject to s
 \item If distance fs to s is greater than $\delta$ fs $\leftarrow$ \textsc{TreeReconstruction}(s)
-\item Find word fo in the dictionary with nearest subject to o
+\item Find vector fo in the dictionary with nearest subject to o
 \item f distance fo to o is greater than $\delta$ fo $\leftarrow$ \textsc{TreeReconstruction}(o)
 \item Return (fs,fp,fo)
 \end{itemize}

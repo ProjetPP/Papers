@@ -1,9 +1,9 @@
 \subsection{Machine Learning \--- Reformulation}
 
-\subsubsection{But}
+\subsubsection{Aim}
 
 \begin{frame}
-\frametitle{But}
+\frametitle{Aim}
 Les questions posées sont mises sont formes d'arbre. Mais qu'est-ce qui nous assure que cet arbre est le plus adapté ?
 \pause
 Le module formulation traduit cet arbre pour l'adapter au mieux au module wikidata.
@@ -11,9 +11,9 @@ Le module formulation traduit cet arbre pour l'adapter au mieux au module wikida
 Il change la forme et non le fond.
 \end{frame}
 
-\subsubsection{Fonctionnement}
+\subsubsection{Operation}
 \begin{frame}
-\frametitle{Fonctionnement}
+\frametitle{Operation}
 On projette notre arbre dans un $\mathbb{R}$-ev : l'espace des vecteurs.
 
 \begin{defi}
@@ -32,10 +32,10 @@ Si un mot m est à la place du sujet, prédicat ou objet on le confondra avec m.
 \node (s) at (1,0) {s};
 \node (p) at (3,0) {p};
 \node (r) at (2,1) {r};
-\node (a) at (2,2) {a=contracter(s,r,p)};
+\node (a) at (2,2) {a=contract(s,r,p)};
 \node (b) at (4,2) {b};
 \node (l) at (3,3) {l};
-\node (h) at (3,4) {h=contracter(a,l,b)};
+\node (h) at (3,4) {h=contract(a,l,b)};
 
 \draw (s)--(a)--(p);
 \draw (r)--(a);
@@ -44,32 +44,32 @@ Si un mot m est à la place du sujet, prédicat ou objet on le confondra avec m.
 \end{tikzpicture}
 \end{frame}
 
-\subsubsection{Retrouver une requête}
+\subsubsection{Build the request}
 
 \begin{frame}
-\frametitle{Du vecteur à l'arbre}
+\frametitle{From vector to tree}
 \begin{algorithm}[H]
 \DontPrintSemicolon  % Some LaTeX compilers require you to use \dontprintsemicolon instead
 \KwIn{$\delta>0$ et $a\in A$}
-\KwOut{l'arbre de requête}
-$(s,p,o) \gets \text{Decontracter}(a)$\;
-Trouver m tel que $\N{m.s-s}<\delta$ est minimale \;
-\lIf{m existe}{$s \gets m.s$}
+\KwOut{request tree}
+$(s,p,o) \gets \text{uncompact}(a)$\;
+Find m s.t. $\N{m.s-s}<\delta$ is minimal \;
+\lIf{m exists}{$s \gets m.s$}
 \lElse{$s \gets C(\delta,s)$} 
-Trouver m tel que  $\N{m.o-o}<\delta$ est minimale \;
+Find m s.t. $\N{m.o-o}<\delta$ is minimal \;
 \lIf{m exists}{$o \gets m.o$}
 \lElse{$o \gets C(\delta,o)$} 
 $p \gets \text{argmin}_m.r (\N{m.r-m.p})$\;
 \Return{$(s,r,o)$}\;
-\caption{ Du vecteur à l'arbre }
+\caption{ From vector to tree }
 \end{algorithm}
 
 \end{frame}
 
-\subsubsection{Apprendre}
+\subsubsection{Learn}
 
 \begin{frame}
-\frametitle{Entrainement}
+\frametitle{Training}
 Basé sur une distance sémantique, on calcule une distance entre le résultat réel et celui du module wikidata.
 
 On utilise le graphe formé des relations ``instance de'' qui implique une norme facile a utiliser correspondant à la distance entre 2 nœuds.
