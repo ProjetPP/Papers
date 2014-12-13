@@ -333,16 +333,16 @@ These results prove the relevance of studying the dependency tree to extract tri
 
   \begin{center}
     \begin{tikzpicture}
-      \node (0) at (8.5,9.5) {\textit{When did Diana and Charles get married?}};
-      \node (1) at (9,9) {$\cap$};
-      \node (2) at (6.5,8) {$\triple$};
-      \node (3) at (4.5,6.5) {Diana};
-      \node (4) at (6.5,6.5) {marriage date};
-      \node (5) at (8,6.5) {?};
-      \node (6) at (11.5,8) {$\triple$};
-      \node (7) at (9.5,6.5) {Charles};
-      \node (8) at (11.5,6.5) {marriage date};
-      \node (9) at (13,6.5) {?};
+      \node (0) at (8,9.5) {\textit{What is the continent of Fiji and Guam?}};
+      \node (1) at (8,9) {$\cap$};
+      \node (2) at (6,8) {$\triple$};
+      \node (3) at (4.5,6.5) {Fiji};
+      \node (4) at (6,6.5) {continent};
+      \node (5) at (7.5,6.5) {?};
+      \node (6) at (10,8) {$\triple$};
+      \node (7) at (8.5,6.5) {Guam};
+      \node (8) at (10,6.5) {Continent};
+      \node (9) at (11.5,6.5) {?};
 
       \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {} (2);
       \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {} (6);
@@ -367,6 +367,7 @@ These results prove the relevance of studying the dependency tree to extract tri
 \caption{Example of normal forms produced by the algorithm}
 \label{exparsing}
 \end{figure}
+
 
 %#############################################################################################################%
 %#############################################################################################################%
