@@ -108,18 +108,26 @@ Adviser: Eddy \textsc{Caron}\\[50pt]
 \chapter*{Conclusion}
     \input{conclusion}
 
-\appendix
-
 \bibliographystyle{alpha}
 \bibliography{bibliography}
 \nocite{*}
 
+\appendix
+
 \chapter{Question parsing \--- Triples tree}
 
 \begin{figure}[!ht]
-\caption{Triples in tree form}
+\input{../examples_NLP_grammatical/triple_treebis}
+\caption{Triples tree produced by the question parsing grammatical module on \textit{Where was the president of the United States born?}}
 \label{triple_tree}
-\input{../examples_NLP_grammatical/triple_tree}
+\end{figure}
+
+\chapter{Question parsing \--- Grammatical rules analysis}
+
+\begin{figure}[!ht]
+\input{../examples_NLP_grammatical/gramm_rule}
+\caption{Replacement rules used by the question parsing grammatical module (\texttt{impossible} means that the relation is not supposed to happen)}
+\label{gramm_rule}
 \end{figure}
 
 \chapter{Wikidata API examples}
