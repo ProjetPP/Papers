@@ -1,9 +1,9 @@
-We decided to implement first only a web user interface. This interface
+We decided to implement, at first, only a web user interface. This interface
 is composed of one web-page developed in HTML 5 with some
 pieces of JavaScript and CSS \footnote{\url{https://github.com/ProjetPP/PPP-WebUI/}}.
 We have taken care of having an
 interface that fits nice on both huge screens of desktop computers
-and small screens of phones.
+and small screens of phones using responsive design techniques.
 
 \begin{figure}[!ht]
     \centering
@@ -12,17 +12,17 @@ and small screens of phones.
 \end{figure}
 
 It is composed of one huge text input with a button to submit
-the query and another one to get a random question. The text area
-allows both the input of questions in English or directly of triple using
-an easy notation like \texttt{(Douglas Adam, birth date,?)} to find the
+the query and another one to get a random question from an hand written list. The text area
+allows to input question in natural language or using the data model notation like
+\texttt{(Douglas Adam, birth date,?)} to find the
 birth date of Douglas Adam. A parser written as a Python module
 \footnote{\url{https://github.com/ProjetPP/PPP-datamodel-Python/blob/master/ppp\_datamodel/parsers.py}}
 using
 the PLY\footnote{\url{http://www.dabeaz.com/ply/}} library converts
-this easy to use notation into the standard format.
+the data model notation into the internal JSON representation.
 
 In order to build this interface we have relied on some famous libraries 
-like \href{http://jquery.com/}{jQuery} and \href{http://getbootstrap.com/}{Bootstrap}.
+like jQuery\footnote{\url{http://jquery.com/}}, Bootstrap\footnote{\url{http://getbootstrap.com}}, MathJax\footnote{\url{http://www.mathjax.org/}} to display mathematics and Leaflet\footnote{\url{http://leafletjs.com/}} for maps.
 
 \section{Logging}
 
