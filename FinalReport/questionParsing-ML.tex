@@ -20,7 +20,7 @@ The choice of a 50-dimension can be modified if necessary, but taking a higher d
 
 \subsubsection{Dictionary}
 
-The dictionary defines matching between English words and vectors triple, which is the base of the process. We use triple because a word could have different meaning depending on his nature, so predicate vector for a word is not the same as subject vector which is not the same as object vector.
+The dictionary defines matching between English words and vectors triple, which is the base of the process. We use triple because a word could have different meaning depending on his nature, so predicate vector for a word is not the same as subject vector which is not the same as object vector. We will denote m.s vector-subject of worf m, m.p and m.o for predicate and object.
 
 \subsubsection{Pre- and post-treatment and treatment}
 
@@ -30,7 +30,7 @@ Recognizing a number is not hard, in fact it is just checking it the characters 
 
 \subsubsection{Project form a request to a vector}
 
-The model allow an arbitrary request form, it mean we have a three with an unknown depth, and to keep the complete question information we should handle it so. But the request are triple, so it is easy to transform. First with the dictionary all word are replaced with vectors. Then we have to ascend the whole three to compute the root value.
+The model allow an arbitrary request form, it mean we have a three with an unknown depth, and to keep the complete question information we should handle it so. But the request are triple, so it is easy to transform. First with the dictionary all word are replaced with vectors, of course we take the vector corresponding to the function of the word in the tree. Then we have to ascend the whole three to compute the root value.
 
 Let define a matrix compact which take a triple of vector and merge them in one vector, here merging in not a intuitive operation, in fact we don't known how to merge this triple, that is why all coefficients of the matrix are unknown. To compute what we call a vector, output should be normalized.
 
@@ -45,18 +45,23 @@ Defining near enough is difficult. To avoid infinite loop we will take depth of 
 
 The algorithm is also :
 
-\textsc{TreeReconstruction}
-Entry $e$ is a vector
 
-\begin{itemize}
-\item (s,p,o)$\leftarrow$ uncompact(e)
-\item Find vector fp in the dictionary with nearest predicate to p
-\item Find vector fs in the dictionary with nearest subject to s
-\item If distance fs to s is greater than $\delta$ fs $\leftarrow$ \textsc{TreeReconstruction}(s)
-\item Find vector fo in the dictionary with nearest subject to o
-\item f distance fo to o is greater than $\delta$ fo $\leftarrow$ \textsc{TreeReconstruction}(o)
-\item Return (fs,fp,fo)
-\end{itemize}
+
+\begin{algorithm}[H]
+\DontPrintSemicolon  % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\KwIn{$\delta>0$ et $a\in A$}
+\KwOut{request tree}
+$(s,p,o) \gets \text{uncompact}(a)$\;
+Find m s.t. $\N{m.s-s}<\delta$ is minimal \;
+\lIf{m exists}{$s \gets m.s$}
+\lElse{$s \gets C(\delta,s)$} 
+Find m s.t. $\N{m.o-o}<\delta$ is minimal \;
+\lIf{m exists}{$o \gets m.o$}
+\lElse{$o \gets C(\delta,o)$} 
+$p \gets \text{argmin}_m.r (\N{m.r-m.p})$\;
+\Return{$(s,r,o)$}\;
+\caption{ From vector to tree }
+\end{algorithm}
 
 
 
