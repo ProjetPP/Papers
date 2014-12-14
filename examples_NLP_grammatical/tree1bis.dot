@@ -1,0 +1,21 @@
+digraph relations {
+	"the-7"[label="the-7",shape=box];
+	"born-3"[label="born-3",shape=box];
+	"ROOT-0"[label="ROOT-0",shape=box];
+	"the-4"[label="the-4",shape=box];
+	"president-5"[label="president-5",shape=box];
+	"Where-1"[label="Where-1",shape=box];
+	"States-9"[label="States-9",shape=box];
+	"United-8"[label="United-8",shape=box];
+	"was-2"[label="was-2",shape=box];
+	"ROOT-0" -> "born-3"[label="root"];
+	"born-3" -> "Where-1"[label="advmod"];
+	"born-3" -> "was-2"[label="auxpass"];
+	"president-5" -> "the-4"[label="det"];
+	"born-3" -> "president-5"[label="nsubjpass"];
+	"States-9" -> "the-7"[label="det"];
+	"States-9" -> "United-8"[label="nn"];
+	"president-5" -> "States-9"[label="prep_of"];
+	labelloc="t"
+}
+

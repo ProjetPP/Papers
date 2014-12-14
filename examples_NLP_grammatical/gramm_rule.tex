@@ -1,0 +1,60 @@
+\footnotesize{\begin{verbatim}
+    undef     : R0
+    root      : R0
+    dep       : R1
+        aux       : remove
+            auxpass   : remove
+            cop       : impossible
+        arg       : impossible
+            agent     : R5
+            comp      : R3
+                acomp     : R3
+                ccomp     : R5
+                xcomp     : R3
+                pcomp     : R3
+                obj       : impossible
+                    dobj      : R5
+                    iobj      : R3
+                    pobj      : R3
+            subj      : impossible
+                nsubj     : R2 (if the output node is a leaf) 
+                            R5 otherwise
+                    nsubjpass    : R5
+                csubj     : impossible
+                    csubjpass    : impossible
+        cc        : impossible
+        conj      : apply global transformation (conjunction) and produce Rconj
+        expl      : remove
+        mod       : R4
+            amod      : merge (if the tag of the output node is neither ORDINAL nor JJS) 
+                        otherwise apply global transformation and produce Rspl
+            appos     : R4
+            advcl     : R4
+            det       : remove
+            predet    : remove
+            preconj   : remove
+            vmod      : R3
+            mwe       : merge
+                mark      : remove
+            advmod    : merge
+                neg       : apply global transformation (conjunction) and produce Rconj
+            rcmod     : R4
+                quantmod  : remove
+            nn        : merge
+            npadvmod  : merge
+                tmod      : R3
+            num       : merge
+            number    : merge
+            prep      : R5
+            prepc     : R5
+            poss      : R5
+            possessive: impossible
+            prt       : merge
+        parataxis : remove
+        punct     : impossible
+        ref       : impossible
+        sdep      : impossible
+            xsubj     : R3
+        goeswith  : merge
+        discourse : remove
+\end{verbatim}}

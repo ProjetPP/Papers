@@ -70,7 +70,15 @@ This function \textsl{sort} take a list and a predicate and sort the element of 
 
 The function \textsl{first} returns the first (smallest if the list is ordered) element of a list.
 
+\begin{center}
+\textsl{first: list$\rightarrow$ resource}
+\end{center}
+
 The function \textsl{last} returns the last (greatest if the list is ordered) element of a list.
+
+\begin{center}
+\textsl{last: list$\rightarrow$ resource}
+\end{center}
 
 \subsection{Examples}
 
@@ -106,7 +114,7 @@ To clarify the previous definitions, we give some examples.
 \bigskip
 
 "What is the birth date of the first president of the United States?"
-\begin{center}(first((United States, president, ?), mandate begin date), birth date, ?)\end{center}
+\begin{center}(first(sort((United States, president, ?), mandate begin date)), birth date, ?)\end{center}
 
 \bigskip
 

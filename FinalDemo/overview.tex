@@ -1,5 +1,48 @@
 \begin{frame}[fragile]
     \frametitle{Datamodel}
+    How to represent formally a natural question?    
+    
+    Tree structure:
+    \begin{itemize}
+        \item Leafs: resources
+            \begin{itemize}
+                \item Strings: "Isaac \textsc{Newton}"
+                \item Dates: 25 December 1642
+                \item Geographic coordinates: 47° 30' 18'' N ; 9° 44' 57'' E  
+                \item \ldots
+            \end{itemize}
+        \item Nodes: operations
+            \begin{itemize}
+                \item full triples: (Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian)) $\rightarrow$ true
+                \item missing: (?, birth date, 25 December 1642 (Julian)) $\rightarrow$ [Isaac \textsc{Newton}]
+                \item Union, intersection, difference, \ldots
+                \item And, or, not,
+                \item Exists,
+                \item Sort, first, last.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Datamodel \--- Examples}
+    \begin{itemize}
+        \only<1-2>{\item "Is Isaac \textsc{Newton} born the 25 December 1642 (Julian) and dead the 20 Marsh 1727 (Julian)?"
+            \onslide<2>{\begin{center}(Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian))$\bigwedge$(Isaac \textsc{Newton}, death date, 20 Marsh 1727 (Julian))\end{center}}}
+            
+        \only<3-4>{\item "Who is mayor of the capital of Kreis Bergstraße?"
+            \onslide<4>{\begin{center}((Kreis Bergstraße, capital, ?), mayor, ?)\end{center}}}
+            
+        \only<5-6>{\item "What is the birth date of the first president of Germany?"
+            \onslide<6>{\begin{center}(first(sort((Germany, president, ?)), mandate begin date), birth date, ?)\end{center}}}
+
+        \only<7-8>{\item "Is there a medical treatment for Ebola?"
+            \onslide<8>{\begin{center}\textsl{exists}((Ebola, medical treatment, ?))\end{center}}}
+
+        \only<9-10>{\item "Who are the children of Nicolas \textsc{Sarkozy} and Carla \textsc{Bruni}?"
+            \onslide<10>{\begin{center}(Nicolas \textsc{Sarkozy}, child, ?)$\bigcap$(Carla \textsc{Bruni}, child, ?)\end{center}}}
+
+
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
