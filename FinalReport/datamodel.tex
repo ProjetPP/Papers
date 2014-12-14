@@ -10,9 +10,9 @@ First, we present the data model. Its aim is to represent in a well formatted st
 
 The data model is very close of the first order logic. We will define recursively the structure.
 
-A basic element is called \textsl{\bf resource}. A \textsl{resource} represent a string, an integer, coordinates etc.. \textsl{Resources} can theoretically be in infinite number, even in uncountable number (but, for obvious reason, computer cannot handle such sets).
+A basic element is called \textsl{\bf resource}. A \textsl{resource} may represent anything in the world, a string, an integer, coordinates, a function, etc. \textsl{Resources} can theoretically be in infinite number, even in uncountable number (but, for obvious reason, computer cannot handle such sets).
 
-We define a \textsl{\bf list} as a finite sequence of \textsl{resources}. We identify the \textsl{list} \textsl{(a)} and the resource \textsl{a}. The use of this identification will be explained later. Moreover, a \textsl{list} must have no duplicates. For instance \textsl{[a,a]} is not a list and need to be simplify as \textsl{[a]}. We can see \textsl{lists} as finite totally ordered set.
+We define a \textsl{\bf list} as a finite ordered sequence of \textsl{resources}. We identify the \textsl{list} \textsl{(a)} and the resource \textsl{a}. The use of this identification will be explained later. Moreover, a \textsl{list} must have no duplicates. For instance \textsl{[a,a]} is not a list and need to be simplify as \textsl{[a]}. We can see \textsl{lists} as finite totally ordered set.
 
 The other atomic elements are the boolean values \textsl{\bf true} and \textsl{\bf false}. They are not \textsl{resources} as previously defined. Nevertheless, we admit \textsl{resources} "true" and "false" but we cannot apply logic operation on them.
 
@@ -25,11 +25,11 @@ A \textsl{triple} is a 3-tuple containing in this order:
 For instance, we can represent the sentence "Isaac \textsc{Newton} is born the 25 December 1642 (Julian)" by the triple \begin{center}(Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian))\end{center}
 
 
-The is so reasonable to associate to each triple a boolean value depending upon whether the triple state a truth or not. Generally triples contains \textsl{lists} with more than one value. So we define the node \textsl{full triple} 
+It is reasonable to associate to each triple a boolean value depending upon whether the triple is true or not. Generally triples contains \textsl{lists} with more than one value. So we define the node \textsl{full triple} 
 \begin{center}
 \textsl{full triple: list$^3\rightarrow$ bool}
 \end{center}
-and we define the value of a full triple \textsl{(a,b,c)} as $$(a,b,c)=\bigwedge_{i=1}^{n_a}\bigwedge_{j=1}^{n_b}\bigwedge_{k=1}^{n_c} (\textsl{a}_i,\textsl{b}_j,\textsl{c}_k)$$where $a=[a_1,\ldots,a_{n_a}]$, $b=[b_1,\ldots,b_{n_b}]$ and $c=[c_1,\ldots,c_{n_c}]$.
+and we define its value as $$(a,b,c)=\bigwedge_{i=1}^{n_a}\bigwedge_{j=1}^{n_b}\bigwedge_{k=1}^{n_c} (\textsl{a}_i,\textsl{b}_j,\textsl{c}_k)$$where $a=[a_1,\ldots,a_{n_a}]$, $b=[b_1,\ldots,b_{n_b}]$ and $c=[c_1,\ldots,c_{n_c}]$.
 
 This structure is needed to check if a statement is true. That naturally correspond to yes/no questions.
 
@@ -42,13 +42,13 @@ and the evaluations is \textsl{exists$(l) = \begin{cases}
 \textsl{false} & \text{if }l=\emptyset
 \end{cases}$}. This node checks whether the list is non empty.
 
-Of course, we allow all boolean operations as node: and ($\wedge$), or ($\vee$), not ($\neg$)\dots.
+Of course, we allow boolean operations as node: and ($\wedge$), or ($\vee$), not ($\neg$)\dots.
 
 \bigskip
 
-Now we define operations on \textsl{lists}.
+We also define operations on \textsl{lists}.
 
-We have natural operation like union, intersection, difference\ldots.
+We have natural operation like union, intersection, difference\ldots that do not keep the order of the \textsl{lists}.
 
 We also allow \textsl{incomplete triples}. An incomplete triple is a triple with a "hole": we know only two values and we want the list of all values which satisfy the triple. There is 3 type of required triples: for subject, predicate and object. They have the type
 \begin{center}
@@ -66,9 +66,7 @@ We define to additional nodes: \textsl{sort}, \textsl{first} and \textsl{last}.
 \begin{center}
 \textsl{sort: list$\times$resource$\rightarrow$list}
 \end{center}
-This function \textsl{sort} take a list and a predicate and sort the element of the list in the increasing order according to the value returned by the predicate. More formally, let $l=[l_1,\ldots,l_n]$, $p$ a predicate and $a_i$ such that $\forall i\in\llbracket1,n\rrbracket, (l_i,p,a_i)$. Then, \textsl{sort}$(l,p) = [l_{\sigma(1)},\ldots,l_{\sigma(n)}]$ where $\sigma\in\mathfrak{S}_n$ and $\forall (i,j)\in\llbracket 1,n\rrbracket^2, \sigma(i)<\sigma(j) \Leftrightarrow a_i \leqslant a_j$. This definition need all sets are totally ordered. In this case, that is reasonable, even if order are not really clever.
-
-All previous operations have no specification about the order.
+This function \textsl{sort} take a list and a predicate and sort the element of the list in the increasing order according to the value returned by the predicate. More formally, let $l=[l_1,\ldots,l_n]$, $p$ a predicate and $a_i$ such that $\forall i\in\llbracket1,n\rrbracket, (l_i,p,a_i)$. Then, \textsl{sort}$(l,p) = [l_{\sigma(1)},\ldots,l_{\sigma(n)}]$ where $\sigma\in\mathfrak{S}_n$ and $\forall (i,j)\in\llbracket 1,n\rrbracket^2, \sigma(i)<\sigma(j) \Leftrightarrow a_i \leqslant a_j$. This definition assume that the predicate $p$ associate to the list a totally ordered set.
 
 The function \textsl{first} returns the first (smallest if the list is ordered) element of a list.
 
@@ -132,7 +130,7 @@ All normalised structures of the PPP are JSON-serializable, i.e. they are trees 
     \item \texttt{Null}
 \end{itemize}
 
-We chose to represent all normalised data as trees. We use the previous nodes and we represent the '?' in incomplete triples.
+We chose to represent all normalised data as trees. We use the previous nodes and we have a \textsl{missing} node to represent the '?' in incomplete triples.
 
 The node \texttt{resource} to represent the previous abstract node \textsl{resource} and \textsl{bool}. Moreover, we identify the \textsl{resource} "true" and the boolean value \textsl{true} and the same for "false" and "false". This identification is not problematic for type because we assume modules creates only well-formed expressions.
 
@@ -172,9 +170,9 @@ The basic value types are
 \begin{itemize}
     \item \texttt{string},
     \item \texttt{boolean},
-    \item \texttt{time},
+    \item \texttt{time} (encoded according to ISO 8061\footnote{\url{http://www.iso.org/iso/home/standards/iso8601.htm}}),
     \item \texttt{math-latex} (for mathematical formulas written with \LaTeX),
-    \item \texttt{geo-json} (for geographic data).
+    \item \texttt{geo-json} (for geographic data, based on GeoJson\footnote{\url{http://geojson.org/}}).
 \end{itemize}
 
 \section{Communication}
@@ -222,10 +220,10 @@ We could define a linear representation for the trace, using the representation 
     \definecolor{mDarkTeal}{HTML}{23373b}
     \definecolor{mLightBrown}{HTML}{0055FF}
     \label{datamodel:struct}
-    \caption{Architecture of the PPP}
     \input{../architecture}
+    \caption{Architecture of the PPP}
 \end{figure}
 
 \section{Evolution of data model}
 
-In the first version of the data model, there were only incomplete triples. The semantic power is intrinsically lower. In particular, this model can't represent yes/no questions.
+In the first version of the data model, there were only incomplete triples. It allowed to represent most of simple open questions like "When is Douglas Adams born?" but not composed or yes/no questions because its semantic power was intrinsically lower.

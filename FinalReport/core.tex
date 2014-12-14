@@ -1,50 +1,154 @@
-\section{Communications}
+\section{Core}
 
 As its name suggests, the core is the central point of the PPP. It is
 connected to all other components — user interfaces and modules — through
 the protocol defined above, and is developed in Python\footnote{\url{https://github.com/ProjetPP/PPP-Core/}}.
 
 The core communicates with the user interfaces and the modules {\em via} HTTP:
-each time the core receives a requests from an interface, it forwards it
+each time the core receives a request from an interface, it forwards it
 to modules, using a configurable list of URL where to reach modules.
 
-An example configuration is the one we use on the production server:
+An example configuration is the one we use on the production server
+(truncated):
 
 \begin{verbatim}
 {
     "debug": false,
     "modules": [
         {
-            "name": "nlp_classical",
-            "url": "http://localhost:9000/nlp_classical/",
-            "coefficient": 1
+            "name": "questionparsing_grammatical",
+            "url": "python:ppp_questionparsing_grammatical.requesthandler:RequestHandler",
+            "coefficient": 1,
+            "filters": {
+                "whitelist": ["sentence"]
+            }
         },
         {
-            "name": "flower",
-            "url": "http://localhost:9000/flower/",
-            "coefficient": 1
+            "name": "cas",
+            "url": "http://localhost:9003/cas/",
+            "coefficient": 1,
+            "filters": {
+                "whitelist": ["sentence"]
+            }
+        },
+        {
+            "name": "spell_checker",
+            "url": "python:ppp_spell_checker.requesthandler:RequestHandler",
+            "coefficient": 1,
+            "filters": {
+                "whitelist": ["sentence"]
+            }
         },
         {
             "name": "wikidata",
             "url": "http://wikidata.ppp.pony.ovh/",
-            "coefficient": 1
+            "coefficient": 1,
+        },
+        {
+            "name": "datamodel_notation_parser",
+            "url": "python:ppp_datamodel_notation_parser.requesthandler:RequestHandler",
+            "coefficient": 1,
+            "filters": {
+                "whitelist": ["sentence"]
+            }
         }
-    ]
+    ],
+    "recursion": {
+        "max_passes": 6
+    }
 }
 \end{verbatim}
 
-The above configuration presents three modules: the Wikidata module, an example 
-Python module (which answers the question  “Who are you?”), and the Question parsing module.
+This example presents all the features of the core.
 
-The current state is that the Core is successfully able to
-communicate with all modules
-that have been written: the Wikidata module, an example Python module
-(which answers the question  “Who are you?”), and the Question parsing module.
+\subsection{Communicating with modules}
+
+\begin{verbatim}
+{
+    "name": "cas",
+    "url": "http://localhost:9003/cas/",
+    "coefficient": 1,
+    "filters": {
+        "whitelist": ["sentence"]
+    }
+}
+\end{verbatim}
+
+This is the entry to connect the core to the CAS (Computer Algebra System)
+module; that's the one which does the math. We provide a nice name (to be
+shown in logs), the URL to know how to reach it, a coefficient applied to
+the measures (see the chapter above, about the datamodel), and filters
+(see above).
+
+\subsection{Recursion}
+
+\begin{verbatim}
+    "recursion": {
+        "max_passes": 6
+    }
+\end{verbatim}
+
+This is why the core is more than just a router. Not only does it forward
+requests to modules, and forward their answers to the client, but it can
+make several passes on a request.
+
+Let's take an example: the question “What is the caiptal of India?”.
+\footnote{\url{http://ppp.pony.ovh/?lang=en&q=What+is+the+caiptal+of+India\%3F}}
+We need three passes to answer such a question.
+
+\begin{enumerate}
+    \item Spell-checking, to change it to “What is the capital of India?”
+    \item Question parsing, to change it to a machine-understable query:
+        “(India,capital,?)”
+    \item Database request to Wikidata, to get the final answer:
+        “New Delhi”
+\end{enumerate}
+
+After each pass, the router accumulates the different answers, until
+there is no new answer. Then, it stops recursing and returns everything
+to the client.
+We also define a maximum to the number of passes; but it is not necessary
+for now since modules we implemented cannot loop.
+
+\subsection{Optimizations}
+
+We implemented two optimizations in the core, that makes it faster (it is hard
+to evaluate it; probably around 25\% less time on queries with multiple
+passes).
+
+The two of them are used in this example:
+
+\begin{verbatim}
+{
+    "name": "questionparsing_grammatical",
+    "url": "python:ppp_questionparsing_grammatical.requesthandler:RequestHandler",
+    "coefficient": 1,
+    "filters": {
+        "whitelist": ["sentence"]
+    }
+}
+\end{verbatim}
+
+First, the filters (we talked about in the previous section). They can be
+either a whitelist or a blacklist of root node types, that the core will
+read in order to know if the module might do anything with such a tree.
+Obviously, the question parsing modules cannot do anything with something
+that is not a sentence, so it is useless to query them with something that
+is not a sentence.
+
+Secondly, the “python:” URL. The core can call directly Python modules
+without using HTTP; and thus avoids the cost of serializing, using IPCs
+(Inter-Process Communications), and deserializing (twice).
+However, we need to run the module in the same process as the core in
+order for this to work, so we only use it for light modules
+(questionparsing\_grammatical and the spell-checker).
 
 \section{Libraries for modules}
 
-The core also exports its class in charge of handling and parsing HTTP
-requests following the format defined in the data model.
+We also provide a library in charge of handling and parsing HTTP
+requests following the format defined in the data model. It was originally
+used in the core, but we then splitted the code, as modules can reuse
+it without a change.
 This class is an abstraction over a Python HTTP library (python-requests),
 allowing module developpers to focus on developping their actual code
 instead of handling communication.
@@ -54,22 +158,17 @@ with the Core: we only had to copy-paste the demo code
 (used for reading and printing in the console) into a function called
 by this library, and it was working as is.
 
-
-We are also planning on exporting the configuration
-library too, since we notice modules are likely to share the
+It also exports its configuration library too, since modules share the
 same way of handling configuration (a JSON file, whose path
-is given {\em via} an environment variable.
+is given {\em via} an environment variable).
 
-\section{Routing}
+For instance, here is the configuration file of the CAS module (Computer Algebra
+System), used to allow system administrators to set memory and time limits
+to computation:
 
-Besides from communicating with other pieces of the PPP, the Core will
-also route requests in such a way the power of the modules can be
-combined to give something greater.
-
-For instance, when a user will input a question like “Who is the first
-president of the United States?”, the Core will send the question to
-all modules and get a parsed tree from the Question parsing module. Then, it will forward this answer to all other modules,
-including the Wikidata module which will be able to answer.
-
-This part is not implemented, but will be next step in the implementation
-of the Core.
+\begin{verbatim}
+{
+    "max_heap": 10000000,
+    "timeout": 10
+}
+\end{verbatim}
