@@ -18,7 +18,7 @@
 
 \begin{frame}
   \frametitle{Answer extraction: Question}
-    What is the residence of the prime minister of the United Kingdom?
+    Where does the prime minister of United Kingdom live?
 \end{frame}
 
 \begin{frame}
@@ -67,7 +67,8 @@
   
   \onslide<2>{\node (7) at (11,7) [align=center] {\alert{$Q192$}\\\alert{\small (David Cameron)}};}
   \onslide<3-4>{\node (8) at (7.5,8.5) [align=center] {\alert{$Q192$}\\\alert{\small (David Cameron)}};}
-  \onslide<4-5>{\node (9) at (12.5,8.5) [align=center] {\alert{$Q169101$}\\\alert{\small (10 Downing Street)}};}
+  \onslide<4>{\node (9) at (12.5,8.5) [align=center] {\alert{$Q169101$}\\\alert{\small (10 Downing Street)}};}
+  \onslide<5>{\node (10) at (10,10) [align=center] {\alert{$Q169101$}\\\alert{\small (10 Downing Street)}};}
 
   \onslide<3-4>{\draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (8);}
   \onslide<4>{\draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (9);}
