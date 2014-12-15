@@ -150,7 +150,7 @@ Who is an actor in Titanic and Inception?
 \begin{frame}
     \tikzset{
         workpackage/.style={
-               node distance = 0.6cm,
+               node distance = 0.5cm,
                },
     }
     \frametitle{WorkPackages}
@@ -178,6 +178,7 @@ Who is an actor in Titanic and Inception?
             \node (core)            [workpackage, below of = architecture]   {Core};
             \node (sysadmin)        [workpackage, below of = core]           {System Administration};
             \node (wikidata)        [workpackage, below of = sysadmin]       {Wikidata};
+            \node (webui)           [workpackage, below of = wikidata]       {WebUI};
 
             % Edges
             \path (reformulation.west)   edge (rc.east)
@@ -198,7 +199,8 @@ Who is an actor in Titanic and Inception?
                   (core.west)            edge (vl.east)
                   (sysadmin.west)        edge (vl.east)
                   (wikidata.west)        edge (vl.east)
-                  (wikidata.west)        edge (tpt.east);
+                  (wikidata.west)        edge (tpt.east)
+                  (webui.west)           edge (tpt.east);
         \end{tikzpicture}
     \end{figure}
 \end{frame}
