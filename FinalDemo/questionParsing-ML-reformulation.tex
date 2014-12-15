@@ -4,11 +4,12 @@
 
 \begin{frame}
 \frametitle{Aim}
-Asked questions are transformed in trees. But how to ensure the trees are adapted to our modules?
+Reformulation, what is it ?
+%Asked questions are transformed in trees. But how to ensure the trees are adapted to our modules?
 \pause
-This is a translation module!!!! % TODO too many exclamation points
+This is a translation module! % TODO too many exclamation points
 
-Changing the form, not the content.
+%Changing the form, not the content.
 \end{frame}
 
 \subsubsection{Operation}
@@ -17,9 +18,9 @@ Changing the form, not the content.
 Our tree is projected in a $\mathbb{R}$-vs: space of vectors.
 
 \begin{defi}
-The dictionary associates a vector triple to a word.
+The dictionary associates a vector triple to a vectors.
 
-We wrote $(m.s,m.p,m.o)$ the triple of the vectors $m$. % TODO: what does it mean?
+%We wrote $(m.s,m.p,m.o)$ the triple of the vectors $m$. % TODO: what does it mean?
 \end{defi}
 
 \end{frame}
@@ -46,21 +47,15 @@ We wrote $(m.s,m.p,m.o)$ the triple of the vectors $m$. % TODO: what does it mea
 
 \begin{frame}
 \frametitle{From vector to tree}
-\begin{algorithm}[H]
-\DontPrintSemicolon  % Some LaTeX compilers require you to use \dontprintsemicolon instead
-\KwIn{$\delta>0$ et $a\in A$}
-\KwOut{request tree}
-$(s,p,o) \gets \text{uncompact}(a)$\;
-Find m s.t. $\N{m.s-s}<\delta$ is minimal \;
-\lIf{m exists}{$s \gets m.s$}
-\lElse{$s \gets C(\delta,s)$} 
-Find m s.t. $\N{m.o-o}<\delta$ is minimal \;
-\lIf{m exists}{$o \gets m.o$}
-\lElse{$o \gets C(\delta,o)$} 
-$p \gets \text{argmin}_m.r (\N{m.r-m.p})$\;
-\Return{$(s,r,o)$}\;
-\caption{ From vector to tree }
-\end{algorithm}
+\begin{itemize}
+\item (s,p,o)$\leftarrow$ uncompact(e)
+\item Find vector fp in the dictionary with nearest predicate to p
+\item Find vector fs in the dictionary with nearest subject to s
+\item If distance fs to s is greater than $\delta$ fs $\leftarrow$ \textsc{TreeReconstruction}(s)
+\item Find vector fo in the dictionary with nearest subject to o
+\item f distance fo to o is greater than $\delta$ fo $\leftarrow$ \textsc{TreeReconstruction}(o)
+\item Return (fs,fp,fo)
+\end{itemize}
 
 \end{frame}
 
