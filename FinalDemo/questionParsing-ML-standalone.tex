@@ -1,1 +1,55 @@
 \subsection{Machine Learning \--- Standalone}
+
+\begin{frame}[fragile]
+  \frametitle{Keywords questions}
+
+	
+	\begin{center}
+  	\alert{United States president}
+	\end{center}
+
+	\begin{center}
+  	\alert{president United States}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+Classify each word into one of the four categories: \{to ignore, subject, predicate, object \}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+	\begin{center}
+  	\alert{(United, subject) (States, subject) (president, predicate)}
+	\end{center}
+
+	\begin{center}
+  	\alert{(president, predicate) (United, subject) (States, subject)}
+	\end{center}
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Look-up table}
+
+	\begin{center}
+	Word $w \Rightarrow $ Vector $ V_w \in \mathbb{R}^{25}$
+	\end{center}
+
+	\begin{center}
+	If two words $w_1$ and $w_2$ are synonymous then, \newline
+	$$ || w_2 - w_1 ||_2 \approx 0 $$
+	
+	\end{center}
+
+
+
+\end{frame}
+
+
+
