@@ -146,3 +146,59 @@ Who is an actor in Titanic and Inception?
         \includegraphics[height=0.7\textheight]{figures/Ornithorhynchus.jpg}
     \end{center}
 \end{frame}
+
+\begin{frame}
+    \tikzset{
+        workpackage/.style={
+               node distance = 0.6cm,
+               },
+    }
+    \frametitle{WorkPackages}
+    \begin{figure}
+        \begin{tikzpicture}
+            % PPP members
+            \node (rc)                  {Raphaël \textsc{Charrondière}};
+            \node (qc)  [below of = rc] {Quentin \textsc{Cormier}};
+            \node (tc)  [below of = qc] {Tom \textsc{Cornebize}};
+            \node (yh)  [below of = tc] {Yassine \textsc{Hamoudi}};
+            \node (mc)  [below of = yh] {Marc \textsc{Chevalier}};
+            \node (vl)  [below of = mc] {Valentin \textsc{Lorentz}};
+            \node (tpt) [below of = vl] {Thomas \textsc{Pellissier} \textsc{Tanon}};
+
+            % PPP WorkPackages
+            \node (reformulation)   [workpackage, right of = rc, right=3cm]  {Reformulation};
+            \node (standalone)      [workpackage, below of = reformulation]  {Standalone};
+            \node (spellchecker)    [workpackage, below of = standalone]     {SpellChecker};
+            \node (communication)   [workpackage, below of = spellchecker]   {Communication};
+            \node (grammatical)     [workpackage, below of = communication]  {Grammatical};
+            \node (bibliography)    [workpackage, below of = grammatical]    {Bibliography};
+            \node (cas)             [workpackage, below of = bibliography]   {CAS};
+            \node (datamodel)       [workpackage, below of = cas]            {DataModel};
+            \node (architecture)    [workpackage, below of = datamodel]      {Architecture};
+            \node (core)            [workpackage, below of = architecture]   {Core};
+            \node (sysadmin)        [workpackage, below of = core]           {System Administration};
+            \node (wikidata)        [workpackage, below of = sysadmin]       {Wikidata};
+
+            % Edges
+            \path (reformulation.west)   edge (rc.east)
+                  (standalone.west)      edge (qc.east)
+                  (spellchecker.west)    edge (tc.east)
+                  (communication.west)   edge (tc.east)
+                  (grammatical.west)     edge (tc.east)
+                  (grammatical.west)     edge (yh.east)
+                  (bibliography.west)    edge (yh.east)
+                  (datamodel.west)       edge (yh.east)
+                  (datamodel.west)       edge (mc.east)
+                  (datamodel.west)       edge (vl.east)
+                  (datamodel.west)       edge (tpt.east)
+                  (architecture.west)    edge (mc.east)
+                  (architecture.west)    edge (vl.east)
+                  (architecture.west)    edge (tpt.east)
+                  (cas.west)             edge (mc.east)
+                  (core.west)            edge (vl.east)
+                  (sysadmin.west)        edge (vl.east)
+                  (wikidata.west)        edge (vl.east)
+                  (wikidata.west)        edge (tpt.east);
+        \end{tikzpicture}
+    \end{figure}
+\end{frame}
