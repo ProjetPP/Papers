@@ -43,30 +43,30 @@ This operation is quite symmetrical of the projection, with a matrix uncompact w
 
 Defining near enough is difficult. To avoid infinite loop we will take depth of nodes into account. We must take $\delta>0$ a precision factor and $g$ a growth factor. If $d$ is depth of node $n$, near enough means distance is bounded by $\delta*g^d$ with regard of euclidean norm.  
 
-The algorithm is also :
+The algorithm reconstruct is also :
 
 
 
 \begin{algorithm}[H]
     \DontPrintSemicolon  % Some LaTeX compilers require you to use \dontprintsemicolon instead
-    \KwIn{$\delta>0$ et $a\in A$}
+    \KwIn{$\delta>0$ and $a\in A$}
     \KwOut{request tree}
     $(s,p,o) \gets \text{uncompact}(a)$\;
     Find m s.t. $\N{m.s-s}<\delta$ is minimal \;
     \lIf{m exists}{
-        $s \gets m.s$
+        $s \gets m$
     }
     \lElse{
-        $s \gets C(\delta,s)$
+        $s \gets reconstruct(\delta*g,s)$
     } 
     Find m s.t. $\N{m.o-o}<\delta$ is minimal \;
     \lIf{m exists}{
-        $o \gets m.o$
+        $o \gets m$
     }
     \lElse{
-        $o \gets C(\delta,o)$
+        $o \gets reconstruct(\delta*g,o)$
     } 
-    $p \gets \underset{m}{\text{argmin}}.r (\N{m.r-m.p})$\;
+    $p \gets {\text{argmin}}_m  (\N{m.p-p})$\;
     \Return{$(s,r,o)$}\;
     \caption{From vector to tree}
 \end{algorithm}
@@ -77,7 +77,7 @@ The algorithm is also :
 
 Matrix compact and uncompact are not bijective after restraining the request space to existent requests. Applying uncompact then compact should give the identity, with of course an error margin, but when compacting then uncompacting we only have to find an equivalent request, i.e. with the same meaning but with another formulation. If it were not the case it would produce exactly the same out as the input, that would be useless.
 
-\section{Learning}
+\subsection{Learning}
 
 Training the model can not be done easily with a classical back-propagation because we have no idea what is the best triple for a question. The solution is also to try to change a little the matrix, and see what changes improve the best the quality of result, it is however very bad in cost. 
 
