@@ -1,0 +1,140 @@
+\section{Overview}
+
+Our query answering tool, \emph{Platypus}, is able to answer correctly to a wide range
+of questions.
+
+Here is a non-exhaustive list of questions with correct answers.
+
+\subsection{Keyword questions}
+
+\begin{itemize}
+    \item Definition question.
+    \begin{verbatim}
+    Sherlock Holmes
+    \end{verbatim}
+
+    \item Depth-1 question.
+    \begin{verbatim}
+    author Les Misérables
+    \end{verbatim}
+\end{itemize}
+
+\subsection{English questions}
+
+\begin{itemize}
+    \item Definition question.
+    \begin{verbatim}
+    What is “P=NP”?
+    \end{verbatim}
+
+    \item Location question.
+    \begin{verbatim}
+    Where is the capital of New Zealand?
+    \end{verbatim}
+
+    \item Depth-1 question, with quotation marks.
+    \begin{verbatim}
+    Who is the author of “Le Petit Prince”?
+    \end{verbatim}
+\end{itemize}
+
+\subsection{Math questions}
+
+\begin{itemize}
+    \item Approximation of $\pi$ to the $42^{th}$ digit.
+    \begin{verbatim}
+    N[Pi, 42]
+    \end{verbatim}
+
+    \item Exact value of $\lim_{n\rightarrow \infty} \sum_{i=1}^n \frac{1}{i} - \log(n)$.
+    \begin{verbatim}
+    Limit[Sum[1/i, {i,1,n}]-Log[n], n->Infinity]
+    \end{verbatim}
+\end{itemize}
+
+\subsection{Weird questions}
+
+\begin{itemize}
+    \item Spelling mistake.
+    \begin{verbatim}
+    What is the cappyttal of Franse?
+    \end{verbatim}
+
+    \item Nested question.
+    \begin{verbatim}
+    Who are the daughters of the wife of the husband of the wife of the president
+    of the United States?
+    \end{verbatim}
+\end{itemize}
+
+\section{Comparison with existing tools}
+
+We study the ability of our tool to successfully answer questions, in comparison
+to \emph{WolframAlpha}\footnote{\url{https://www.wolframalpha.com/}}, one of the best
+question answering engine.
+
+\subsection{Nested questions}
+
+A nested question is a question with several level of knowledge. For instance, the
+question "What is the birth date of the first person to walk on the moon?" requires
+firstly to know that Neil \textsc{Armstrong} was the first person to walk on the
+moon and then to know that he was born on August 5, 1930.
+
+Our search engine tends to be more successful than \emph{WolframAlpha}
+on such questions. We explain this by the fact that nested questions are generally
+well structured and therefore good candidates for a grammatical analysis.
+
+Some examples:
+
+\begin{tabular}{l|l}
+    \multicolumn{2}{l}{Who is the mayor of the capital of Czech Republic?} \\
+    \hline
+    \textbf{WolframAlpha} & Prague\\
+    \textbf{Platypus} & Tomáš Hudeček\\
+\end{tabular}
+
+\begin{tabular}{l|l}
+    \multicolumn{2}{l}{When was born the author of "Sherlock Holmes"?} \\
+    \hline
+    \textbf{WolframAlpha} & no result\\
+    \textbf{Platypus} & Sunday, May 22, 1859\\
+\end{tabular}
+
+\begin{tabular}{l|l}
+    \multicolumn{2}{l}{What is the citizenship of the daughters of the wife of the president of the United States?} \\
+    \hline
+    \textbf{WolframAlpha} & Barack Obama\\
+    \textbf{Platypus} & United States of America\\
+\end{tabular}
+
+\subsection{Conjunction questions}
+
+A conjunction is a question which require to do either an union of sets or an intersection
+of sets. For instance, the question "Who has been a Jedi and a Sith?" requires to
+compute the intersection of the members of the Jedi organization and the Sith organization,
+to find out all the persons that has been in both organizations.
+
+Thank to the union and the intersection operators of our data model, our search engine also
+provide better answers for such questions.
+
+An example:
+
+\begin{tabular}{l|l}
+    \multicolumn{2}{l}{Who is the actress of "Pulp Fiction" and "Kill Bill"?} \\
+    \hline
+    \textbf{WolframAlpha} & the whole casting of this two films\\
+    \textbf{Platypus} & Uma Thurman\\
+\end{tabular}
+
+
+\section{Limitations}
+
+Platypus is still limited to the knowledge of \emph{Wikidata} and to some grammatical
+structures.
+
+\emph{Wikidata} does not contain any information about measures. We are unable
+to answer to questions like "How far is the Sun?", "How small is an atom?" or
+"What is the speed of Ariane 5?".
+
+We are also unable to parse correctly sentences with a more complex structure, like
+"From which country does the jazz come from?".
