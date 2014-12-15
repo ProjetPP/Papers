@@ -205,7 +205,7 @@
 
 %#############################################################################################################%
 %#############################################################################################################%
-
+\iffalse
 \begin{frame}[fragile]
   \frametitle{Replacement rules}
 
@@ -238,7 +238,7 @@
 \end{figure}
   
 \end{frame}
-
+\fi
 %#############################################################################################################%
 %#############################################################################################################%
 
@@ -252,9 +252,9 @@
   \node (2) at (9,7) {prime minister};
   \node (3) at (9,5.5) {United Kingdom};
 
-  \draw[->, >=latex] (0) edge node[anchor=center, right] {\scriptsize{$R_0$}} (1);
-  \draw[->, >=latex] (1) edge node[anchor=center, right] {\scriptsize{$R_5$}} (2);
-  \draw[->, >=latex] (2) edge node[anchor=center, right] {\scriptsize{$R_5$}} (3); 
+  \draw[->, >=latex] (0) edge node[anchor=center, right] {\scriptsize{root}} (1);
+  \draw[->, >=latex] (1) edge node[anchor=center, right] {\scriptsize{nsubj}} (2);
+  \draw[->, >=latex] (2) edge node[anchor=center, right] {\scriptsize{prep\_of}} (3); 
   
   \onslide<1>{\draw [draw=mLightBrown] (7.5,10.5) rectangle (10.5,5);}
   \onslide<2>{\draw [draw=mLightBrown] (7.5,9) rectangle (10.5,5);}
