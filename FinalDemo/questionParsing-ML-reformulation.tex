@@ -7,8 +7,17 @@
 Reformulation, what is it ?
 %Asked questions are transformed in trees. But how to ensure the trees are adapted to our modules?
 \pause
+
+
 This is a translation module! % TODO too many exclamation points
 
+\begin{exemple}
+((United States,birth date,?),president,?) 
+
+-> 
+
+((United States,president,?),birth date,?)
+\end{exemple}
 %Changing the form, not the content.
 \end{frame}
 
@@ -19,8 +28,6 @@ Our tree is projected in a $\mathbb{R}$-vs: space of vectors.
 
 \begin{defi}
 The dictionary associates a vector triple to a vectors.
-
-%We wrote $(m.s,m.p,m.o)$ the triple of the vectors $m$. % TODO: what does it mean?
 \end{defi}
 
 \end{frame}
@@ -31,6 +38,8 @@ The dictionary associates a vector triple to a vectors.
 \node (s) at (1,0) {s};
 \node (p) at (3,0) {p};
 \node (r) at (2,1) {r};
+
+
 \node (a) at (2,2) {a=compact(s,r,p)};
 \node (b) at (4,2) {b};
 \node (l) at (3,3) {l};
@@ -47,15 +56,41 @@ The dictionary associates a vector triple to a vectors.
 
 \begin{frame}
 \frametitle{From vector to tree}
-\begin{itemize}
-\item (s,p,o)$\leftarrow$ uncompact(e)
-\item Find vector fp in the dictionary with nearest predicate to p
-\item Find vector fs in the dictionary with nearest subject to s
-\item If distance fs to s is greater than $\delta$ fs $\leftarrow$ \textsc{TreeReconstruction}(s)
-\item Find vector fo in the dictionary with nearest subject to o
-\item f distance fo to o is greater than $\delta$ fo $\leftarrow$ \textsc{TreeReconstruction}(o)
-\item Return (fs,fp,fo)
-\end{itemize}
+
+\begin{tikzpicture}[x=2.5cm]
+\node (s) at (1,0) {s};
+\node (p) at (3,0) {p};
+\node (r) at (2,0) {r};
+\node (sf) at (1,-1) {\textbf{nearest}};
+\node (pf) at (3,-1) {\textbf{nearest}};
+\node (rf) at (2,-1) {\textbf{nearest}};
+\node (auxl) at (0.5,-1) {};
+\node (auxr) at (3.5,-1) {};
+\node (sw) at (1,-2) {word};
+\node (pw) at (3,-2) {word};
+\node (rw) at (2,-2) {word};
+\node[rectangle] (b) at (2,2) {\textbf{uncompact}};
+\node (a) at (2,3) {v};
+%\node (b) at (4,2) {b};
+%\node (l) at (3,3) {l};
+%\node (h) at (3,4) {h=compact(a,l,b)};
+
+\draw[->, >=latex] (b)--(s);
+\draw[->, >=latex] (b)--(p);
+\draw[->, >=latex] (b)--(r);
+\draw[->, >=latex] (a)--(b);
+\draw[->, >=latex] (r)--(rf);
+\draw[->, >=latex] (p)--(pf);
+\draw[->, >=latex] (s)--(sf);
+\draw[->, >=latex] (rf)--(rw);
+\draw[->, >=latex] (pf)--(pw);
+\draw[->, >=latex] (sf)--(sw);
+
+\draw[->, >=latex] (auxr)|-(a);
+\draw[->, >=latex] (auxl)|-(a);
+\draw (auxr)--(pf);
+\draw (auxl)--(sf);
+\end{tikzpicture}
 
 \end{frame}
 
