@@ -46,20 +46,30 @@
 \begin{frame}[fragile]
     \frametitle{Datamodel \--- Examples}
     \begin{itemize}
-        \only<1-2>{\item "Is Isaac \textsc{Newton} born the 25 December 1642 (Julian) and dead the 20 March 1727 (Julian)?"
-            \onslide<2>{\begin{center}(Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian))$\bigwedge$(Isaac \textsc{Newton}, death date, 20 March 1727 (Julian))\end{center}}}
+        \only<1-2>{\item "Is \textsc{Newton} born in 1642 and dead in 1727?"
+            \onslide<2>{
+\begin{center}\begin{forest}
+[$\bigwedge$[\texttt{triple}[\textsc{Newton}][birth date][1642]][\texttt{triple}[\textsc{Newton}][death date][1727]]]
+\end{forest}\end{center}}}
             
         \only<3-4>{\item "Who is mayor of the capital of Kreis Bergstraße?"
-            \onslide<4>{\begin{center}((Kreis Bergstraße, capital, ?), mayor, ?)\end{center}}}
+            \onslide<4>{
+\begin{center}\begin{forest}
+[\texttt{triple}[\texttt{triple}[Kreis Bergstraße][capital][?]][mayor][?]]
+\end{forest}\end{center}}}
             
         \only<5-6>{\item "What is the birth date of the first president of Germany?"
-            \onslide<6>{\begin{center}(first(sort((Germany, president, ?), mandate begin date)), birth date, ?)\end{center}}}
+            \onslide<6>{\begin{center}\begin{forest}
+[\texttt{triple}[\texttt{first}[\texttt{sort}[\texttt{triple}[Germany][president][?]][mandate begin date]]][birth date][?]]
+\end{forest}\end{center}}}
 
         \only<7-8>{\item "Is there a medical treatment for Ebola?"
-            \onslide<8>{\begin{center}\textsl{exists}((Ebola, medical treatment, ?))\end{center}}}
+            \onslide<8>{\begin{center}\begin{forest}[\texttt{exists}[\texttt{triple}[Ebola][medical treatment][?]]]\end{forest}\end{center}}}
 
         \only<9-10>{\item "Who are the children of Nicolas \textsc{Sarkozy} and Carla \textsc{Bruni}?"
-            \onslide<10>{\begin{center}(Nicolas \textsc{Sarkozy}, child, ?)$\bigcap$(Carla \textsc{Bruni}, child, ?)\end{center}}}
+            \onslide<10>{
+\begin{center}\begin{forest}[$\bigcap$[\texttt{triple}[Nicolas \textsc{Sarkozy}][child][?]][\texttt{triple}[Carla \textsc{Bruni}][child][?]]]
+\end{forest}\end{center}}}
 
 
     \end{itemize}
