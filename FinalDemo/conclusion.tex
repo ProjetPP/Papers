@@ -12,36 +12,6 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Nested question}
-
-Who is the wife of the president of the United States?
-    \begin{tabular}{ll}
-        \alert{WolframAlpha} & Barack Obama\\
-        \alert{Platypus} & Michelle Obama\\
-    \end{tabular}
-
-    \medbreak
-
-    \onslide<2->{
-        What are the birth dates of the daughters of the wife of the president of the United States?
-        \begin{tabular}{ll}
-            \alert{WolframAlpha} & Barack Obama\\
-            \alert{Platypus} & Saturday, July 4, 1998 \& Sunday, June 10, 2001\\
-        \end{tabular}
-    }
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Conjunction}
-
-Who is the actor of Inception and Titanic?
-    \begin{tabular}{ll}
-        \alert{WolframAlpha} & all the actors of the two movies\\
-        \alert{Platypus} & Leonardo DiCaprio\\
-    \end{tabular}
-\end{frame}
-
 \subsection{Future work}
 
 \begin{frame}
@@ -85,7 +55,7 @@ Who is the actor of Inception and Titanic?
   \node (0) at (-3,2) {\textcolor{mLightBrown}{cooking recipes}};
   \node (0) at (1,1) {\textcolor{mDarkBrown}{HAL}};
   \node (0) at (5,2.5) {\textcolor{mMediumBrown}{meteo}};
-  \node (0) at (3,2) {\textcolor{mDarkTeal}{chemistry}};
+  \node (0) at (3,2) {\textcolor{mDarkTeal}{train timetable}};
   \node (0) at (0,0) {\textcolor{mMediumBrown}{programming language interpreter}};
   \node (0) at (-4,-1) {\textcolor{mMediumBrown}{cinema}};
   \node (0) at (0,-2) {\textcolor{mDarkTeal}{music}};
@@ -217,4 +187,87 @@ Who is the actor of Inception and Titanic?
                   (webui.west)           edge (tpt.east);
         \end{tikzpicture}
     \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \Huge Demo time!
+    \end{center}
+\end{frame}
+
+\begin{frame}[plain]
+    \includegraphics[width=\linewidth]{figures/demo-whoIsAlanTuring.png}
+\end{frame}
+
+\begin{frame}[plain]
+    \includegraphics[width=\linewidth]{figures/demo-whenIsAlanTuringBorn.png}
+\end{frame}
+
+\begin{frame}[plain]
+    \includegraphics[width=\linewidth]{figures/demo-whereIsEnsLyon.png}
+\end{frame}
+
+\begin{frame}
+    \begin{columns}
+    \begin{column}{0.3\textwidth}
+        \only<1->{\includegraphics[width=\linewidth]{figures/platypus.png}}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        \only<2->{\center \Huge VS}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+        \only<3->{\includegraphics[width=\linewidth]{figures/wa-logo-stacked2-large.png}}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Nested question}
+
+Who is the wife of the president of the United States?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & Barack Obama\\
+        \alert{Platypus} & Michelle Obama\\
+    \end{tabular}
+
+    \medbreak
+
+    \onslide<2->{
+        What are the birth dates of the daughters of the wife of the president of the United States?
+        \begin{tabular}{ll}
+            \alert{WolframAlpha} & Barack Obama\\
+            \alert{Platypus} & Saturday, July 4, 1998 \& Sunday, June 10, 2001\\
+        \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conjunction}
+
+Who is the actor of Inception and Titanic?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & all the actors of the two movies\\
+        \alert{Platypus} & Leonardo DiCaprio\\
+    \end{tabular}
+\end{frame}
+
+\subsection{Spell checker}
+
+\begin{frame}[fragile]
+    \frametitle{Spell Checker}
+    Based on \alert{GNU Aspell}.
+
+    \medbreak
+
+    \onslide<2->{
+        What are the langajes of Soth Afryka?
+
+        $\rightarrow$
+
+        What are the languages of South Africa?
+    }
+
+    \medbreak
+
+    \onslide<3->{\alert{120 lines of code} $\Rightarrow$ quickness of module creation.}
 \end{frame}
