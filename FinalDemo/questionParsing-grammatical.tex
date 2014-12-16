@@ -255,11 +255,25 @@
   \draw[->, >=latex] (0) edge node[anchor=center, right] {\scriptsize{root}} (1);
   \draw[->, >=latex] (1) edge node[anchor=center, right] {\scriptsize{nsubj}} (2);
   \draw[->, >=latex] (2) edge node[anchor=center, right] {\scriptsize{prep\_of}} (3); 
+
+  \onslide<1-2>{\draw [draw=orange] (15,10) rectangle (16.5,9);}
+  \onslide<1-2>{\node (20) at (15,9.5) {};}
+  \onslide<1>{\node (21) at (10.5,9.5) {};}
+  \onslide<2>{\node (22) at (10.5,8.5) {};}
+  \onslide<3>{\node (23) at (10.5,6) {};}
+  \onslide<3>{\node (24) at (14.3,8) {};}
+  \onslide<4>{\node (25) at (10.5,5.75) {};}
+  \onslide<4>{\node (26) at (12.3,6.75) {};}
   
-  \onslide<1>{\draw [draw=mLightBrown] (7.5,10.5) rectangle (10.5,5);}
-  \onslide<2>{\draw [draw=mLightBrown] (7.5,9) rectangle (10.5,5);}
-  \onslide<3>{\draw [draw=mLightBrown] (7.5,7.5) rectangle (10.5,5);}
-  \onslide<4>{\draw [draw=mLightBrown] (7.5,6) rectangle (10.5,5);}
+  \onslide<1>{\draw[->, >=latex] [draw=orange] (21) edge node[anchor=center, right, above] {\scriptsize{\produ}} (20);}
+  \onslide<2>{\draw[->, >=latex] [draw=orange] (22) edge node[anchor=center, sloped, right, above] {\scriptsize{\produ}} (20);}
+  \onslide<3>{\draw[->, >=latex] [draw=orange] (23) edge node[anchor=center, sloped, right, above] {\scriptsize{\produ}} (24);}
+  \onslide<4>{\draw[->, >=latex] [draw=orange] (25) edge node[anchor=center, sloped, right, above] {\scriptsize{\produ}} (26);}
+
+  \onslide<1>{\draw [draw=orange] (7.5,10.5) rectangle (10.5,5);}
+  \onslide<2>{\draw [draw=orange] (7.5,9) rectangle (10.5,5);}
+  \onslide<3>{\draw [draw=orange] (7.5,7.5) rectangle (10.5,5);}
+  \onslide<4>{\draw [draw=orange] (7.5,6) rectangle (10.5,5);}
 
   %%%%
   
@@ -273,7 +287,7 @@
   \draw[->, >=latex] (4) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (7); }
   \onslide<3>{\draw[->, >=latex] (4) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);}
   
-  \onslide<3>{\draw [draw=mLightBrown] (14.3,8.5) rectangle (15.2,7.8);}
+  \onslide<3>{\draw [draw=orange] (14.3,8.5) rectangle (15.2,7.8);}
 
   \onslide<4->{
   \node (8) at (14.5,8.5) {$\triple$};
@@ -287,7 +301,7 @@
 
   \onslide<4>{\draw[->, >=latex] (8) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (9);}
 
-  \onslide<4>{\draw [draw=mLightBrown] (12.3,7) rectangle (13,6.5);}
+  \onslide<4>{\draw [draw=orange] (12.3,7) rectangle (13,6.5);}
   
   \onslide<5>{\node (12) at (11.8,7) {United Kingdom};
   \draw[->, >=latex] (8) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (12);}
