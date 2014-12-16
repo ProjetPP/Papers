@@ -58,8 +58,6 @@ The dictionary associates a vector triple to a vector.
 \node (sf) at (1,-1) {\textbf{nearest}};
 \node (pf) at (3,-1) {\textbf{nearest}};
 \node (rf) at (2,-1) {\textbf{nearest}};
-\node (auxl) at (0.5,-1) {};
-\node (auxr) at (3.5,-1) {};
 \node (sw) at (1,-2) {word};
 \node (pw) at (3,-2) {word};
 \node (rw) at (2,-2) {word};
@@ -80,10 +78,8 @@ The dictionary associates a vector triple to a vector.
 \draw[->, >=latex] (pf)--(pw);
 \draw[->, >=latex] (sf)--(sw);
 
-\draw[->, >=latex] (auxr)|-(a);
-\draw[->, >=latex] (auxl)|-(a);
-\draw (auxr)--(pf);
-\draw (auxl)--(sf);
+\draw [->, >=latex] (pf.east)        to [bend right=90] (a);
+\draw [->, >=latex] (sf.west)        to [bend left=90] (a);
 \end{tikzpicture}
 
 \end{frame}
