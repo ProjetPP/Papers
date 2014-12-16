@@ -255,7 +255,21 @@
   \draw[->, >=latex] (0) edge node[anchor=center, right] {\scriptsize{root}} (1);
   \draw[->, >=latex] (1) edge node[anchor=center, right] {\scriptsize{nsubj}} (2);
   \draw[->, >=latex] (2) edge node[anchor=center, right] {\scriptsize{prep\_of}} (3); 
+
+  \onslide<1-2>{\draw [draw=mLightBrown] (15,10) rectangle (16.5,9);}
+  \onslide<1-2>{\node (20) at (15,9.5) {};}
+  \onslide<1>{\node (21) at (10.5,9.5) {};}
+  \onslide<2>{\node (22) at (10.5,8.5) {};}
+  \onslide<3>{\node (23) at (10.5,6) {};}
+  \onslide<3>{\node (24) at (14.3,8) {};}
+  \onslide<4>{\node (25) at (10.5,5.75) {};}
+  \onslide<4>{\node (26) at (12.3,6.75) {};}
   
+  \onslide<1>{\draw[->, >=latex] [draw=mLightBrown] (21) edge node[anchor=center, right, above] {\scriptsize{\produ}} (20);}
+  \onslide<2>{\draw[->, >=latex] [draw=mLightBrown] (22) edge node[anchor=center, sloped, right, above] {\scriptsize{\produ}} (20);}
+  \onslide<3>{\draw[->, >=latex] [draw=mLightBrown] (23) edge node[anchor=center, sloped, right, above] {\scriptsize{\produ}} (24);}
+  \onslide<4>{\draw[->, >=latex] [draw=mLightBrown] (25) edge node[anchor=center, sloped, right, above] {\scriptsize{\produ}} (26);}
+
   \onslide<1>{\draw [draw=mLightBrown] (7.5,10.5) rectangle (10.5,5);}
   \onslide<2>{\draw [draw=mLightBrown] (7.5,9) rectangle (10.5,5);}
   \onslide<3>{\draw [draw=mLightBrown] (7.5,7.5) rectangle (10.5,5);}
