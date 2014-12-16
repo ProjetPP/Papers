@@ -5,11 +5,11 @@
 
 	
 	\begin{center}
-  	\alert{United States president}
+  	United States president
 	\end{center}
 
 	\begin{center}
-  	\alert{president United States}
+  	president United States
 	\end{center}
 
 \end{frame}
@@ -17,7 +17,8 @@
 \begin{frame}[fragile]
 \frametitle{Goal of the module}
 
-Classify each word into one of the four categories: \newline
+\alert{Classify} each word into one of the four categories:
+
 \begin{center}
  \{to ignore, subject, predicate, object \}
 \end{center}
@@ -28,11 +29,11 @@ Classify each word into one of the four categories: \newline
 	\frametitle{Example of classification}
 
 	\begin{center}
-  	\alert{(United, subject) (States, subject) (president, predicate)}
+  	(United, subject) (States, subject) (president, predicate)
 	\end{center}
 
 	\begin{center}
-  	\alert{(president, predicate) (United, subject) (States, subject)}
+  	(president, predicate) (United, subject) (States, subject)
 	\end{center}
 
 
@@ -43,11 +44,11 @@ Classify each word into one of the four categories: \newline
   \frametitle{Look-up table}
 
 	\begin{center}
-	Word $w \Rightarrow $ Vector $ V_w \in \mathbb{R}^{25}$
+	Word $w \mapsto $ Vector $ V_w \in \mathbb{R}^{25}$
 	\end{center}
 
 	\begin{center}
-	If two words $w_1$ and $w_2$ are synonymous then, \newline
+	If two words $w_1$ and $w_2$ are \alert{synonymous} then, \newline
 	$$ \| V_{w_2} - V_{w_1} \|_2 \approx 0 $$
 	
 	\end{center}

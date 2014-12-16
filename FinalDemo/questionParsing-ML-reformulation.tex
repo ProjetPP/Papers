@@ -3,37 +3,27 @@
 \subsubsection{Aim}
 
 \begin{frame}
-\frametitle{Aim}
-Reformulation, what is it ?
-%Asked questions are transformed in trees. But how to ensure the trees are adapted to our modules?
-\pause
+\frametitle{Reformulation: a translation module}
+((United States, birth date, ?),president, ?)
 
+$\mapsto$
 
-This is a translation module! % TODO too many exclamation points
+((United States, president, ?),birth date, ?)
 
-\begin{exemple}
-((United States,birth date,?),president,?) 
-
--> 
-
-((United States,president,?),birth date,?)
-\end{exemple}
 %Changing the form, not the content.
 \end{frame}
 
 \subsubsection{Operation}
 \begin{frame}
 \frametitle{Operation}
-Our tree is projected in a $\mathbb{R}$-vs: space of vectors.
+\alert{Projection:} trees $\mapsto$ vector space.
 
-\begin{defi}
-The dictionary associates a vector triple to a vectors.
-\end{defi}
-
+The dictionary associates a vector triple to a vector.
 \end{frame}
 
 \begin{frame}
 \frametitle{Projection}
+\begin{center}
 \begin{tikzpicture}[x=2.5cm]
 \node (s) at (1,0) {s};
 \node (p) at (3,0) {p};
@@ -50,6 +40,7 @@ The dictionary associates a vector triple to a vectors.
 \draw (a)--(h)--(b);
 \draw (l)--(h);
 \end{tikzpicture}
+\end{center}
 \end{frame}
 
 \subsubsection{Build the request}
@@ -57,6 +48,7 @@ The dictionary associates a vector triple to a vectors.
 \begin{frame}
 \frametitle{From vector to tree}
 
+\begin{center}
 \begin{tikzpicture}[x=2.5cm]
 \node (s) at (1,0) {s};
 \node (p) at (3,0) {p};
@@ -64,8 +56,6 @@ The dictionary associates a vector triple to a vectors.
 \node (sf) at (1,-1) {\textbf{nearest}};
 \node (pf) at (3,-1) {\textbf{nearest}};
 \node (rf) at (2,-1) {\textbf{nearest}};
-\node (auxl) at (0.5,-1) {};
-\node (auxr) at (3.5,-1) {};
 \node (sw) at (1,-2) {word};
 \node (pw) at (3,-2) {word};
 \node (rw) at (2,-2) {word};
@@ -86,19 +76,17 @@ The dictionary associates a vector triple to a vectors.
 \draw[->, >=latex] (pf)--(pw);
 \draw[->, >=latex] (sf)--(sw);
 
-\draw[->, >=latex] (auxr)|-(a);
-\draw[->, >=latex] (auxl)|-(a);
-\draw (auxr)--(pf);
-\draw (auxl)--(sf);
+\draw [->, >=latex] (pf.east)        to [bend right=90] (a);
+\draw [->, >=latex] (sf.west)        to [bend left=90] (a);
 \end{tikzpicture}
-
+\end{center}
 \end{frame}
 
 \subsubsection{Learn}
 
 \begin{frame}
 \frametitle{Training}
-Semantic distance.
+\alert{Semantic distance.}
 
 Use relation graph ``instance of'' from Wikidata.
 \end{frame} 
