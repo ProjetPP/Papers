@@ -1,62 +1,15 @@
-Even though the Projet Pensées Profondes has not yet started to 
-answer questions, we already made a huge progress in this direction
-by having the structure of the project already up and running.
+The \emph{Projet Pensées Profondes} resulted in the creation of a query answering tool: \emph{Platypus}\footnote{\url{http://ppp.pony.ovh/}}.
 
-Few pieces remain to be implemented before we get something working as we
-expect, but we are confident in the future of the project and in its improvement
-over time.
+This engine uses innovative techniques based on the analysis of the grammatical rules existing in natural languages. It enables it to answer correctly to non-trivial questions and to outperform the cutting-edge tools of the domain such as \emph{WolframAlpha} or \emph{Google Knowledge Graph} on some questions.
 
-We keep the same organisation with few modifications, as presented in figure
-\ref{conclusion:gantt}.
-
-\begin{figure}[!ht]
-\centering
-\caption{\textsc{Gantt} diagram of the project}
-\label{conclusion:gantt}
-\begin{tikzpicture}[x=1cm, y=1cm, scale=0.8, every node/.style={scale=0.8}]
-  \begin{ganttchart}%
-  [today=10,today label=Midterm,
-today label node/.append style=%
-{anchor=north west},
-today label font=\itshape\color{red},
-today rule/.style=%
-{draw=blue, ultra thick}, 
-vgrid={*1{draw=none}, dotted},
-inline
-]{1}{24}
-    \gantttitle{October}{9}\gantttitle{November}{9}\gantttitle{December}{6} \\
-    \gantttitlelist{1,...,12}{2} \\
-    \ganttbar[name = WP0]{Global organization}{1}{24} \\
-    \ganttbar[name = WP1]{System administration}{1}{24} \\
-    \ganttbar[name = WP2]{Soft. architecture}{1}{6} \\
-    \ganttbar[name = WP3]{Communication}{1}{24} \\
-    
-    \ganttbar[name = WP5]{Router}{1}{6} \\
-    \ganttlinkedbar[link mid=0.1,name = WP5b]{Router optimization}{11}{18} \\
-    \ganttbar[name = WP6]{Web UI}{7}{10}\\
-    \ganttlinkedbar[name = WP7]{Web UI}{21}{24}\\
-    \ganttlink{WP5}{WP6}
-    \ganttbar[name = WP4]{Biblio.}{1}{3} \\
-    \ganttbar[name = WP7]{Question Parsing: Grammatical Approach}{4}{24} \\
-    \ganttbar[name = WP8a]{Question Parsing: Machine Learning 1}{4}{24} \\
-    \ganttbar[name = WP8b]{Question Parsing: Machine Learning 2}{4}{24} \\
-    \ganttbar[name = WP9]{Wikidata module}{1}{24} \\
-    \ganttbar[name = WP10]{Add-ons}{21}{24} \\
-    \ganttbar[name = WP11]{Computer Algebra System}{11}{24} \\
-    \ganttlink[link mid=.4]{WP4}{WP7}
-    \ganttlink[link mid=.2]{WP4}{WP8a}
-    \ganttlink[link mid=.14]{WP4}{WP8b}
-    \ganttlink{WP5}{WP6}
-
-  \end{ganttchart}
-\end{tikzpicture}
-\end{figure}
-
-Their are two new work packages:
-
+There still remains a huge amount of work to make it as good as it should be:
 \begin{itemize}
-    \item "Computer Algebra System", which will to implement such a system in the PPP.
-    \item "Router optimization", which will consists in writing an algorithm
-        for sorting requests by usefulness, and eventually dropping the less
-        useful ones during the computation, in order to improve performance.
+    \item A better database. Contribute to the development of \emph{Wikidata} (for example, to add measures like size, speed...). Add a module to retrieve information from other databases (maybe domain specific ones like IMdb\footnote{\url{http://www.imdb.com/}} or generalist ones like \emph{Freebase}\footnote{\url{https://www.freebase.com/}}).
+    \item Support more languages like French. Our data model and the Wikidata module is already ready to do so, the only strong blocker is the NLP part.
+    \item A better question parsing. Improve the grammatical approach, by training the \emph{Stanford} library and refining our dependency analysis. Improve the machine learning approach, by increasing our dataset.
+    \item Add new modules: cooking recipes, music knowledge, sport statistics, etc.
+    \item Improve the user interface with rich and well designed display of results.
+    \item Advertise \emph{Platypus}, maybe at first through the Wikidata community.
 \end{itemize}
+
+We produced a strong basis with a well structured architecture and a well defined data model. We are ready to welcome other developers in the \emph{Projet Pensées Profondes} to enhance \emph{Platypus}.
