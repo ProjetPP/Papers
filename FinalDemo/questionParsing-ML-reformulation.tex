@@ -25,15 +25,15 @@ The dictionary associates a vector triple to a vector.
 \frametitle{Projection}
 \begin{center}
 \begin{tikzpicture}[x=2.5cm]
-\node (s) at (1,0) {s};
-\node (p) at (3,0) {p};
-\node (r) at (2,1) {r};
+\node (s) at (1,0) {subject};
+\node (p) at (3,0) {object};
+\node (r) at (2,1) {predicate};
 
 
-\node (a) at (2,2) {a=compact(s,r,p)};
-\node (b) at (4,2) {b};
-\node (l) at (3,3) {l};
-\node (h) at (3,4) {h=compact(a,l,b)};
+\node (a) at (2,2) {anothersubject=compact(subject,predicate,object)};
+\node (b) at (4,2) {anotherobject};
+\node (l) at (3,3) {anotherpredicate};
+\node (h) at (3,4) {myrequest=compact(anothersubject,anotherpredicate,anotherobject)};
 
 \draw (s)--(a)--(p);
 \draw (r)--(a);
@@ -50,17 +50,17 @@ The dictionary associates a vector triple to a vector.
 
 \begin{center}
 \begin{tikzpicture}[x=2.5cm]
-\node (s) at (1,0) {s};
-\node (p) at (3,0) {p};
-\node (r) at (2,0) {r};
+\node (s) at (1,0) {subject};
+\node (p) at (3,0) {object};
+\node (r) at (2,0) {predicate};
 \node (sf) at (1,-1) {\textbf{nearest}};
 \node (pf) at (3,-1) {\textbf{nearest}};
 \node (rf) at (2,-1) {\textbf{nearest}};
-\node (sw) at (1,-2) {word};
-\node (pw) at (3,-2) {word};
-\node (rw) at (2,-2) {word};
+\node (sw) at (1,-2) {wordsubject};
+\node (pw) at (3,-2) {wordobject};
+\node (rw) at (2,-2) {wordpredicate};
 \node[rectangle] (b) at (2,2) {\textbf{uncompact}};
-\node (a) at (2,3) {v};
+\node (v) at (2,3) {root};
 %\node (b) at (4,2) {b};
 %\node (l) at (3,3) {l};
 %\node (h) at (3,4) {h=compact(a,l,b)};
