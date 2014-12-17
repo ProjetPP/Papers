@@ -73,9 +73,24 @@
         \only<2>{
         \item \alert{"Who is the mayor of the capital of Kreis Bergstraße?"}
           \begin{center}
-            \begin{forest}
-              [\texttt{Triple}[\texttt{Triple}[Kreis Bergstraße][capital][?]][mayor][?]]
-            \end{forest}
+            \begin{figure}
+                 \begin{tikzpicture}
+                  \node (0) at (10,10) {$\triple$};
+                  \node (1) at (10,8.5) {mayor};
+                  \node (2) at (12,8.5) {?};
+                  \node (3) at (8,8.5) {$\triple$};
+                  \node (4) at (8,7) {capital};
+                  \node (5) at (5,7) {Kreis Bergstraße};
+                  \node (6) at (10,7) {?};
+
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (3);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+                 \end{tikzpicture}
+                \end{figure}
           \end{center}}
             
         \only<3>{
