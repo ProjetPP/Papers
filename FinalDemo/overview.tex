@@ -103,10 +103,24 @@
 
         \only<4>{
           \item \alert{"Is there a medical treatment for Ebola?"}
+            \medbreak
             \begin{center}
-              \begin{forest}
-                [\texttt{Exists}[\texttt{Triple}[Ebola][medical treatment][?]]]
-              \end{forest}
+            \begin{figure}
+                \begin{tikzpicture}
+                  \node (0) at (10,8.5) {\texttt{Exists}};
+                  \node (1) at (10,7) {$\triple$};
+                  \node (11) at (7.5,5.5) {Ebola};
+                  \node (12) at (10,5.5) {medical treatment};
+                  \node (13) at (12,5.5) {?};
+
+                  \node (9) at (14,1) {}; % utilisé pour forcer le positionnement de la figure globale
+
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (1);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+                 \end{tikzpicture}
+                \end{figure}
             \end{center}}
 
         \only<5>{
