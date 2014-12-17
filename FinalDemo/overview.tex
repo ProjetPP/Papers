@@ -96,9 +96,30 @@
         \only<3>{
           \item \alert{"What is the birth date of the first president of Germany?"}
           \begin{center}
-            \begin{forest}
-              [\texttt{Triple}[\texttt{First}[\texttt{Sort}[\texttt{Triple}[Germany][president][?]][mandate begin date]]][birth date][?]]
-            \end{forest}
+            \begin{figure}
+                 \begin{tikzpicture}
+                  \node (0) at (10,10) {$\triple$};
+                  \node (1) at (10,8.5) {birth date};
+                  \node (2) at (12,8.5) {?};
+                  \node (8) at (8,8.5) {\texttt{First}};
+                  \node (9) at (8,7) {\texttt{Sort}};
+                  \node (10) at (10,5.5) {mandate};
+                  \node (3) at (6,5.5) {$\triple$};
+                  \node (4) at (6,4) {president};
+                  \node (5) at (3,4) {Germany};
+                  \node (6) at (8,4) {?};
+
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (8);
+                  \draw[->, >=latex] (8) edge node[sloped, anchor=center, above] {} (9);
+                  \draw[->, >=latex] (9) edge node[sloped, anchor=center, above] {} (10);
+                  \draw[->, >=latex] (9) edge node[sloped, anchor=center, above] {} (3);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+                 \end{tikzpicture}
+                \end{figure}
           \end{center}}
 
         \only<4>{
