@@ -1,10 +1,9 @@
 \section{Machine Learning: Window approach}
 \label{mlwindow}
 
-The goal of this module is to make an alternative to the grammatical approach, to product triples from English sentences.
+The goal of this module is to product triples from sentences and be an alternative to the grammatical approach.
 
-We used machine learning algorithms in order to produce triples from scratch, without any grammatical library like \Stanford.
-
+We used machine learning algorithms in order to produce triples from scratch, without any grammatical library like \Stanford. Our work is mainly based on the paper \cite{collobert}.
 
 Motivations come from three points:
 \begin{itemize}
@@ -13,14 +12,13 @@ Motivations come from three points:
 \item Grammatical approaches fail on keyword sentences, like "Barack Obama birth date" because this kind of sentences does not respect the syntax of English.
 \end{itemize}
 
-This work is mainly based on the paper "Natural Language Processing (almost) from Scratch" \cite{collobert}.
-
-Due to the restricted amount of time, we emphasis on keywords questions (keywords questions can't be analysis with grammatical tools) and we limit ourself to a restricted version of the data model:
+Due to the restricted amount of time, we emphasis on keywords questions (keywords questions can not be analysed with grammatical tools) and we limit ourself to a restricted version of the data model:
 \begin{itemize}
-\item Only one level of depth: for example the sentence "What is the birth date of the president of the United States?" will be converted to the triple: \hl{(president of the United States, birth date, ?)}. 
-\item We do not support \textit{types}, and connectors like \textit{first}, \textit{sort}...
+\item Only one level of depth: for example the sentence "What is the birth date of the president of the United States?" will be converted to the triple: (president of the United States, birth date, ?).
+\item We do not support other kinds of connectors such as \texttt{first}, \texttt{sort}, etc.
 \end{itemize}
-We used a look-up table and a window approach neural network as explain below. The complete package\footnote{\url{https://github.com/ProjetPP/PPP-NLP-ML-standalone/}} was written in Python 3. We use the scikit-learn library, numpy and nltk as external tool.
+
+We use a look-up table and a window approach neural network as explained below. The complete package\footnote{\url{https://github.com/ProjetPP/PPP-NLP-ML-standalone/}} was written in Python 3. We use the scikit-learn library, NumPy and NLTK as external tool.
 
 Our algorithm can be described with three components: the look up table, the window approach, and the classifier.
 
@@ -32,14 +30,13 @@ If two English words $w_1$ and $w_2$ are synonymous, then $||w_1-w_2||_2$ is sma
 The construction of the look-up table is described in \cite{collobert} and used unsupervised machine learning techniques.
 We used the pre-computed look-up table found here: \url{http://metaoptimize.com/projects/wordreprs/}
 
-We also add one parameter to know if the word starts with a capitalize character or not. Finally, words are embedded in vectors of dimension 26. 
+We also add one parameter to know if the word starts with a uppercase letter or not. Finally, words are embedded in vectors of dimension 26. 
 
 \subsubsection{Window approach}
 
-We used a window (as explain in \cite{collobert}) that focuses on one word to classify. For example, if the sentence is "What is the birth date of the president of France?", and the word to classify is "date", for a window size of 7, the window is: "is the birth \textbf{date} of the president".
+We use a window (as explain in \cite{collobert}) that focuses on one word to perform the classification. For instance, if the sentence is "What is the birth date of the president of France?", and the word to classify is "date", for a window size of 7, the window is: "is the birth \textbf{date} of the president".
 
-
-We used this window because classifier algorithms usually work with a fixed number of input parameters. 
+We use this window because classifier algorithms usually work with a fixed number of input parameters. 
 
 The window size is a meta parameter to choose. This window has to be large enough that we can decide in the context of the window in which category a word is. We used a window of size 9.
 
@@ -47,7 +44,7 @@ The window size is a meta parameter to choose. This window has to be large enoug
 
 If the question is "What is the birth date of the president of France?", and the focus of the window approach is on the word \textbf{date}, then the goal is to classify the word \textbf{date} into one of these four categories: \textit{subject}, \textit{predicate}, \textit{object}, \textit{to forget}.
 
-The classification of each word of the sentence into these four categories finally give us the desired triple.
+The classification of each word of the sentence into these four categories finally gives us the desired triple.
 
 The principle of the complete algorithm can be summarize in the figure ~\ref{sandalone:model}.
 
@@ -58,17 +55,17 @@ The principle of the complete algorithm can be summarize in the figure ~\ref{san
     \includegraphics[scale=0.5]{../NLP-standalone-images/model.png}
 \end{figure}
 
-Because we have a small data set of annotated questions (see below), we used a linear model: a linear model has the advantage to have few parameters.
+Because we have a small data set of annotated questions (see below), we use a linear model: a linear model has the advantage to have few parameters.
 For example with a window approach of size 9 and words embedded in vectors of dimension 26,  this gives us $26\times 9\times 4 = 936$ parameters to learn.
 
-In a first time we implemented our own linear classifier, but to improve the execution time, we finally used the \textit{LDA} classifier from the library scikit-learn. Few seconds of computation are now needed to train successfully the model.
+In a first time we implemented our own linear classifier, but to improve the execution time, we finally use the \textit{LDA} classifier from the library scikit-learn. Few seconds of computation are now needed to train successfully the model.
 
 \subsection{Data set}
 
 Because we used supervised algorithms, we need a data set of annotated questions, in order to learn our model.
 This data set was mostly built manually, because we did not find on the internet a data set that directly answering the problem of triple extraction.
 Build this data set is a fastidious work. Currently our data set is composed of 300 questions.
-We also wrote a script that generate keywords questions. This script gives us 500 keywords questions and make the module specialized on keywords questions.
+We also wrote a script that generate keywords questions. This script gives us 500 keywords questions and makes the module specialized on keywords questions.
 
 We now denote $\mathcal{D}_{GC}$ (for \textit{Data set Grammatically Correct}) the data set of grammatically correct questions, $\mathcal{D}_{kw}$ for the data set of generated keywords questions and $\mathcal{D}_A = \mathcal{D}_{GC} \cup  \mathcal{D}_{KW}$ the complete data set.
 
@@ -77,8 +74,9 @@ We now denote $\mathcal{D}_{GC}$ (for \textit{Data set Grammatically Correct}) t
 In this basic configuration, we can measure the accuracy of our algorithm, defined as the ratio of correctly classified words, for a specified data set.
 
 Our methodology is the following: for a specified data set $\mathcal{D} \in \{\mathcal{D}_A, \mathcal{D}_{GC}, \mathcal{D}_{KW}\}$ we split $\mathcal{D}$ in two parts: the training set and the test set (90% of the data is for the training set and 10% for the testing set). We learn our classifier with the training set and then evaluate it on the test set.
+\textcolor{red}{il y a une partie commentée ici, je sais pas si c'est volontaire}
 
-\textbf{Remark}: to compute the accuracy of one variant of our algorithm we split the data set into testing and training set randomly, and we restart an experience 50 times. This make us sure of the precision of the estimated accuracy.
+\textbf{Remark}: to compute the accuracy of one variant of our algorithm we split the data set into testing and training set randomly, and we restart an experience 50 times. This makes us sure of the precision of the estimated accuracy.
 
 \begin{center}
 \begin{tabular}{|l|c|r|}
@@ -150,5 +148,5 @@ This new feature helps improve the accuracy of the algorithm of few percents:
 
 The initial goal was to make a concurrent of the grammatical approach to transform English questions into the data model. Due to the limited amount of time, we did not succeed to improve sufficiently the accuracy of the classifier to make this approach as good as the grammatical approach.
 
-We decided then to focus on keywords questions, which are very important for a framework of question answering. For this task, whith a good data set of annotated keywords questions, this algorithm is really efficient.
+We decided then to focus on keywords questions, which are very important for a framework of question answering. For this task, with a good data set of annotated keywords questions, this algorithm is really efficient.
 
