@@ -4,10 +4,25 @@ In Natural Language Processing, sentences are often represented in a condensed a
 
 Many algorithms have been developed since fifty years with the objective of understanding the syntax and the semantic of sentences in order to extract (subject, predicate, object) triples. Two popular graph representations are widely used:
 \begin{itemize}
- \item parse structure tree. It tries to split the sentence according to its grammatical structure. Figure .. presents the parse structure tree of \textit{...}. For instance, .. means ...
- \item dependency tree. It reflects the grammatical relationships between words. The dependency tree of \textit{..} is  . The relation .. means for example that .. is ...
+ \item parse structure tree. It tries to split the sentence according to its grammatical structure. Figure \ref{ptree} presents the parse structure tree of the sentence \textit{Brian is in the kitchen}. For instance, \textit{Brian} is part of the noun phrase (NN) and is a proper noun (NNP).
+ 
+ \item dependency tree. It reflects the grammatical relationships between words. The dependency tree of \textit{Brian is in the kitchen} is displayed in figure \ref{dtree}. The relation \textit{nsubj} means that \textit{Brian} is a nominal subject for \textit{is}. 
 \end{itemize}
 Existing libraries, such as \textit{NLTK}\footnote{\url{http://www.nltk.org/}} or \textit{StanfordParser}\footnote{\url{http://nlp.stanford.edu/software/lex-parser.shtml}} provide powerful tools to extract such representations.
+
+\begin{figure}
+  \centering
+    \includegraphics[scale=0.6]{../examples_NLP_grammatical/parsetree.pdf}
+  \caption{Parse tree of \emph{Brian is in the kitchen.}}
+  \label{ptree}
+\end{figure}
+
+\begin{figure}
+  \centering
+    \includegraphics[scale=0.6]{../examples_NLP_grammatical/deptree.pdf}
+  \caption{Dependency tree of \emph{Brian is in the kitchen.}}
+  \label{dtree}
+\end{figure}
 
 We did not find a lot of detailed articles exposing procedures to get triples from the grammatical structure. For instance \cite{parsetree} tries to perform the extraction using the parse structure tree. However we believe the dependency tree could be more appropriate since it is more focused on the relations between the words than their roles in the sentence. Part \ref{gramap} presents an algorithm we have designed using the dependency tree representation.
 

@@ -1,0 +1,14 @@
+digraph relations {
+	"kitchen-5"[label="kitchen-5",shape=none];
+	"the-4"[label="the-4",shape=none];
+	"is-2"[label="is-2",shape=none];
+	"ROOT-0"[label="ROOT-0",shape=none];
+	"Brian-1"[label="Brian-1",shape=none];
+	"ROOT-0" -> "is-2"[label="root"];
+	"is-2" -> "Brian-1"[label="nsubj"];
+	"kitchen-5" -> "the-4"[label="det"];
+	"is-2" -> "kitchen-5"[label="prep_in"];
+	labelloc="t"
+	labelloc="t";
+}
+

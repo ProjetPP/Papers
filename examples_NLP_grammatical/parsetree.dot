@@ -1,0 +1,35 @@
+digraph relations {
+    "1" [label="ROOT",shape=none];
+    "2" [label="S",shape=none];
+    "3" [label="NP",shape=none];
+    "4" [label="NNP",shape=none];
+    "5" [label="Brian",shape=none];
+    "6" [label="VP",shape=none];
+    "7" [label="VBZ",shape=none];
+    "8" [label="is",shape=none];
+    "9" [label="PP",shape=none];
+    "10" [label="IN",shape=none];
+    "11" [label="in",shape=none];
+    "12" [label="NP",shape=none];
+    "13" [label="DT",shape=none];
+    "14" [label="the",shape=none];
+    "15" [label="NN",shape=none];
+    "16" [label="kitchen",shape=none];
+    "1" -> "2";
+    "2" -> "3";
+    "2" -> "6";    
+    "3" -> "4";
+    "4" -> "5";
+    "6" -> "7";  
+    "6" -> "9";
+    "7" -> "8";
+    "9" -> "10";  
+    "9" -> "12";
+    "10" -> "11";
+    "12" -> "13";
+    "12" -> "15";
+    "13" -> "14";
+    "15" -> "16";  
+	labelloc="t"
+}
+
