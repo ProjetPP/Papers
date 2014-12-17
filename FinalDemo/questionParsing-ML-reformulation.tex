@@ -4,11 +4,33 @@
 
 \begin{frame}
 \frametitle{Reformulation: a translation module}
-((United States, birth date, ?),president, ?)
 
-$\mapsto$
+\begin{figure}
+ \begin{tikzpicture}
+  \node (0) at (10,10) {$\triple$};
+  \onslide<1>{\node (1) at (10,8.5) {\alert{president}};}
+  \node (2) at (12,8.5) {?};
+  \node (3) at (8,8.5) {$\triple$};
+  \node (4) at (8,7) {United States};
+  \onslide<1>{\node (5) at (5,7) {\alert{birth date}};}
+  \node (6) at (10,7) {?};
 
-((United States, president, ?),birth date, ?)
+  \onslide<1>{\draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);}
+  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (3);
+  \onslide<1>{\draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);}
+  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+
+  \onslide<2>{\node (7) at (10,8.5) {\alert{birth date}};}
+  \onslide<2>{\node (8) at (5,7) {\alert{president}};}
+  \onslide<2>{\draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (7);}
+  \onslide<2>{\draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (8);}
+
+  \onslide<1>{\draw[<->, >= latex] [draw=mLightBrown] [bend right=50, above] (1) edge (5);}
+  
+ \end{tikzpicture}
+\end{figure}
 
 %Changing the form, not the content.
 \end{frame}
@@ -33,7 +55,7 @@ The dictionary associates a vector triple to a vector.
 \node (a) at (2,2) {anothersubject=compact(...)};
 \node (b) at (4,2) {anotherobject};
 \node (l) at (3,3) {anotherpredicate};
-\node (h) at (3,4) {myrequest=compact(...)};
+\node (h) at (3,4.5) {myrequest=compact(...)};
 
 \draw (s)--(a)--(p);
 \draw (r)--(a);
@@ -68,7 +90,7 @@ The dictionary associates a vector triple to a vector.
 \draw[->, >=latex] (b)--(s);
 \draw[->, >=latex] (b)--(p);
 \draw[->, >=latex] (b)--(r);
-\draw[->, >=latex] (a)--(b);
+%\draw[->, >=latex] (a)--(b); % WTF?
 \draw[->, >=latex] (r)--(rf);
 \draw[->, >=latex] (p)--(pf);
 \draw[->, >=latex] (s)--(sf);

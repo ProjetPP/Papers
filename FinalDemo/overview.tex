@@ -9,12 +9,12 @@
 
 \begin{frame}[fragile]
     \frametitle{Datamodel}
-    How to represent formally a natural question?
+    How to represent formally a question asked in natural language?
 
-    Tree structure.
+    \alert{Tree} structure.
 \end{frame}
 \begin{frame}[fragile]
-    \frametitle{Datamodel \--- Leafs: resources}
+    \frametitle{Datamodel \--- Leaves: resources}
         \begin{itemize}
             \item Strings: "Isaac \textsc{Newton}"
             \item Dates: 25 December 1642
@@ -25,42 +25,57 @@
 \begin{frame}[fragile]
     \frametitle{Datamodel \--- Nodes: operations}
         \begin{itemize}
-            \item full triples: (Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian)) $\rightarrow$ true
-            \item missing: (?, birth date, 25 December 1642 (Julian)) $\rightarrow$ [Isaac \textsc{Newton}]
-            \item Union, intersection, difference, \ldots
-            \item And, or, not,
-            \item Exists,
-            \item Sort, first, last.
+            \item Full \alert{triples}: (Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian)) $\rightarrow$ true
+            \item Missing: (?, birth date, 25 December 1642 (Julian)) $\rightarrow$ [Isaac \textsc{Newton}]
+            \item Union, Intersection, Difference, \ldots
+            \item And, Or, Not
+            \item Exists
+            \item Sort, First, Last
         \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Datamodel \--- Examples}
     \begin{itemize}
-        \only<1-2>{\item "Is \textsc{Newton} born in 1642 and dead in 1727?"
-            \onslide<2>{
-\begin{center}\begin{forest}
-[$\bigwedge$[\texttt{Triple}[\textsc{Newton}][birth date][1642]][\texttt{Triple}[\textsc{Newton}][death date][1727]]]
-\end{forest}\end{center}}}
+        \only<1>{
+        \item \alert{"Was \textsc{Newton} born in 1642 and died in 1727?"}
+          \begin{center}
+            \begin{forest}
+              [$\bigwedge$[\texttt{Triple}[\textsc{Newton}][birth date][1642]][\texttt{Triple}[\textsc{Newton}][death date][1727]]]
+            \end{forest}
+          \end{center}}
             
-        \only<3-4>{\item "Who is mayor of the capital of Kreis Bergstraße?"
-            \onslide<4>{
-\begin{center}\begin{forest}
-[\texttt{Triple}[\texttt{Triple}[Kreis Bergstraße][capital][?]][mayor][?]]
-\end{forest}\end{center}}}
+        \only<2>{
+        \item \alert{"Who is mayor of the capital of Kreis Bergstraße?"}
+          \begin{center}
+            \begin{forest}
+              [\texttt{Triple}[\texttt{Triple}[Kreis Bergstraße][capital][?]][mayor][?]]
+            \end{forest}
+          \end{center}}
             
-        \only<5-6>{\item "What is the birth date of the first president of Germany?"
-            \onslide<6>{\begin{center}\begin{forest}
-[\texttt{Triple}[\texttt{First}[\texttt{Sort}[\texttt{Triple}[Germany][president][?]][mandate begin date]]][birth date][?]]
-\end{forest}\end{center}}}
+        \only<3>{
+          \item \alert{"What is the birth date of the first president of Germany?"}
+          \begin{center}
+            \begin{forest}
+              [\texttt{Triple}[\texttt{First}[\texttt{Sort}[\texttt{Triple}[Germany][president][?]][mandate begin date]]][birth date][?]]
+            \end{forest}
+          \end{center}}
 
-        \only<7-8>{\item "Is there a medical treatment for Ebola?"
-            \onslide<8>{\begin{center}\begin{forest}[\texttt{Exists}[\texttt{Triple}[Ebola][medical treatment][?]]]\end{forest}\end{center}}}
+        \only<4>{
+          \item \alert{"Is there a medical treatment for Ebola?"}
+            \begin{center}
+              \begin{forest}
+                [\texttt{Exists}[\texttt{Triple}[Ebola][medical treatment][?]]]
+              \end{forest}
+            \end{center}}
 
-        \only<9-10>{\item "Who are the children of Nicolas \textsc{Sarkozy} and Carla \textsc{Bruni}?"
-            \onslide<10>{
-\begin{center}\begin{forest}[$\bigcap$[\texttt{Triple}[Nicolas \textsc{Sarkozy}][child][?]][\texttt{Triple}[Carla \textsc{Bruni}][child][?]]]
-\end{forest}\end{center}}}
+        \only<5>{
+          \item \alert{"Who are the children of François \textsc{Mitterrand} and Anne \textsc{Pingeot}?"}
+            \begin{center}
+              \begin{forest}
+                [$\bigcap$[\texttt{Triple}[François \textsc{Mitterrand}][child][?]][\texttt{Triple}[Anne \textsc{Pingeot}][child][?]]]
+              \end{forest}
+            \end{center}}
 
 
     \end{itemize}
