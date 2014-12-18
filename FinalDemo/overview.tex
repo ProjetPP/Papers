@@ -36,10 +36,9 @@
 
 \begin{frame}[fragile]
     \frametitle{Datamodel \--- Examples}
-    \begin{itemize}
-        \only<1>{
-        \item \alert{"Is Brussels the capital of Belgium and the European Union?"}
-          \begin{center}
+        \only<1>{          
+        \begin{center}
+        \alert{"Is Brussels the capital of Belgium and the European Union?"}
         \begin{figure}
           \resizebox{\linewidth}{!}{
             \begin{tikzpicture}
@@ -71,8 +70,8 @@
           \end{center}}
             
         \only<2>{
-        \item \alert{"Who is the mayor of the capital of Kreis Bergstraße?"}
           \begin{center}
+            \alert{"Who is the mayor of the capital of Kreis Bergstraße?"}
             \begin{figure}
                  \begin{tikzpicture}
                   \node (0) at (10,10) {$\triple$};
@@ -94,20 +93,20 @@
           \end{center}}
             
         \only<3>{
-          \item \alert{"What is the birth date of the first president of Germany?"}
-          \begin{center}
+         \begin{center}
+            \alert{"What is the birth date of the first president of Germany?"}
             \begin{figure}
                  \begin{tikzpicture}
                   \node (0) at (10,10) {$\triple$};
                   \node (1) at (10,8.5) {birth date};
                   \node (2) at (12,8.5) {?};
                   \node (8) at (8,8.5) {\texttt{First}};
-                  \node (9) at (8,7) {\texttt{Sort}};
-                  \node (10) at (10,5.5) {mandate};
-                  \node (3) at (6,5.5) {$\triple$};
-                  \node (4) at (6,4) {president};
-                  \node (5) at (3,4) {Germany};
-                  \node (6) at (8,4) {?};
+                  \node (9) at (8,7.5) {\texttt{Sort}};
+                  \node (10) at (10,6.5) {mandate};
+                  \node (3) at (6,6.5) {$\triple$};
+                  \node (4) at (6,5) {president};
+                  \node (5) at (3,5) {Germany};
+                  \node (6) at (8,5) {?};
 
                   \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
                   \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
@@ -123,9 +122,9 @@
           \end{center}}
 
         \only<4>{
-          \item \alert{"Is there a medical treatment for Ebola?"}
+          \begin{center}
+            \alert{"Is there a medical treatment for Ebola?"}
             \medbreak
-            \begin{center}
             \begin{figure}
                 \begin{tikzpicture}
                   \node (0) at (10,8.5) {\texttt{Exists}};
@@ -145,8 +144,8 @@
             \end{center}}
 
         \only<5>{
-          \item \alert{"Who are the children of François \textsc{Mitterrand} and Anne \textsc{Pingeot}?"}
-            \begin{center}
+          \begin{center}
+            \alert{"Who are the children of François \textsc{Mitterrand} and Anne \textsc{Pingeot}?"}
             \begin{figure}
               \resizebox{\linewidth}{!}{
                 \begin{tikzpicture}
@@ -176,6 +175,4 @@
                 \end{figure}
             \end{center}}
 
-
-    \end{itemize}
 \end{frame}
