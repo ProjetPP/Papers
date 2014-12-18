@@ -9,12 +9,12 @@
 
 \begin{frame}[fragile]
     \frametitle{Datamodel}
-    How to represent formally a natural question?
+    How to represent formally a question asked in natural language?
 
-    Tree structure.
+    \alert{Tree} structure.
 \end{frame}
 \begin{frame}[fragile]
-    \frametitle{Datamodel \--- Leafs: resources}
+    \frametitle{Datamodel \--- Leaves: resources}
         \begin{itemize}
             \item Strings: "Isaac \textsc{Newton}"
             \item Dates: 25 December 1642
@@ -25,43 +25,154 @@
 \begin{frame}[fragile]
     \frametitle{Datamodel \--- Nodes: operations}
         \begin{itemize}
-            \item full triples: (Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian)) $\rightarrow$ true
-            \item missing: (?, birth date, 25 December 1642 (Julian)) $\rightarrow$ [Isaac \textsc{Newton}]
-            \item Union, intersection, difference, \ldots
-            \item And, or, not,
-            \item Exists,
-            \item Sort, first, last.
+            \item Full \alert{triples}: (Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian)) $\rightarrow$ true
+            \item Missing: (?, birth date, 25 December 1642 (Julian)) $\rightarrow$ [Isaac \textsc{Newton}]
+            \item Union, Intersection, Difference, \ldots
+            \item And, Or, Not
+            \item Exists
+            \item Sort, First, Last
         \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Datamodel \--- Examples}
-    \begin{itemize}
-        \only<1-2>{\item "Is \textsc{Newton} born in 1642 and dead in 1727?"
-            \onslide<2>{
-\begin{center}\begin{forest}
-[$\bigwedge$[\texttt{Triple}[\textsc{Newton}][birth date][1642]][\texttt{Triple}[\textsc{Newton}][death date][1727]]]
-\end{forest}\end{center}}}
+        \only<1>{          
+        \begin{center}
+        \alert{"Is Brussels the capital of Belgium and the European Union?"}
+        \begin{figure}
+          \resizebox{\linewidth}{!}{
+            \begin{tikzpicture}
+              \node (0) at (10,8.5) {$\bigwedge$};
+              \node (1) at (7,7) {$\triple$};
+              \node (11) at (5,5.5) {Belgium};
+              \node (12) at (7,5.5) {capital};
+              \node (13) at (8.5,5.5) {Brussels};
+              
+              \node (2) at (13,7) {$\triple$};
+              \node (21) at (11,5.5) {European Union};
+              \node (22) at (13,5.5) {capital};
+              \node (23) at (15,5.5) {Brussels};
+
+              \node (9) at (14,1) {}; % utilisé pour forcer le positionnement de la figure globale
+
+              \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (1);
+              \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+              \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+              \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+              \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (2);
+              \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (21);
+              \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (22);
+              \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (23);
+             \end{tikzpicture}
+            }
+            \end{figure}
+
+          \end{center}}
             
-        \only<3-4>{\item "Who is mayor of the capital of Kreis Bergstraße?"
-            \onslide<4>{
-\begin{center}\begin{forest}
-[\texttt{Triple}[\texttt{Triple}[Kreis Bergstraße][capital][?]][mayor][?]]
-\end{forest}\end{center}}}
+        \only<2>{
+          \begin{center}
+            \alert{"Who is the mayor of the capital of Kreis Bergstraße?"}
+            \begin{figure}
+                 \begin{tikzpicture}
+                  \node (0) at (10,10) {$\triple$};
+                  \node (1) at (10,8.5) {mayor};
+                  \node (2) at (12,8.5) {?};
+                  \node (3) at (8,8.5) {$\triple$};
+                  \node (4) at (8,7) {capital};
+                  \node (5) at (5,7) {Kreis Bergstraße};
+                  \node (6) at (10,7) {?};
+
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (3);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+                 \end{tikzpicture}
+                \end{figure}
+          \end{center}}
             
-        \only<5-6>{\item "What is the birth date of the first president of Germany?"
-            \onslide<6>{\begin{center}\begin{forest}
-[\texttt{Triple}[\texttt{First}[\texttt{Sort}[\texttt{Triple}[Germany][president][?]][mandate begin date]]][birth date][?]]
-\end{forest}\end{center}}}
+        \only<3>{
+         \begin{center}
+            \alert{"What is the birth date of the first president of Germany?"}
+            \begin{figure}
+                 \begin{tikzpicture}
+                  \node (0) at (10,10) {$\triple$};
+                  \node (1) at (10,8.5) {birth date};
+                  \node (2) at (12,8.5) {?};
+                  \node (8) at (8,8.5) {\texttt{First}};
+                  \node (9) at (8,7.5) {\texttt{Sort}};
+                  \node (10) at (10,6.5) {mandate};
+                  \node (3) at (6,6.5) {$\triple$};
+                  \node (4) at (6,5) {president};
+                  \node (5) at (3,5) {Germany};
+                  \node (6) at (8,5) {?};
 
-        \only<7-8>{\item "Is there a medical treatment for Ebola?"
-            \onslide<8>{\begin{center}\begin{forest}[\texttt{Exists}[\texttt{Triple}[Ebola][medical treatment][?]]]\end{forest}\end{center}}}
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (8);
+                  \draw[->, >=latex] (8) edge node[sloped, anchor=center, above] {} (9);
+                  \draw[->, >=latex] (9) edge node[sloped, anchor=center, above] {\scriptsize{resource}} (10);
+                  \draw[->, >=latex] (9) edge node[sloped, anchor=center, above] {\scriptsize{list}} (3);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+                  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+                 \end{tikzpicture}
+                \end{figure}
+          \end{center}}
 
-        \only<9-10>{\item "Who are the children of Nicolas \textsc{Sarkozy} and Carla \textsc{Bruni}?"
-            \onslide<10>{
-\begin{center}\begin{forest}[$\bigcap$[\texttt{Triple}[Nicolas \textsc{Sarkozy}][child][?]][\texttt{Triple}[Carla \textsc{Bruni}][child][?]]]
-\end{forest}\end{center}}}
+        \only<4>{
+          \begin{center}
+            \alert{"Is there a medical treatment for Ebola?"}
+            \medbreak
+            \begin{figure}
+                \begin{tikzpicture}
+                  \node (0) at (10,8.5) {\texttt{Exists}};
+                  \node (1) at (10,7) {$\triple$};
+                  \node (11) at (7.5,5.5) {Ebola};
+                  \node (12) at (10,5.5) {medical treatment};
+                  \node (13) at (12,5.5) {?};
 
+                  \node (9) at (14,1) {}; % utilisé pour forcer le positionnement de la figure globale
 
-    \end{itemize}
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (1);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+                 \end{tikzpicture}
+                \end{figure}
+            \end{center}}
+
+        \only<5>{
+          \begin{center}
+            \alert{"Who are the children of François \textsc{Mitterrand} and Anne \textsc{Pingeot}?"}
+            \begin{figure}
+              \resizebox{\linewidth}{!}{
+                \begin{tikzpicture}
+                  \node (0) at (10,8.5) {$\bigcap$};
+                  \node (1) at (7,7) {$\triple$};
+                  \node (11) at (4.5,5.5) {François \textsc{Mitterrand}};
+                  \node (12) at (7,5.5) {child};
+                  \node (13) at (9,5.5) {?};
+                  
+                  \node (2) at (13,7) {$\triple$};
+                  \node (21) at (11,5.5) {Anne \textsc{Pingeot}};
+                  \node (22) at (13,5.5) {child};
+                  \node (23) at (15,5.5) {?};
+
+                  \node (9) at (14,1) {}; % utilisé pour forcer le positionnement de la figure globale
+
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (1);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+                  \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+                  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (2);
+                  \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (21);
+                  \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (22);
+                  \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (23);
+                 \end{tikzpicture}
+                }
+                \end{figure}
+            \end{center}}
+
 \end{frame}
