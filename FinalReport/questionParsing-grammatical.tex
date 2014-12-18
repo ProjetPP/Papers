@@ -1,7 +1,7 @@
 \section{Grammatical approach}
 \label{gramap}
 
-A natural way to map questions into normal forms is to analyse the grammatical structure of the sentence. Some algorithms use the concrete syntax tree (or parse tree) representation to perform this task (\cite{parsetree} or \cite{parsetree2}). Another popular representation is the dependency tree. This structure describes grammatical relationships between the words of the sentence. Although the dependency tree is often used in Question Answering (\cite{Zouaq1} and \cite{Zouaq2}), algorithms for producing triples from it are pretty rare and poorly described.
+A natural way to map questions into normal forms is to analyse the grammatical structure of the sentence. Some algorithms use the concrete syntax tree (or parse tree) representation to perform this task (\cite{parsetree} or \cite{parsetree2}). Another popular representation is the dependency tree. This structure describes grammatical relationships between the words of the sentence. Although the dependency tree is often used in Question Answering (\cite{Zouaq1} and \cite{Zouaq2}), algorithms to produce triples from it are pretty rare and poorly described.
 
 The aim of this module is to provide a full algorithm that maps questions into normal forms, mainly using the dependency tree representation output by the Stanford Parser (see \cite{stanfordmanual}). We will focus on factoid \textit{wh-}questions.
 
@@ -51,7 +51,12 @@ First of all, we perform multiword expressions recognition in order to merge all
 
 Then, the question word (Who, Where, How tall, etc.) is identified and removed from the dependency tree (it will be used later to build and improve the normal form). This operation is performed using a list of about 30 question words and looking at the two first words of the sentence (they are supposed to contain the question word).
 
-Finally, lemmatization is applied on nouns (e.g. \textit{presidents} is mapped to \textit{president}) and nounification on verbs (e.g. \textit{born} is mapped to \textit{birth}).
+Finally, lemmatization is applied on nouns (it puts all nouns in singular form, e.g. \textit{presidents} is mapped to \textit{president}) and nounification on verbs (it transforms all verbs into some related noun, e.g. \textit{born} is mapped to \textit{birth}).
+These two operations are performed thanks to the \emph{NLTK} library\footnote{\url{http://www.nltk.org/}}:
+\begin{itemize}
+    \item Lemmatization is made by the \emph{WordNetLemmatizer} class.
+    \item Nounification is more complex. It uses \emph{NLTK} and its synonym sets to find all the nouns related to the verb. Then, it keeps only the nouns which have the most occuring stem (using the Porter stemmer algorithm of \emph{NLTK}). Finally, it returns the most occuring noun.
+\end{itemize}
 
 Preprocessing is illustrated in figure \ref{tree_two}.
 
