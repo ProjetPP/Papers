@@ -49,6 +49,15 @@
           Grammatical
     };
     \node[module,
+          above of=core,
+          above=1cm,
+          ] (webui) {
+        \begin{tabular}{c}
+        Web User\\
+        Interface
+        \end{tabular}
+    };
+    \node[module,
           below of=grammatical,
           ] (standalone) {
         \begin{tabular}{c}
@@ -65,27 +74,23 @@
     \node[module,
           left of=core,
           left=\moduledistance,
-          ] (wikidata) {
-        Wikidata
-    };
-    \node[module,
-          above of=wikidata,
-          ] (cas) {
-        Computer Algebra
-    };
-    \node[module,
-          below of=wikidata,
           ] (spellchecker) {
         Spell-checker
     };
     \node[module,
-          above of=core,
-          above=1cm,
-          ] (webui) {
-        \begin{tabular}{c}
-        Web User\\
-        Interface
-        \end{tabular}
+          above of=spellchecker,
+          ] (cas) {
+        Computer Algebra
+    };
+    \node[module,
+          above of=cas,
+          ] (wikidata) {
+        Wikidata
+    };
+    \node[module,
+          below of=spellchecker,
+          ] (oeis) {
+        OEIS
     };
     \node[module,
           above of=reformulation,
@@ -94,11 +99,12 @@
         Logging backend
     };
     \draw[mLightBrown,thick] ($(reformulation.north west)+(-0.3,0.3)$)  rectangle node[yshift=-2.5cm,below] {Question Parsing} ($(standalone.south east)+(0.3,-0.3)$);
-    \draw[mLightBrown,thick] ($(cas.north west)+(-0.3,0.3)$)  rectangle node[yshift=-2.5cm,below] {Other modules} ($(spellchecker.south east)+(0.3,-0.3)$);
+    \draw[mLightBrown,thick] ($(wikidata.north west)+(-0.3,0.3)$)  rectangle node[yshift=-3cm,below] {Other modules} ($(oeis.south east)+(0.3,-0.3)$);
 
     \draw [darrow] (core)          -- node{} (cas.south east);
-    \draw [darrow] (core)          -- node{} (wikidata.east);
-    \draw [darrow] (core)          -- node{} (spellchecker.north east);
+    \draw [darrow] (core)          -- node{} (wikidata.south east);
+    \draw [darrow] (core)          -- node{} (spellchecker.east);
+    \draw [darrow] (core)          -- node{} (oeis.north east);
     \draw [darrow] (core)          -- node{} (reformulation.south west);
     \draw [darrow] (core)          -- node{} (grammatical.west);
     \draw [darrow] (core)          -- node{} (standalone.north west);
