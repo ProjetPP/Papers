@@ -90,7 +90,7 @@ The dictionary associates a vector triple to a vector.
 \draw[->, >=latex] (b)--(s);
 \draw[->, >=latex] (b)--(p);
 \draw[->, >=latex] (b)--(r);
-%\draw[->, >=latex] (a)--(b); % WTF?
+\draw[->, >=latex] (v)--(b); % WTF?
 \draw[->, >=latex] (r)--(rf);
 \draw[->, >=latex] (p)--(pf);
 \draw[->, >=latex] (s)--(sf);
@@ -98,8 +98,8 @@ The dictionary associates a vector triple to a vector.
 \draw[->, >=latex] (pf)--(pw);
 \draw[->, >=latex] (sf)--(sw);
 
-\draw [->, >=latex] (pf.east)        to [bend right=90] (a);
-\draw [->, >=latex] (sf.west)        to [bend left=90] (a);
+\draw [->, >=latex] (pf.east)        to [bend right=90] (v);
+\draw [->, >=latex] (sf.west)        to [bend left=90] (v);
 \end{tikzpicture}
 \end{center}
 \end{frame}
