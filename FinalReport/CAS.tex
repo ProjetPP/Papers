@@ -3,6 +3,8 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\NN}{\mathbb{N}}
+\newcommand{\dd}{\mathrm{d}}
+
 
 \section{CAS}
 
@@ -49,10 +51,11 @@ reciprocal of the hyperbolic sine can be written "argsh", "argsinh", "arcsh" etc
 
 The other feature we implement for flexibility is implicit multiplications. We understand "a b" as "a*b", "(a)b" as "(a)*b" and "(a)(b)" as "(a)*(b)". But "a(b)" have to remain unchanged because "a" can be a function so, "a(b)" is not "a*(b)".
 
-This transformation is executed before the parser. The method is to launch the lexer a first time. Then we add the symbol "*" between the two symbols in every followed configurations: ")(", a ")" and a identifier or  two consecutive identifiers. Thus, we generate a modified formula with explicit multiplications and we can parse this expression.
+This transformation is executed before the parser. The method is to launch the lexer a first time. Then we add the symbol "*" between the two symbols in every followed configurations: ")("; a ")" and a identifier; two consecutive identifiers. Thus, we generate a modified formula with explicit multiplications and we can parse this expression.
 
-The last feature implemented to make this syntax more permissive is to extend functions which are defined on a subset of $\RR$ like $\NN$. For example, the factorial which is defined on $\NN^*$ is extended on $\CC\setminus \ZZ^{-*}$ by using the function $\Gamma$. Thus, the expression $(1/2)!$ has a meaning.
+The last feature implemented to make this syntax more permissive is to extend functions which are defined on a subset of $\RR$ like $\NN$. For example, the factorial which is defined on $\NN^*$ is extended on $\CC\setminus \ZZ^{-*}$ by using the function $\Gamma$. Thus, the expression $(-1/2)!$ has a meaning.
 
+This syntax admits notation as defined in the standard ISO 31-11.
 
 \subsection{Future work}
 
@@ -68,5 +71,9 @@ We can also cover other mathematical fields. For instance:
     \item sequences,
     \item plots.
 \end{itemize}
+
+We can imagine a more lenient syntax for functions which need to bound a variable when there is no ambiguities. For instance, we plan to allow "int(sin(x),0,Pi)" for "int(sin(x),x,0,Pi)" because $x$ is the only variable in this expression. If we are able to determine the list of variables, there is easy to create a new variable. That allows to define functions like $(k,n)\mapsto \binom{n}{k}$ on a larger set using a limit.
+
+An important missing feature is the resolution of differential equations. In fact the \texttt{dsolve} function of Sympy does not work on every ODE and does not handle initial conditions. If this feature is not implemented soon, we will use the \texttt{dsolve} function of Sympy without initial conditions and determine constants with the function \texttt{solve}.
 
 The other feature to implement, is the interpretation of mathematical queries expressed in natural language. For example, "integrate sin x dx from x=0 to pi" instead of "integrate(sin(x),x,0,pi)".

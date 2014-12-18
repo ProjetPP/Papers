@@ -16,14 +16,27 @@ We define a \textsl{\bf list} as a finite ordered sequence of \textsl{resources}
 
 The other atomic elements are the boolean values \textsl{\bf true} and \textsl{\bf false}. They are not \textsl{resources} as previously defined. Nevertheless, we admit \textsl{resources} "true" and "false" but we cannot apply logic operation on them.
 
-A \textsl{triple} is a 3-tuple containing in this order:
+A \textsl{\bf triple} is a 3-tuple containing in this order:
 \begin{itemize}
     \item a subject: what the triple refers to,
     \item a predicate: the relation between the subject and the object,
     \item an object: what the property of the subject refers to.
 \end{itemize}
-For instance, we can represent the sentence "Isaac \textsc{Newton} is born the 25 December 1642 (Julian)" by the triple \begin{center}(Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian))\end{center}
-
+For instance, we can represent the sentence "Isaac \textsc{Newton} is born the 25 December 1642 (Julian)" by the triple
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (1) at (7,7) {$\triple$};
+        \node (11) at (4,5.5) {Isaac \textsc{Newton}};
+        \node (12) at (7,5.5) {birth date};
+        \node (13) at (10.5,5.5) {25 December 1642 (Julian)};
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+    \end{tikzpicture}
+\end{figure}
+\FloatBarrier
+In other terms, we can consider than the description of Isaac \textsc{Newton} has an entry "birth date" whose value is "25 December 1642 (Julian)" or any equivalent value.
 
 It is reasonable to associate to each triple a boolean value depending upon whether the triple is true or not. Generally triples contains \textsl{lists} with more than one value. So we define the node \textsl{full triple} 
 \begin{center}
@@ -33,7 +46,7 @@ and we define its value as $$(a,b,c)=\bigwedge_{i=1}^{n_a}\bigwedge_{j=1}^{n_b}\
 
 This structure is needed to check if a statement is true. That naturally correspond to yes/no questions.
 
-A kind of natural yes/no question which are not handled by \textsl{full triple} are existential questions: "Is there a... ?". To represent them, we use a node \textsl{exists} (also denoted by $\exists$)
+A kind of natural yes/no question which are not handled by \textsl{full triple} are existential questions: "Is there a... ?". To represent them, we use a node \textsl{\bf exists} (also denoted by $\exists$)
 \begin{center}
 \textsl{exists: list$\rightarrow$ bool}
 \end{center}
@@ -80,51 +93,184 @@ The function \textsl{last} returns the last (greatest if the list is ordered) el
 \textsl{last: list$\rightarrow$ resource}
 \end{center}
 
+These nodes are useful when a triple can return a list with more than one element and we need only one. The difficulty is to found what is the correct order to choose.
+
+\bigskip
+
+A tree which represent a sentence is called a \emph{normal form} of this sentence. There can be several normal form for a sentence. Indeed the trees $(a,b,c\cap d)$ has the same meaning as $(a,b,c)\wedge(a,b,d)$.
+
 \subsection{Examples}
 
-To clarify the previous definitions, we give some examples.
+To clarify the previous definitions, we give some examples. We give some question followed by their normal form.
 
+\FloatBarrier
 \bigskip
 
-"Is Isaac \textsc{Newton} born the 25 December 1642 (Julian)?"
-\begin{center}(Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian))\end{center}
+"Was Isaac \textsc{Newton} born the 25 December 1642 (Julian)?"
 
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (1) at (7,7) {$\triple$};
+        \node (11) at (4,5.5) {Isaac \textsc{Newton}};
+        \node (12) at (7,5.5) {birth date};
+        \node (13) at (10.5,5.5) {25 December 1642 (Julian)};
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+    \end{tikzpicture}
+\end{figure}
+
+\FloatBarrier
 \bigskip
 
-"Is Isaac \textsc{Newton} born the 25 December 1642 (Julian) and dead the 20 Marsh 1727 (Julian)?"
-\begin{center}(Isaac \textsc{Newton}, birth date, 25 December 1642 (Julian))$\wedge$(Isaac \textsc{Newton}, death date, 20 Marsh 1727 (Julian))\end{center}
+"Is Brussels the capital of Belgium and the European Union?"
 
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (0) at (10,8.5) {$\bigwedge$};
+        \node (1) at (7,7) {$\triple$};
+        \node (11) at (5,5.5) {Belgium};
+        \node (12) at (7,5.5) {capital};
+        \node (13) at (8.5,5.5) {Brussels};
+              
+        \node (2) at (13,7) {$\triple$};
+        \node (21) at (11,5.5) {European Union};
+        \node (22) at (13,5.5) {capital};
+        \node (23) at (15,5.5) {Brussels};
+
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (1);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {} (2);
+        \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (21);
+        \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (22);
+        \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (23);
+    \end{tikzpicture}
+\end{figure}
+            
+\FloatBarrier
 \bigskip
 
 "Who were the presidents of the United States?"
-\begin{center}(United States, president, ?)\end{center}
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (3) at (8,8.5) {$\triple$};
+        \node (4) at (8,7) {president};
+        \node (5) at (5,7) {United States};
+        \node (6) at (10,7) {?};
 
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+    \end{tikzpicture}
+\end{figure}
+
+\FloatBarrier
 \bigskip
 
 "Who is mayor of the capital of Kreis Bergstraße?"
-\begin{center}((Kreis Bergstraße, capital, ?), mayor, ?)\end{center}
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (0) at (10,10) {$\triple$};
+        \node (1) at (10,8.5) {mayor};
+        \node (2) at (12,8.5) {?};
+        \node (3) at (8,8.5) {$\triple$};
+        \node (4) at (8,7) {capital};
+        \node (5) at (5,7) {Kreis Bergstraße};
+        \node (6) at (10,7) {?};
 
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (3);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+    \end{tikzpicture}
+\end{figure}
+
+\FloatBarrier
 \bigskip
 
-"Who are the daughters of the wife of the husband of the wife of the president of the United States?"
-\begin{center}
-(((((United States, president,?), wife, ?), husband, ?), wife, ?), daughter, ?)
-\end{center}
+"What is the birth date of the first president of Germany?"
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (0) at (10,10) {$\triple$};
+        \node (1) at (10,8.5) {birth date};
+        \node (2) at (12,8.5) {?};
+        \node (8) at (8,8.5) {\texttt{First}};
+        \node (9) at (8,7.5) {\texttt{Sort}};
+        \node (10) at (10,6.5) {mandate begin date};
+        \node (3) at (6,6.5) {$\triple$};
+        \node (4) at (6,5) {president};
+        \node (5) at (3,5) {Germany};
+        \node (6) at (8,5) {?};
 
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (8);
+        \draw[->, >=latex] (8) edge node[sloped, anchor=center, above] {} (9);
+        \draw[->, >=latex] (9) edge node[sloped, anchor=center, above] {\scriptsize{resource}} (10);
+        \draw[->, >=latex] (9) edge node[sloped, anchor=center, above] {\scriptsize{list}} (3);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+        \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+    \end{tikzpicture}
+\end{figure}
+
+\FloatBarrier
 \bigskip
 
-"What is the birth date of the first president of the United States?"
-\begin{center}(first(sort((United States, president, ?), mandate begin date)), birth date, ?)\end{center}
+"Is there a medical treatment for Ebola?"
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (0) at (10,8.5) {\texttt{Exists}};
+        \node (1) at (10,7) {$\triple$};
+        \node (11) at (7.5,5.5) {Ebola};
+        \node (12) at (10,5.5) {medical treatment};
+        \node (13) at (12,5.5) {?};
 
-\bigskip
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{list}} (1);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+    \end{tikzpicture}
+\end{figure}
 
-"Is there a medical treatment for ebola?"
-\begin{center}\textsl{exists}((ebola, medical treatment, ?))\end{center}
-
+\FloatBarrier
 \bigskip
 
 "Who are the children of Nicolas \textsc{Sarkozy} and Carla \textsc{Bruni}?"
-\begin{center}(Nicolas \textsc{Sarkozy}, child, ?)$\cap$(Carla \textsc{Bruni}, child, ?)\end{center}
+\begin{figure}[!ht]
+    \centering
+    \begin{tikzpicture}
+        \node (0) at (10,8.5) {$\bigcap$};
+        \node (1) at (7,7) {$\triple$};
+        \node (11) at (4.5,5.5) {Nicolas \textsc{Sarkozy}};
+        \node (12) at (7,5.5) {child};
+        \node (13) at (9,5.5) {?};
+                  
+        \node (2) at (13,7) {$\triple$};
+        \node (21) at (11,5.5) {Carla \textsc{Bruni}};
+        \node (22) at (13,5.5) {child};
+        \node (23) at (15,5.5) {?};
+
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{list}} (1);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (11);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (12);
+        \draw[->, >=latex] (1) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (13);
+        \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{list}} (2);
+        \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (21);
+        \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (22);
+        \draw[->, >=latex] (2) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (23);
+    \end{tikzpicture}
+\end{figure}
 
 \subsection{Software point of view}
 
@@ -229,6 +375,8 @@ We could define a linear representation for the trace, using the representation 
     \input{../architecture}
     \caption{Architecture of the PPP}
 \end{figure}
+
+\FloatBarrier
 
 \section{Evolution of data model}
 
