@@ -8,11 +8,11 @@ Efficiency of neural network nowadays can be very good. An approach based on net
   \begin{tikzpicture}
   \node (10) at (8,11.5) {\textsc{When was the president of the United States born?}};
   \node (0) at (10,10) {$\triple$};
-  \node[color=red] (1) at (10,8.5) {president};
+  \node[color=mLightBrown] (1) at (10,8.5) {president};
   \node (2) at (12,8.5) {?};
   \node (3) at (8,8.5) {$\triple$};
   \node (4) at (8,7) {United States};
-  \node[color=red] (5) at (5,7) {birth date};
+  \node[color=mLightBrown] (5) at (5,7) {birth date};
   \node (6) at (10,7) {?};
 
   \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
@@ -21,7 +21,7 @@ Efficiency of neural network nowadays can be very good. An approach based on net
   \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
   \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
   \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
-  \draw[<->, >= latex,color=red] [draw=red] [bend right=50, above] (1) edge (5);
+  \draw[<->, >= latex,color=mLightBrown] [draw=mLightBrown] [bend right=50, above] (1) edge (5);
   
  \end{tikzpicture}
  \caption{An example of bad triple formation, ``president'' and ``United States'' terms are in the wrong place. The reformulation module should solve this kind of problem.}
