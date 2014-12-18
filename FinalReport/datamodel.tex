@@ -10,9 +10,9 @@ First, we present the data model. Its aim is to represent in a well formatted st
 
 The data model is very close to the first order logic. The structure is defined by induction.
 
-A basic element is called \textsl{\bf resource}. A \textsl{resource} may represent anything in the world, a string, an integer, coordinates, a function, etc. \textsl{Resources} can theoretically be in infinite number, even in uncountable number (but, for obvious reason, computer cannot handle such sets).
+A basic element is called \textsl{\bf resource}. A \textsl{resource} may represent anything in the world, a string, an integer, coordinates, a function, etc.
 
-We define a \textsl{\bf list} as a finite ordered sequence of \textsl{resources}. We identify the \textsl{list} \textsl{(a)} and the resource \textsl{a}. The use of this identification will be explained later. Moreover, a \textsl{list} must have no duplicates. For instance \textsl{[a,a]} is not a list and need to be simplify as \textsl{[a]}. We can see \textsl{lists} as finite totally ordered set.
+A \textsl{\bf list} is a finite ordered sequence of \textsl{resources}. We identify the \textsl{list} \textsl{(a)} containing only one element and the resource \textsl{a}. The use of this identification will be explained later. Moreover, a \textsl{list} must have no duplicates. For instance \textsl{[a,a]} is not a list and need to be simplified as \textsl{[a]}. We can see \textsl{lists} as finite totally ordered set.
 
 The other atomic elements are the boolean values \textsl{\bf true} and \textsl{\bf false}. They are not \textsl{resources} as previously defined. Nevertheless, we admit \textsl{resources} "true" and "false" but we cannot apply logic operation on them.
 
@@ -42,7 +42,7 @@ and the evaluations is \textsl{exists$(l) = \begin{cases}
 \textsl{false} & \text{if }l=\emptyset
 \end{cases}$}. This node checks whether the list is non empty.
 
-Of course, we allow boolean operations as node: and ($\wedge$), or ($\vee$), not ($\neg$)\dots.
+We also allow boolean operations as nodes: and ($\wedge$), or ($\vee$), not ($\neg$)\dots.
 
 \bigskip
 
