@@ -51,7 +51,7 @@ First of all, we perform multiword expressions recognition in order to merge all
 
 Then, the question word (Who, Where, How tall, etc.) is identified and removed from the dependency tree (it will be used later to build and improve the normal form). This operation is performed using a list of about 30 question words and looking at the two first words of the sentence (they are supposed to contain the question word).
 
-Finally, lemmatization is applied on nouns (it puts all nouns in singular form, e.g. \textit{presidents} is mapped to \textit{president}) and nounification on verbs (it transforms all verbs into some related noun, e.g. \textit{born} is mapped to \textit{birth}).
+Finally, lemmatization is applied on nouns (nouns are put in singular form, e.g. \textit{presidents} is mapped to \textit{president}) and nounification on verbs (verbs are transformed into some related noun, e.g. \textit{born} is mapped to \textit{birth}).
 These two operations are performed thanks to the \emph{NLTK} library\footnote{\url{http://www.nltk.org/}}:
 \begin{itemize}
     \item Lemmatization is made by the \emph{WordNetLemmatizer} class.
