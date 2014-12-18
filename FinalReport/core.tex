@@ -2,11 +2,11 @@
 
 As its name suggests, the core is the central point of the PPP. It is
 connected to all other components — user interfaces and modules — through
-the protocol defined above, and is developed in Python\footnote{\url{https://github.com/ProjetPP/PPP-Core/}}.
+the protocol defined above. It is developed in Python\footnote{\url{https://github.com/ProjetPP/PPP-Core/}}.
 
 The core communicates with the user interfaces and the modules {\em via} HTTP:
 each time the core receives a request from an interface, it forwards it
-to modules, using a configurable list of URL of other modules.
+to modules using a configurable list of URL of other modules.
 
 An example configuration is the one we use on the production server
 (truncated):
