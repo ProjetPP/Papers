@@ -1,5 +1,4 @@
-We decided to implement, at first, only a web user interface. This interface
-is composed of one web-page developed in HTML 5 with some
+The user interface is composed of one web-page developed in HTML 5 with some
 pieces of JavaScript and CSS \footnote{\url{https://github.com/ProjetPP/PPP-WebUI/}}.
 We have taken care of having an
 interface that fits nice on both huge screens of desktop computers
@@ -12,10 +11,10 @@ and small screens of phones using responsive design techniques.
 \end{figure}
 
 It is composed of one huge text input with a button to submit
-the query and another one to get a random question from an hand written list. The text area
+the query and another one to get a random question from a hand written list. The text area
 allows to input question in natural language or using the data model notation like
 \texttt{(Douglas Adam, birth date,?)} to find the
-birth date of Douglas Adam. A parser written as a Python module
+birth date of Douglas \textsc{Adam}. A parser written as a Python module
 \footnote{\url{https://github.com/ProjetPP/PPP-datamodel-Python/blob/master/ppp\_datamodel/parsers.py}}
 using
 the PLY\footnote{\url{http://www.dabeaz.com/ply/}} library converts
@@ -26,7 +25,7 @@ like jQuery\footnote{\url{http://jquery.com/}}, Bootstrap\footnote{\url{http://g
 
 \section{Logging}
 
-We decided to log all requests made to the PPP to improve our algorithms,
+All requests made to the PPP are logged, to improve our algorithms,
 and particularly to feed the results to Question parsing
 modules that use Machine Learning.
 We may also use it to improve the way the Core routes/sorts answers
