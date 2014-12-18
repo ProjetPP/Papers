@@ -8,6 +8,37 @@
     \end{center}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Nested question}
+
+Who is the wife of the president of the United States?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & Barack Obama\\
+        \alert{Platypus} & Michelle Obama\\
+    \end{tabular}
+
+    \medbreak
+
+    \onslide<2->{
+        What are the birth dates of the daughters of the wife of the president of the United States?
+        \begin{tabular}{ll}
+            \alert{WolframAlpha} & Barack Obama\\
+            \alert{Platypus} & Saturday, July 4, 1998 \& Sunday, June 10, 2001\\
+        \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Conjunction}
+
+Who is the actor of Inception and Titanic?
+    \begin{tabular}{ll}
+        \alert{WolframAlpha} & all the actors of the two movies\\
+        \alert{Platypus} & Leonardo DiCaprio\\
+    \end{tabular}
+\end{frame}
+
+
 \subsection{Future work}
 
 \begin{frame}
@@ -92,7 +123,7 @@
 
     \alert{4.3k lines} of Latex \& \alert{2.9k lines} of Markdown
 
-    \alert{4} accepted pull requests to libraries we use (corenlp-python, aspell-python, python-datautil)
+    \alert{6} accepted pull requests to libraries we use (corenlp-python, aspell-python, python-datautil, Wikibase)
 \end{frame}
 
 \begin{frame}
@@ -126,6 +157,7 @@
     \end{columns}
 \end{frame}
 
+\iffalse
 \begin{frame}
     \tikzset{
         workpackage/.style={
@@ -271,3 +303,4 @@ Who is the actor of Inception and Titanic?
 
 Use relation graph ``instance of'' from Wikidata.
 \end{frame} 
+\fi
