@@ -11,15 +11,24 @@ Many algorithms have been developed since fifty years with the objective of unde
 Existing libraries, such as \textit{NLTK}\footnote{\url{http://www.nltk.org/}} or \textit{StanfordParser}\footnote{\url{http://nlp.stanford.edu/software/lex-parser.shtml}} provide powerful tools to extract such representations.
 
 \begin{figure}
-  \centering
-    \includegraphics[scale=0.6]{../examples_NLP_grammatical/parsetree.pdf}
-  \caption{Parse tree of \emph{Brian is in the kitchen.}}
-  \label{ptree}
+\centering
+\begin{tikzpicture}[>=latex',scale=0.5] % set node style 
+\begin{dot2tex}[dot,tikz,codeonly,styleonly,options=-s -tmath]
+\input{../examples_NLP_grammatical/parsetree.dot}
+\end{dot2tex}
+\end{tikzpicture}
+    \caption{Parse tree of \emph{Brian is in the kitchen.}}
+    \label{ptree}
 \end{figure}
 
+
 \begin{figure}
-  \centering
-    \includegraphics[scale=0.6]{../examples_NLP_grammatical/deptree.pdf}
+\centering
+\begin{tikzpicture}[>=latex',scale=0.5] % set node style 
+\begin{dot2tex}[dot,tikz]
+\input{../examples_NLP_grammatical/deptree.dot}
+\end{dot2tex}
+\end{tikzpicture}
   \caption{Dependency tree of \emph{Brian is in the kitchen.}}
   \label{dtree}
 \end{figure}
