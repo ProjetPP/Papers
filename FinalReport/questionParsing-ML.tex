@@ -1,11 +1,36 @@
 \section{Reformulation : a learning approach }
 \label{mlreformulation}
 
-Efficiency of neural network nowadays can be very good. An approach based on network is also used here. But, the aim is not to learn answering question, there are two reasons for that: first the knowledge changes over time, e.g. the president name depends of the date, then something simple is wished, the learning process should also be continuous. In the second case, learning the answer implies to know proper Names which increase the size of the dictionary, that means the learning time. The module presented here try to reformulate a question. In fact it try to translate the question for the wikidata module.
+Efficiency of neural network nowadays can be very good. An approach based on network is also used here. But, the aim is not to learn answering question, there are two reasons for that: first the knowledge changes over time, e.g. the president name depends of the date, then something simple is wished, the learning process should also be continuous. In the second case, learning the answer implies to know proper Names which increase the size of the dictionary, that means incresing the learning time. The module presented here tries to reformulate a question. In fact it tries to translate the question for the wikidata module.
+
+\begin{figure}
+\begin{center}
+  \begin{tikzpicture}
+  \node (10) at (8,11.5) {\textsc{When was the president of the United States born?}};
+  \node (0) at (10,10) {$\triple$};
+  \node[color=mLightBrown] (1) at (10,8.5) {president};
+  \node (2) at (12,8.5) {?};
+  \node (3) at (8,8.5) {$\triple$};
+  \node (4) at (8,7) {United States};
+  \node[color=mLightBrown] (5) at (5,7) {birth date};
+  \node (6) at (10,7) {?};
+
+  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (1);
+  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (2);
+  \draw[->, >=latex] (0) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (3);
+  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{subj.}} (5);
+  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{obj.}} (6);
+  \draw[->, >=latex] (3) edge node[sloped, anchor=center, above] {\scriptsize{pred.}} (4);
+  \draw[<->, >= latex,color=mLightBrown] [draw=mLightBrown] [bend right=50, above] (1) edge (5);
+  
+ \end{tikzpicture}
+ \caption{An example of bad triple formation, ``president'' and ``United States'' terms are in the wrong place. The reformulation module should solve this kind of problem.}
+\end{center}
+\end{figure}
 
 \subsection{How it works}
 
-There is a output of the grammatical module which builds a triple representation of the question. All work is done on this representation. The assumption ``all useful information is keep in this form''  is also necessary. The module has also a dictionary. There are four step to do. First a pretreatment replace proper names and numbers with tags, such that all word of the triple are in the dictionary, then the request is projected in the math space of request. Two last step reveres the two first, but the reverse projection should produce a better request, which mean the final request is adapted for the Wikidata module.
+There is an output of the grammatical module which builds a triple representation of the question. All work is done on this representation. The assumption ``all useful information is kept in this form''  is also necessary. The module has also a dictionary. There are four step to do. First a pretreatment replace proper names and numbers with tags, such that all word of the triple are in the dictionary, then the request is projected in the math space of request. Two last step reveres the two first, but the reverse projection should produce a better request, which mean the final request is adapted for the Wikidata module.
 
 \subsubsection{Mathematical spaces}
 
@@ -37,12 +62,69 @@ Let define a matrix compact which take a triple of vector and merge them in one 
 
 Now by applying this operation bottom-up in the tree. Main idea is each node value represent the subtree request.
 
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[x=2.5cm]
+\node (s) at (1,0) {subject};
+\node (p) at (3,0) {object};
+\node (r) at (2,1) {predicate};
+
+
+\node (a) at (2,2) {anothersubject=compact(...)};
+\node (b) at (4,2) {anotherobject};
+\node (l) at (3,3) {anotherpredicate};
+\node (h) at (3,4.5) {myrequest=compact(...)};
+
+\draw (s)--(a)--(p);
+\draw (r)--(a);
+\draw (a)--(h)--(b);
+\draw (l)--(h);
+\end{tikzpicture}
+\caption{The process of projection, an example}
+\end{center}
+\end{figure}
 
 \subsubsection{Reconstruct a request from a vector}
 
 This operation is quite symmetrical of the projection, with a matrix uncompact we can the same way obtain a vector triple from a vector, and recursively an tree appears. But the question is how to known if we should reapply the function uncompact or leave the vector as a leaf? First say in a triple predicate is never a tree, then object and subject will be let as leaf if a known word is near enough. Finally each node is replace with the nearest corresponding word of the dictionary, that mean for example for a vector in middle of a triple which is also a predicate take word with nearest predicates' vector.
 
 Defining near enough is difficult. To avoid infinite loop we will take depth of nodes into account. We must take $\delta>0$ a precision factor and $g$ a growth factor. If $d$ is depth of node $n$, near enough means distance is bounded by $\delta*g^d$ with regard of euclidean norm.  
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[x=2.5cm]
+\node (s) at (1,0) {subject};
+\node (p) at (3,0) {object};
+\node (r) at (2,0) {predicate};
+\node (sf) at (1,-1) {\textbf{nearest}};
+\node (pf) at (3,-1) {\textbf{nearest}};
+\node (rf) at (2,-1) {\textbf{nearest}};
+\node (sw) at (1,-2) {wordsubject};
+\node (pw) at (3,-2) {wordobject};
+\node (rw) at (2,-2) {wordpredicate};
+\node[rectangle] (b) at (2,2) {\textbf{uncompact}};
+\node (v) at (2,3) {root};
+%\node (b) at (4,2) {b};
+%\node (l) at (3,3) {l};
+%\node (h) at (3,4) {h=compact(a,l,b)};
+
+\draw[->, >=latex] (b)--(s);
+\draw[->, >=latex] (b)--(p);
+\draw[->, >=latex] (b)--(r);
+\draw[->, >=latex] (v)--(b); % WTF?
+\draw[->, >=latex] (r)--(rf);
+\draw[->, >=latex] (p)--(pf);
+\draw[->, >=latex] (s)--(sf);
+\draw[->, >=latex] (rf)--(rw);
+\draw[->, >=latex] (pf)--(pw);
+\draw[->, >=latex] (sf)--(sw);
+
+\draw [->, >=latex] (pf.east)        to [bend right=90] (v);
+\draw [->, >=latex] (sf.west)        to [bend left=90] (v);
+\end{tikzpicture}
+\caption{The algorithm \textsc{reconstruction} in a scheme}
+\end{center}
+\end{figure}
 
 The algorithm reconstruct is also :
 
@@ -69,7 +151,7 @@ The algorithm reconstruct is also :
     } 
     $p \gets {\text{argmin}}_m  (\N{m.p-p})$\;
     \Return{$(s,r,o)$}\;
-    \caption{From vector to tree}
+    \caption{\textsc{reconstruct} From vector to tree}
 \end{algorithm}
 
 \subsubsection{Remarks}
