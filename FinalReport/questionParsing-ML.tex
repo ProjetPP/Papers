@@ -1,6 +1,8 @@
 \section{Reformulation: a learning approach }
 \label{mlreformulation}
 
+\FloatBarrier
+
 Efficiency of neural network nowadays can be very good. An approach based on network is also used here. But, the aim is not to learn answering question. There are two reasons for that. First the knowledge changes over time, e.g. the president name depends on the date. Then, something simple is wished. The learning process should also not be continuous. Learning the answer implies to know proper Names which increase the size of the dictionary, that means increasing the learning time. 
 
 The module presented here tries to reformulate a question. In fact it tries to translate the question for the wikidata module. It means adapting it as most as possible for this module, correct the mistakes of grammatical parsing, as it is illustrated in figure \ref{figexmlrefref}.
@@ -30,6 +32,7 @@ The module presented here tries to reformulate a question. In fact it tries to t
 \label{figexmlrefref}
 \end{figure}
 
+\FloatBarrier
 \subsection{How it works}
 
 
@@ -68,6 +71,8 @@ Let define a matrix compact which takes a triple of vector and merge them in one
 
 Now by applying this operation bottom-up in the tree. The main idea is each node value represent the subtree request.
 
+\FloatBarrier
+
 \begin{figure}
 \begin{center}
 \begin{tikzpicture}[x=2.5cm]
@@ -89,6 +94,8 @@ Now by applying this operation bottom-up in the tree. The main idea is each node
 \caption{The process of projection, an example}
 \end{center}
 \end{figure}
+
+\FloatBarrier
 
 \subsubsection{Reconstruct a request from a vector}
 
@@ -159,6 +166,8 @@ The algorithm reconstruct is also:
     \Return{$(s,r,o)$}\;
     \caption{\textsc{reconstruct} From vector to tree}
 \end{algorithm}
+
+\FloatBarrier
 
 \subsubsection{Remarks}
 
