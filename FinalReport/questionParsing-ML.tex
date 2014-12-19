@@ -1,4 +1,4 @@
-\section{Reformulation : a learning approach }
+\section{Reformulation: a learning approach }
 \label{mlreformulation}
 
 Efficiency of neural network nowadays can be very good. An approach based on network is also used here. But, the aim is not to learn answering question. There are two reasons for that. First the knowledge changes over time, e.g. the president name depends on the date. Then, something simple is wished. The learning process should also not be continuous. Learning the answer implies to know proper Names which increase the size of the dictionary, that means increasing the learning time. 
@@ -132,7 +132,7 @@ Defining near enough is difficult. To avoid infinite loop we will take depth of 
 \end{center}
 \end{figure}
 
-The algorithm reconstruct is also :
+The algorithm reconstruct is also:
 
 
 
@@ -180,7 +180,7 @@ The learning process has not been made yet. As latency with Wikidata is very hig
 
 Then we could think of different manners to train the model.
 
-At least we could think about a good manner to find the nearest word in the dictionary. It can be done with a linear time, but considering there are 100 000 words in the dictionary, cost is not negligible. As we work in dimension 50, it is not a trivial problem to find an efficient method to obtain a logarithmic complexity. Kd-trees allow a search in log-time (with preprocessing) ; but with dimension 50, the constant factor $2^{50}$ is too large. One line of research were to use distance sensitive hash.
+At least we could think about a good manner to find the nearest word in the dictionary. It can be done with a linear time, but considering there are 100 000 words in the dictionary, cost is not negligible. As we work in dimension 50, it is not a trivial problem to find an efficient method to obtain a logarithmic complexity. Kd-trees allow a search in log-time (with preprocessing); but with dimension 50, the constant factor $2^{50}$ is too large. One line of research were to use distance sensitive hash.
 
 %Finding a way to learn everything with first or second approach is the most important, as the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbor is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea, for example there exists distance sensitive hash.
 
