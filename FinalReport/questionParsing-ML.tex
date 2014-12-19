@@ -69,12 +69,12 @@ The model allows an arbitrary request form, it means we have a tree with an unkn
 
 Let define a matrix compact which takes a triple of vector and merge them in one vector, here merging in not an intuitive operation, in fact we don't know how to merge this triple, that is why all coefficients of the matrix are unknown. To compute what we call a vector, output should be normalized.
 
-Now by applying this operation bottom-up in the tree. The main idea is each node value represent the subtree request.
+Now by applying this operation bottom-up in the tree. The main idea is each node value represent the subtree request. A tree illustrates this on figure \ref{figexmlrefref}.
 
 \FloatBarrier
 
 \begin{figure}
-\begin{center}
+\centering
 \begin{tikzpicture}[x=2.5cm]
 \node (s) at (1,0) {subject};
 \node (p) at (3,0) {object};
@@ -92,7 +92,7 @@ Now by applying this operation bottom-up in the tree. The main idea is each node
 \draw (l)--(h);
 \end{tikzpicture}
 \caption{The process of projection, an example}
-\end{center}
+\label{figexmlrefcomp}
 \end{figure}
 
 \FloatBarrier
@@ -104,7 +104,7 @@ This operation is quite symmetrical of the projection, with a matrix uncompact w
 Defining near enough is difficult. To avoid infinite loop we will take depth of nodes into account. We must take $\delta>0$ a precision factor and $g$ a growth factor. If $d$ is the depth of node $n$, near enough means distance is bounded by $\delta*g^d$ with regard of Euclidean norm.  
 
 \begin{figure}
-\begin{center}
+\centering
 \begin{tikzpicture}[x=2.5cm]
 \node (s) at (1,0) {subject};
 \node (p) at (3,0) {object};
@@ -136,7 +136,7 @@ Defining near enough is difficult. To avoid infinite loop we will take depth of 
 \draw [->, >=latex] (sf.west)        to [bend left=90] (v);
 \end{tikzpicture}
 \caption{The algorithm \textsc{reconstruction} in a scheme}
-\end{center}
+\label{figexmlrefunal}
 \end{figure}
 
 The algorithm reconstruct is also:
@@ -166,6 +166,8 @@ The algorithm reconstruct is also:
     \Return{$(s,r,o)$}\;
     \caption{\textsc{reconstruct} From vector to tree}
 \end{algorithm}
+
+You can find a scheme version of the algorithm on figure \ref{figexmlrefunal}.
 
 \FloatBarrier
 
