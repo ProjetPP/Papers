@@ -91,7 +91,7 @@ and the evaluations are
     \item for object: $\textsl{incomplete triple}_{\textsl{object}}(a,b) = \textsl{list}(\{\textsl{x}\mid(a,b,x)\})$ denoted by $(a,b,?)$.
 \end{itemize}
 
-We define to additional nodes: \textsl{sort}, \textsl{first} and \textsl{last}.
+We define two additional nodes: \textsl{sort}, \textsl{first} and \textsl{last}.
 
 \begin{center}
 \textsl{sort: list$\times$resource$\rightarrow$list}
@@ -110,12 +110,12 @@ The function \textsl{last} returns the last (greatest if the list is ordered) el
 \textsl{last: list$\rightarrow$ resource}
 \end{center}
 
-These nodes are useful when a triple can return a list with more than one element and we need only one. The difficulty is to found what is the correct order to choose.
+These nodes are useful when a triple can return a list with more than one element and we need only one. The difficulty is to find what is the correct order to choose.
 
 \bigskip
 
-A tree which represent a sentence is called a 
-{\bf normal form} of this sentence. There may be several normal forms for a sentence. Indeed, the trees $(a,b,c\cap d)$ and $(a,b,c)\wedge(a,b,d)$ have the same meaning.
+A tree which represents a sentence is called a 
+{\bf normal form} of this sentence. There may be several normal forms for a sentence. Indeed, the trees $(a,b,c\cap d)$ and $(a,b,c)\wedge(a,b,d)$ have the same meaning.\todo{NO}
 
 \subsection{Examples}
 
@@ -264,18 +264,18 @@ To clarify the previous definitions, we give some examples. We give some questio
 \FloatBarrier
 \bigskip
 
-"Who are the children of Nicolas \textsc{Sarkozy} and Carla \textsc{Bruni}?"
+"Who are the children of François \textsc{Mitterrand} and Anne \textsc{Pingeot}?"
 \begin{figure}[!ht]
     \centering
     \begin{tikzpicture}
         \node (0) at (10,8.5) {$\bigcap$};
         \node (1) at (7,7) {$\triple$};
-        \node (11) at (4.5,5.5) {Nicolas \textsc{Sarkozy}};
+        \node (11) at (4.5,5.5) {François \textsc{Mitterrand}};
         \node (12) at (7,5.5) {child};
         \node (13) at (9,5.5) {?};
                   
         \node (2) at (13,7) {$\triple$};
-        \node (21) at (11,5.5) {Carla \textsc{Bruni}};
+        \node (21) at (11,5.5) {Anne \textsc{Pingeot}};
         \node (22) at (13,5.5) {child};
         \node (23) at (15,5.5) {?};
 
