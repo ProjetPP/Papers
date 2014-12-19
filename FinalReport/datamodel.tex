@@ -10,24 +10,6 @@ First, we present the data model. Its aim is to represent in a well formatted st
 
 The data model is very close to the first order logic. The structure is defined by induction.
 
-The grammar of this structure is given in figure \ref{datamodel:grammar}.
-
-\begin{figure}[ht!]
-$$
-\begin{aligned}
-S &:= \texttt{Resource list}\\
-  &\mid \triple(S_1,S_2,S_3)\\
-  &\mid \triple(?,S_1,S_2) \mid \triple(S_1,?,S_2) \mid \triple(S_1,S_2,?)\\
-  &\mid S_1 \wedge S_2 \mid S_1 \vee S_2 \mid \neg S\\
-  &\mid S_1 \cap S_2 \mid S_1 \cup S_2 \mid S_1 \setminus S_2\\
-  &\mid \texttt{Sort}(S,Resource)\\
-  &\mid \texttt{First}(S) \mid \texttt{Last}(S)\\
-\end{aligned}
-$$
-\caption{Grammar of the datamodel}
-\label{datamodel:grammar}
-\end{figure}
-
 A basic element is called \textsl{\bf resource}. A \textsl{resource} may represent anything in the world, a string, an integer, coordinates, a function, etc.
 
 A \textsl{\bf list} is a finite ordered sequence of \textsl{resources}. We identify the \textsl{list} \textsl{[a]} containing only one element and the resource \textsl{a}. The use of this identification will be explained later. Moreover, a \textsl{list} must have no duplicates. For instance \textsl{[a,a]} is not a list and need to be simplified as \textsl{[a]}. We can see \textsl{lists} as finite totally ordered set.
@@ -115,7 +97,7 @@ These nodes are useful when a triple can return a list with more than one elemen
 \bigskip
 
 A tree which represents a sentence is called a 
-{\bf normal form} of this sentence. There may be several normal forms for a sentence. Indeed, the trees $(a,b,c\cap d)$ and $(a,b,c)\wedge(a,b,d)$ have the same meaning.\todo{NO}
+{\bf normal form} of this sentence. There may be several normal forms for a sentence. Indeed, the trees $(a,b,c\cup d)$ and $(a,b,c)\wedge(a,b,d)$ have the same meaning.
 
 \subsection{Examples}
 
