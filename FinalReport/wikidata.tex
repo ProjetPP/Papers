@@ -4,8 +4,8 @@ Wikidata module\footnote{\url{https://github.com/ProjetPP/PPP-Wikidata/}} is our
 \begin{figure}[!h]
   \centering
     \label{wikidata:item-screenshot}
-    \caption{The beginning of a Wikidata item}
     \includegraphics[width=\textwidth]{./wikidata-item-screenshot.png}
+    \caption{The beginning of a Wikidata item}
 \end{figure}
 
 Wikidata is a free knowledge base hosted by the Wikimedia Foundation as a sister project of Wikipedia. It aims to build a free, collaborative, multilingual structured database of general knowledge (for more information see \cite{42240}). It provides a very good set of API that allows to consume and query Wikidata content easily. Wikidata is built upon entities (called items and stored in a separated wiki pages) that are about a given subject. Each item has a label, a description and some aliases to describe it and statements that provides data about this subject (see figure \ref{wikidata:item-screenshot}). Each statement is built around a property and a value such that $(item, property, value)$ may be seen as a valid triple. Properties are entities like items and so may have labels, descriptions, aliases and statements. For more information see\footnote{\url{http://www.wikidata.org/wiki/Wikidata:Glossary}}.
@@ -39,6 +39,13 @@ We have also added specific support for "name", "definition" and "identity" pred
 
 One of the difficulties met was to avoid meaningless results because Wikidata contains items about Wikipedia organizational content like "disambiguation" or "category" pages. So we have written a small filter that ignore these pages when the conversion string to Wikidata identifier is done.
 
+\begin{figure}[!h]
+  \centering
+    \label{wikidata:struct}
+    \includegraphics[width=\textwidth]{./wikidata_louis13_children.png}
+    \caption{An example output from the Wikidata module}
+\end{figure}
+
 \section{Future work}
 This module is only at his first stage and a lot of nice to have features remains:
 \begin{itemize}
@@ -46,11 +53,3 @@ This module is only at his first stage and a lot of nice to have features remain
     \item Handle triple that does not directly match to Wikidata model. If we looks for people born in France we are also looking for people born in Lyon or if we are looking for the American Secretary of State we are looking for the person that has as office "American Secretary of State".
     \item Do some reasoning on Wikidata content. For example if \texttt{(Lyon, instance of, city)} and \texttt{(city, subclass of, place)} then we should be able to guess and use that \texttt{(Lyon, instance of, place)}.
 \end{itemize}
-
-\begin{figure}[!ht]
-  \centering
-    \label{wikidata:struct}
-    \caption{An example output from the Wikidata module}
-    \includegraphics[width=\textwidth]{./wikidata_list_presidents.png}
-    \todo{update}
-\end{figure}
