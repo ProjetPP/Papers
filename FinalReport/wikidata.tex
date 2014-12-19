@@ -1,4 +1,6 @@
-\section{Overview}
+\section{Wikidata}
+
+\subsection{Overview}
 Wikidata module\footnote{\url{https://github.com/ProjetPP/PPP-Wikidata/}} is our main proof of concept module which aims to demonstrate the ability of our framework to allow the easy creation of huge modules able to answer to thousand of questions. This module tries to answer to general knowledge using the data stored in Wikidata\footnote{\url{http://www.wikidata.org/}}.
 
 \begin{figure}[!h]
@@ -12,7 +14,7 @@ Wikidata is a free knowledge base hosted by the Wikimedia Foundation as a sister
 
 We have chosen Wikidata instead of some other famous knowledge base like DBpedia\footnote{\url{http://dbpedia.org}} or Freebase\footnote{\url{http://www.freebase.com/}} because Wikidata is under a CC0 license\footnote{\url{http://creativecommons.org/publicdomain/zero/1.0/}} that allows to reuse data without constraints and is fully multilingual, a characteristic that will be very useful in order to adapt the PPP to other languages than English. More, as one of the members of the team is involved in Wikidata it allows us to avoid to lose time by learning the other knowledge base APIs.
 
-\section{APIs}
+\subsection{APIs}
 Wikidata provides an API that allows to retrieve items and properties from there ids and an API that returns items or properties that match a given label. For more information about the API see the appendix \ref{wikidata:api-examples}.
 
 Some libraries are available to interact easily with the API. The two major ones are:
@@ -25,7 +27,7 @@ We have chosen to use the PHP API because one of the members of the team has con
 
 In order to do queries in Wikidata content, like retrieving all presidents of the United States, e.g. all items with the property "position held" (P39) with value "president of the united States of America" (Q11696) we had to rely on an external service, called \textbf{WikidataQuery}\footnote{\url{http://wdq.wmflabs.org/}} that allows to do such requests. This was needed because the Wikidata API does not allow to do such queries yet. We have written a small standalone and reusable wrapper to the API of this service in PHP\footnote{\url{https://github.com/ProjetPP/WikidataQueryApi/}}.
 
-\section{Implementation}
+\subsection{Implementation}
 In order to write this module nicely we have written a small PHP library, LibModule\url{https://github.com/ProjetPP/PPP-LibModule-PHP}, that provides a framework to create PPP modules and diverse utilities to simplify nodes like union or intersection that do not requires specific knowledge about the resources themselves.
 
 This module works in tree steps:
@@ -46,7 +48,8 @@ One of the difficulties met was to avoid meaningless results because Wikidata co
     \caption{An example output from the Wikidata module}
 \end{figure}
 
-\section{Future work}
+\subsection{Future work}
+
 This module is only at his first stage and a lot of nice to have features remains:
 \begin{itemize}
     \item Clever filter of not relevant results: people that are looking for the list of the presidents of the United States are usually not looking for fictional ones.
