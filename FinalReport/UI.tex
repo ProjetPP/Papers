@@ -31,30 +31,23 @@ like jQuery\footnote{\url{http://jquery.com/}}, Bootstrap\footnote{\url{http://g
 
 \section{Logging}
 
-All requests sent to the PPP are logged to improve our algorithms
-and particularly to feed the results to Question parsing
-modules that use Machine Learning.
-We may also use it to improve the way the Core routes and sorts answers
-from the different modules, either manually or with some basic
-Machine Learning.
+All requests sent to the PPP are logged in order to be able to see what
+the user are interested in and maybe use them as data set for the
+question parsing modules that use Machine Learning. This logger
+is powered by a backend that stores data
+gathered via the user interface in a SQLite database.
 
-The main idea is to log user feedback in addition to the requests
-themselves: after showing the user the way we interpreted their
-question alongside the answer to their request, we provide them a
-way to give us feedback.
-What we call feedback is actually a thumb up / thumb down pair of
-buttons, and, if the latter is pressed, a way to correct the requests
-parsing result so it can be fed to the Machine Learning algorithms.
-
-Since Machine Learning algorithms are not ready yet, we did not focus
-on this feature of the user interface and thus it is not implemented yet;
-so far we only started implemented a backend that stores data
-(gathered via the user interface) to a SQLite database.
-This already provides us a database of questions asked by people
-outside the project.
-
-The logger also has a simple public API to retrieve last and top requests
+The logger has a simple public API to retrieve last and top requests
 in JSON (JavaScript Object Notation):
 \url{http://logger.frontend.askplatyp.us/?order=last&limit=10} to get the
 last 10 requests and \url{http://logger.frontend.askplatyp.us/?order=top&limit=5}
 to get the top 5.
+
+In order to use these data for machine learning we may also want, in the future,
+to log user feedback in addition to the requests
+themselves: after showing the user the way we interpreted their
+question alongside the answer to their request, we would provide them a
+way to give us feedback.
+What we call feedback is actually a thumb up / thumb down pair of
+buttons, and, if the latter is pressed, a way to correct the requests
+parsing result so it can be fed to the Machine Learning algorithms.
