@@ -28,9 +28,13 @@
 \usepackage{fnpct}
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage[bottom]{footmisc}
+\usepackage{placeins}
+\usepackage{longtable}
 
 \definecolor{bluec}{rgb}{0.7, 0.7, 1.0}
 \sethlcolor{bluec} % highlight in blue
+\definecolor{mDarkTeal}{HTML}{23373b} % figures taken from the demo
+\definecolor{mLightBrown}{HTML}{0055FF} % figures taken from the demo
 
 \usepackage{listings}
 
@@ -71,43 +75,52 @@ Adviser: Eddy \textsc{Caron}\\[50pt]
 
 \addcontentsline{toc}{chapter}{Introduction}
 \chapter*{Introduction}
+    \label{introduction}
     \input{introduction}
 
-\chapter{Overview}
-    \input{overview}
-
 \chapter{State of the art}
+    \label{stateofart}
     \input{stateofart}
 
 \chapter{Data model and communication}
+    \label{datamodel}
     \input{datamodel}
 
 \chapter{Core}
+    \label{core}
     \input{core}
 
 \chapter{User interface}
+    \label{UI}
     \input{UI}
 
 \chapter{Question parsing}
+    \label{questionparsing}
     \input{questionParsing-common}
+    \label{grammatical}
     \input{questionParsing-grammatical}
+    \label{reformulation}
     \input{questionParsing-ML}
+    \label{standalone}
     \input{questionParsing-ML-standalone}
 
-\chapter{Wikidata module}
+\chapter{Back-end}
+    \label{wikidata}
     \input{wikidata}
-    
-\chapter{CAS module}
+    \label{cas}
     \input{CAS}
-
-\chapter{Spell checker}
+    \label{spellchecker}
     \input{spellchecker}
+    \label{oeis}
+    \input{OEIS}
 
 \chapter{Performances}
+    \label{performances}
     \input{performances}
 
 \addcontentsline{toc}{chapter}{Conclusion}
 \chapter*{Conclusion}
+    \label{conclusion}
     \input{conclusion}
 
 \bibliographystyle{alpha}
@@ -134,5 +147,8 @@ Adviser: Eddy \textsc{Caron}\\[50pt]
 
 \chapter{Wikidata API examples}
 \input{wikidata-api-examples}
+
+\chapter{CAS \--- \texorpdfstring{$\CalChAS$}{CalChAS} functions}
+    \input{calchasFunctions}
 
 \end{document}

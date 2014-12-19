@@ -1,0 +1,134 @@
+We give here the functions and constants known by $\CalChAS$. As previously, we give regex in some cases. All variable name, function identifier or constant have to match [a-zA-Z\_][a-zA-Z0-9\_]*.
+
+\section{Infix operators}
+\begin{longtable}{ll}
+    \caption[List of handled infix operators]{List of handled infix operators}\\
+    \textbf{Regex} & \textbf{Operator} \\ 
+    \endfirsthead
+
+    \multicolumn{2}{c}
+    {{\tablename\ \thetable{} -- List of handled infix operators}} \\
+    \textbf{Regex} & \textbf{Operator} \\ 
+    \endhead
+
+    \multicolumn{2}{r}{{\--- Continued on next page \---}} \\ \endfoot
+
+    \endlastfoot
+    + & Addition \\
+    - & Subtraction \\
+    * & Multiplication \\
+    / & Division \\
+    \% & Modulo \\
+    (\^{}|**) & Power \\
+    ! & Factorial 
+\end{longtable}
+
+\section{Functions}
+\begin{longtable}{ll}
+    \caption[List of handled functions]{List of handled functions}\\
+    \textbf{Regex} & \textbf{Function} \\ 
+    \endfirsthead
+
+    \multicolumn{2}{c}
+    {{\tablename\ \thetable{} -- List of handled functions}} \\
+    \textbf{Regex} & \textbf{Function} \\ 
+    \endhead
+
+    \multicolumn{2}{r}{{\--- Continued on next page \---}} \\ \endfoot
+
+    \endlastfoot
+    \ [aA]bs(a) & $\Vert a \Vert$\\
+    \ [mM]od(a) & $\Vert a \Vert$\\
+    \ [sS]ig(n)?(a) & $\begin{cases}\frac{a}{\Vert a \Vert} & \text{if }a\neq 0\\0&\text{otherwise}\end{cases}$\\
+    \ [sS]ignum(a) & $\begin{cases}\frac{a}{\Vert a \Vert} & \text{if }a\neq 0\\0&\text{otherwise}\end{cases}$\\
+    \ [pP]ow(er)?(a,b) & $a^b$\\
+    \ [sS]sqrt(a) & $\sqrt{a}$\\
+    \ [rR]oot(a,n) & $\sqrt[n]{a}$\\
+    \ [eE]xp(a) & $e^a$\\
+    \ [lL](n|og)(a)& $\ln(a)$\\
+    \ [lL](og10|g)(a)& $\frac{\ln(a)}{\ln(10)}$\\
+    \ [lL](og2|b)(a)& $\frac{\ln(a)}{\ln(2)}$\\
+    \ [lL]og(a,b)& $\log_b(a)$\\
+    \ G(amma|AMMA)(a)& $\Gamma(a)$ (\textsc{Euler}'s $\Gamma$ function)\\
+    \ [fF]act(orial)?(a)& $\Gamma(a+1)$\\
+    \ [cC]os(a)& $\cos(a)$\\
+    \ [sS]in(a)& $\sin(a)$\\
+    \ [tT]an(a)& $\tan(a)$\\
+    \ [cC](osec|sc)(a)& $\mathrm{cosec}(a)$ (cosecant)\\
+    \ [sS]ec(a)& $\mathrm{sec}(a)$ (secant)\\
+    \ [cC]ot(an)? & $\mathrm{cotan}(a)$ (cotangent)\\
+    \ [aA](rc)?[cC]os(a) & $\mathrm{arccos}(a)$ (reciprocal of cosine)\\
+    \ [aA](rc)?[sS]in(a) & $\mathrm{arcsin}(a)$ (reciprocal of sine)\\
+    \ [aA](rc)?[tT]an(a) & $\mathrm{arctan}(a)$ (reciprocal of tangent)\\
+    \ [aA](rc)?[cC](sc|osec)(a) & $\mathrm{arccosec}(a)$ (reciprocal of cosecant)\\
+    \ [aA](rc)?[sS]ec(a) & $\mathrm{arcsec}(a)$ (reciprocal of secant)\\
+    \ [aA](rc)?[cC]ot(an)?(a) & $\mathrm{arccotan}(a)$ (reciprocal of cotangent)\\
+    \ [cC](os)?h(a) & $\cosh(a)$ (hyperbolic cosine)\\
+    \ [sS](in)?h(a) & $\sinh(a)$ (hyperbolic sine)\\
+    \ [tT](an)?h(a) & $\tanh(a)$ (hyperbolic tangent)\\
+    \ [cC](osec|sc)h(a) & $\mathrm{cosech}(a)$ (hyperbolic cosecant) \\
+    \ [sS]ech(a) & $\mathrm{cosech}(a)$ (hyperbolic secant) \\
+    \ [cC]ot(an)?h(a) & $\mathrm{cotan}(a)$ (hyperbolic cotangent) \\
+    \ [aA](r([cg])?)?[cC](os)?h(a) & $\mathrm{acosh}(a)$ (reciprocal of hyperbolic cosine) \\
+    \ [aA](r([cg])?)?[sS](in)?h(a) & $\mathrm{asinh}(a)$ (reciprocal of hyperbolic sine) \\
+    \ [aA](r([cg])?)?[tT](an)?h(a) & $\mathrm{atanh}(a)$ (reciprocal of hyperbolic tangent) \\
+    \ [aA](r([cg])?)?[cC](osec|sc)h(a) & $\mathrm{acosech}(a)$ (reciprocal of hyperbolic cosecant) \\
+    \ [aA](r([cg])?)?[sS]ech(a) & $\mathrm{asech}(a)$ (reciprocal of hyperbolic secant) \\
+    \ [aA](r([cg])?)?[cC]ot(an)?h(a) &  $\mathrm{acoth}(a)$ (reciprocal of hyperbolic cotangent)\\
+    \ [fF]loor(a) & $\lfloor a \rfloor$ \\
+    \ [cC]eil(a) & $\lceil a \rceil$ \\
+    \ [bB]inomial(a,b) & $\frac{\Gamma(a+1)}{\Gamma(b+1)\Gamma(a-b+1)}$ \\
+    \ [cC]omb(ination)?(a,b) & $\frac{\Gamma(a+1)}{\Gamma(b+1)\Gamma(a-b+1)}$ \\
+    \ C(a,b) & $\frac{\Gamma(a+1)}{\Gamma(b+1)\Gamma(a-b+1)}$ \\
+    \ [pP]artial[pP]ermutation(a,b) & $\frac{\Gamma(a+1)}{\Gamma(a-b+1)}$ \\
+    \ A(a,b) & $\frac{\Gamma(a+1)}{\Gamma(a-b+1)}$ \\
+    \ [dD]igamma(a) & $\psi(a)$ (Digamma function) \\
+    \ [bB]eta(a,b) & $B(a,b)$ (Beta function) \\
+    \ [gG]c[dm](a,b) & $a\wedge b$ (gcd) \\
+    \ [hH]cf(a,b) & $a\wedge b$ (gcd) \\
+    \ [lL]cm(a,b) & $a \vee b$ (lcm) \\
+    \ [dD](iff|eriv(e|at(e|ive)))(f,x) & $\frac{\partial f}{\partial x}$ (Derivative) \\
+    \ [iI]nt(egra(te|l))(f,x) & $\int f \dd x$ (Antiderivative) \\
+    \ [iI]nt(egra(te|l))(f,x,a,b) & $\int_a^b f \dd x$ (Tntegral) \\
+    \ [aA]ntiderivative(f,x) & $\int f \dd x$ (Antiderivative) \\
+    \ [aA]ntiderivative(f,x,a,b) & $\int_a^b f \dd x$ (Tntegral) \\
+    \ [sS]um(mation)?(e,n,a,b) & $\sum\limits_{n=a}^b e$\\
+    \ [aA]pprox(imation)?(a) & Numeric value with 15 decimals\\
+    \ [aA]pprox(imation)?(a,b) & Numeric value with b decimals\\
+    \ [nN]umeric(a) & Numeric value with 15 decimals\\
+    \ [nN]umeric(a,b) & Numeric value with b decimals\\
+    \ N(a) & Numeric value with 15 decimals\\
+    \ N(a,b) & Numeric value with b decimals\\
+    \ [eE]val(f)?(a) & Numeric value with 15 decimals\\
+    \ [eE]val(f)?(a,b) & Numeric value with b decimals\\
+    \ [sS]impl(if(y|ication))?(a) & Simplification of the expression a\\
+    \ [sS]ol(ve|ution(s)?)?(a, x) & Solutions for x of the equation a\\
+    \ [sS]ol(ve|ution(s)?)?(a, x) & Solutions for x of the equation a\\
+    \ [lL]im(it)?(f, x, a) & $\lim\limits_{x\to a}f$\\
+    \ [lL]im(it)?[lL](f, x, a) & $\lim\limits_{x\to a^-}f$\\
+    \ [lL]im(it)?[rR](f, x, a) & $\lim\limits_{x\to a^+}f$\\
+\end{longtable}
+
+
+\section{Constants}
+\begin{longtable}{ll}
+    \caption[List of handled constants]{List of handled constants}\\
+    \textbf{Regex} & \textbf{Constant} \\ 
+    \endfirsthead
+
+    \multicolumn{2}{c}
+    {{\tablename\ \thetable{} -- List of handled constants}} \\
+    \textbf{Regex} & \textbf{Constant} \\ 
+    \endhead
+
+    \multicolumn{2}{r}{{\--- Continued on next page \---}} \\ \endfoot
+
+    \endlastfoot
+    \ [eE] & \textsc{Napier}'s constant \\
+    \ [pP]i & $\pi$ \\
+    \ ([eE]uler[gG]amma|gamma) & \textsc{Euler-Mascheroni} constant \\
+    \ [iI]nf(ini)?ty & $\infty$ \\
+    oo & $\infty$ \\
+    \ I & $i$ \\
+    \ (GoldenRatio|[pP]hi) & $\varphi$ \\
+\end{longtable}

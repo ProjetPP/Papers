@@ -2,11 +2,11 @@
 
 As its name suggests, the core is the central point of the PPP. It is
 connected to all other components — user interfaces and modules — through
-the protocol defined above, and is developed in Python\footnote{\url{https://github.com/ProjetPP/PPP-Core/}}.
+the protocol defined above. It is developed in Python\footnote{\url{https://github.com/ProjetPP/PPP-Core/}}.
 
 The core communicates with the user interfaces and the modules {\em via} HTTP:
 each time the core receives a request from an interface, it forwards it
-to modules, using a configurable list of URL where to reach modules.
+to modules using a configurable list of URL of other modules.
 
 An example configuration is the one we use on the production server
 (truncated):
@@ -75,10 +75,9 @@ This example presents all the features of the core.
 \end{verbatim}
 
 This is the entry to connect the core to the CAS (Computer Algebra System)
-module; that's the one which does the math. We provide a nice name (to be
+module. We provide a nice name (to be
 shown in logs), the URL to know how to reach it, a coefficient applied to
-the measures (see the chapter above, about the datamodel), and filters
-(see above).
+the measures, and filters (cf. chapter \ref{datamodel}).
 
 \subsection{Recursion}
 
@@ -107,14 +106,13 @@ We need three passes to answer such a question.
 After each pass, the router accumulates the different answers, until
 there is no new answer. Then, it stops recursing and returns everything
 to the client.
-We also define a maximum to the number of passes; but it is not necessary
+There is a fixed maximum number of passes, although it is not necessary
 for now since modules we implemented cannot loop.
 
 \subsection{Optimizations}
 
-We implemented two optimizations in the core, that makes it faster (it is hard
-to evaluate it; probably around 25\% less time on queries with multiple
-passes).
+We implemented two optimizations in the core. Small experimentations showed that
+it makes the core 25\% faster on queries with multiple passes.
 
 The two of them are used in this example:
 
@@ -129,19 +127,18 @@ The two of them are used in this example:
 }
 \end{verbatim}
 
-First, the filters (we talked about in the previous section). They can be
+First, the filters. They can be
 either a whitelist or a blacklist of root node types, that the core will
-read in order to know if the module might do anything with such a tree.
+read to know if the module might do anything with such a tree.
 Obviously, the question parsing modules cannot do anything with something
-that is not a sentence, so it is useless to query them with something that
+that is not a sentence, so it is useless to query it with something that
 is not a sentence.
 
 Secondly, the “python:” URL. The core can call directly Python modules
 without using HTTP; and thus avoids the cost of serializing, using IPCs
 (Inter-Process Communications), and deserializing (twice).
-However, we need to run the module in the same process as the core in
-order for this to work, so we only use it for light modules
-(questionparsing\_grammatical and the spell-checker).
+However, we need to run the module in the same process as the core, we therefore
+only use it for light modules (questionparsing\_grammatical, spell-checker and OEIS).
 
 \section{Libraries for modules}
 
@@ -153,10 +150,8 @@ This class is an abstraction over a Python HTTP library (python-requests),
 allowing module developpers to focus on developping their actual code
 instead of handling communication.
 
-These has proven to be efficient for connecting the Grammatical Question Parsing
-with the Core: we only had to copy-paste the demo code
-(used for reading and printing in the console) into a function called
-by this library, and it was working as is.
+These has proven to be efficient, since the spell-checker and the OEIS modules
+were created very quickly, using existing code.
 
 It also exports its configuration library too, since modules share the
 same way of handling configuration (a JSON file, whose path
