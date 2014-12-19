@@ -305,7 +305,7 @@ All normalised structures of the PPP are JSON-serializable, i.e. they are trees 
 
 We chose to represent all normalised data as trees. We use the previous nodes and we have a \textsl{missing} node to represent the '?' in incomplete triples.
 
-The node \texttt{resource} to represent the previous abstract node \textsl{resource} and \textsl{bool}. Moreover, we identify the \textsl{resource} "true" and the boolean value \textsl{true} and the same for "false" and "false". This identification is not problematic for type because we assume modules creates only well-formed expressions.
+The node \texttt{resource} to represent the previous abstract node \textsl{resource} and \textsl{bool}. Moreover, we identify the \textsl{resource} "true" and the boolean value \textsl{true} and the same for "false" and \textsl{false}. This identification is not problematic for type because we assume modules creates only well-formed expressions.
 
 We add to the nodes we defined above some new features:
 \begin{itemize}
@@ -382,7 +382,7 @@ We do not provide a method to compute these values. We have to trust every modul
 
 This form allows each module to access to the previous results, particularly to the request of the user. The objects for request and response contain some extra data, such as the language used.
 
-We can use these measure to chose the best answer to display it at the first position in the UI. Modules can use them to. For instance, if there is two modules for question parsing, a module will choose one of the two answers based on these marks.
+We can use these measure to chose the best answer to display it at the first position in the UI. Modules can use them too. For instance, if there are two modules for question parsing, a module will choose one of the two answers based on these marks.
 
 The data model have been implemented in a nice set of objects in both Python\footnote{\url{http://github.com/ProjetPP/PPP-datamodel-Python/}} and PHP\footnote{\url{http://github.com/ProjetPP/PPP-datamodel-PHP/}} in order to help the writing of modules.
 
