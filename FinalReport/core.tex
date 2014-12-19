@@ -1,7 +1,7 @@
 \section{Core}
 
 As its name suggests, the core is the central point of the PPP. It is
-connected to all other components — user interfaces and modules — through
+connected to all the other components — user interfaces and modules — through
 the protocol defined above. It is developed in Python\footnote{\url{https://github.com/ProjetPP/PPP-Core/}}.
 
 The core communicates with the user interfaces and the modules {\em via} HTTP:
@@ -98,7 +98,7 @@ We need three passes to answer such a question.
 \begin{enumerate}
     \item Spell-checking, to change it to “What is the capital of India?”
     \item Question parsing, to change it to a machine-understable query:
-        “(India,capital,?)”
+        “(India, capital, ?)”
     \item Database request to Wikidata, to get the final answer:
         “New Delhi”
 \end{enumerate}
@@ -144,10 +144,10 @@ only use it for light modules (questionparsing\_grammatical, spell-checker and O
 
 We also provide a library in charge of handling and parsing HTTP
 requests following the format defined in the data model. It was originally
-used in the core, but we then splitted the code, as modules can reuse
+used in the core, but then we splitted the code, as modules can reuse
 it without a change.
 This class is an abstraction over a Python HTTP library (python-requests),
-allowing module developpers to focus on developping their actual code
+allowing module developers to focus on developing their actual code
 instead of handling communication.
 
 These has proven to be efficient, since the spell-checker and the OEIS modules
