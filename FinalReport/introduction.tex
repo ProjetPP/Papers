@@ -1,16 +1,29 @@
-The {\em Projet Pensées Profondes} (Deep Thought Project) aims at
-providing a powerful software for answering questions written in
-natural language.
-To accomplish this, we developed an eponymous set of tools that
-accomplish different tasks and fit together thanks to a protocol
-we developed.
+The \emph{Projet Pensées Profondes} (PPP) provides a powerfull,
+modular and open-source application to answer questions written in natural language.
+We developed an eponymous set of tools that accomplish different tasks and fit
+together thanks to a well defined protocol.
 
 These various tasks include data querying (using the young and open
 knowledge base Wikidata), question parsing (using machine learning and the
 \CoreNLP software written by Stanford University),
-requests routing, web user interface, and feedback reporting.
+requests routing, web user interface, feedback reporting, computer algebra, etc.
 
-Given the young age of this project, these pieces are only starting
-to emerge with their first features and mutual communications,
-so we will describe them separately in this document without
-much of a general overview of the project.
+A deployment of these tools, \emph{Platypus}, is available online:
+
+\begin{center}
+    \url{http://ppp.pony.ovh/}
+\end{center}
+
+The official website of the project is:
+
+\begin{center}
+    \url{http://projetpp.github.io/}
+\end{center}
+
+\medbreak
+
+This report will firstly introduce the modular architecture of the
+project and the datamodel used for communication between modules.
+
+Then, all the modules actually developed in the PPP will be presented in details. Most of
+them are part of the online deployment, \emph{Platypus}.
