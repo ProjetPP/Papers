@@ -1,7 +1,7 @@
 \section{Wikidata}
 
 \subsection{Overview}
-Wikidata module\footnote{\url{https://github.com/ProjetPP/PPP-Wikidata/}} is our main proof of concept module which aims to demonstrate the ability of our framework to allow the easy creation of huge modules able to answer thousand of questions. This module tries to answer general knowledge using the data stored in Wikidata\footnote{\url{http://www.wikidata.org/}}.
+Wikidata module\footnote{\url{https://github.com/ProjetPP/PPP-Wikidata/}} is our main proof of concept which aims to demonstrate the ability of our framework to allow the easy creation of modules able to answer thousand of questions. It tries to answer general knowledge using the data stored in Wikidata\footnote{\url{http://www.wikidata.org/}}.
 
 \begin{figure}[!ht]
   \centering
@@ -10,12 +10,12 @@ Wikidata module\footnote{\url{https://github.com/ProjetPP/PPP-Wikidata/}} is our
     \caption{The beginning of a Wikidata item}
 \end{figure}
 
-Wikidata is a free knowledge base hosted by the Wikimedia Foundation as a sister project of Wikipedia. It aims to build a free, collaborative, multilingual structured database of general knowledge (for more information see \cite{42240}). It provides a very good set of API that allows to consume and query Wikidata content easily. Wikidata is built upon entities (called items and stored in a separated wiki pages) that are about a given subject. Each item has a label, a description and some aliases to describe it and statements that provides data about this subject (see figure \ref{wikidata:item-screenshot}). Each statement is built around a property and a value such that $(item, property, value)$ may be seen as a valid triple. Properties are entities like items and so may have labels, descriptions, aliases and statements. For more information see\footnote{\url{http://www.wikidata.org/wiki/Wikidata:Glossary}}.
+Wikidata is a free knowledge base hosted by the Wikimedia Foundation as a sister project of Wikipedia. It aims to build a free, collaborative, multilingual structured database of general knowledge (see \cite{42240}). It provides a very good set of APIs that allow to consume and query Wikidata content easily. Wikidata is built upon the notion of entities (called items and stored in a separated wiki pages) that are about a given subject. Each item has a label, a description and some aliases to describe it and statements that provides data about this subject (see figure \ref{wikidata:item-screenshot}). Each statement is built around a property and a value such that $(item, property, value)$ may be seen as a valid triple. Properties are entities like items and so may have labels, descriptions, aliases and statements. For more information see\footnote{\url{http://www.wikidata.org/wiki/Wikidata:Glossary}}.
 
 We have chosen Wikidata instead of some other famous knowledge base like DBpedia\footnote{\url{http://dbpedia.org}} or Freebase\footnote{\url{http://www.freebase.com/}} because Wikidata is under a CC0 license\footnote{\url{http://creativecommons.org/publicdomain/zero/1.0/}} that allows to reuse data without constraints and is fully multilingual, a characteristic that will be very useful in order to adapt the PPP to other languages than English. More, as one of the members of the team is involved in Wikidata it allows us to avoid to lose time by learning the other knowledge base APIs.
 
 \subsection{APIs}
-Wikidata provides an API that allows to retrieve items and properties from there ids and an API that returns items or properties that match a given label. For more information about the API see the appendix \ref{wikidata:api-examples}.
+Wikidata provides an API that allows to retrieve items and properties from there ids and an other that returns items or properties that match a given label. For more information about them see the appendix \ref{wikidata:api-examples}.
 
 Some libraries are available to interact easily with the API. The two major ones are:
 \begin{itemize}
@@ -25,21 +25,21 @@ Some libraries are available to interact easily with the API. The two major ones
 
 We have chosen to use the PHP API because one of the members of the team has contributed in a significant manner to it and so was able to have a working module quickly.
 
-In order to do queries in Wikidata content, like retrieving all presidents of the United States, e.g. all items with the property "position held" (P39) with value "president of the united States of America" (Q11696) we had to rely on an external service, called \textbf{WikidataQuery}\footnote{\url{http://wdq.wmflabs.org/}} that allows to do such requests. This was needed because the Wikidata API does not allow to do such queries yet. We have written a small standalone and reusable wrapper to the API of this service in PHP\footnote{\url{https://github.com/ProjetPP/WikidataQueryApi/}}.
+In order to do queries in Wikidata content, like retrieving all presidents of the United States, e.g. all items with the property "position held" (P39) with value "president of the United States of America" (Q11696) we had to rely on an external service, called \textbf{WikidataQuery}\footnote{\url{http://wdq.wmflabs.org/}} that allows to do such requests. This was needed because the Wikidata API does not allow to do such queries yet. We have written a small standalone and reusable wrapper to the API of this service in PHP\footnote{\url{https://github.com/ProjetPP/WikidataQueryApi/}}.
 
 \subsection{Implementation}
 In order to write this module nicely we have written a small PHP library, LibModule\url{https://github.com/ProjetPP/PPP-LibModule-PHP}, that provides a framework to create PPP modules and diverse utilities to simplify nodes like union or intersection that do not requires specific knowledge about the resources themselves.
 
 This module works in tree steps:
 \begin{enumerate}
-    \item It maps \textit{resource} nodes of the question tree into Wikidata content: the subjects of \textit{triple} nodes are mapped to Wikidata items, predicates to Wikidata properties and objects to the type of value that is the range of the Wikidata property of the predicate. If more than one match are possible, a tree per possible match is output.
-    \item It performs queries against Wikidata content using the previously done mapping to reduce as much as possible trees. When we have a \textit{triple} node where the object is missing the module gets the Wikidata item of the subject, looks for values for the predicate property and replace the \textit{triple} node with a \textit{resource} node for each value of the triple (and so builds as many trees as there are values). When there is a \textit{triple} node with a missing subject the module uses the WikidataQuery API.
+    \item It maps \textit{resource} nodes of the question tree into Wikidata content: the subjects of \textit{triple} nodes are mapped to Wikidata items, predicates to Wikidata properties and objects to the type of value that is the range of the Wikidata property of the predicate. If more than one match are possible, a \textit{list} with all possible matches is used.
+    \item It performs queries against Wikidata content using the previously done mapping to reduce as much as possible trees. When we have a \textit{triple} node where the object is missing the module gets the Wikidata item of the subject, looks for values for the predicate property and replaces the \textit{triple} node with the \textit{list} of \textit{resource} nodes for each values of the property. When there is a \textit{triple} node with a missing subject the module uses the WikidataQuery API.
     \item It adds clean representation of \textit{resource} nodes added by the previous phase. When Wikidata resources are returns it keeps their IDs in order to allow the ui to create nice display of them.
 \end{enumerate}
 
-We have also added specific support for "name", "definition" and "identity" predicates in order to allows the API to have a nice display of the "Barack Obama" item when the query is "Who is Barack Obama?", rewritten as \textit{(Barack Obama, identity, ?)}. the same thing applies if the module input is a sentence like "Barack Obama".
+We have also added specific support for "name", "definition" and "identity" predicates in order to be able to output a nice display of the "Barack Obama" item when the query is "Who is Barack Obama?", with normal form \textit{(Barack Obama, identity, ?)}: the module maps the subject of the triple to Wikidata items and returns all the possible results. We do the same thing if the module input is a sentence like "Barack Obama".
 
-One of the difficulties met was to avoid meaningless results because Wikidata contains items about Wikipedia organizational content like "disambiguation" or "category" pages. So we have written a small filter that ignore these pages when the conversion string to Wikidata identifier is done.
+One of the difficulties met was to avoid meaningless results because Wikidata contains items about Wikipedia organizational content like "disambiguation" or "category" pages. So we use a small filter that ignore these pages when the conversion of strings to Wikidata identifiers is done.
 
 \begin{figure}[!h]
   \centering
