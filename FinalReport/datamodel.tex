@@ -23,7 +23,7 @@ A \textsl{\bf triple} is a 3-tuple containing in this order:
     \item an object: what the property of the subject refers to.
 \end{itemize}
 
-For instance, we can represent the sentence "Isaac \textsc{Newton} was born on the 25 December 1642 (Julian)" by the triple
+For instance, we can represent the sentence "Isaac \textsc{Newton} was born on the 25 December 1642 (Julian)" by the triple:
 \begin{figure}[!ht]
     \centering
     \begin{tikzpicture}
@@ -37,17 +37,17 @@ For instance, we can represent the sentence "Isaac \textsc{Newton} was born on t
     \end{tikzpicture}
 \end{figure}
 \FloatBarrier
-In other terms, we can consider than the description of Isaac \textsc{Newton} has an entry "birth date" whose value is "25 December 1642 (Julian)" or any equivalent value.
+In other terms, we can consider that the description of Isaac \textsc{Newton} has an entry "birth date" whose value is "25 December 1642 (Julian)" or any equivalent value.
 
-It is reasonable to associate to each triple a boolean value depending upon whether the triple is true or not. Generally triples contains \textsl{lists} with more than one value. So we define the node \textsl{full triple} 
+It is reasonable to associate to each triple a boolean value depending upon whether the triple is true or not. Generally triples contain \textsl{lists} with more than one value. So we define the node \textsl{full triple}:
 \begin{center}
 \textsl{\bf full triple: list$^3\rightarrow$ bool}
 \end{center}
 and we define its value as $(a,b,c)=\bigwedge\limits_{i=1}^{n_a}\bigwedge\limits_{j=1}^{n_b}\bigwedge\limits_{k=1}^{n_c} (\textsl{a}_i,\textsl{b}_j,\textsl{c}_k)$ where $a=[a_1,\ldots,a_{n_a}]$, $b=[b_1,\ldots,b_{n_b}]$ and $c=[c_1,\ldots,c_{n_c}]$.
 
-This structure is needed to check if a statement is true. That naturally correspond to yes/no questions.
+This structure is needed to check if a statement is true. That naturally corresponds to yes/no questions.
 
-A kind of natural yes/no question which are not handled by \textsl{full triple} are existential questions: "Is there a... ?". To represent them, we use a node \textsl{\bf exists} (also denoted by $\exists$)
+A kind of natural yes/no questions which are not handled by \textsl{full triple} are existential questions: "Is there a... ?". To represent them, we use a node \textsl{\bf exists} (also denoted by $\exists$):
 \begin{center}
 \textsl{\bf exists: list$\rightarrow$ bool}
 \end{center}
@@ -70,7 +70,7 @@ The usual operations on lists: union, intersection, difference. They do not keep
 \textsl{\bf union, intersection, difference : list$^2\rightarrow$ list}
 \end{center}
 
-We also allow \textsl{incomplete triples}. An incomplete triple is a triple with a "hole": we know only two values and we want the list of all values which satisfy the triple. There is 3 type of required triples: for subject, predicate and object. They have the type
+We also allow \textsl{incomplete triples}. An incomplete triple is a triple with a "hole": we know only two values and we want the list of all values which satisfy the triple. There is 3 types of required triples: for subject, predicate and object. They have the type:
 \begin{center}
 \textsl{\bf incomplete triple: list$^2\rightarrow$ list}
 \end{center}
@@ -86,7 +86,7 @@ We define two additional nodes: \textsl{sort}, \textsl{first} and \textsl{last}.
 \begin{center}
 \textsl{\bf sort: list$\times$resource$\rightarrow$list}
 \end{center}
-This function \textsl{sort} take a list and a predicate and sort the element of the list in the increasing order according to the value returned by the predicate. More formally, let $l=[l_1,\ldots,l_n]$, $p$ a predicate and $a_i$ such that $\forall i\in\llbracket1,n\rrbracket, (l_i,p,a_i)$. Then, \textsl{sort}$(l,p) = [l_{\sigma(1)},\ldots,l_{\sigma(n)}]$ where $\sigma\in\mathfrak{S}_n$ and $\forall (i,j)\in\llbracket 1,n\rrbracket^2, \sigma(i)<\sigma(j) \Leftrightarrow a_i \leqslant a_j$. This definition assume that the predicate $p$ associate to the list a totally ordered set.
+This function \textsl{sort} takes a list and a predicate and sorts the element of the list in the increasing order according to the value returned by the predicate. More formally, let $l=[l_1,\ldots,l_n]$, $p$ a predicate and $a_i$ such that $\forall i\in\llbracket1,n\rrbracket, (l_i,p,a_i)$. Then, \textsl{sort}$(l,p) = [l_{\sigma(1)},\ldots,l_{\sigma(n)}]$ where $\sigma\in\mathfrak{S}_n$ and $\forall (i,j)\in\llbracket 1,n\rrbracket^2, \sigma(i)<\sigma(j) \Leftrightarrow a_i \leqslant a_j$. This definition assumes that the predicate $p$ associates to the list a totally ordered set.
 
 The function \textsl{first} returns the first (smallest if the list is ordered) element of a list.
 
@@ -104,12 +104,11 @@ These nodes are useful when a triple can return a list with more than one elemen
 
 \bigskip
 
-A tree which represents a sentence is called a 
-{\bf normal form} of this sentence. There may be several normal forms for a sentence. Indeed, the trees $(a,b,c\cup d)$ and $(a,b,c)\wedge(a,b,d)$ have the same meaning.
+A tree which represents a sentence is called a {\bf normal form} of this sentence. There may be several normal associated to a sentence (especially because a question can be ambiguous). %Indeed, the trees $(a,b,c\cup d)$ and $(a,b,c)\wedge(a,b,d)$ have the same meaning. % Quand on parle de plusieurs formes normales possibles, ce n'est pas principalement pas le fait du datamodel, mais plutôt parcequ'une même phrase peut s'interpréter par des triplets fondamentalement différents.
 
 \subsection{Examples}
 
-To clarify the previous definitions, we give some examples. We give some question followed by their normal form.
+To clarify the previous definitions, here are some examples of questions followed by their normal form.
 
 \FloatBarrier
 \bigskip
@@ -162,7 +161,7 @@ To clarify the previous definitions, we give some examples. We give some questio
 \FloatBarrier
 \bigskip
 
-"Who were the presidents of the United States?"
+"Who is the presidents of the United States?"
 \begin{figure}[!ht]
     \centering
     \begin{tikzpicture}
@@ -295,7 +294,7 @@ All normalised structures of the PPP are JSON-serializable, i.e. they are trees 
 
 We chose to represent all normalised data as trees. We use the previous nodes and we have a \textsl{missing} node to represent the '?' in incomplete triples.
 
-The node \texttt{resource} to represent the previous abstract node \textsl{resource} and \textsl{bool}. Moreover, we identify the \textsl{resource} "true" and the boolean value \textsl{true} and the same for "false" and \textsl{false}. This identification is not problematic for type because we assume modules creates only well-formed expressions.
+The node \texttt{resource} to represent the previous abstract node \textsl{resource} and \textsl{bool}. Moreover, we identify the \textsl{resource} "true" and the boolean value \textsl{true} and the same for "false" and \textsl{false}. This identification is not problematic for type because we assume modules create only well-formed expressions.
 
 We add to the nodes we defined above some new features:
 \begin{itemize}
@@ -329,7 +328,7 @@ into
 }
 \end{verbatim}
 
-The basic value types are 
+The basic value types are:
 \begin{itemize}
     \item \texttt{string},
     \item \texttt{boolean},
@@ -389,4 +388,4 @@ We could define a linear representation for the trace, using the representation 
 
 \section{Evolution of data model}
 
-In the first version of the data model, there were only incomplete triples. It allowed to represent most of simple open questions like "When is Douglas Adams born?" but not composed or yes/no questions because its semantic power was intrinsically lower.
+In the first version of the data model, there were only incomplete triples. It allowed us to represent most of simple questions like "When is Douglas Adams born?" but not composed or yes/no questions because its semantic power was intrinsically lower.
