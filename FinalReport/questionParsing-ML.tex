@@ -1,7 +1,9 @@
 \section{Reformulation : a learning approach }
 \label{mlreformulation}
 
-Efficiency of neural network nowadays can be very good. An approach based on network is also used here. But, the aim is not to learn answering question, there are two reasons for that: first the knowledge changes over time, e.g. the president name depends of the date, then something simple is wished, the learning process should also be continuous. In the second case, learning the answer implies to know proper Names which increase the size of the dictionary, that means incresing the learning time. The module presented here tries to reformulate a question. In fact it tries to translate the question for the wikidata module.
+Efficiency of neural network nowadays can be very good. An approach based on network is also used here. But, the aim is not to learn answering question. There are two reasons for that. First the knowledge changes over time, e.g. the president name depends of the date. Then, something simple is wished. The learning process should also not be continuous. Learning the answer implies to know proper Names which increase the size of the dictionary, that means incresing the learning time. 
+
+The module presented here tries to reformulate a question. In fact it tries to translate the question for the wikidata module. It means adapt it as most as possible for this module, correct the mistakes of grammatic parsing, as it is illustrated in figure \ref{figexmlrefref}.
 
 \begin{figure}
 \begin{center}
@@ -26,17 +28,22 @@ Efficiency of neural network nowadays can be very good. An approach based on net
  \end{tikzpicture}
  \caption{An example of bad triple formation, ``president'' and ``United States'' terms are in the wrong place. The reformulation module should solve this kind of problem.}
 \end{center}
+\label{figexmlrefref}
 \end{figure}
 
 \subsection{How it works}
 
-There is an output of the grammatical module which builds a triple representation of the question. All work is done on this representation. The assumption ``all useful information is kept in this form''  is also necessary. The module has also a dictionary. There are four step to do. First a pretreatment replace proper names and numbers with tags, such that all word of the triple are in the dictionary, then the request is projected in the math space of request. Two last step reveres the two first, but the reverse projection should produce a better request, which mean the final request is adapted for the Wikidata module.
+
+The grammatical module builds a tree representation of the question. The reformulation module work on this output, so with a tree representation. The assumption ``all useful information is kept in this form''  is also necessary. The module has also a dictionary. There are four step to do. First a pretreatment replace proper names and numbers with tags, such that all word of the triple are in the dictionary, then the request is projected in the math space of request. Two last step reveres the two first, but the reverse projection should produce a better request, which mean the final request is adapted for the Wikidata module.
+
+For comparabilities reasons, we do not work with actual data model which is too complicated. In fact we need a regular triple representation, that means all operators must be transformed, this step is easy. For unitary operators, $O(f)$ becomes $(f,O,?)$; for binary operators, $aOb$ becomes $(a,O,b)$. This operation does not weak the expression power.
 
 \subsubsection{Mathematical spaces}
 
 The mathematical space of request $\mathcal{R}$ is simply the subset of the $\mathbb{R}$ vector space of dimension 50, were all vector have an euclidean norm of 1.
-A triple is formed of a subject request, a predicate and an object request, it is also natural to consider the triple over $\mathcal{R}$, and matching will always follow the order subject, predicate, object.
+A triple is formed of a subject request, a predicate and an object request, it is also natural to consider the triple over $\mathcal{R}$, which elements order with always be subject, predicate, object.
 Let us call vector the elements of $\mathcal{R}$.
+
 The choice of a 50-dimension can be modified if necessary, but taking a higher dimension could slow the learning process, and with a lower space we could lost some expression power, which may lead to very poor results.
 
 %To unify everything As we works with requests, we consider everything is a request, even a word.
@@ -46,7 +53,7 @@ The choice of a 50-dimension can be modified if necessary, but taking a higher d
 
 \subsubsection{Dictionary}
 
-The dictionary defines matching between English words and vectors triple, which is the base of the process. We use triple because a word could have different meaning depending on his nature, so predicate vector for a word is not the same as subject vector which is not the same as object vector. We will denote m.s vector-subject of word m, m.p and m.o for predicate and object.
+The dictionary defines matching between English words and vectors triple, which is the base of the process. We use triple because a word could have different meaning depending on his nature, so predicate vector for a word is not the same as subject vector which is not the same as object vector. We will denote m.s subject vector of word m, m.p and m.o for predicate and object.
 
 \subsubsection{Pre- and post-treatment and treatment}
 
@@ -156,7 +163,7 @@ The algorithm reconstruct is also :
 
 \subsubsection{Remarks}
 
-Matrix compact and uncompact are not bijective after restraining the request space to existent requests. Applying uncompact then compact should give the identity, with of course an error margin, but when compacting then uncompacting we only have to find an equivalent request, i.e. with the same meaning but with another formulation. If it were not the case it would produce exactly the same out as the input, that would be useless.
+Matrix compact and uncompact are not bijective after restraining the request space to existent requests. Applying uncompact then compact should give the identity, with of course an error margin, but when compacting then uncompacting we only have to find an equivalent request, i.e. with the same meaning but with another formulation. If it were not the case it would produce exactly the same output as the input, that would be useless.
 
 \subsection{Learning}
 
@@ -174,5 +181,7 @@ Learning process is not made yet. As latency with Wikidata is very high (several
 
 Then we could think of different manners to train the model.
 
-%Finding a way to learn everything with first or second approach is the most important, as the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbor is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea, for example there exists distance sensitive hash. Kd-trees allow a search in log-time (with precomputation) ; but with dimension 50, the constant factor $2^{50}$ is too large. 
+At least we could think about a good manners to find the nearest word in the dictionary. It can be done with a linear time, but considering there are 100 000 words in the dictionary, cost is not negligible. As we work in dimension 50, it is not a trivial problem to find an efficient method to obtain a logarithmic complexity. Kd-trees allow a search in log-time (with preprocessing) ; but with dimension 50, the constant factor $2^{50}$ is too large. One line of research were to use distance sensitive hash.
+
+%Finding a way to learn everything with first or second approach is the most important, as the first answering module in functional, learning is possible. Then, learning and computation speed-up will be important, the search for nearest neighbor is long, maybe it is linear, but with near 100 000 words and high dimension it becomes consequent, use of heuristics could be a good idea, for example there exists distance sensitive hash.
 
