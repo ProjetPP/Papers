@@ -1,7 +1,7 @@
 \section{Machine Learning: Window approach}
 \label{mlwindow}
 
-The goal of this module is to product triples from sentences and to be an alternative to the grammatical approach.
+The goal of this module is to produce triples from sentences and to be an alternative to the grammatical approach.
 
 We used machine learning algorithms in order to produce triples from scratch, without any grammatical library like \Stanford. Our work is mainly based on the paper \cite{collobert}.
 
@@ -18,7 +18,7 @@ Due to the restricted amount of time, we emphasis on keyword questions (keyword 
 \item We do not support other kinds of connectors such as \texttt{first}, \texttt{sort}, etc.
 \end{itemize}
 
-We use a look-up table and a window approach neural network as explained below. The complete package\footnote{\url{https://github.com/ProjetPP/PPP-NLP-ML-standalone/}} was written in Python 3. We use the scikit-learn library, NumPy and NLTK as external tool.
+We use a look-up table and a window approach neural network as explained below. The complete module\footnote{\url{https://github.com/ProjetPP/PPP-NLP-ML-standalone/}} was written in Python 3. We use the scikit-learn library, NumPy and NLTK as external tools.
 
 Our algorithm can be described with three components: the look-up table, the window approach, and the classifier.
 
@@ -58,13 +58,13 @@ The principle of the complete algorithm can be summarize in the figure ~\ref{san
 Because we have a small data set of annotated questions (see below), we use a linear model: a linear model has the advantage to have few parameters.
 For example with a window approach of size 9 and words embedded in vectors of dimension 26,  this gives us $26\times 9\times 4 = 936$ parameters to learn.
 
-In a first time we implemented our own linear classifier, but to improve the execution time, we finally use the \textit{LDA} classifier from the library scikit-learn. Few seconds of computation are now needed to train successfully the model.
+In a first time we implemented our own linear classifier, but to improve the execution time, we finally use the \textit{LDA} classifier from the library scikit-learn. Only a few seconds of computation are now needed to successfully train the model.
 
 \subsection{Data set}
 
-Because we used supervised algorithms, we need a data set of annotated questions, in order to learn our model.
+Because we use supervised algorithms, we need a data set of annotated questions, in order to learn our model.
 This data set was mostly built manually, because we did not find on the internet a data set that directly answering the problem of triple extraction.
-Build this data set is a fastidious work. Currently our data set is composed of 300 questions.
+Building this data set is a fastidious work. Currently our data set is composed of 300 questions.
 We also wrote a script that generate keywords questions. This script gives us 500 keywords questions and makes the module specialized on keywords questions.
 
 We now denote $\mathcal{D}_{GC}$ (for \textit{Data set Grammatically Correct}) the data set of grammatically correct questions, $\mathcal{D}_{kw}$ for the data set of generated keywords questions and $\mathcal{D}_A = \mathcal{D}_{GC} \cup  \mathcal{D}_{KW}$ the complete data set.
@@ -128,7 +128,7 @@ In order to help the classifier, we added POS TAG features: each word of the sen
 
 We use the NLTK pos tagger to do that. With such a tag, a word is encoded as a vector of dimension $26+11 = 37$.
 
-This new feature helps improve the accuracy of the algorithm of few percents:
+This new feature improves the accuracy of the algorithm of a few percents:
 
 \begin{center}
 \begin{tabular}{|l|c|r|}
@@ -145,7 +145,7 @@ This new feature helps improve the accuracy of the algorithm of few percents:
 
 \subsection{Conclusion}
 
-The initial goal was to make a concurrent of the grammatical approach to transform English questions into the data model. Due to the limited amount of time, we did not succeed to improve sufficiently the accuracy of the classifier to make this approach as good as the grammatical approach.
+The initial goal was to make a competitor to the grammatical approach to transform English questions into a structure defined in the data model. Due to the limited amount of time, we did not succeed to improve sufficiently the accuracy of the classifier to make this approach as good as the grammatical approach.
 
 We decided then to focus on keywords questions, which are very important for a framework of question answering. For this task, with a good data set of annotated keyword questions, this algorithm is really efficient.
 
