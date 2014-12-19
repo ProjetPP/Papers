@@ -50,7 +50,7 @@ Project (for after the demo): add optional anotations to the resources. For inst
 
 ## WP3
 
-Need a more visible link to http://projetpp.github.io/ on http://ppp.pony.ovh/
+Need a more visible link to http://projetpp.github.io/ on http://askplatyp.us/
 
 Discussion to have an article on the Wikidata blog.
 

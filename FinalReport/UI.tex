@@ -52,3 +52,9 @@ so far we only started implemented a backend that stores data
 (gathered via the user interface) to a SQLite database.
 This already provides us a database of questions asked by people
 outside the project.
+
+The logger also has a simple public API to retrieve last and top requests
+in JSON (JavaScript Object Notation):
+\url{http://logger.frontend.askplatyp.us/?order=last&limit=10} to get the
+last 10 requests and \url{http://logger.frontend.askplatyp.us/?order=top&limit=5}
+to get the top 5.
