@@ -1,7 +1,7 @@
 \section{Machine Learning: Window approach}
 \label{mlwindow}
 
-The goal of this module is to product triples from sentences and be an alternative to the grammatical approach.
+The goal of this module is to product triples from sentences and to be an alternative to the grammatical approach.
 
 We used machine learning algorithms in order to produce triples from scratch, without any grammatical library like \Stanford. Our work is mainly based on the paper \cite{collobert}.
 
@@ -12,7 +12,7 @@ Motivations come from three points:
 \item Grammatical approaches fail on keyword sentences, like "Barack Obama birth date" because this kind of sentences does not respect the syntax of English.
 \end{itemize}
 
-Due to the restricted amount of time, we emphasis on keywords questions (keywords questions can not be analysed with grammatical tools) and we limit ourself to a restricted version of the data model:
+Due to the restricted amount of time, we emphasis on keyword questions (keyword questions can not be analysed with grammatical tools) and we limit ourself to a restricted version of the data model:
 \begin{itemize}
 \item Only one level of depth: for example the sentence "What is the birth date of the president of the United States?" will be converted to the triple: (president of the United States, birth date, ?).
 \item We do not support other kinds of connectors such as \texttt{first}, \texttt{sort}, etc.
@@ -20,7 +20,7 @@ Due to the restricted amount of time, we emphasis on keywords questions (keyword
 
 We use a look-up table and a window approach neural network as explained below. The complete package\footnote{\url{https://github.com/ProjetPP/PPP-NLP-ML-standalone/}} was written in Python 3. We use the scikit-learn library, NumPy and NLTK as external tool.
 
-Our algorithm can be described with three components: the look up table, the window approach, and the classifier.
+Our algorithm can be described with three components: the look-up table, the window approach, and the classifier.
 
 \subsubsection{Look-up table}
 
@@ -73,8 +73,7 @@ We now denote $\mathcal{D}_{GC}$ (for \textit{Data set Grammatically Correct}) t
 
 In this basic configuration, we can measure the accuracy of our algorithm, defined as the ratio of correctly classified words, for a specified data set.
 
-Our methodology is the following: for a specified data set $\mathcal{D} \in \{\mathcal{D}_A, \mathcal{D}_{GC}, \mathcal{D}_{KW}\}$ we split $\mathcal{D}$ in two parts: the training set and the test set (90% of the data is for the training set and 10% for the testing set). We learn our classifier with the training set and then evaluate it on the test set.
-\todo{il y a une partie commentée ici, je sais pas si c'est volontaire}
+Our methodology is the following: for a specified data set $\mathcal{D} \in \{\mathcal{D}_A, \mathcal{D}_{GC}, \mathcal{D}_{KW}\}$ we split $\mathcal{D}$ in two parts: the training set and the test set (90\% of the data is for the training set and 10\% is for the testing set). We learn our classifier with the training set and then evaluate it on the test set.
 
 \textbf{Remark}: to compute the accuracy of one variant of our algorithm we split the data set into testing and training set randomly, and we restart an experience 50 times. This makes us sure of the precision of the estimated accuracy.
 
@@ -117,7 +116,7 @@ We can plot the \textit{Bias versus Variance} curves:
     \includegraphics[scale=0.5]{../NLP-standalone-images/BiasVsVarianceD_A.png}
 \end{figure}
 
-These curves show us that there is a small gap between the two performances curves for the data set $\mathcal{D}_{GC}$: the data set of grammatically correct questions is too small to learn correctly the model.
+These curves show us that there is a small gap between the two performance curves for the data set $\mathcal{D}_{GC}$: the data set of grammatically correct questions is too small to learn correctly the model.
 
 However, when we add the keyword questions, the gap disappears: the model is learned correctly and the performances are good.
 
@@ -134,7 +133,7 @@ This new feature helps improve the accuracy of the algorithm of few percents:
 \begin{center}
 \begin{tabular}{|l|c|r|}
   \hline
-  Data set & Testing accuracy  without POS TAG & Testing accuracy  with POS TAG \\
+  Data set & Testing accuracy without POS TAG & Testing accuracy with POS TAG \\
   \hline
   $\mathcal{D}_{GC}$ &  $75\%$& $77.2\%$  \\
   $\mathcal{D}_{KW}$ & $98\%$ & $98.9\%$ \\
