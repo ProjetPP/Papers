@@ -3,7 +3,7 @@
 
 \FloatBarrier
 
-Efficiency of neural network nowadays can be very good. An approach based on network is used here. But, the aim is not to learn answering question. There are two reasons for that. First the knowledge changes over time, e.g. the president name depends on the date. Then, something simple is wished. The learning process should also not be continuous. Learning the answer implies to know proper Names which increase the size of the dictionary, that means increasing the learning time. 
+Efficiency of neural network nowadays can be very good. An approach based on network is used here. But, the aim is not to learn answering question. There are two reasons for that. First the knowledge changes over time, e.g. the president name depends on the date. Then, something simple is wished. The learning process should also not be continuous. Learning the answer implies to know proper names which increase the size of the dictionary, that means increasing the learning time. 
 
 The module presented here tries to reformulate a triple into a more suitable triple for the Wikidata module. It means adapting it as most as possible for this module, correct the mistakes of grammatical parsing, as it is illustrated in figure \ref{figexmlrefref}.
 
@@ -35,7 +35,7 @@ The module presented here tries to reformulate a triple into a more suitable tri
 \subsection{How it works}
 
 
-The grammatical module builds a tree representation of the question. The reformulation module work on this output, so with a tree representation. The assumption ``all useful information is kept in this form''  is also necessary. The module has also a dictionary. There are four steps to do. First a pretreatment replaces proper names and numbers with tags, such that all words of the triple are in the dictionary, then the request is projected in the math space of request. Two last steps revert the two first, but the reverse projection should produce a better request, which mean the final request is adapted for the Wikidata module.
+The grammatical module builds a tree representation of the question. The reformulation module works on this output, so with a tree representation. The assumption ``all useful information is kept in this form''  is also necessary. The module has also a dictionary. There are four steps to do. First a pretreatment replaces proper names and numbers with tags, such that all words of the triple are in the dictionary, then the request is projected in the math space of request. Two last steps revert the two first, but the reverse projection should produce a better request, which mean the final request is adapted for the Wikidata module.
 
 For compatibilities reasons, we do not work with the actual data model which is too complicated. In fact we need a regular triple representation, that means all operators must be transformed, this step is easy. For unitary operators, $O(f)$ becomes $(f,O,?)$; for binary operators, $aOb$ becomes $(a,O,b)$. This operation does not weaken the expressive power.
 
@@ -186,7 +186,7 @@ The module is written in C++, with threads to speed up the matrix multiplication
 
 \subsection{Future work}
 
-The learning process has not been made yet. As latency with Wikidata is very high (several seconds) we have to download Wikidata and run it in local.
+The learning process has not been performed, and so the reformulation module is not yet operational. As latency with Wikidata is very high (several seconds) we have to download Wikidata and run it in local.
 
 Then we could think of different manners to train the model.
 

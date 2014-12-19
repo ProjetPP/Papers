@@ -12,11 +12,11 @@ A computer algebra system (CAS) module has been added to the PPP. Its work is to
 
 \subsection{Input-output}
 
-The CAS module take as input a sentence whose string is a mathematical expression and output a resource of typed \texttt{math-latex} with two fields: one with a human readable formula and the other written in \LaTeX.
+The CAS module takes as input a sentence whose string is a mathematical expression and output a resource of typed \texttt{math-latex} with two fields: one with a human readable formula and the other written in \LaTeX.
 
-The difficulty is two decide whether a string represent a mathematical formula or not.
+The difficulty is to decide whether a string represents a mathematical formula or not.
 
-We use two tests. The first is a pre-treatment test. It checks whether the formula contains some substring which prove
+We use two tests. The first is a pre-treatment test. It checks whether the formula contains some substring which prove:
 \begin{itemize}
     \item the formula is a mathematical expression, like "sqrt", "\textbackslash"\ldots,
     \item the formula is not a mathematical expression, like "who", "where", accented character\ldots.
@@ -26,9 +26,9 @@ But that does not eliminate all natural language questions, there still are fals
 
 \bigskip
 
-So there is another test which is more precise. For example, a query like "author of bli-bla" will not be excluded by the previous algorithm. Moreover we see here why we can't consider '-' as a characteristic character of mathematical formula. The method is to verify if the module apply modifications.
+So there is another test which is more precise. For example, a query like "author of bli-bla" will not be excluded by the previous algorithm. Moreover we see here why we can not consider '-' as a characteristic character of mathematical formula. The method is to verify if the module apply modifications.
 
-Is this example, the module has nothing to compute and car just rearrange terms. So "author of bli-bla" become something like "author bli of - bla" considering 'author', 'bli', 'bla' and 'of' as variable. But we observe there was no modification. To do this test, the module counts each kind of symbol (except space and some particular symbols). If there is the same quantity of each symbol, we consider there is no modifications and the module decides he was useless and returns an empty list.
+Is this example, the module has nothing to compute and car just rearrange terms. So "author of bli-bla" becomes something like "author bli of - bla" considering 'author', 'bli', 'bla' and 'of' as variable. But we observe there was no modification. To do this test, the module counts each kind of symbol (except space and some particular symbols). If there is the same quantity of each symbol, we consider there is no modifications and the module decides he was useless and returns an empty list.
 
 \subsection{Structure}
 
@@ -59,7 +59,7 @@ This syntax admits notation as defined in the standard ISO 31-11.
 
 \subsection{Future work}
 
-A parser for \LaTeX expressions can be implemented. We started to write a \LaTeX parser but it was more complicated than expected and actually, it does not work for big operators like sum, product or integral.
+A parser for \LaTeX \ expressions can be implemented. We started to write a \LaTeX \ parser but it was more complicated than expected and actually it does not work for big operators like sum, product or integral.
 
 We can also cover other mathematical fields. For instance:
 \begin{itemize}
