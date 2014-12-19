@@ -26,7 +26,9 @@ using
 the PLY\footnote{\url{http://www.dabeaz.com/ply/}} library converts
 the data model notation into the internal JSON representation.
 
-In order to build this interface we have relied on some famous libraries 
+When a query is submitted, the URL of the page is updated accordingly in order to allow the user to directly link to a given question. We use also an experimental web browser feature, Web Speech\footnote{\url{https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html}} (fully implemented only in Chrome in December 2014), to allow the user to input the query using a speech input and, when this feature is used, the UI speaks a simplified version of the query results.
+
+This interface relies on some famous libraries 
 like jQuery\footnote{\url{http://jquery.com/}}, Bootstrap\footnote{\url{http://getbootstrap.com}}, MathJax\footnote{\url{http://www.mathjax.org/}} to display mathematics and Leaflet\footnote{\url{http://leafletjs.com/}} for maps.
 
 \section{Logging}
