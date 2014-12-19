@@ -22,17 +22,17 @@ We use two tests. The first is a pre-treatment test. It checks whether the formu
     \item the formula is not a mathematical expression, like "who", "where", accented character\ldots.
 \end{itemize}
 
-But that does not eliminate all natural language questions, there still are false positive. Nevertheless, this test is basic and works in the larger part of cases.
+But that does not eliminate all natural language questions, there still are false positive. Nevertheless, this test works in the larger part of cases.
 
 \bigskip
 
 So there is another test which is more precise. For example, a query like "author of bli-bla" will not be excluded by the previous algorithm. Moreover we see here why we can not consider '-' as a characteristic character of mathematical formula. The method is to verify if the module apply modifications.
 
-Is this example, the module has nothing to compute and car just rearrange terms. So "author of bli-bla" becomes something like "author bli of - bla" considering 'author', 'bli', 'bla' and 'of' as variable. But we observe there was no modification. To do this test, the module counts each kind of symbol (except space and some particular symbols). If there is the same quantity of each symbol, we consider there is no modifications and the module decides he was useless and returns an empty list.
+In this example, the module has nothing to compute and just rearrange terms. So "author of bli-bla" becomes something like "author bli of - bla" considering 'author', 'bli', 'bla' and 'of' as variable. But we observe there was no modification. To do this test, the module counts each kind of symbol (except space and some particular symbols). If there is the same quantity of each symbol, we consider there is no modifications and the module decides he was useless and returns an empty list.
 
 \subsection{Structure}
 
-To do mathematical computations, we use a specific library: Sympy\footnote{\url{http://www.sympy.org/en/index.html}}. But this library is able to analyse only the input write with the good syntax which is not intuitive and pretty complex.
+To do mathematical computations, we use a specific library: Sympy\footnote{\url{http://www.sympy.org/en/index.html}}. But this library is able to analyse only the input written with a syntax which is not intuitive and pretty complex.
 
 To avoid arbitrary long computation, we launch Sympy evaluation in another process which has a limited memory and time.
 
@@ -51,7 +51,7 @@ reciprocal of the hyperbolic sine can be written "argsh", "argsinh", "arcsh" etc
 
 The other feature we implement for flexibility is implicit multiplications. We understand "a b" as "a*b", "(a)b" as "(a)*b" and "(a)(b)" as "(a)*(b)". But "a(b)" have to remain unchanged because "a" can be a function so, "a(b)" is not "a*(b)".
 
-This transformation is executed before the parser. The method is to launch the lexer a first time. Then we add the symbol "*" between the two symbols in every followed configurations: ")("; a ")" and a identifier; two consecutive identifiers. Thus, we generate a modified formula with explicit multiplications and we can parse this expression.
+This transformation is executed before the parser. The method is to launch the lexer a first time. Then we add the symbol "*" between the two symbols in one of these three configurations: ")("; a ")" and a identifier; two consecutive identifiers. Thus, we generate a modified formula with explicit multiplications and we can parse this expression.
 
 The last feature implemented to make this syntax more permissive is to extend functions which are defined on a subset of $\RR$ like $\NN$. For example, the factorial which is defined on $\NN^*$ is extended on $\CC\setminus \ZZ^{-*}$ by using the function $\Gamma$. Thus, the expression $(-1/2)!$ has a meaning.
 
