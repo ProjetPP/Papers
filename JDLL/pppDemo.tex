@@ -1,0 +1,54 @@
+\documentclass[10pt, compress]{beamer}
+
+\usetheme{m}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{minted}
+\usepackage{tikz}
+\usepackage[ruled,vlined,english]{algorithm2e}
+\usetikzlibrary{arrows,automata,shapes,positioning,calc}
+
+\usepackage{float} % placement des figures
+\usepackage{amssymb} % symboles mathématiques
+\usepackage{textcomp} % flèche,  intervalle
+\usepackage{stmaryrd} % intervalle entiers
+\usepackage{graphicx} % affichage d'images
+\usepackage{url} % inclure des urls
+\usepackage{forest}
+
+\newcommand{\first}{\texttt{First}}
+\newcommand{\last}{\texttt{Last}}
+\newcommand{\sort}{\texttt{Sort}}
+\newcommand{\triple}{\texttt{Triple}}
+\newcommand{\produ}{\texttt{Normalize}}
+
+\newenvironment{exemple}
+{\begin{exampleblock}{Example}}
+{\end{exampleblock}}
+
+\newenvironment{defi}
+{\begin{block}{Definition}}
+{\end{block}}
+
+\usepgfplotslibrary{dateplot}
+
+\usemintedstyle{trac}
+
+\title{Platypus, l'outil libre qui répond à vos questions}
+\subtitle{}
+\date{JDLL 2015}    
+
+\begin{document}
+
+\maketitle
+
+\input{introduction}
+
+\section{Overview}
+\input{overview}
+
+\section{Let's sum up}
+\input{conclusion}
+
+\end{document}
