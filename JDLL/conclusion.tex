@@ -28,7 +28,7 @@ Who is the wife of the president of the United States?
     }
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
     \frametitle{Conjunction}
 
 Who is the actor of Inception and Titanic?
@@ -39,100 +39,47 @@ Who is the actor of Inception and Titanic?
 \end{frame}
 
 
-\subsection{Future work}
+\subsection{Projets}
 
 \begin{frame}
-    \frametitle{Better database}
+    \frametitle{Plus de données}
 
-    Not answered by \alert{Wikidata}:
+    Pas de réponse via \alert{Wikidata}:
     \begin{itemize}
-      \item ``How fast is the TGV?''
-      \item ``How wide is a tennis court?''
+      \item ``Quel est la vitesse du TGV?''
+      \item ``Quand est ouvert le supermarché le plus proche ?''
     \end{itemize}
 
+    \pause
     \medbreak
 
-    $\rightarrow$ Improve Wikidata?
+    $\rightarrow$ Améliorer Wikidata?
 
-    $\rightarrow$ Use another database?
+    $\rightarrow$ Utiliser d'autres bases de données comme \alert{OpenStreeMap} ?
 \end{frame}
 
 \begin{frame}
-    \frametitle{Better question parsing}
-
-    Not parsed correctly:
-    \begin{itemize}
-      \item ``What is the date of birth of Isaac Newton?''
-      \item ``In which band does Bono sing?''
-    \end{itemize}
-
-    \medbreak
-
-    $\rightarrow$ Train the Stanford \alert{CoreNLP} library?
-
-    $\rightarrow$ Improve the algorithm of the Grammatical module?
-
-    $\rightarrow$ Better datasets for the ML modules?
-\end{frame}
-
-\begin{frame}
-    \frametitle{New modules}
-\begin{figure}
- \begin{tikzpicture}
-  \node (0) at (-3,2) {\textcolor{mLightBrown}{cooking recipes}};
-  \node (0) at (1,1) {\textcolor{mDarkBrown}{HAL}};
-  \node (0) at (-1,-1) {\textcolor{mDarkTeal}{meteo}};
-  \node (0) at (3,2) {\textcolor{mDarkTeal}{train timetable}};
-  \node (0) at (0,0) {\textcolor{mMediumBrown}{programming language interpreter}};
-  \node (0) at (-3,-2) {\textcolor{mMediumBrown}{cinema}};
-  \node (0) at (0,-2) {\textcolor{mDarkTeal}{music}};
-  \node (0) at (4,-1) {\textcolor{mMediumBrown}{literature}};
-  \node (0) at (2,-2.5) {\textcolor{mLightBrown}{translation}};
-  \node (0) at (-2,-3) {\textcolor{mMediumBrown}{sport statistics and predictions}};
-  \end{tikzpicture}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Other ideas...}
+    \frametitle{Autres projets...}
 
     \begin{itemize}
-        \item Other languages support (French...)
-        \item Improve user experience
-        \item Advertise \alert{Platypus}
+        \item Support d'autre langues (French...)
+        \item Améliorer l'expérience utilisateur
     \end{itemize}
+    
+    \pause
+     \medbreak
+
+    $\rightarrow$ On a besoin de vous !
 \end{frame}
 
 \subsection{Conclusion}
 
 \begin{frame}
-    \frametitle{Some facts} % to update just before the presentation
-    \alert{23 repositories \& 2313 commits}
-
-    \begin{tabular}{lll}
-        6 & PHP & Wikidata libraries and module\\
-        12 & Python & Other modules, core, and libraries\\
-        1 & C++ & ML-Reformulation\\
-        1 & Shell & Deployment scripts\\
-        1 & \LaTeX & This presentation and the report\\
-        1 & Markdown & The specification\\
-        1 & HTML/CSS/Javascript & The Web User Interface\\
-    \end{tabular}
-
-    \alert{26k lines} of code (13k in PHP, 10k in Python)
-
-    \alert{4.3k lines} of Latex \& \alert{2.9k lines} of Markdown
-
-    \alert{6} accepted pull requests to libraries we use (corenlp-python, aspell-python, python-datautil, Wikibase)
-\end{frame}
-
-\begin{frame}
-    \frametitle{The PPP?}
+    \frametitle{Platypus ?}
 
     \begin{itemize}
-        \item A powerful and open source question answering framework
-        \item Innovative question parsing algorithms
-        \item A demo, \alert{Platypus}, with general knowledge and math
+        \item Un \textit{framework} open-source de réponse aux questions
+        \item Une démo déjà utilisable, \alert{Platypus}
     \end{itemize}
 \end{frame}
 
