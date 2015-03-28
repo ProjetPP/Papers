@@ -8,41 +8,12 @@
     \end{center}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Nested question}
-
-Who is the wife of the president of the United States?
-    \begin{tabular}{ll}
-        \alert{WolframAlpha} & Barack Obama\\
-        \alert{Platypus} & Michelle Obama\\
-    \end{tabular}
-
-    \medbreak
-
-    \onslide<2->{
-        What are the birth dates of the daughters of the wife of the president of the United States?
-        \begin{tabular}{ll}
-            \alert{WolframAlpha} & Barack Obama\\
-            \alert{Platypus} & Saturday, July 4, 1998 \& Sunday, June 10, 2001\\
-        \end{tabular}
-    }
-\end{frame}
-
-\begin{frame}
-    \frametitle{Conjunction}
-
-Who is the actor of Inception and Titanic?
-    \begin{tabular}{ll}
-        \alert{WolframAlpha} & all the actors of the two movies\\
-        \alert{Platypus} & Leonardo DiCaprio\\
-    \end{tabular}
-\end{frame}
-
+\section{Concluons !}
 
 \subsection{Projets}
 
 \begin{frame}
-    \frametitle{Plus de données}
+    \frametitle{Plus de résultats}
 
     Pas de réponse via \alert{Wikidata}:
     \begin{itemize}
@@ -87,14 +58,14 @@ Who is the actor of Inception and Titanic?
 \newlength{\logosize}
 \setlength{\logosize}{12pt}
 \begin{frame}
-    \frametitle{Questions?}
-    
+    \frametitle{Questions?}  
     \begin{columns}
     \begin{column}{0.55\textwidth}
-        \alert{\url{http://projetpp.github.io/}}\vspace{5pt}
+        \alert{\url{http://projetpp.github.io}}\vspace{5pt}
         \begin{tabular}{ll}
             \includegraphics[width=\logosize]{Twitter_logo_blue.png} & \href{https://twitter.com/ProjetPP}{https://twitter.com/ProjetPP}\\
             \includegraphics[width=\logosize]{GitHub-Mark-32px.png} &  \href{https://github.com/ProjetPP}{https://github.com/ProjetPP}\\
+            \includegraphics[width=\logosize]{figures/forum.png} &  \href{http://discourse.askplatyp.us}{http://discourse.askplatyp.us}\\
             \includegraphics[width=\logosize]{ic_email_black_18dp.png} & \href{mailto:askplatyp.us}{contact@askplatyp.us}\\
         \end{tabular}
     \end{column}
@@ -104,65 +75,7 @@ Who is the actor of Inception and Titanic?
     \end{columns}
 \end{frame}
 
-\iffalse
-\begin{frame}
-    \tikzset{
-        workpackage/.style={
-               node distance = 0.5cm,
-               },
-    }
-    \frametitle{WorkPackages}
-    \begin{figure}
-        \begin{tikzpicture}
-            % PPP members
-            \node (rc)                  {Raphaël \textsc{Charrondière}};
-            \node (qc)  [below of = rc] {Quentin \textsc{Cormier}};
-            \node (tc)  [below of = qc] {Tom \textsc{Cornebize}};
-            \node (yh)  [below of = tc] {Yassine \textsc{Hamoudi}};
-            \node (mc)  [below of = yh] {Marc \textsc{Chevalier}};
-            \node (vl)  [below of = mc] {Valentin \textsc{Lorentz}};
-            \node (tpt) [below of = vl] {Thomas \textsc{Pellissier} \textsc{Tanon}};
-
-            % PPP WorkPackages
-            \node (reformulation)   [workpackage, right of = rc, right=3cm]  {Reformulation};
-            \node (standalone)      [workpackage, below of = reformulation]  {Standalone};
-            \node (spellchecker)    [workpackage, below of = standalone]     {SpellChecker};
-            \node (communication)   [workpackage, below of = spellchecker]   {Communication};
-            \node (grammatical)     [workpackage, below of = communication]  {Grammatical};
-            \node (bibliography)    [workpackage, below of = grammatical]    {Bibliography};
-            \node (cas)             [workpackage, below of = bibliography]   {CAS};
-            \node (datamodel)       [workpackage, below of = cas]            {DataModel};
-            \node (architecture)    [workpackage, below of = datamodel]      {Architecture};
-            \node (core)            [workpackage, below of = architecture]   {Core};
-            \node (sysadmin)        [workpackage, below of = core]           {System Administration};
-            \node (wikidata)        [workpackage, below of = sysadmin]       {Wikidata};
-            \node (webui)           [workpackage, below of = wikidata]       {WebUI};
-
-            % Edges
-            \path (reformulation.west)   edge (rc.east)
-                  (standalone.west)      edge (qc.east)
-                  (spellchecker.west)    edge (tc.east)
-                  (communication.west)   edge (tc.east)
-                  (grammatical.west)     edge (tc.east)
-                  (grammatical.west)     edge (yh.east)
-                  (bibliography.west)    edge (yh.east)
-                  (datamodel.west)       edge (yh.east)
-                  (datamodel.west)       edge (mc.east)
-                  (datamodel.west)       edge (vl.east)
-                  (datamodel.west)       edge (tpt.east)
-                  (architecture.west)    edge (mc.east)
-                  (architecture.west)    edge (vl.east)
-                  (architecture.west)    edge (tpt.east)
-                  (cas.west)             edge (mc.east)
-                  (core.west)            edge (vl.east)
-                  (sysadmin.west)        edge (vl.east)
-                  (wikidata.west)        edge (vl.east)
-                  (wikidata.west)        edge (tpt.east)
-                  (webui.west)           edge (tpt.east);
-        \end{tikzpicture}
-    \end{figure}
-\end{frame}
-
+%\iffalse
 \begin{frame}
     \begin{center}
         \Huge Demo time!
@@ -184,12 +97,13 @@ Who is the actor of Inception and Titanic?
 \begin{frame}
     \begin{center}
     \begin{tabular}{ccc}
-        \visible<1->{\includegraphics[width=0.3\linewidth]{figures/platypus.pdf}} &
-        \visible<2->{ \Huge VS} &
-        \visible<3->{\includegraphics[width=0.3\linewidth]{figures/wa-logo-stacked2-large.png}}
+        \includegraphics[width=0.3\linewidth]{figures/platypus.pdf} &
+        \Huge VS &
+        \includegraphics[width=0.3\linewidth]{figures/wa-logo-stacked2-large.png}
     \end{tabular}
     \end{center}
 \end{frame}
+
 
 \begin{frame}
     \frametitle{Nested question}
@@ -211,7 +125,7 @@ Who is the wife of the president of the United States?
     }
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
     \frametitle{Conjunction}
 
 Who is the actor of Inception and Titanic?
@@ -220,34 +134,3 @@ Who is the actor of Inception and Titanic?
         \alert{Platypus} & Leonardo DiCaprio\\
     \end{tabular}
 \end{frame}
-
-\subsection{Spell checker}
-
-\begin{frame}[fragile]
-    \frametitle{Spell Checker}
-    Based on \alert{GNU Aspell}.
-
-    \medbreak
-
-    \onslide<2->{
-        What are the langajes of Soth Afryka?
-
-        $\rightarrow$
-
-        What are the languages of South Africa?
-    }
-
-    \medbreak
-
-    \onslide<3->{\alert{120 lines of code} $\Rightarrow$ quickness of module creation.}
-\end{frame}
-
-\subsection{ML Reformulation - Learn}
-
-\begin{frame}
-\frametitle{Training}
-\alert{Semantic distance.}
-
-Use relation graph ``instance of'' from Wikidata.
-\end{frame} 
-\fi
